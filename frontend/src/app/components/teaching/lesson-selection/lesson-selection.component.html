@@ -1,0 +1,50 @@
+<!-- src/app/lesson-list/lesson-list.component.html -->
+
+<div class="search-container">
+    <mat-form-field appearance="outline">
+        <input
+        matInput
+        placeholder="Search lessons..."
+        [formControl]="searchControl"
+        [matAutocomplete]="auto"
+        />
+        <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onLessonSelected($event)">
+        @for (lesson of filteredLessons | async; track lesson.id) {
+        <mat-option [value]="lesson.title">
+            {{ lesson.title }}
+        </mat-option>
+        }
+    </mat-autocomplete>
+</div>
+<mat-accordion multi>
+    @for (topic of topics; track topic.title) {
+      <mat-expansion-panel>
+        <mat-expansion-panel-header
+          [ngClass]="{ 'completed-header': topic.completionPercentage === 100 }"
+        >
+            <div class="header-text">
+              <mat-panel-title>
+                {{ topic.title }}
+                <span class="completion-percentage">
+                    @if (topic.completionPercentage === 100) {
+                        <mat-icon>'check_circle'</mat-icon>
+                    } @else {
+                        ({{ topic.completionPercentage?.toFixed(0) || 0 }}%)
+                    }
+                </span>
+              </mat-panel-title>
+            </div>
+        </mat-expansion-panel-header>
+        <mat-list>
+          @for (lesson of topic.lessons; track lesson.id) {
+            <mat-list-item (click)="goToLesson(lesson.route)">
+              <mat-icon>{{ lesson.completed ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
+              {{ lesson.title }}
+            </mat-list-item>
+          }
+        </mat-list>
+      </mat-expansion-panel>
+    }
+</mat-accordion>

@@ -1,0 +1,25 @@
+/* src/app/language-selector/language-selector.component.scss */
+.flag-icon {
+    margin-right: 8px;
+  }
+  
+  .language-name {
+    vertical-align: middle;
+  }
+  
+  :host {
+    display: block;
+    width: 100%;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+  
+  .flag-icon {
+    margin-right: 8px; // Add spacing between flag and language name
+  }
+  
+  .language-name {
+    vertical-align: middle; // Align text with the flag
+  }

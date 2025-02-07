@@ -1,0 +1,46 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; // Prevent scrolling
+    flex: 1;
+    justify-content: center;
+  }
+  mat-grid-tile {
+    overflow:visible;
+  }
+  
+  .gif-container {
+    flex: 1; // Take up remaining space
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .gif {
+    max-width: 100%;
+    object-fit: contain; // Ensure the GIF fits within the container
+  }
+  
+  .button-container {
+    flex: 1; // Take up remaining space
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem; // Space between buttons
+    margin-top: 2rem;
+  }
+  
+  .button-card {
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+  }

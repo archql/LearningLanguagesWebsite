@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+    <!-- App Icon -->
+    <div class="logo">
+      <img src="assets/logo.png" alt="App Logo" class="app-icon" />
+    </div>
+    <span class="spacer"></span>
+    <!-- Navigation Menu -->
+    <ul class="menu">
+      @for (item of menuItems; track item.label) {
+        <li>
+          <a mat-button [routerLink]="item.link">{{ item.label }}</a>
+        </li>
+      }
+    </ul>
+    <span class="spacer"></span>
+    <!-- Lang selector -->
+    <div class="language-selector">
+        <app-language-selector 
+            [languages]="languages"
+            (languageSelected)="onLanguageSelected($event)">
+        </app-language-selector>
+    </div>
+</mat-toolbar>

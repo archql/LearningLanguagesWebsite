@@ -1,0 +1,44 @@
+<mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>{{'app.auth.login' | translate}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput id="email" type="email" formControlName="email" />
+            @if (f['email'].touched && f['email'].invalid && f['email'].errors) {
+              <mat-error>
+                @if (f['email'].errors['required']) {
+                  <small>{{'app.auth.email-required' | translate}}</small>
+                }
+                @if (f['email'].errors['email']) {
+                  <small>{{'app.auth.email-invalid' | translate}}</small>
+                }
+              </mat-error>
+            }
+          </mat-form-field>
+        </div>
+  
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>{{'app.auth.password' | translate}}</mat-label>
+            <input matInput id="password" type="password" formControlName="password" />
+            @if (f['password'].touched && f['password'].invalid && f['password'].errors) {
+              <mat-error>
+                @if (f['password'].errors['required']) {
+                  <small>{{'app.auth.password-required' | translate}}</small>
+                }
+                @if (f['password'].errors['minlength']) {
+                  <small>{{'app.auth.password-min-length' | translate: {length: 6} }}</small>
+                }
+              </mat-error>
+            }
+          </mat-form-field>
+        </div>
+  
+        <button mat-raised-button type="submit" [disabled]="loginForm.invalid" color="primary">{{'app.auth.login-action' | translate}}</button>
+      </form>
+    </mat-card-content>
+  </mat-card>

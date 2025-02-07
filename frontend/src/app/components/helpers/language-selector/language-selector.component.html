@@ -1,0 +1,14 @@
+<mat-form-field appearance="outline" class="small-form-field" subscriptSizing="dynamic" subscriptSizing="dynamic">
+
+    <mat-select
+      [(ngModel)]="selectedLanguage"
+      (selectionChange)="onLanguageSelect($event.value)"
+    >
+    @for (language of languages; track language.code) {
+        <mat-option [value]="language">
+            <span class="flag-icon">{{ language.flagIcon }}</span>
+            <span class="language-name">{{ language.name }}</span>
+          </mat-option>
+    }
+    </mat-select>
+</mat-form-field>

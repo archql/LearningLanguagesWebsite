@@ -1,0 +1,59 @@
+<!-- src/app/dashboard/dashboard.component.html -->
+<div class="dashboard-container">
+    <!-- Progress Panel -->
+    <mat-card class="dashboard-panel">
+      <mat-card-header>
+        <mat-card-title>Your Progress</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          You have completed {{ userProgress.completedLessons }} out of {{ userProgress.totalLessons }} lessons.
+        </p>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="(userProgress.completedLessons / userProgress.totalLessons) * 100"
+        ></mat-progress-bar>
+        <p class="motivational-message">{{ getMotivationalMessage() }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dashboard-panel">
+        <mat-card-header>
+            <mat-card-title>Daily challenge</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            @if (!isDailyChallengeCompleted) {
+                <p>Complete today's challenge to earn extra points!</p>
+                <button mat-raised-button color="primary" (click)="completeDailyChallenge()">
+                  Start Daily Challenge
+                </button>
+            } @else {
+                <p>You've already completed today's challenge. Come back tomorrow!</p>
+            }
+        </mat-card-content>
+    </mat-card>
+  
+    <!-- Cultural Note Panel -->
+    <mat-card class="dashboard-panel">
+        <mat-card-header>
+            <mat-card-title>Cultural Note of the Day</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="quote-container">
+            <mat-icon class="quote-icon">format_quote</mat-icon>
+            <blockquote>
+            "{{ getRandomCulturalNote().quote }}"
+            <footer>- {{ getRandomCulturalNote().author }}</footer>
+            </blockquote>
+        </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card class="dashboard-panel">
+        <mat-card-header>
+            <mat-card-title>Completed lessons</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+
+        </mat-card-content>
+    </mat-card>
+</div>
