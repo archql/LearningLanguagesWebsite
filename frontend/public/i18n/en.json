@@ -29,5 +29,19 @@
 	"app.menu-bar.main": "Main",
 	"app.menu-bar.my-vocabulary": "My vocabulary",
 	"app.menu-bar.profile": "Profile",
-	"app.menu-bar.register": "Register"
+	"app.menu-bar.register": "Register",
+	"app.dialog.change-language": "Change Learning Language",
+	"app.dialog.change-language.prompt": "Are you sure you want to change the learning language? Your progress will be reset irreversibly!",
+	"app.dialog.change-language.success": "Learning language changed successfully",
+	"app.dialog.delete-progress": "Delete Progress",
+	"app.dialog.delete-progress.prompt": "Are you sure you want to delete your progress? This action is irreversible!",
+	"app.dialog.delete-progress.success": "Progress deleted successfully",
+	"app.dialog.vocabulary-upload": "Upload My Vocabulary",
+	"app.dialog.vocabulary-upload.success": "Vocabulary uploaded successfully",
+	"app.dialog.vocabulary-upload.failure-not-yaml": "Upload failed: File is not a valid YAML",
+	"app.dialog.vocabulary-download": "Download My Vocabulary",
+	"app.dialog.vocabulary-download.success": "Vocabulary downloaded successfully",
+	"app.dialog.close": "Close",
+	"app.dialog.cancel": "Cancel",
+	"app.dialog.confirm": "Confirm"
 }

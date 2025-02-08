@@ -29,5 +29,19 @@
 	"app.menu-bar.main": "На галоўную",
 	"app.menu-bar.my-vocabulary": "Мае словы",
 	"app.menu-bar.profile": "Кабінет карыстальніка",
-	"app.menu-bar.register": "Зарэгіструйцеся"
+	"app.menu-bar.register": "Зарэгіструйцеся",
+	"app.dialog.change-language": "Змяніць мову навучання",
+	"app.dialog.change-language.prompt": "Вы ўпэўнены, што хочаце змяніць мову навучання? Гэта дзеянне незваротна скінуе ваш прагрэс!",
+	"app.dialog.change-language.success": "Мова навучання паспяхова зменена",
+	"app.dialog.delete-progress": "Выдаліць прагрэс",
+	"app.dialog.delete-progress.prompt": "Вы ўпэўнены, што хочаце выдаліць ваш прагрэс? Гэта дзеянне незваротнае!",
+	"app.dialog.delete-progress.success": "Прагрэс паспяхова выдалены",
+	"app.dialog.vocabulary-upload": "Загрузіць мой слоўнік",
+	"app.dialog.vocabulary-upload.success": "Слоўнік паспяхова загружаны",
+	"app.dialog.vocabulary-upload.failure-not-yaml": "Памылка загрузкі: файл не з'яўляецца сапраўдным YAML",
+	"app.dialog.vocabulary-download": "Спампаваць мой слоўнік",
+	"app.dialog.vocabulary-download.success": "Слоўнік паспяхова спампаваны",
+	"app.dialog.close": "Закрыць",
+	"app.dialog.cancel": "Адмяніць",
+	"app.dialog.confirm": "Пацвердзіць"
 }

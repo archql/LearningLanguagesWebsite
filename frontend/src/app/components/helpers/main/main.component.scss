@@ -4,43 +4,49 @@
     overflow: hidden; // Prevent scrolling
     flex: 1;
     justify-content: center;
-  }
-  mat-grid-tile {
+    height: 100vh; // Ensure the container takes full viewport height
+}
+mat-grid-tile {
     overflow:visible;
-  }
+}
   
-  .gif-container {
-    flex: 1; // Take up remaining space
+.content {
+    display: flex;
+    flex: 1;
+    overflow: hidden; // Prevent overflow by height
+}
+
+.gif-container, .card-container {
+    flex: 1; // Take up 50% of the width
     display: flex;
     justify-content: center;
     align-items: center;
-  }
+}
   
-  .gif {
+.gif {
     max-width: 100%;
     object-fit: contain; // Ensure the GIF fits within the container
-  }
+}
   
-  .button-container {
-    flex: 1; // Take up remaining space
+.button-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 1rem; // Space between buttons
     margin-top: 2rem;
-  }
+}
   
-  .button-card {
+.button-card {
     width: 80%;
     max-width: 400px;
     text-align: center;
     padding: 2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+}
   
-  button {
+button {
     width: 100%;
     padding: 1rem;
     font-size: 1.2rem;
-  }
+}

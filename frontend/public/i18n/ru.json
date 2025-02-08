@@ -29,5 +29,19 @@
 	"app.menu-bar.main": "На главную",
 	"app.menu-bar.my-vocabulary": "Моі слова",
 	"app.menu-bar.profile": "Личный кабинет",
-	"app.menu-bar.register": "Регистр"
+	"app.menu-bar.register": "Регистр",
+	"app.dialog.change-language": "Изменить язык обучения",
+	"app.dialog.change-language.prompt": "Вы уверены, что хотите изменить язык обучения? Ваш прогресс будет сброшен безвозвратно!",
+	"app.dialog.change-language.success": "Язык обучения успешно изменен",
+	"app.dialog.delete-progress": "Удалить прогресс",
+	"app.dialog.delete-progress.prompt": "Вы уверены, что хотите удалить свой прогресс? Ваш прогресс будет сброшен безвозвратно!",
+	"app.dialog.delete-progress.success": "Прогресс успешно удален",
+	"app.dialog.vocabulary-upload": "Загрузить мой словарь",
+	"app.dialog.vocabulary-upload.success": "Словарь успешно загружен",
+	"app.dialog.vocabulary-upload.failure-not-yaml": "Ошибка загрузки: файл не является допустимым YAML",
+	"app.dialog.vocabulary-download": "Скачать мой словарь",
+	"app.dialog.vocabulary-download.success": "Словарь успешно скачан",
+	"app.dialog.close": "Закрыть",
+	"app.dialog.cancel": "Отмена",
+	"app.dialog.confirm": "Подтвердить"
 }

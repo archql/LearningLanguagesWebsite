@@ -29,5 +29,19 @@
 	"app.menu-bar.main": "Hauptseite",
 	"app.menu-bar.my-vocabulary": "Mein Wortschatz",
 	"app.menu-bar.profile": "Profil",
-	"app.menu-bar.register": "Registrieren"
+	"app.menu-bar.register": "Registrieren",
+	"app.dialog.change-language": "Lernsprache ändern",
+	"app.dialog.change-language.prompt": "Sind Sie sicher, dass Sie die Lernsprache ändern möchten? Ihr Fortschritt wird unwiderruflich zurückgesetzt!",
+	"app.dialog.change-language.success": "Lernsprache erfolgreich geändert",
+	"app.dialog.delete-progress": "Fortschritt löschen",
+	"app.dialog.delete-progress.prompt": "Sind Sie sicher, dass Sie Ihren Fortschritt löschen möchten? Diese Aktion ist unwiderruflich!",
+	"app.dialog.delete-progress.success": "Fortschritt erfolgreich gelöscht",
+	"app.dialog.vocabulary-upload": "Mein Vokabular hochladen",
+	"app.dialog.vocabulary-upload.success": "Vokabular erfolgreich hochgeladen",
+	"app.dialog.vocabulary-upload.failure-not-yaml": "Hochladen fehlgeschlagen: Datei ist kein gültiges YAML",
+	"app.dialog.vocabulary-download": "Mein Vokabular herunterladen",
+	"app.dialog.vocabulary-download.success": "Vokabular erfolgreich heruntergeladen",
+	"app.dialog.close": "Schließen",
+	"app.dialog.cancel": "Abbrechen",
+	"app.dialog.confirm": "Bestätigen"
 }

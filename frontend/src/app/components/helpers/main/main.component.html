@@ -1,24 +1,19 @@
-<div class="main-container" >
-    <mat-grid-list cols="2">
-        <!-- Left Side: GIF -->
-        <mat-grid-tile>
-          <div class="gif-container">
+<div class="main-container">
+    <div class="content">
+        <div class="gif-container">
             <img src="learning.gif" alt="Website Ad GIF" class="gif" />
-          </div>
-        </mat-grid-tile>
-      
-        <!-- Right Side: Buttons -->
-        <mat-grid-tile>
-          <mat-card class="button-card">
-            <mat-card-content>
-              <h1>{{ 'app.main-page.title' | translate }}</h1>
-              <p>{{ 'app.main-page.subtitle' | translate }}</p>
-              <div class="button-container">
-                <button mat-raised-button color="primary" routerLink="register">{{'app.menu-bar.register' | translate}}</button>
-                <button mat-raised-button color="accent" routerLink="login">{{'app.menu-bar.login' | translate}}</button>
-              </div>
-            </mat-card-content>
-          </mat-card>
-        </mat-grid-tile>
-    </mat-grid-list>
+        </div>
+        <div class="card-container">
+            <mat-card class="button-card">
+                <mat-card-content>
+                    <h1>{{ 'app.main-page.title' | translate }}</h1>
+                    <p>{{ 'app.main-page.subtitle' | translate }}</p>
+                    <div class="button-container">
+                        <button mat-raised-button color="primary" routerLink="register">{{'app.menu-bar.register' | translate}}</button>
+                        <button mat-raised-button color="accent" routerLink="login">{{'app.menu-bar.login' | translate}}</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
 </div>

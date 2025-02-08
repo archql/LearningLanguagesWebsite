@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { LanguageSelectorComponent } from '../language-selector/language-selector.component';
 import { TranslateService } from '@ngx-translate/core';
 import {Subscription} from "rxjs";
-import { Language } from '../language-selector/language.model';
+import { InterfaceLanguages, Language } from '../language-selector/language.model';
 import { MenuItem } from './menu-bar.model';
 
 @Component({
@@ -46,12 +46,7 @@ export class MenuBarComponent implements OnInit, OnDestroy {
   }
 
   // List of supported languages
-  languages: Language[] = [
-    { code: 'en', name: 'English', flagIcon: '🇺🇸🇬🇧' },
-    { code: 'de', name: 'German', flagIcon: '🇩🇪' },
-    { code: 'by', name: 'Belarusian', flagIcon: '🇧🇾' },
-    { code: 'ru', name: 'Russian', flagIcon: '🇷🇺' },
-  ];
+  languages: Language[] = InterfaceLanguages;
 
   onLanguageSelected(language: Language) {
     this.translate.use(language.code);

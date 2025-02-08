@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { LanguageSelectorComponent } from "../../helpers/language-selector/language-selector.component"; // Add this import
-import { Language } from '../../helpers/language-selector/language.model';
+import { Language, LearningLanguages } from '../../helpers/language-selector/language.model';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -36,10 +36,7 @@ export class RegisterPageComponent {
   }
 
   // List of supported languages to learn
-  languages: Language[] = [
-    { code: 'en', name: 'English', flagIcon: '🇺🇸🇬🇧' },
-    { code: 'de', name: 'German', flagIcon: '🇩🇪' },
-  ];
+  languages: Language[] = LearningLanguages;
 
   // Custom validator to check if passwords match
   passwordMatchValidator(form: FormGroup) {

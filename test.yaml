@@ -1,0 +1,44 @@
+primary_language: en
+learning_language: de
+sections:
+  greetings:
+    - word: Hallo
+      meaning: Hello
+    - word: Guten Morgen
+      meaning: Good Morning
+    - word: Guten Abend
+      meaning: Good Evening
+    - word: Auf Wiedersehen
+      meaning: Goodbye
+  common_phrases:
+    - word: Bitte
+      meaning: Please
+    - word: Danke
+      meaning: Thank you
+    - word: Entschuldigung
+      meaning: Excuse me
+    - word: Ja
+      meaning: Yes
+    - word: Nein
+      meaning: No
+  house:
+    - word: das Haus
+      meaning: the house
+      meta:
+        sex: neuter
+    - word: die Tür
+      meaning: the door
+      meta:
+        sex: feminine
+    - word: das Fenster
+      meaning: the window
+      meta:
+        sex: neuter
+    - word: der Tisch
+      meaning: the table
+      meta:
+        sex: masculine
+    - word: der Stuhl
+      meaning: the chair
+      meta:
+        sex: masculine

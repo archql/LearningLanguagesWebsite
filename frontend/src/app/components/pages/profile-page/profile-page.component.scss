@@ -1,0 +1,19 @@
+.profile-card {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+  
+.full-width {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+  
+button {
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
+
+button[color="warn"] {
+    border: 1px solid red;
+}
