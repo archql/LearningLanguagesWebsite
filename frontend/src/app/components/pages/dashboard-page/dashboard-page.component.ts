@@ -4,11 +4,12 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CulturalNote, UserProgress } from './dashboard.model';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard-page',
   standalone: true,
-  imports: [MatCardModule, MatProgressBarModule, MatIconModule, MatButtonModule],
+  imports: [MatCardModule, MatProgressBarModule, MatIconModule, MatButtonModule, TranslateModule],
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.scss'
 })

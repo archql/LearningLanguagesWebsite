@@ -43,5 +43,13 @@
 	"app.dialog.vocabulary-download.success": "Vocabulary downloaded successfully",
 	"app.dialog.close": "Close",
 	"app.dialog.cancel": "Cancel",
-	"app.dialog.confirm": "Confirm"
+	"app.dialog.confirm": "Confirm",
+	"app.dashboard.progress": "Your Progress Today",
+	"app.dashboard.progress-lessons": "You have completed {{ userProgress.completedLessons }} out of {{ userProgress.totalLessons }} lessons.",
+	"app.dashboard.daily-challenge": "Daily challenge",
+	"app.dashboard.daily-challenge.info": "Complete today's challenge to earn extra points! Are you ready to start?",
+	"app.dashboard.daily-challenge.start": "Start Daily Challenge",
+	"app.dashboard.daily-challenge.success": "You've already completed today's challenge. Come back tomorrow!",
+	"app.dashboard.cultural-note": "Cultural Note of the Day",
+	"app.dashboard.progress-total": "Completed lessons"
 }

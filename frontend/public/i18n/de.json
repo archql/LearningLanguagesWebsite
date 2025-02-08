@@ -43,5 +43,13 @@
 	"app.dialog.vocabulary-download.success": "Vokabular erfolgreich heruntergeladen",
 	"app.dialog.close": "Schließen",
 	"app.dialog.cancel": "Abbrechen",
-	"app.dialog.confirm": "Bestätigen"
+	"app.dialog.confirm": "Bestätigen",
+	"app.dashboard.progress": "Ihr Fortschritt heute",
+	"app.dashboard.progress-lessons": "Sie haben {{ userProgress.completedLessons }} von {{ userProgress.totalLessons }} Lektionen abgeschlossen.",
+	"app.dashboard.daily-challenge": "Tägliche Herausforderung",
+	"app.dashboard.daily-challenge.info": "Schließen Sie die heutige Herausforderung ab, um zusätzliche Punkte zu verdienen! Sind Sie bereit zu beginnen?",
+	"app.dashboard.daily-challenge.start": "Tägliche Herausforderung starten",
+	"app.dashboard.daily-challenge.success": "Sie haben die heutige Herausforderung bereits abgeschlossen. Kommen Sie morgen wieder!",
+	"app.dashboard.cultural-note": "Kulturelle Notiz des Tages",
+	"app.dashboard.progress-total": "Abgeschlossene Lektionen"
 }

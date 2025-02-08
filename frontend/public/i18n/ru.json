@@ -43,5 +43,13 @@
 	"app.dialog.vocabulary-download.success": "Словарь успешно скачан",
 	"app.dialog.close": "Закрыть",
 	"app.dialog.cancel": "Отмена",
-	"app.dialog.confirm": "Подтвердить"
+	"app.dialog.confirm": "Подтвердить",
+	"app.dashboard.progress": "Ваш прогресс на сегодня",
+	"app.dashboard.progress-lessons": "Вы завершили {{ userProgress.completedLessons }} из {{ userProgress.totalLessons }} уроков.",
+	"app.dashboard.daily-challenge": "Ежедневное задание",
+	"app.dashboard.daily-challenge.info": "Выполните сегодняшнее задание, чтобы заработать дополнительные очки! Вы готовы начать?",
+	"app.dashboard.daily-challenge.start": "Начать ежедневное задание",
+	"app.dashboard.daily-challenge.success": "Вы уже выполнили сегодняшнее задание. Возвращайтесь завтра!",
+	"app.dashboard.cultural-note": "Культурная заметка дня",
+	"app.dashboard.progress-total": "Завершенные уроки"
 }

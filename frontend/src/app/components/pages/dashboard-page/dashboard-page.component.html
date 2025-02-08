@@ -3,11 +3,11 @@
     <!-- Progress Panel -->
     <mat-card class="dashboard-panel">
       <mat-card-header>
-        <mat-card-title>Your Progress</mat-card-title>
+        <mat-card-title>{{ 'app.dashboard.progress' | translate}}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <p>
-          You have completed {{ userProgress.completedLessons }} out of {{ userProgress.totalLessons }} lessons.
+          {{ 'app.dashboard.progress-lessons' | translate: {userProgress: userProgress} }}
         </p>
         <mat-progress-bar
           mode="determinate"
@@ -19,16 +19,16 @@
 
     <mat-card class="dashboard-panel">
         <mat-card-header>
-            <mat-card-title>Daily challenge</mat-card-title>
+            <mat-card-title>{{ 'app.dashboard.daily-challenge' | translate}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
             @if (!isDailyChallengeCompleted) {
-                <p>Complete today's challenge to earn extra points!</p>
+                <p>{{ 'app.dashboard.daily-challenge.info' | translate}}</p>
                 <button mat-raised-button color="primary" (click)="completeDailyChallenge()">
-                  Start Daily Challenge
+                  {{ 'app.dashboard.daily-challenge.start' | translate}}
                 </button>
             } @else {
-                <p>You've already completed today's challenge. Come back tomorrow!</p>
+                <p>{{ 'app.dashboard.daily-challenge.success' | translate}}</p>
             }
         </mat-card-content>
     </mat-card>
@@ -36,7 +36,7 @@
     <!-- Cultural Note Panel -->
     <mat-card class="dashboard-panel">
         <mat-card-header>
-            <mat-card-title>Cultural Note of the Day</mat-card-title>
+            <mat-card-title>{{ 'app.dashboard.cultural-note' | translate}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <div class="quote-container">
@@ -50,7 +50,7 @@
     </mat-card>
     <mat-card class="dashboard-panel">
         <mat-card-header>
-            <mat-card-title>Completed lessons</mat-card-title>
+            <mat-card-title>{{ 'app.dashboard.progress-total' | translate}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
 

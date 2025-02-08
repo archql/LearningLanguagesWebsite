@@ -12,11 +12,12 @@ import { LanguageSelectorComponent } from '../../helpers/language-selector/langu
 import { ConfirmationDialogComponent } from '../../helpers/confirmation-dialog/confirmation-dialog.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-profile-page',
   standalone: true,
-  imports: [LanguageSelectorComponent, TranslateModule, MatCardModule, MatButtonModule, MatInputModule, MatDialogModule, MatSnackBarModule, MatIconModule, MatTooltipModule, MatProgressSpinnerModule],
+  imports: [FormsModule, LanguageSelectorComponent, TranslateModule, MatCardModule, MatButtonModule, MatInputModule, MatDialogModule, MatSnackBarModule, MatIconModule, MatTooltipModule, MatProgressSpinnerModule],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.scss'
 })

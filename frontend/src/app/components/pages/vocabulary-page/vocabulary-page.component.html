@@ -1,1 +1,25 @@
-<p>vocabulary-page works!</p>
+<mat-card class="vocabulary-card">
+    <mat-card-header>
+        <mat-card-title>{{ 'app.menu-bar.my-vocabulary' | translate }}</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+        <!-- Display vocabulary groups -->
+        <mat-list>
+            <mat-divider></mat-divider>
+            @for (group of vocabulary; track group.section) {
+                <span mat-subheader style="font-size: 1.2em;">{{ group.section }}</span>
+                @for (word of group.words; track word.word) {
+                    <mat-list-item>
+                        <span class="word">{{ word.meaning }}</span>
+                        <span class="translation">{{ word.word }}</span>
+                        <button mat-icon-button color="warn" (click)="removeWord(group, word)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </mat-list-item>
+                }
+                <mat-divider></mat-divider>
+        }
+        </mat-list>
+    </mat-card-content>
+</mat-card>

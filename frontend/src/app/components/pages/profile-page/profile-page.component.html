@@ -7,13 +7,13 @@
       <!-- User Nickname -->
       <mat-form-field appearance="outline" class="full-width" floatLabel="always">
         <mat-label>{{ 'app.auth.login-noun' | translate }}</mat-label>
-        <input matInput disabled />
+        <input matInput [ngModel]="user.nickname" disabled />
       </mat-form-field>
   
       <!-- User Email -->
       <mat-form-field appearance="outline" class="full-width" floatLabel="always">
         <mat-label>Email</mat-label>
-        <input matInput disabled />
+        <input matInput [ngModel]="user.email" disabled />
       </mat-form-field>
   
       <!-- Language Selector -->
