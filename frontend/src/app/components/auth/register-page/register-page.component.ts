@@ -9,7 +9,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { LanguageSelectorComponent } from "../../helpers/language-selector/language-selector.component"; // Add this import
 import { Language, LearningLanguages } from '../../helpers/language-selector/language.model';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register-page',
@@ -21,10 +22,33 @@ import { TranslateModule } from '@ngx-translate/core';
 export class RegisterPageComponent {
   registerForm: FormGroup;
 
+  private subscription: Subscription;
+    
+  private trIDs = [
+    'app.dialog.register.success',
+    'app.dialog.register.fail',
+    'app.dialog.close',
+  ];
+  private tr: Record<string, string> = {};
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+  ngOnInit() {
+    if (this.trIDs.length === 0) return;
+    this.subscription = this.translate
+      .stream(this.trIDs)
+      .subscribe((translations: Record<string, string>) => {
+        this.tr = translations;
+      });
+  }
+
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private authService: AuthService, private router: Router
+    private authService: AuthService, 
+    private router: Router,
+    private translate: TranslateService
   ) {
     this.registerForm = this.fb.group({
       login: ['', [Validators.required, Validators.minLength(3)]],
@@ -33,6 +57,7 @@ export class RegisterPageComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
       repeatPassword: ['', [Validators.required]]
     });
+    this.subscription = new Subscription();
   }
 
   // List of supported languages to learn
@@ -61,15 +86,15 @@ export class RegisterPageComponent {
 
     // Replace this with your actual registration API call
     if (login && email && password) {
-      this.showNotification('Registration successful!', 'success');
+      this.showNotification(this.tr['app.dialog.register.success'], 'success');
     } else {
-      this.showNotification('Registration failed. Please try again.', 'error');
+      this.showNotification(this.tr['app.dialog.register.fail'], 'error');
     }
   }
 
   // Helper method to show notifications
   showNotification(message: string, type: 'success' | 'error') {
-    this.snackBar.open(message, 'Close', {
+    this.snackBar.open(message, this.tr['app.dialog.close'], {
       duration: 3000, // Notification will auto-close after 3 seconds
       // panelClass: type === 'success' ? 'success-snackbar' : 'error-snackbar',
       horizontalPosition: 'center',

@@ -44,14 +44,12 @@ export class ProfilePageComponent {
   private tr: Record<string, string> = {};
 
   ngOnInit(): void {
-    if (this.languages.length === 0) return;
+    if (this.trIDs.length === 0) return;
     //
     this.subscription = this.translate
       .stream(this.trIDs)
       .subscribe((translations: Record<string, string>) => {
-        this.languages.forEach((e) => {
-          this.tr = translations;
-        });
+        this.tr = translations;
       });
   }
 

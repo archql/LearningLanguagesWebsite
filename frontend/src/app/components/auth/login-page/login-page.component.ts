@@ -6,8 +6,9 @@ import {MatCardModule} from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar'; // Add this import
-import { TranslateModule } from '@ngx-translate/core';
+import { MatSnackBar } from '@angular/material/snack-bar'; // Add this import
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,28 @@ import { TranslateModule } from '@ngx-translate/core';
 export class LoginPageComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router, private snackBar: MatSnackBar) {
+  private subscription: Subscription;
+  
+  private trIDs = [
+    'app.dialog.login.success',
+    'app.dialog.login.wrong-credentials',
+    'app.dialog.login.invalid-form',
+    'app.dialog.close',
+  ];
+  private tr: Record<string, string> = {};
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  constructor(
+    private fb: FormBuilder, 
+    private authService: AuthService, 
+    private router: Router, 
+    private snackBar: MatSnackBar, 
+    private translate: TranslateService
+  ) {
+    this.subscription = new Subscription();
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -33,6 +55,13 @@ export class LoginPageComponent implements OnInit {
         password: ['', [Validators.required, Validators.minLength(6)]],
       });
     }
+    if (this.trIDs.length === 0) return;
+    //
+    this.subscription = this.translate
+      .stream(this.trIDs)
+      .subscribe((translations: Record<string, string>) => {
+        this.tr = translations;
+      });
   }
 
   // Convenience getter for easy access to form controls
@@ -45,19 +74,19 @@ export class LoginPageComponent implements OnInit {
       console.log('Form Data:', this.loginForm.value);
 
       if (this.authService.login(this.loginForm.value['email'], this.loginForm.value['password'])) {
-        this.showNotification('Login successful', 'success');
+        this.showNotification(this.tr['app.dialog.login.success'], 'success');
         this.router.navigate(['/home']);
       } else {
-        this.showNotification('Wrong credentials', 'error');
+        this.showNotification(this.tr['app.dialog.login.wrong-credentials'], 'error');
       }
     } else {
-      this.showNotification('Invalid form submission', 'error');
+      this.showNotification(this.tr['app.dialog.login.invalid-form'], 'error');
     }
   }
 
   // Helper method to show notifications
   showNotification(message: string, type: 'success' | 'error') {
-    this.snackBar.open(message, 'Close', {
+    this.snackBar.open(message, this.tr['app.dialog.close'], {
       duration: 3000, // Notification will auto-close after 3 seconds
       // panelClass: type === 'success' ? ['success-snackbar'] : ['error-snackbar'],
       horizontalPosition: 'center',
