@@ -4,49 +4,58 @@
     </mat-card-header>
   
     <mat-card-content>
-      <app-loader-wrapper [loading]="loading">
+      <app-loader-wrapper [loading]="user.loading">
         <!-- User Nickname -->
         <mat-form-field appearance="outline" class="full-width" floatLabel="always">
           <mat-label>{{ 'app.auth.login-noun' | translate }}</mat-label>
-          <input matInput [ngModel]="user.nickname" disabled />
+          <input matInput [ngModel]="user.data?.login" disabled />
         </mat-form-field>
     
         <!-- User Email -->
         <mat-form-field appearance="outline" class="full-width" floatLabel="always">
           <mat-label>Email</mat-label>
-          <input matInput [ngModel]="user.email" disabled />
+          <input matInput [ngModel]="user.data?.email" disabled />
         </mat-form-field>
     
         <!-- Language Selector -->
-        <app-language-selector
-          [languages]="languages"
-          (languageSelected)="onLanguageSelected($event)"
-        ></app-language-selector>
+        <app-loader-wrapper class="helper-wrapper" [loading]="languageChangePending">
+          <app-language-selector
+            [defaultLanguageCode]="user.data?.language"
+            [languages]="languages"
+            (languageSelected)="onLanguageSelected($event)"
+          ></app-language-selector>
+        </app-loader-wrapper>
     
         <!-- Download Vocabulary Button -->
-        <button mat-raised-button color="primary" (click)="downloadVocabulary()">
-          <mat-icon>download</mat-icon>
-          {{ 'app.dialog.vocabulary-download' | translate }}
-        </button>
+        <app-loader-wrapper class="helper-wrapper" [spinnerStyles]="{'margin-top': '1rem'}" [loading]="vocabularyDownloadPending">
+          <button mat-raised-button color="primary" (click)="downloadVocabulary()">
+            <mat-icon>download</mat-icon>
+            {{ 'app.dialog.vocabulary-download' | translate }}
+          </button>
+        </app-loader-wrapper>
     
         <!-- Upload Vocabulary Button -->
-        <button mat-raised-button color="primary" (click)="fileInput.click()">
-          <mat-icon>upload</mat-icon>
-          {{ 'app.dialog.vocabulary-upload' | translate }}
-        </button>
-        <input
-          hidden
-          #fileInput
-          type="file"
-          accept=".yaml,.yml"
-          (change)="onFileSelected($event)"
-        />
+        <app-loader-wrapper class="helper-wrapper" [spinnerStyles]="{'margin-top': '1rem'}" [loading]="vocabularyUploadPending">
+          <button mat-raised-button color="primary" (click)="fileInput.click()">
+            <mat-icon>upload</mat-icon>
+            {{ 'app.dialog.vocabulary-upload' | translate }}
+          </button>
+            <input
+            hidden
+            #fileInput
+            type="file"
+            accept=".yaml,.yml"
+            (change)="onFileSelected($event); fileInput.value = ''"
+            />
+        </app-loader-wrapper>
     
         <!-- Delete Progress Button -->
-        <button mat-raised-button color="warn" (click)="confirmDeleteProgress()">
-          <mat-icon>delete</mat-icon>
-          {{ 'app.dialog.delete-progress' | translate }}
-        </button>
+        <app-loader-wrapper class="helper-wrapper" [spinnerStyles]="{'margin-top': '1rem'}" [loading]="deleteProgressPending">
+          <button mat-raised-button color="warn" (click)="confirmDeleteProgress()">
+            <mat-icon>delete</mat-icon>
+            {{ 'app.dialog.delete-progress' | translate }}
+          </button>
+        </app-loader-wrapper>
       </app-loader-wrapper>
     </mat-card-content>
 </mat-card>

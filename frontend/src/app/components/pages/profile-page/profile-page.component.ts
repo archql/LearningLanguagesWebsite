@@ -14,6 +14,9 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { LoaderWrapperComponent } from "../../helpers/loader-wrapper/loader-wrapper.component";
+import { Loadable } from '../../helpers/loader-wrapper/loader-wrapper.model';
+import { User } from './user.model';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -25,7 +28,12 @@ import { LoaderWrapperComponent } from "../../helpers/loader-wrapper/loader-wrap
 export class ProfilePageComponent {
   private subscription: Subscription;
 
-  constructor(private dialog: MatDialog, private snackBar: MatSnackBar, private translate: TranslateService) {
+  constructor(
+    private dialog: MatDialog, 
+    private snackBar: MatSnackBar, 
+    private translate: TranslateService,
+    private userService: UserService
+  ) {
     this.subscription = new Subscription();
   }
 
@@ -33,13 +41,16 @@ export class ProfilePageComponent {
     'app.dialog.change-language',
     'app.dialog.change-language.prompt',
     'app.dialog.change-language.success',
+    'app.dialog.change-language.failure',
     'app.dialog.delete-progress',
     'app.dialog.delete-progress.prompt',
     'app.dialog.delete-progress.success',
-    'app.dialog.delete-progress.success',
+    'app.dialog.delete-progress.failure',
     'app.dialog.vocabulary-upload.success',
     'app.dialog.vocabulary-upload.failure-not-yaml',
+    'app.dialog.vocabulary-upload.failure',
     'app.dialog.vocabulary-download.success',
+    'app.dialog.vocabulary-download.failure',
     'app.dialog.close',
   ];
   private tr: Record<string, string> = {};
@@ -58,13 +69,14 @@ export class ProfilePageComponent {
     this.subscription.unsubscribe();
   }
 
-  // TODO replace with actual user data service
-  user = {
-    nickname: 'JohnDoe',
-    email: 'johndoe@example.com',
-    learningLanguage: { code: 'en', name: 'English', flagIcon: '🇺🇸' },
-  };
-  loading: boolean = false;
+  // 
+  user: Loadable<User> = { loading: false };
+  deleteProgressPending: boolean = false;
+  languageChangePending: boolean = false;
+  vocabularyDownloadPending: boolean = false;
+  vocabularyUploadPending: boolean = false;
+  //
+
 
   languages: Language[] = LearningLanguages;
 
@@ -79,9 +91,25 @@ export class ProfilePageComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.user.learningLanguage = language;
-        this.snackBar.open(this.tr['app.dialog.change-language.success'], this.tr['app.dialog.close'], {
-          duration: 3000,
+        this.languageChangePending = true; // Stop loading
+        // Implement progress deletion logic here
+        this.userService.resetProgress().subscribe({
+          next: (response) => {
+            // TODO update UI
+            if (response) {
+              this.snackBar.open(this.tr['app.dialog.change-language.success'], this.tr['app.dialog.close'], { duration: 3000 });
+              this.user.data!.language = language.code;
+            } else {
+              this.snackBar.open(this.tr['app.dialog.change-language.failure'], this.tr['app.dialog.close'], { duration: 3000 });
+            }
+          },
+          error: (error) => {
+            console.error('Language Change failed', error);
+            this.snackBar.open(this.tr['app.dialog.change-language.failure'], this.tr['app.dialog.close'], { duration: 3000 });
+          },
+          complete: () => {
+            this.languageChangePending = false; // Stop loading
+          },
         });
       }
     });
@@ -89,17 +117,52 @@ export class ProfilePageComponent {
 
   // Download vocabulary
   downloadVocabulary(): void {
-    // TODO Implement download logic here
-    this.snackBar.open(this.tr['app.dialog.vocabulary-download.success'], this.tr['app.dialog.close'], { duration: 3000 });
+    this.vocabularyDownloadPending = true;
+    this.userService.downloadVocabulary().subscribe({
+      next: (response) => {
+        // TODO update UI
+        if (response) {
+          this.snackBar.open(this.tr['app.dialog.vocabulary-download.success'], this.tr['app.dialog.close'], { duration: 3000 });
+        } else {
+          this.snackBar.open(this.tr['app.dialog.vocabulary-download.failure'], this.tr['app.dialog.close'], { duration: 3000 });
+        }
+      },
+      error: (error) => {
+        console.error('Language Change failed', error);
+        this.snackBar.open(this.tr['app.dialog.vocabulary-download.failure'], this.tr['app.dialog.close'], { duration: 3000 });
+      },
+      complete: () => {
+        this.vocabularyDownloadPending = false; // Stop loading
+      },
+    });
   }
 
   // Handle file upload
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
+    console.log(input.files, input.files?.length)
     if (input.files && input.files.length > 0) {
+      console.log("sdfsdfadssd")
       const file = input.files[0];
       if (file.type === 'application/yaml' || file.name.endsWith('.yaml') || file.name.endsWith('.yml')) {
-        this.snackBar.open(this.tr['app.dialog.vocabulary-upload.success'], this.tr['app.dialog.close'], { duration: 3000 });
+        this.vocabularyUploadPending = true;
+        this.userService.uploadVocabulary(file).subscribe({
+          next: (response) => {
+            // TODO update UI
+            if (response) {
+              this.snackBar.open(this.tr['app.dialog.vocabulary-upload.success'], this.tr['app.dialog.close'], { duration: 3000 });
+            } else {
+              this.snackBar.open(this.tr['app.dialog.vocabulary-upload.failure'], this.tr['app.dialog.close'], { duration: 3000 });
+            }
+          },
+          error: (error) => {
+            console.error('Language Change failed', error);
+            this.snackBar.open(this.tr['app.dialog.vocabulary-upload.failure'], this.tr['app.dialog.close'], { duration: 3000 });
+          },
+          complete: () => {
+            this.vocabularyUploadPending = false; // Stop loading
+          },
+        });
       } else {
         this.snackBar.open(this.tr['app.dialog.vocabulary-upload.failure-not-yaml'], this.tr['app.dialog.close'], { duration: 3000 });
       }
@@ -117,8 +180,25 @@ export class ProfilePageComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
+        this.deleteProgressPending = true; // Stop loading
         // Implement progress deletion logic here
-        this.snackBar.open(this.tr['app.dialog.delete-progress.success'], this.tr['app.dialog.close'], { duration: 3000 });
+        this.userService.resetProgress().subscribe({
+          next: (response) => {
+            // TODO reload required
+            if (response) {
+              this.snackBar.open(this.tr['app.dialog.delete-progress.success'], this.tr['app.dialog.close'], { duration: 3000 });
+            } else {
+              this.snackBar.open(this.tr['app.dialog.delete-progress.failure'], this.tr['app.dialog.close'], { duration: 3000 });
+            }
+          },
+          error: (error) => {
+            console.error('DeleteProgress failed', error);
+            this.snackBar.open(this.tr['app.dialog.delete-progress.failure'], this.tr['app.dialog.close'], { duration: 3000 });
+          },
+          complete: () => {
+            this.deleteProgressPending = false; // Stop loading
+          },
+        });
       }
     });
   }

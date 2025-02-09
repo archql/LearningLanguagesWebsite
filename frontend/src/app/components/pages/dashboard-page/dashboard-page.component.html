@@ -6,13 +6,13 @@
         <mat-card-title>{{ 'app.dashboard.progress' | translate}}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <app-loader-wrapper [loading]="true">
+        <app-loader-wrapper [loading]="userProgress.loading">
           <p>
             {{ 'app.dashboard.progress-lessons' | translate: {userProgress: userProgress} }}
           </p>
           <mat-progress-bar
             mode="determinate"
-            [value]="(userProgress.completedLessons / userProgress.totalLessons) * 100"
+            [value]="userProgress.data?.completedLessons"
           ></mat-progress-bar>
           <p class="motivational-message">{{ getMotivationalMessage() }}</p>
         </app-loader-wrapper>
@@ -24,8 +24,8 @@
             <mat-card-title>{{ 'app.dashboard.daily-challenge' | translate}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <app-loader-wrapper [loading]="true">
-            @if (!isDailyChallengeCompleted) {
+          <app-loader-wrapper [loading]="dailyChallenge.loading">
+            @if (!dailyChallenge.data?.isCompleted) {
                 <p>{{ 'app.dashboard.daily-challenge.info' | translate}}</p>
                 <button mat-raised-button color="primary" (click)="completeDailyChallenge()">
                   {{ 'app.dashboard.daily-challenge.start' | translate}}
@@ -43,12 +43,12 @@
             <mat-card-title>{{ 'app.dashboard.cultural-note' | translate}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <app-loader-wrapper [loading]="true">
+          <app-loader-wrapper [loading]="culturalNote.loading">
             <div class="quote-container">
             <mat-icon class="quote-icon">format_quote</mat-icon>
             <blockquote>
-            "{{ getRandomCulturalNote().quote }}"
-            <footer>- {{ getRandomCulturalNote().author }}</footer>
+            "{{ culturalNote.data?.quote }}"
+            <footer>- {{ culturalNote.data?.author }}</footer>
             </blockquote>
             </div>
           </app-loader-wrapper>
@@ -59,8 +59,8 @@
             <mat-card-title>{{ 'app.dashboard.progress-total' | translate}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <app-loader-wrapper [loading]="topics.length === 0">
-              <app-lesson-selection [topics]="topics"></app-lesson-selection>
+            <app-loader-wrapper [loading]="topics.loading">
+              <app-lesson-selection [topics]="topics.data || []"></app-lesson-selection>
             </app-loader-wrapper>
         </mat-card-content>
     </mat-card>

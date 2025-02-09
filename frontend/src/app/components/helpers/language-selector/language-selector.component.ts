@@ -26,6 +26,11 @@ export class LanguageSelectorComponent implements ControlValueAccessor, OnInit, 
   @Input() languages: Language[] = [];
   @Input() defaultLanguage?: Language;
 
+  @Input()
+  set defaultLanguageCode(value: string | undefined) {
+    this.defaultLanguage = this.languages.find((e) => e.code === value);
+  }
+
   @Output() languageSelected = new EventEmitter<Language>();
 
   constructor(private translate: TranslateService) {
