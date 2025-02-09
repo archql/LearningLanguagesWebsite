@@ -1,7 +1,7 @@
 <mat-form-field appearance="outline" class="small-form-field" subscriptSizing="dynamic" subscriptSizing="dynamic">
 
     <mat-select
-      [(ngModel)]="selectedLanguage"
+      [(ngModel)]="defaultLanguage"
       (selectionChange)="onLanguageSelect($event.value)"
     >
     @for (language of languages; track language.code) {

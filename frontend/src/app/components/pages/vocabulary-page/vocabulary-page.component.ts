@@ -7,11 +7,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslateModule } from '@ngx-translate/core';
 import { VocabularyGroup, VocabularyWord } from './vocabulary.model';
+import { LoaderWrapperComponent } from "../../helpers/loader-wrapper/loader-wrapper.component";
 
 @Component({
   selector: 'app-vocabulary-page',
   standalone: true,
-  imports: [TranslateModule, MatCardModule, MatListModule, MatButtonModule, MatIconModule, MatDialogModule, MatSnackBarModule],
+  imports: [TranslateModule, MatCardModule, MatListModule, MatButtonModule, MatIconModule, MatDialogModule, MatSnackBarModule, LoaderWrapperComponent],
   templateUrl: './vocabulary-page.component.html',
   styleUrl: './vocabulary-page.component.scss'
 })
@@ -33,6 +34,7 @@ export class VocabularyPageComponent {
       ],
     },
   ];
+  loading: boolean = false;
 
   constructor(private snackBar: MatSnackBar) {}
 

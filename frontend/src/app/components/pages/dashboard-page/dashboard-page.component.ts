@@ -5,11 +5,14 @@ import { CulturalNote, UserProgress } from './dashboard.model';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { TranslateModule } from '@ngx-translate/core';
+import { LessonSelectionComponent } from "../../teaching/lesson-selection/lesson-selection.component";
+import { Topic } from '../../teaching/lesson-selection/lesson-selection.model';
+import { LoaderWrapperComponent } from "../../helpers/loader-wrapper/loader-wrapper.component";
 
 @Component({
   selector: 'app-dashboard-page',
   standalone: true,
-  imports: [MatCardModule, MatProgressBarModule, MatIconModule, MatButtonModule, TranslateModule],
+  imports: [MatCardModule, LoaderWrapperComponent, MatProgressBarModule, MatIconModule, MatButtonModule, TranslateModule, LessonSelectionComponent, LoaderWrapperComponent],
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.scss'
 })
@@ -40,6 +43,7 @@ export class DashboardPageComponent {
       author: 'Peter Drucker',
     },
   ];
+  topics: Topic[] = [];
 
   // Get a random cultural note
   getRandomCulturalNote(): CulturalNote {

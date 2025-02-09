@@ -7,11 +7,12 @@ import { TranslateService } from '@ngx-translate/core';
 import {Subscription} from "rxjs";
 import { InterfaceLanguages, Language } from '../language-selector/language.model';
 import { MenuItem } from './menu-bar.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-menu-bar',
   standalone: true,
-  imports: [RouterLink, MatToolbarModule, MatButtonModule, LanguageSelectorComponent],
+  imports: [RouterLink, FormsModule, MatToolbarModule, MatButtonModule, LanguageSelectorComponent],
   templateUrl: './menu-bar.component.html',
   styleUrl: './menu-bar.component.scss'
 })
@@ -22,6 +23,24 @@ export class MenuBarComponent implements OnInit, OnDestroy {
 
   constructor(private translate: TranslateService) {
     this.subscription = new Subscription();
+
+    // if (typeof window !== 'undefined') { 
+    //   const savedLanguageCode = localStorage.getItem('language');
+    //   if (savedLanguageCode) {
+    //     const savedLanguage = this.languages.find(lang => lang.code === savedLanguageCode);
+    //     if (savedLanguage) {
+    //       this.selectedLanguage = savedLanguage;
+    //     }
+    //   }
+    // }
+    let savedLanguageCode = 'en';
+    if (typeof window !== 'undefined') {
+      savedLanguageCode = localStorage.getItem('language') || savedLanguageCode;
+    }
+    const savedLanguage = this.languages.find(lang => lang.code === savedLanguageCode);
+    if (savedLanguage) {
+      this.selectedLanguage = savedLanguage;
+    }
   }
 
   ngOnInit(): void {
@@ -38,7 +57,7 @@ export class MenuBarComponent implements OnInit, OnDestroy {
       this.menuItems.forEach(e => {
         e.label = translations[e.trID]
       });
-    });
+    });    
   }
 
   ngOnDestroy(): void {
@@ -47,8 +66,14 @@ export class MenuBarComponent implements OnInit, OnDestroy {
 
   // List of supported languages
   languages: Language[] = InterfaceLanguages;
+  selectedLanguage?: Language;
 
-  onLanguageSelected(language: Language) {
+  onLanguageSelected(language: Language) {  
     this.translate.use(language.code);
+    //
+    this.selectedLanguage = language;
+    if (typeof window !== 'undefined') { 
+      localStorage.setItem('language', language.code);
+    }
   }
 }

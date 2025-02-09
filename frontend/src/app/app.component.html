@@ -1,1 +1,3 @@
-<router-outlet />
+<app-loader-wrapper [loading]="!isLangLoaded" [spinnerStyles]="{ 'margin-top': '40%' }">
+    <router-outlet />
+</app-loader-wrapper>

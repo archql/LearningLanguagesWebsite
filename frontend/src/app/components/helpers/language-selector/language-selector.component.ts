@@ -24,7 +24,7 @@ export class LanguageSelectorComponent implements ControlValueAccessor, OnInit, 
   private subscription: Subscription;
 
   @Input() languages: Language[] = [];
-  selectedLanguage?: Language; 
+  @Input() defaultLanguage?: Language;
 
   @Output() languageSelected = new EventEmitter<Language>();
 
@@ -35,7 +35,7 @@ export class LanguageSelectorComponent implements ControlValueAccessor, OnInit, 
   ngOnInit(): void {
     if (this.languages.length === 0) return;
     //
-    this.selectedLanguage = this.languages[0]; // Default selected language
+    this.defaultLanguage = this.defaultLanguage || this.languages[0]; // Use default language if provided
     // Init Translation Keys
     this.languages.forEach((item) => {
       item.trID = `app.language.${item.code}`;
@@ -57,7 +57,7 @@ export class LanguageSelectorComponent implements ControlValueAccessor, OnInit, 
   // ControlValueAccessor methods
   writeValue(value: Language): void {
     if (value) {
-      this.selectedLanguage = value;
+      this.defaultLanguage = value;
     }
   }
 
@@ -75,7 +75,7 @@ export class LanguageSelectorComponent implements ControlValueAccessor, OnInit, 
   // Handle language selection
   onLanguageSelect(language: Language): void {
     this.languageSelected.emit(language);
-    this.selectedLanguage = language;
+    this.defaultLanguage = language;
     this.onChange(language); // Notify the form of the change
     this.onTouched(); // Mark the control as touched
   }

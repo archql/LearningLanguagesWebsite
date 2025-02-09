@@ -16,6 +16,7 @@
     <!-- Lang selector -->
     <div class="language-selector">
         <app-language-selector 
+            [defaultLanguage]="selectedLanguage"
             [languages]="languages"
             (languageSelected)="onLanguageSelected($event)">
         </app-language-selector>

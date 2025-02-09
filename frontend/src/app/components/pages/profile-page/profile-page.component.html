@@ -4,47 +4,49 @@
     </mat-card-header>
   
     <mat-card-content>
-      <!-- User Nickname -->
-      <mat-form-field appearance="outline" class="full-width" floatLabel="always">
-        <mat-label>{{ 'app.auth.login-noun' | translate }}</mat-label>
-        <input matInput [ngModel]="user.nickname" disabled />
-      </mat-form-field>
-  
-      <!-- User Email -->
-      <mat-form-field appearance="outline" class="full-width" floatLabel="always">
-        <mat-label>Email</mat-label>
-        <input matInput [ngModel]="user.email" disabled />
-      </mat-form-field>
-  
-      <!-- Language Selector -->
-      <app-language-selector
-        [languages]="languages"
-        (languageSelected)="onLanguageSelected($event)"
-      ></app-language-selector>
-  
-      <!-- Download Vocabulary Button -->
-      <button mat-raised-button color="primary" (click)="downloadVocabulary()">
-        <mat-icon>download</mat-icon>
-        {{ 'app.dialog.vocabulary-download' | translate }}
-      </button>
-  
-      <!-- Upload Vocabulary Button -->
-      <button mat-raised-button color="primary" (click)="fileInput.click()">
-        <mat-icon>upload</mat-icon>
-        {{ 'app.dialog.vocabulary-upload' | translate }}
-      </button>
-      <input
-        hidden
-        #fileInput
-        type="file"
-        accept=".yaml,.yml"
-        (change)="onFileSelected($event)"
-      />
-  
-      <!-- Delete Progress Button -->
-      <button mat-raised-button color="warn" (click)="confirmDeleteProgress()">
-        <mat-icon>delete</mat-icon>
-        {{ 'app.dialog.delete-progress' | translate }}
-      </button>
+      <app-loader-wrapper [loading]="loading">
+        <!-- User Nickname -->
+        <mat-form-field appearance="outline" class="full-width" floatLabel="always">
+          <mat-label>{{ 'app.auth.login-noun' | translate }}</mat-label>
+          <input matInput [ngModel]="user.nickname" disabled />
+        </mat-form-field>
+    
+        <!-- User Email -->
+        <mat-form-field appearance="outline" class="full-width" floatLabel="always">
+          <mat-label>Email</mat-label>
+          <input matInput [ngModel]="user.email" disabled />
+        </mat-form-field>
+    
+        <!-- Language Selector -->
+        <app-language-selector
+          [languages]="languages"
+          (languageSelected)="onLanguageSelected($event)"
+        ></app-language-selector>
+    
+        <!-- Download Vocabulary Button -->
+        <button mat-raised-button color="primary" (click)="downloadVocabulary()">
+          <mat-icon>download</mat-icon>
+          {{ 'app.dialog.vocabulary-download' | translate }}
+        </button>
+    
+        <!-- Upload Vocabulary Button -->
+        <button mat-raised-button color="primary" (click)="fileInput.click()">
+          <mat-icon>upload</mat-icon>
+          {{ 'app.dialog.vocabulary-upload' | translate }}
+        </button>
+        <input
+          hidden
+          #fileInput
+          type="file"
+          accept=".yaml,.yml"
+          (change)="onFileSelected($event)"
+        />
+    
+        <!-- Delete Progress Button -->
+        <button mat-raised-button color="warn" (click)="confirmDeleteProgress()">
+          <mat-icon>delete</mat-icon>
+          {{ 'app.dialog.delete-progress' | translate }}
+        </button>
+      </app-loader-wrapper>
     </mat-card-content>
 </mat-card>

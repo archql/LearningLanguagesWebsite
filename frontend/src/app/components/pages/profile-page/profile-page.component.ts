@@ -13,11 +13,12 @@ import { ConfirmationDialogComponent } from '../../helpers/confirmation-dialog/c
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { LoaderWrapperComponent } from "../../helpers/loader-wrapper/loader-wrapper.component";
 
 @Component({
   selector: 'app-profile-page',
   standalone: true,
-  imports: [FormsModule, LanguageSelectorComponent, TranslateModule, MatCardModule, MatButtonModule, MatInputModule, MatDialogModule, MatSnackBarModule, MatIconModule, MatTooltipModule, MatProgressSpinnerModule],
+  imports: [FormsModule, LanguageSelectorComponent, TranslateModule, MatCardModule, MatButtonModule, MatInputModule, MatDialogModule, MatSnackBarModule, MatIconModule, MatTooltipModule, MatProgressSpinnerModule, LoaderWrapperComponent],
   templateUrl: './profile-page.component.html',
   styleUrl: './profile-page.component.scss'
 })
@@ -63,6 +64,7 @@ export class ProfilePageComponent {
     email: 'johndoe@example.com',
     learningLanguage: { code: 'en', name: 'English', flagIcon: '🇺🇸' },
   };
+  loading: boolean = false;
 
   languages: Language[] = LearningLanguages;
 
