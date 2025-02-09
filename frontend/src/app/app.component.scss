@@ -8,3 +8,8 @@
     flex-direction: column;
     flex: 1; /* Fill remaining height */
 }
+app-loader-wrapper {
+    flex: 1; /* Fill remaining height */
+    display: flex;
+    flex-direction: column;
+}
