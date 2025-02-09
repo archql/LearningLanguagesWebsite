@@ -29,9 +29,10 @@ export class RegisterPageComponent {
   private trIDs = [
     'app.dialog.register.success',
     'app.dialog.register.fail',
+    'app.dialog.login.invalid-form', // same as register
     'app.dialog.close',
   ];
-  private tr: Record<string, string> = {};
+  tr: Record<string, string> = {};
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -92,8 +93,10 @@ export class RegisterPageComponent {
 
   onSubmit() {
     if (this.registerForm.invalid) {
+      this.showNotification(this.tr['app.dialog.login.invalid-form'], 'error');
       return;
     }
+    console.log('Form Data:', this.registerForm.value);
 
     const login = this.registerForm.value.login;
     const email = this.registerForm.value.email;
@@ -121,8 +124,6 @@ export class RegisterPageComponent {
           this.loading = false; 
         },
       });
-    } else {
-      this.showNotification(this.tr['app.dialog.register.fail'], 'error');
     }
   }
 

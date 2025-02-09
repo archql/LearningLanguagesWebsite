@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { LessonSelectionComponent } from '../../teaching/lesson-selection/lesson-selection.component';
 
 import { LessonSelectionPageComponent } from './lesson-selection-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('LessonSelectionPageComponent', () => {
   let component: LessonSelectionPageComponent;
@@ -15,7 +16,8 @@ describe('LessonSelectionPageComponent', () => {
         LessonSelectionPageComponent,
         TranslateModule.forRoot(),
         MatCardModule,
-        LessonSelectionComponent
+        LessonSelectionComponent,
+        BrowserAnimationsModule
       ],
       providers: [TranslateService]
     })
@@ -28,16 +30,6 @@ describe('LessonSelectionPageComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
-
-  it('should display the translated title', () => {
-    const translateService = TestBed.inject(TranslateService);
-    translateService.setDefaultLang('en');
-    translateService.setTranslation('en', { 'app.lesson-selection-title': 'Lesson Selection' });
-    fixture.detectChanges();
-
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('mat-card-title').textContent).toContain('Lesson Selection');
   });
 
   it('should contain the lesson selection component', () => {

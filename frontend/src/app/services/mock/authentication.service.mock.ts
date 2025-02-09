@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { AuthResponse, RegisterResponse } from '../authentication.service';
 
-interface UserCredentials {email: string, password: string};
+interface UserCredentials { email: string, password: string };
 
 @Injectable({
   providedIn: 'root'
@@ -9,23 +11,31 @@ interface UserCredentials {email: string, password: string};
 export class AuthServiceMock {
 
   // TODO temp
-  loggedIn = false
+  loggedIn = false;
 
-  constructor(private http: HttpClient) { 
+  constructor() { 
     this.loggedIn = false; 
   }
 
   isLoggedIn() {
-    return localStorage.getItem('loggedIn') === 'true';
+    return localStorage.getItem('token') === 'fake-token';
   }
 
-  login(email: string, password: string) {
+  login(email: string, password: string) : Observable<AuthResponse> {
     if (email == 'aa@aa' && password.startsWith('1')) {
       // logged in
-      localStorage.setItem('loggedIn', 'true');
-      return true;
+      localStorage.setItem('token', 'fake-token');
+      return of({ token: 'fake-token' });
     } else {
-      return false;
+      return of({ token: '' });
+    }
+  }
+
+  register(email: string, password: string, login: string, language: string) : Observable<RegisterResponse> {
+    if (email && password && login && language) {
+      return of({ result: true });
+    } else {
+      return of({ result: false });
     }
   }
 }

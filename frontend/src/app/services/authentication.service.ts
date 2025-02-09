@@ -4,8 +4,8 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-interface AuthResponse { token: string };
-interface RegisterResponse { message?: string, result: boolean };
+export interface AuthResponse { token: string };
+export interface RegisterResponse { message?: string, result: boolean };
 
 @Injectable({
   providedIn: 'root'

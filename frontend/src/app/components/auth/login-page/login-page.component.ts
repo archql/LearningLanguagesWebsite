@@ -30,7 +30,7 @@ export class LoginPageComponent implements OnInit {
     'app.dialog.login.invalid-form',
     'app.dialog.close',
   ];
-  private tr: Record<string, string> = {};
+  tr: Record<string, string> = {};
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
