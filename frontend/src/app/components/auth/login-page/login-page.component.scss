@@ -12,3 +12,8 @@ mat-form-field {
 button {
     width: 100%;
 }
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

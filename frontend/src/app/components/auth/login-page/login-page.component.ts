@@ -9,11 +9,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar'; // Add this import
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, TranslateModule],
+  imports: [ReactiveFormsModule, MatProgressSpinnerModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, TranslateModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })
@@ -21,6 +22,7 @@ export class LoginPageComponent implements OnInit {
   loginForm: FormGroup;
 
   private subscription: Subscription;
+  loading: boolean = false;
   
   private trIDs = [
     'app.dialog.login.success',
@@ -73,12 +75,28 @@ export class LoginPageComponent implements OnInit {
     if (this.loginForm.valid) {
       console.log('Form Data:', this.loginForm.value);
 
-      if (this.authService.login(this.loginForm.value['email'], this.loginForm.value['password'])) {
-        this.showNotification(this.tr['app.dialog.login.success'], 'success');
-        this.router.navigate(['/home']);
-      } else {
-        this.showNotification(this.tr['app.dialog.login.wrong-credentials'], 'error');
-      }
+      this.loading = true; // Start loading
+
+      const email = this.loginForm.value['email'];
+      const password = this.loginForm.value['password'];
+
+      this.authService.login(email, password).subscribe({
+        next: (response) => {
+          if (response.token) {
+            this.showNotification(this.tr['app.dialog.login.success'], 'success');
+            this.router.navigate(['/home']);
+          } else {
+            this.showNotification(this.tr['app.dialog.login.wrong-credentials'], 'error');
+          }
+        },
+        error: (error) => {
+          console.error('Login failed', error);
+          this.showNotification(this.tr['app.dialog.login.error'], 'error');
+        },
+        complete: () => {
+          this.loading = false; // Stop loading
+        },
+      });
     } else {
       this.showNotification(this.tr['app.dialog.login.invalid-form'], 'error');
     }

@@ -5,40 +5,36 @@
     <mat-card-content>
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <!-- Login Field -->
-        <div>
-            <mat-form-field appearance="outline">
-                <mat-label>{{'app.auth.login-noun' | translate}}</mat-label>
-                <input matInput formControlName="login" />
-                @if (f['login'].touched && f['login'].invalid && f['login'].errors) {
-                <mat-error>
-                    @if (f['login'].errors['required']) {
-                    <small>{{'app.auth.login-required' | translate}}</small>
-                    }
-                    @if (f['login'].errors['minlength']) {
-                    <small>{{'app.auth.login-min-length' | translate : { length: 3 } }}</small>
-                    }
-                </mat-error>
+        <mat-form-field appearance="outline">
+            <mat-label>{{'app.auth.login-noun' | translate}}</mat-label>
+            <input matInput formControlName="login" />
+            @if (f['login'].touched && f['login'].invalid && f['login'].errors) {
+            <mat-error>
+                @if (f['login'].errors['required']) {
+                <small>{{'app.auth.login-required' | translate}}</small>
                 }
-            </mat-form-field>
-        </div>
+                @if (f['login'].errors['minlength']) {
+                <small>{{'app.auth.login-min-length' | translate : { length: 3 } }}</small>
+                }
+            </mat-error>
+            }
+        </mat-form-field>
   
         <!-- Email Field -->
-        <div>
-            <mat-form-field appearance="outline">
-                <mat-label>Email</mat-label>
-                <input matInput type="email" formControlName="email" />
-                @if (f['email'].touched && f['email'].invalid && f['email'].errors) {
-                <mat-error>
-                    @if (f['email'].errors['required']) {
-                    <small>{{'app.auth.email-required' | translate}}</small>
-                    }
-                    @if (f['email'].errors['email']) {
-                    <small>{{'app.auth.email-invalid' | translate}}</small>
-                    }
-                </mat-error>
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" />
+            @if (f['email'].touched && f['email'].invalid && f['email'].errors) {
+            <mat-error>
+                @if (f['email'].errors['required']) {
+                <small>{{'app.auth.email-required' | translate}}</small>
                 }
-            </mat-form-field>
-        </div>
+                @if (f['email'].errors['email']) {
+                <small>{{'app.auth.email-invalid' | translate}}</small>
+                }
+            </mat-error>
+            }
+        </mat-form-field>
 
         <!-- Language Selector -->
         <div>
@@ -47,45 +43,46 @@
         </div>
   
         <!-- Password Field -->
-        <div>
-          <mat-form-field appearance="outline">
-            <mat-label>{{'app.auth.password' | translate}}</mat-label>
-            <input matInput type="password" formControlName="password" />
-            @if (f['password'].touched && f['password'].invalid && f['password'].errors) {
-              <mat-error>
-                @if (f['password'].errors['required']) {
-                  <small>{{'app.auth.password-required' | translate}}</small>
-                }
-                @if (f['password'].errors['minlength']) {
-                  <small>{{'app.auth.password-min-length' | translate : { length: 6 } }}</small>
-                }
-              </mat-error>
-            }
-          </mat-form-field>
-        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>{{'app.auth.password' | translate}}</mat-label>
+          <input matInput type="password" formControlName="password" />
+          @if (f['password'].touched && f['password'].invalid && f['password'].errors) {
+            <mat-error>
+              @if (f['password'].errors['required']) {
+                <small>{{'app.auth.password-required' | translate}}</small>
+              }
+              @if (f['password'].errors['minlength']) {
+                <small>{{'app.auth.password-min-length' | translate : { length: 6 } }}</small>
+              }
+            </mat-error>
+          }
+        </mat-form-field>
   
         <!-- Repeat Password Field -->
-        <div>
-          <mat-form-field appearance="outline">
-            <mat-label>{{'app.auth.password-repeat' | translate}}</mat-label>
-            <input matInput type="password" formControlName="repeatPassword" />
-            @if (f['repeatPassword'].touched && f['repeatPassword'].invalid && f['repeatPassword'].errors) {
-              <mat-error>
-                @if (f['repeatPassword'].errors['required']) {
-                  <small>{{'app.auth.password-required' | translate}}</small>
-                }
-                @if (registerForm.errors?.['mismatch']) {
-                  <small>{{'app.auth.password-mismatch' | translate}}</small>
-                }
-              </mat-error>
-            }
-          </mat-form-field>
-        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>{{'app.auth.password-repeat' | translate}}</mat-label>
+          <input matInput type="password" formControlName="repeatPassword" />
+          @if (f['repeatPassword'].touched && f['repeatPassword'].invalid && f['repeatPassword'].errors) {
+            <mat-error>
+              @if (f['repeatPassword'].errors['required']) {
+                <small>{{'app.auth.password-required' | translate}}</small>
+              }
+              @if (f['repeatPassword'].errors['mismatch']) {
+                <small>{{'app.auth.password-mismatch' | translate}}</small>
+              }
+            </mat-error>
+          }
+        </mat-form-field>
   
         <!-- Submit Button -->
-        <button mat-raised-button type="submit" [disabled]="registerForm.invalid" color="primary">
+        @if (loading) {
+          <mat-spinner diameter="20" color="accent"></mat-spinner>
+        } @else {
+          <button mat-raised-button type="submit" [disabled]="registerForm.invalid" color="primary">
             {{'app.auth.register-action' | translate}}
         </button>
+        }
+        
       </form>
     </mat-card-content>
   </mat-card>

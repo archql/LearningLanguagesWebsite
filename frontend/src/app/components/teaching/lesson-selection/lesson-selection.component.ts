@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { LessonService } from '../../../services/lesson.service';
 import { Lesson, Topic } from './lesson-selection.model';
@@ -22,18 +22,15 @@ import {AsyncPipe} from '@angular/common';
   styleUrl: './lesson-selection.component.scss'
 })
 export class LessonSelectionComponent {
-  topics: Topic[] = [];
+  @Input() topics: Topic[] = [];
   searchControl = new FormControl(''); // FormControl for the search input
   filteredLessons!: Observable<Lesson[]>; // Observable for filtered lessons
 
   constructor(
-    private router: Router,
-    private lessonService: LessonService // Inject the service
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    // Fetch topics from the service
-    this.topics = this.lessonService.getTopics();
     // Initialize the filtered lessons observable
     this.filteredLessons = this.searchControl.valueChanges.pipe(
       startWith(''), // Start with an empty string
