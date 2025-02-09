@@ -9,12 +9,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar'; // Add this import
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoaderWrapperComponent } from '../../helpers/loader-wrapper/loader-wrapper.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, MatProgressSpinnerModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, TranslateModule],
+  imports: [ReactiveFormsModule, LoaderWrapperComponent, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, TranslateModule],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })

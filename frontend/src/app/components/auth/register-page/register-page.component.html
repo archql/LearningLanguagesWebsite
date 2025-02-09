@@ -75,14 +75,11 @@
         </mat-form-field>
   
         <!-- Submit Button -->
-        @if (loading) {
-          <mat-spinner diameter="20" color="accent"></mat-spinner>
-        } @else {
+        <app-loader-wrapper [loading]="loading">
           <button mat-raised-button type="submit" [disabled]="registerForm.invalid" color="primary">
             {{'app.auth.register-action' | translate}}
-        </button>
-        }
-        
+          </button>
+        </app-loader-wrapper>
       </form>
     </mat-card-content>
   </mat-card>

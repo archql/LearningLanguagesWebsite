@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
 import { LessonSelectionComponent } from '../../teaching/lesson-selection/lesson-selection.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LessonService } from '../../../services/lesson.service';
 import { Topic } from '../../teaching/lesson-selection/lesson-selection.model';
 import { LessonServiceMock } from '../../../services/mock/lesson.service.mock';
+import { LoaderWrapperComponent } from '../../helpers/loader-wrapper/loader-wrapper.component';
 
 @Component({
   selector: 'app-lesson-selection-page',
   standalone: true,
-  imports: [LessonSelectionComponent, TranslateModule, MatCardModule, MatProgressSpinnerModule],
+  imports: [LessonSelectionComponent, TranslateModule, MatCardModule, LoaderWrapperComponent],
   templateUrl: './lesson-selection-page.component.html',
   styleUrl: './lesson-selection-page.component.scss'
 })

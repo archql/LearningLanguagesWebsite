@@ -11,12 +11,12 @@ import { LanguageSelectorComponent } from "../../helpers/language-selector/langu
 import { Language, LearningLanguages } from '../../helpers/language-selector/language.model';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoaderWrapperComponent } from '../../helpers/loader-wrapper/loader-wrapper.component';
 
 @Component({
   selector: 'app-register-page',
   standalone: true,
-  imports: [MatCardModule, MatProgressSpinnerModule, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, LanguageSelectorComponent, TranslateModule],
+  imports: [MatCardModule, LoaderWrapperComponent, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, LanguageSelectorComponent, TranslateModule],
   templateUrl: './register-page.component.html',
   styleUrl: './register-page.component.scss'
 })
