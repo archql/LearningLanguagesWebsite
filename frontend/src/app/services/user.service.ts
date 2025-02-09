@@ -132,6 +132,31 @@ export class UserService {
     );
   }
 
+  // addWord(word: string, meaning: string): Observable<boolean> {
+  //   return this.http.post<boolean>('/api/user/vocabulary/add', {word, meaning}).pipe(
+  //     tap(response => {
+  //       return of(true);
+  //     }),
+  //     catchError(error => {
+  //       console.log(error);
+  //       return of(false);
+  //     })
+  //   );
+  // }
+  // removeWord(word: string): Observable<boolean> {
+  //   return this.http.post<boolean>('/api/user/vocabulary/remove', {word}).pipe(
+  //     tap(response => {
+  //       return of(true);
+  //     }),
+  //     catchError(error => {
+  //       console.log(error);
+  //       return of(false);
+  //     })
+  //   );
+  // }
+
+  // //getVocabulary()
+
   downloadVocabulary(): Observable<Blob | null> {
     return this.http.get('/api/user/vocabulary', { responseType: 'blob' }).pipe(
       tap(response => {

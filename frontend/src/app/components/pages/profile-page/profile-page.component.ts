@@ -53,7 +53,7 @@ export class ProfilePageComponent {
     'app.dialog.vocabulary-download.failure',
     'app.dialog.close',
   ];
-  private tr: Record<string, string> = {};
+  tr: Record<string, string> = {};
 
   ngOnInit(): void {
     if (this.trIDs.length === 0) return;
@@ -91,7 +91,7 @@ export class ProfilePageComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.languageChangePending = true; // Stop loading
+        this.languageChangePending = true; // Start loading
         // Implement progress deletion logic here
         this.userService.resetProgress().subscribe({
           next: (response) => {
@@ -177,11 +177,13 @@ export class ProfilePageComponent {
         message: this.tr['app.dialog.delete-progress.prompt'],
       },
     });
-
+    console.log("AAA")
     dialogRef.afterClosed().subscribe((result) => {
+      console.log("KJHEWHJKJHKEWJHKEHJK", result)
       if (result) {
         this.deleteProgressPending = true; // Stop loading
         // Implement progress deletion logic here
+        console.log("KJHEWHJKJHKEWJHKEHJK")
         this.userService.resetProgress().subscribe({
           next: (response) => {
             // TODO reload required
