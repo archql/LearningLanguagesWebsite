@@ -1,0 +1,7 @@
+1) download Ollama on Linux, insert the following command to Terminal: curl -fsSL https://ollama.com/install.sh | sh
+
+2) download model itself, insert the following command to Terminal: ollama run llama3.2:1b 
+"""
+I've tried many models, I think llama with 1B parameters is the optimal one in our case
+"""
+3) download ollama lib, insert the following command to Terminal: pip3 install ollama
