@@ -4,7 +4,7 @@
     </mat-card-header>
   
     <mat-card-content>
-      <app-loader-wrapper [loading]="user.loading">
+      <app-loader-wrapper [loading]="user.loading" [error]="user.error">
         <!-- User Nickname -->
         <mat-form-field appearance="outline" class="full-width" floatLabel="always">
           <mat-label>{{ 'app.auth.login-noun' | translate }}</mat-label>
@@ -20,7 +20,7 @@
         <!-- Language Selector -->
         <app-loader-wrapper class="helper-wrapper" [loading]="languageChangePending">
           <app-language-selector
-            [defaultLanguageCode]="user.data?.language"
+            [defaultLanguageCode]="currentLanguage || user.data?.language"
             [languages]="languages"
             (languageSelected)="onLanguageSelected($event)"
           ></app-language-selector>

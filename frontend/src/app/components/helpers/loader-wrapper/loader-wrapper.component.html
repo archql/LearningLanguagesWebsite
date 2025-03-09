@@ -5,6 +5,13 @@
     </div>
 } @else {
     <div class="test-stub" hidden> </div>
-    <ng-content></ng-content>
+    @if (error) {
+        <div class="error-container" style="background: linear-gradient(to right, rgba(255, 0, 0, 0.3), transparent);">
+            <mat-icon color="warn">error</mat-icon>
+            <span class="error-text">{{ error }}</span>
+        </div>
+    } @else {
+        <ng-content></ng-content>
+    }
 }
 </span>

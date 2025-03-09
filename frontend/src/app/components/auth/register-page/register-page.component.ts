@@ -98,9 +98,7 @@ export class RegisterPageComponent {
     }
     console.log('Form Data:', this.registerForm.value);
 
-    const login = this.registerForm.value.login;
-    const email = this.registerForm.value.email;
-    const password = this.registerForm.value.password;
+    const { login, email, password } = this.registerForm.value;
     const language = this.registerForm.value.language.code;
 
     if (login && email && password && language) {
@@ -114,14 +112,15 @@ export class RegisterPageComponent {
           } else {
             this.showNotification(this.tr['app.dialog.register.fail'], 'error');
           }
+          this.loading = false;
         },
         error: (error) => {
           console.error('Login failed', error);
           this.showNotification(this.tr['app.dialog.register.fail'], 'error');
+          this.loading = false;
         },
         complete: () => {
           console.log('Registration complete');
-          this.loading = false; 
         },
       });
     }

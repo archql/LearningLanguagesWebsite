@@ -8,7 +8,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LessonSelectionComponent } from "../../teaching/lesson-selection/lesson-selection.component";
 import { Topic } from '../../teaching/lesson-selection/lesson-selection.model';
 import { LoaderWrapperComponent } from "../../helpers/loader-wrapper/loader-wrapper.component";
-import { Loadable, loadableReady } from '../../helpers/loader-wrapper/loader-wrapper.model';
+import { Loadable } from '../../helpers/loader-wrapper/loader-wrapper.model';
+import { UserService } from '../../../services/user.service';
+import { UserServiceMock } from '../../../services/mock/user.service.mock';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -19,16 +21,32 @@ import { Loadable, loadableReady } from '../../helpers/loader-wrapper/loader-wra
 })
 export class DashboardPageComponent {
   
-  // Track whether the daily challenge is completed
-  dailyChallenge : Loadable<DailyChallenge> = {loading: true};
-  userProgress : Loadable<UserProgress> = {loading: true};
-  culturalNote : Loadable<CulturalNote> = {loading: true};
-  topics : Loadable<Topic[]> = {loading: true};
+  // avoid typescript error - assign empty loadable
+  dailyChallenge : Loadable<DailyChallenge> = new Loadable;
+  userProgress : Loadable<UserProgress> = new Loadable;
+  culturalNote : Loadable<CulturalNote> = new Loadable;
+  topics : Loadable<Topic[]> = new Loadable;
+
+  constructor(private userService: UserService) {}
+
+  ngOnInit() {
+    this.dailyChallenge = new Loadable(() => this.userService.getDailyChallenge());
+    this.culturalNote = new Loadable(() => this.userService.getCulturalNote());
+    this.userProgress = new Loadable(() => this.userService.getUserProgress());
+    this.topics = new Loadable(() => this.userService.getUserTopics());
+  }
+
+  ngOnDestroy() {
+    this.dailyChallenge.cleanup();
+    this.culturalNote.cleanup();
+    this.userProgress.cleanup();
+    this.topics.cleanup();
+  }
 
   // TODO
   // Get motivational message based on completed lessons
   getMotivationalMessage(): string {
-    if (!loadableReady(this.userProgress)) return "";
+    if (!this.userProgress.ready()) return "";
     const progress = this.userProgress.data!.completedLessons 
       / this.userProgress.data!.totalLessons;
     if (progress < 0.25) {
@@ -43,8 +61,9 @@ export class DashboardPageComponent {
   }
   // Handle daily challenge completion
   completeDailyChallenge(): void {
-    if (!loadableReady(this.dailyChallenge)) return;
-    // TODO call API
+    if (!this.dailyChallenge.ready()) return;
+    // TODO call API (?)
+    //this.userService.
     this.dailyChallenge.data!.isCompleted = true;
     console.log('Daily challenge completed!');
   }

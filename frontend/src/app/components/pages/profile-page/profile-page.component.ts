@@ -17,6 +17,7 @@ import { LoaderWrapperComponent } from "../../helpers/loader-wrapper/loader-wrap
 import { Loadable } from '../../helpers/loader-wrapper/loader-wrapper.model';
 import { User } from './user.model';
 import { UserService } from '../../../services/user.service';
+import { UserServiceMock } from '../../../services/mock/user.service.mock';
 
 @Component({
   selector: 'app-profile-page',
@@ -63,6 +64,8 @@ export class ProfilePageComponent {
       .subscribe((translations: Record<string, string>) => {
         this.tr = translations;
       });
+    //
+    this.user = new Loadable(() => this.userService.getCurrentUser());
   }
 
   ngOnDestroy(): void {
@@ -70,18 +73,21 @@ export class ProfilePageComponent {
   }
 
   // 
-  user: Loadable<User> = { loading: false };
+  user: Loadable<User> = new Loadable();
   deleteProgressPending: boolean = false;
   languageChangePending: boolean = false;
   vocabularyDownloadPending: boolean = false;
   vocabularyUploadPending: boolean = false;
   //
+  currentLanguage?: string
 
 
   languages: Language[] = LearningLanguages;
 
   // Handle language selection
   onLanguageSelected(language: Language): void {
+    // force language change back
+    this.currentLanguage = 'XX'; // this is cheat
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       data: {
         title: this.tr['app.dialog.change-language'],
@@ -93,24 +99,27 @@ export class ProfilePageComponent {
       if (result) {
         this.languageChangePending = true; // Start loading
         // Implement progress deletion logic here
-        this.userService.resetProgress().subscribe({
+        this.userService.changeLearningLanguage(language.code).subscribe({
           next: (response) => {
             // TODO update UI
             if (response) {
               this.snackBar.open(this.tr['app.dialog.change-language.success'], this.tr['app.dialog.close'], { duration: 3000 });
               this.user.data!.language = language.code;
+              this.currentLanguage = language.code; // accept change
             } else {
               this.snackBar.open(this.tr['app.dialog.change-language.failure'], this.tr['app.dialog.close'], { duration: 3000 });
             }
+            this.languageChangePending = false; // Stop loading
           },
           error: (error) => {
             console.error('Language Change failed', error);
             this.snackBar.open(this.tr['app.dialog.change-language.failure'], this.tr['app.dialog.close'], { duration: 3000 });
-          },
-          complete: () => {
             this.languageChangePending = false; // Stop loading
-          },
+          }
         });
+      } else {
+        // Drop language back to current
+        this.currentLanguage = this.user.data?.language;
       }
     });
   }
@@ -126,14 +135,13 @@ export class ProfilePageComponent {
         } else {
           this.snackBar.open(this.tr['app.dialog.vocabulary-download.failure'], this.tr['app.dialog.close'], { duration: 3000 });
         }
+        this.vocabularyDownloadPending = false; // Stop loading
       },
       error: (error) => {
         console.error('Language Change failed', error);
         this.snackBar.open(this.tr['app.dialog.vocabulary-download.failure'], this.tr['app.dialog.close'], { duration: 3000 });
-      },
-      complete: () => {
         this.vocabularyDownloadPending = false; // Stop loading
-      },
+      }
     });
   }
 
@@ -154,12 +162,11 @@ export class ProfilePageComponent {
             } else {
               this.snackBar.open(this.tr['app.dialog.vocabulary-upload.failure'], this.tr['app.dialog.close'], { duration: 3000 });
             }
+            this.vocabularyUploadPending = false; // Stop loading
           },
           error: (error) => {
             console.error('Language Change failed', error);
             this.snackBar.open(this.tr['app.dialog.vocabulary-upload.failure'], this.tr['app.dialog.close'], { duration: 3000 });
-          },
-          complete: () => {
             this.vocabularyUploadPending = false; // Stop loading
           },
         });
@@ -177,13 +184,10 @@ export class ProfilePageComponent {
         message: this.tr['app.dialog.delete-progress.prompt'],
       },
     });
-    console.log("AAA")
     dialogRef.afterClosed().subscribe((result) => {
-      console.log("KJHEWHJKJHKEWJHKEHJK", result)
       if (result) {
         this.deleteProgressPending = true; // Stop loading
         // Implement progress deletion logic here
-        console.log("KJHEWHJKJHKEWJHKEHJK")
         this.userService.resetProgress().subscribe({
           next: (response) => {
             // TODO reload required
@@ -192,12 +196,11 @@ export class ProfilePageComponent {
             } else {
               this.snackBar.open(this.tr['app.dialog.delete-progress.failure'], this.tr['app.dialog.close'], { duration: 3000 });
             }
+            this.deleteProgressPending = false; // Stop loading
           },
           error: (error) => {
             console.error('DeleteProgress failed', error);
             this.snackBar.open(this.tr['app.dialog.delete-progress.failure'], this.tr['app.dialog.close'], { duration: 3000 });
-          },
-          complete: () => {
             this.deleteProgressPending = false; // Stop loading
           },
         });

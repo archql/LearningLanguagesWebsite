@@ -88,14 +88,13 @@ export class LoginPageComponent implements OnInit {
           } else {
             this.showNotification(this.tr['app.dialog.login.wrong-credentials'], 'error');
           }
+          this.loading = false; 
         },
         error: (error) => {
           console.error('Login failed', error);
           this.showNotification(this.tr['app.dialog.login.error'], 'error');
-        },
-        complete: () => {
-          this.loading = false; // Stop loading
-        },
+          this.loading = false;
+        }
       });
     } else {
       this.showNotification(this.tr['app.dialog.login.invalid-form'], 'error');

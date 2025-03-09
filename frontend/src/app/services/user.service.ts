@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CulturalNote, DailyChallenge, UserProgress } from '../components/pages/dashboard-page/dashboard.model';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, Observable, of, tap, throwError } from 'rxjs';
 import { User } from '../components/pages/profile-page/user.model';
 import { Topic } from '../components/teaching/lesson-selection/lesson-selection.model';
 
@@ -38,8 +38,8 @@ export class UserService {
         return response;
       }), 
       catchError(error => {
-        console.log(error);
-        return of(null);
+        // return of(null); TODO substitute?
+        return throwError(() => error);
       })
     );
   }
@@ -50,8 +50,8 @@ export class UserService {
         return response;
       }), 
       catchError(error => {
-        console.log(error);
-        return of(null);
+        // return of(null); TODO substitute?
+        return throwError(() => error);
       })
     );
   }
@@ -62,8 +62,8 @@ export class UserService {
         return response;
       }), 
       catchError(error => {
-        console.log(error);
-        return of(null);
+        // return of(null); TODO substitute?
+        return throwError(() => error);
       })
     );
   }
@@ -74,8 +74,8 @@ export class UserService {
         return response;
       }), 
       catchError(error => {
-        console.log(error);
-        return of(null);
+        // return of(null); TODO substitute?
+        return throwError(() => error);
       })
     );
   }
@@ -86,8 +86,8 @@ export class UserService {
         return response;
       }), 
       catchError(error => {
-        console.log(error);
-        return of(null);
+        // return of(null); TODO substitute?
+        return throwError(() => error);
       })
     );
   }
@@ -98,8 +98,8 @@ export class UserService {
         return of(true);
       }), 
       catchError(error => {
-        console.log(error);
-        return of(false);
+        // return of(null); TODO substitute?
+        return throwError(() => error);
       })
     );
   }
@@ -110,8 +110,8 @@ export class UserService {
         return of(true);
       }), 
       catchError(error => {
-        console.log(error);
-        return of(false);
+        // return of(null); TODO substitute?
+        return throwError(() => error);
       })
     );
   }
@@ -126,8 +126,8 @@ export class UserService {
         return of(true);
       }),
       catchError(error => {
-        console.log(error);
-        return of(false);
+        // return of(null); TODO substitute?
+        return throwError(() => error);
       })
     );
   }
@@ -171,8 +171,8 @@ export class UserService {
         return response;
       }),
       catchError(error => {
-        console.log(error);
-        return of(null);
+        // return of(null); TODO substitute?
+        return throwError(() => error);
       })
     );
   }

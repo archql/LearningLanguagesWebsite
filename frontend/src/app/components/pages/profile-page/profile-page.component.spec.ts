@@ -1,13 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProfilePageComponent } from './profile-page.component';
 import { UserService } from '../../../services/user.service';
-import { MockUserService } from '../../../services/mock/user.service.mock';
+import { UserServiceMock } from '../../../services/mock/user.service.mock';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslateModule } from '@ngx-translate/core';
-import { of } from 'rxjs';
+import { of, Subscription } from 'rxjs';
 import { User } from './user.model';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Loadable } from '../../helpers/loader-wrapper/loader-wrapper.model';
 
 describe('ProfilePageComponent', () => {
   let component: ProfilePageComponent;
@@ -24,7 +25,7 @@ describe('ProfilePageComponent', () => {
         TranslateModule.forRoot()
       ],
       providers: [
-        { provide: UserService, useClass: MockUserService }
+        { provide: UserService, useClass: UserServiceMock }
       ]
     }).compileComponents();
 
@@ -133,7 +134,7 @@ describe('ProfilePageComponent', () => {
     spyOn(component['snackBar'], 'open');
 
     // Initialize the user object
-    component.user = { loading: false, data: { id: 1, login: 'JohnDoe', email: 'johndoe@example.com', language: 'en' } };
+    component.user = new Loadable(() => of({ id: 1, login: 'JohnDoe', email: 'johndoe@example.com', language: 'en' }));
 
     component.onLanguageSelected({ code: 'fr', name: 'French', flagIcon: '🇫🇷' });
 
@@ -149,7 +150,7 @@ describe('ProfilePageComponent', () => {
     spyOn(component['snackBar'], 'open');
 
     // Initialize the user object
-    component.user = { loading: false, data: { id: 1, login: 'JohnDoe', email: 'johndoe@example.com', language: 'en' } };
+    component.user = new Loadable(() => of({ id: 1, login: 'JohnDoe', email: 'johndoe@example.com', language: 'en' }));
 
     component.onLanguageSelected({ code: 'fr', name: 'French', flagIcon: '🇫🇷' });
 

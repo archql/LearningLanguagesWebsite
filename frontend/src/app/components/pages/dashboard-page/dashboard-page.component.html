@@ -6,9 +6,9 @@
         <mat-card-title>{{ 'app.dashboard.progress' | translate}}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <app-loader-wrapper [loading]="userProgress.loading">
+        <app-loader-wrapper [loading]="userProgress.loading" [error]="userProgress.error">
           <p>
-            {{ 'app.dashboard.progress-lessons' | translate: {userProgress: userProgress} }}
+            {{ 'app.dashboard.progress-lessons' | translate: {userProgress: userProgress.data} }}
           </p>
           <mat-progress-bar
             mode="determinate"
@@ -24,7 +24,7 @@
             <mat-card-title>{{ 'app.dashboard.daily-challenge' | translate}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <app-loader-wrapper [loading]="dailyChallenge.loading">
+          <app-loader-wrapper [loading]="dailyChallenge.loading" [error]="dailyChallenge.error">
             @if (!dailyChallenge.data?.isCompleted) {
                 <p>{{ 'app.dashboard.daily-challenge.info' | translate}}</p>
                 <button mat-raised-button color="primary" (click)="completeDailyChallenge()">
@@ -43,7 +43,7 @@
             <mat-card-title>{{ 'app.dashboard.cultural-note' | translate}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <app-loader-wrapper [loading]="culturalNote.loading">
+          <app-loader-wrapper [loading]="culturalNote.loading" [error]="culturalNote.error">
             <div class="quote-container">
             <mat-icon class="quote-icon">format_quote</mat-icon>
             <blockquote>
@@ -59,7 +59,7 @@
             <mat-card-title>{{ 'app.dashboard.progress-total' | translate}}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <app-loader-wrapper [loading]="topics.loading">
+            <app-loader-wrapper [loading]="topics.loading" [error]="topics.error">
               <app-lesson-selection [topics]="topics.data || []"></app-lesson-selection>
             </app-loader-wrapper>
         </mat-card-content>

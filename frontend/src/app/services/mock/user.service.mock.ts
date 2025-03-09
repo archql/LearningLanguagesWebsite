@@ -7,7 +7,7 @@ import { Topic } from '../../components/teaching/lesson-selection/lesson-selecti
 @Injectable({
   providedIn: 'root'
 })
-export class MockUserService {
+export class UserServiceMock {
 
   private dailyChallenge: DailyChallenge = {
     isCompleted: false,

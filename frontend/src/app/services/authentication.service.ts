@@ -48,7 +48,7 @@ export class AuthService {
       }), 
       catchError(error => {
         console.log(error);
-        return of({ message: error, result: false });
+        return of({ message: error.message, result: false });
       })
     );
   }
