@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LessonSelectionComponent } from './lesson-selection.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('LessonSelectionComponent', () => {
   let component: LessonSelectionComponent;
@@ -8,7 +9,13 @@ describe('LessonSelectionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LessonSelectionComponent]
+      imports: [
+        LessonSelectionComponent, 
+        BrowserAnimationsModule
+      ],
+      providers: [
+        
+      ]
     })
     .compileComponents();
 

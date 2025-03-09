@@ -26,7 +26,6 @@ describe('RegisterPageComponent', () => {
         { provide: Router, useValue: { navigate: jasmine.createSpy('navigate') } },
         { provide: MatSnackBar, useValue: { open: jasmine.createSpy('open') } },
         TranslateService,
-        BrowserAnimationsModule,
         provideHttpClient(),
         provideHttpClientTesting()
       ]

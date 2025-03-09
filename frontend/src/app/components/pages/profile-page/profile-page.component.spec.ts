@@ -146,7 +146,7 @@ describe('ProfilePageComponent', () => {
     spyOn(component['dialog'], 'open').and.returnValue({
       afterClosed: () => of(true)
     } as any);
-    spyOn(userService, 'resetProgress').and.returnValue(of(false));
+    spyOn(userService, 'changeLearningLanguage').and.returnValue(of(false));
     spyOn(component['snackBar'], 'open');
 
     // Initialize the user object

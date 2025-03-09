@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VocabularyPageComponent } from './vocabulary-page.component';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 describe('VocabularyPageComponent', () => {
   let component: VocabularyPageComponent;
@@ -8,7 +11,15 @@ describe('VocabularyPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VocabularyPageComponent]
+      imports: [
+        VocabularyPageComponent,
+        TranslateModule.forRoot(),
+      ],
+      providers: [
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        TranslateService
+      ]
     })
     .compileComponents();
 

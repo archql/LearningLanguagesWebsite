@@ -44,8 +44,9 @@ describe('UserService', () => {
   });
 
   it('should handle error when getting cultural note', () => {
-    service.getCulturalNote().subscribe(note => {
-      expect(note).toBeNull();
+    service.getCulturalNote().subscribe({
+      next: () => fail('expected an error, not cultural note'),
+      error: error => expect(error).toBeTruthy()
     });
 
     const req = httpMock.expectOne('/api/user/cultural-note');
@@ -65,8 +66,9 @@ describe('UserService', () => {
   });
 
   it('should handle error when getting current user', () => {
-    service.getCurrentUser().subscribe(user => {
-      expect(user).toBeNull();
+    service.getCurrentUser().subscribe({
+      next: () => fail('expected an error, not user'),
+      error: error => expect(error).toBeTruthy()
     });
 
     const req = httpMock.expectOne('/api/user/current');
@@ -86,8 +88,9 @@ describe('UserService', () => {
   });
 
   it('should handle error when getting user progress', () => {
-    service.getUserProgress().subscribe(progress => {
-      expect(progress).toBeNull();
+    service.getUserProgress().subscribe({
+      next: () => fail('expected an error, not user progress'),
+      error: error => expect(error).toBeTruthy()
     });
 
     const req = httpMock.expectOne('/api/user/progress');
@@ -107,8 +110,9 @@ describe('UserService', () => {
   });
 
   it('should handle error when getting daily challenge', () => {
-    service.getDailyChallenge().subscribe(challenge => {
-      expect(challenge).toBeNull();
+    service.getDailyChallenge().subscribe({
+      next: () => fail('expected an error, not daily challenge'),
+      error: error => expect(error).toBeTruthy()
     });
 
     const req = httpMock.expectOne('/api/user/daily-challenge');
@@ -128,8 +132,9 @@ describe('UserService', () => {
   });
 
   it('should handle error when getting user topics', () => {
-    service.getUserTopics().subscribe(topics => {
-      expect(topics).toBeNull();
+    service.getUserTopics().subscribe({
+      next: () => fail('expected an error, not topics'),
+      error: error => expect(error).toBeTruthy()
     });
 
     const req = httpMock.expectOne('/api/user/topics');
@@ -147,8 +152,9 @@ describe('UserService', () => {
   });
 
   it('should handle error when changing learning language', () => {
-    service.changeLearningLanguage('fr').subscribe(response => {
-      expect(response).toBeFalse();
+    service.changeLearningLanguage('fr').subscribe({
+      next: () => fail('expected an error, not success'),
+      error: error => expect(error).toBeTruthy()
     });
 
     const req = httpMock.expectOne('/api/user/language');
@@ -166,8 +172,9 @@ describe('UserService', () => {
   });
 
   it('should handle error when resetting progress', () => {
-    service.resetProgress().subscribe(response => {
-      expect(response).toBeFalse();
+    service.resetProgress().subscribe({
+      next: () => fail('expected an error, not success'),
+      error: error => expect(error).toBeTruthy()
     });
 
     const req = httpMock.expectOne('/api/user/reset');
@@ -189,8 +196,9 @@ describe('UserService', () => {
   it('should handle error when uploading vocabulary', () => {
     const mockFile = new File([''], 'filename', { type: 'text/yaml' });
 
-    service.uploadVocabulary(mockFile).subscribe(response => {
-      expect(response).toBeFalse();
+    service.uploadVocabulary(mockFile).subscribe({
+      next: () => fail('expected an error, not success'),
+      error: error => expect(error).toBeTruthy()
     });
 
     const req = httpMock.expectOne('/api/user/vocabulary');
@@ -210,8 +218,9 @@ describe('UserService', () => {
   });
 
   // it('should handle error when downloading vocabulary', () => {
-  //   service.downloadVocabulary().subscribe(blob => {
-  //     expect(blob).toBeNull();
+  //   service.downloadVocabulary().subscribe({
+  //     next: () => fail('expected an error, not blob'),
+  //     error: error => expect(error).toBeTruthy()
   //   });
 
   //   const req = httpMock.expectOne('/api/user/vocabulary');
