@@ -129,8 +129,15 @@ export class ProfilePageComponent {
     this.vocabularyDownloadPending = true;
     this.userService.downloadVocabulary().subscribe({
       next: (response) => {
-        // TODO update UI
         if (response) {
+          const url = window.URL.createObjectURL(response);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'vocabulary.yaml';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
           this.snackBar.open(this.tr['app.dialog.vocabulary-download.success'], this.tr['app.dialog.close'], { duration: 3000 });
         } else {
           this.snackBar.open(this.tr['app.dialog.vocabulary-download.failure'], this.tr['app.dialog.close'], { duration: 3000 });
@@ -138,7 +145,6 @@ export class ProfilePageComponent {
         this.vocabularyDownloadPending = false; // Stop loading
       },
       error: (error) => {
-        console.error('Language Change failed', error);
         this.snackBar.open(this.tr['app.dialog.vocabulary-download.failure'], this.tr['app.dialog.close'], { duration: 3000 });
         this.vocabularyDownloadPending = false; // Stop loading
       }

@@ -3,6 +3,11 @@
     flex-direction: column;
     flex: 1; /* Fill remaining height */
 }
+::ng-deep router-outlet ~ * { 
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
 ::ng-deep router-outlet + * {
     display: flex;
     flex-direction: column;

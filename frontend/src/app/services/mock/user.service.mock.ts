@@ -73,7 +73,12 @@ export class UserServiceMock {
 
   resetProgress(): Observable<boolean> {
     this.userProgress = { completedLessons: 10, totalLessons: 20 };
-    return of(true);
+    return new Observable(observer => {
+      setTimeout(() => {
+        observer.next(true);
+        observer.complete();
+      }, 300);
+    });
   }
 
   uploadVocabulary(file: File): Observable<boolean> {
