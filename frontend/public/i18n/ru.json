@@ -60,5 +60,7 @@
 	"app.dashboard.daily-challenge.start": "Начать ежедневное задание",
 	"app.dashboard.daily-challenge.success": "Вы уже выполнили сегодняшнее задание. Возвращайтесь завтра!",
 	"app.dashboard.cultural-note": "Культурная заметка дня",
-	"app.dashboard.progress-total": "Завершенные уроки"
+	"app.dashboard.progress-total": "Завершенные уроки",
+	"app.dialog.word_remove.failure": "Не удалось удалить слово:",
+	"app.dialog.word_remove.success": "Слово удалено:"
 }

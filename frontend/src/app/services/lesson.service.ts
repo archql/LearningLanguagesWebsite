@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Topic } from '../components/teaching/lesson-selection/lesson-selection.model';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, Observable, of, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,8 @@ export class LessonService {
         return response;
       }), 
       catchError(error => {
-        return of([]);
+        // return of(null); TODO substitute?
+        return throwError(() => error);
       })
     );
   }

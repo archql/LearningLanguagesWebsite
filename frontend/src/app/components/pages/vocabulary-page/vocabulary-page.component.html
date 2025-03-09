@@ -4,11 +4,11 @@
     </mat-card-header>
   
     <mat-card-content>
-        <app-loader-wrapper [loading]="loading">
+        <app-loader-wrapper [loading]="vocabulary.loading" [error]="vocabulary.error">
             <!-- Display vocabulary groups -->
             <mat-list>
                 <mat-divider></mat-divider>
-                @for (group of vocabulary; track group.section) {
+                @for (group of (vocabulary.data || []); track group.section) {
                     <span mat-subheader style="font-size: 1.2em;">{{ group.section }}</span>
                     @for (word of group.words; track word.word) {
                         <mat-list-item>

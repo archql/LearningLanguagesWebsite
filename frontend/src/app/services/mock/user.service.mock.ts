@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { CulturalNote, DailyChallenge, UserProgress } from '../../components/pages/dashboard-page/dashboard.model';
 import { User } from '../../components/pages/profile-page/user.model';
 import { Topic } from '../../components/teaching/lesson-selection/lesson-selection.model';
+import { VocabularyGroup, VocabularyWord } from '../../components/pages/vocabulary-page/vocabulary.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,23 @@ export class UserServiceMock {
     email: 'johndoe@example.com',
     language: 'en',
   };
+  private vocabulary: VocabularyGroup[] = [
+    {
+      section: 'Animals',
+      words: [
+        { word: 'Die Katze', meaning: 'The cat' },
+        { word: 'Der Hund', meaning: 'The Dog' },
+      ],
+    },
+    {
+      section: 'Food',
+      words: [
+        { word: 'Der Apfel', meaning: 'The apple' },
+        { word: 'Das Brot', meaning: 'The bread' },
+      ],
+    },
+  ];
+
 
   getCulturalNote(): Observable<CulturalNote | null> {
     return of(this.culturalNote);
@@ -66,5 +84,13 @@ export class UserServiceMock {
   downloadVocabulary(): Observable<Blob | null> {
     const blob = new Blob(['mock vocabulary content'], { type: 'text/yaml' });
     return of(blob);
+  }
+
+  removeWord(word: VocabularyWord): Observable<boolean> {
+    return of(true);
+  }
+  
+  getVocabulary(): Observable<VocabularyGroup[]> {
+    return of(this.vocabulary);
   }
 }

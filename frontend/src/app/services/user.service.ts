@@ -4,6 +4,7 @@ import { CulturalNote, DailyChallenge, UserProgress } from '../components/pages/
 import { catchError, Observable, of, tap, throwError } from 'rxjs';
 import { User } from '../components/pages/profile-page/user.model';
 import { Topic } from '../components/teaching/lesson-selection/lesson-selection.model';
+import { VocabularyGroup, VocabularyWord } from '../components/pages/vocabulary-page/vocabulary.model';
 
 @Injectable({
   providedIn: 'root'
@@ -143,19 +144,38 @@ export class UserService {
   //     })
   //   );
   // }
-  // removeWord(word: string): Observable<boolean> {
-  //   return this.http.post<boolean>('/api/user/vocabulary/remove', {word}).pipe(
-  //     tap(response => {
-  //       return of(true);
-  //     }),
-  //     catchError(error => {
-  //       console.log(error);
-  //       return of(false);
-  //     })
-  //   );
-  // }
+  removeWord(word: VocabularyWord): Observable<boolean> {
+    return this.http.delete<boolean>('/api/user/vocabulary', { params: { word: word.word } }).pipe(
+      tap(() => {
+        return of(true);
+      }),
+      catchError(error => {
+        console.log(error);
+        return of(false);
+      })
+    );
+    // return this.http.post<boolean>('/api/user/vocabulary/remove', {word}).pipe(
+    //   tap(response => {
+    //     return of(true);
+    //   }),
+    //   catchError(error => {
+    //     console.log(error);
+    //     return of(false);
+    //   })
+    // );
+  }
 
-  // //getVocabulary()
+  getVocabulary(): Observable<VocabularyGroup[]> {
+    return this.http.get<VocabularyGroup[]>('/api/user/vocabulary').pipe(
+      tap((response : VocabularyGroup[]) => {
+        return response;
+      }), 
+      catchError(error => {
+        // return of(null); TODO substitute?
+        return throwError(() => error);
+      })
+    );
+  }
 
   downloadVocabulary(): Observable<Blob | null> {
     return this.http.get('/api/user/vocabulary', { responseType: 'blob' }).pipe(

@@ -2,11 +2,7 @@
     <mat-card-header>
         <mat-card-title>{{'app.lesson-selection-title' | translate}}</mat-card-title>
     </mat-card-header>
-    <app-loader-wrapper [loading]="loading">
-        @if (error) {
-            <span> ERROR </span>
-        } @else {
-            <app-lesson-selection [topics]="topics"></app-lesson-selection>
-        }
+    <app-loader-wrapper [loading]="topics.loading" [error]="topics.error">
+        <app-lesson-selection [topics]="topics.data || []"></app-lesson-selection>
     </app-loader-wrapper>
 </mat-card>

@@ -5,9 +5,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { VocabularyGroup, VocabularyWord } from './vocabulary.model';
 import { LoaderWrapperComponent } from "../../helpers/loader-wrapper/loader-wrapper.component";
+import { Loadable } from '../../helpers/loader-wrapper/loader-wrapper.model';
+import { UserService } from '../../../services/user.service';
+import { Subscription } from 'rxjs';
+import { UserServiceMock } from '../../../services/mock/user.service.mock';
 
 @Component({
   selector: 'app-vocabulary-page',
@@ -18,32 +22,58 @@ import { LoaderWrapperComponent } from "../../helpers/loader-wrapper/loader-wrap
 })
 export class VocabularyPageComponent {
   // TODO add service to fetch vocabulary from DB
-  vocabulary: VocabularyGroup[] = [
-    {
-      section: 'Animals',
-      words: [
-        { word: 'Die Katze', meaning: 'The cat' },
-        { word: 'Der Hund', meaning: 'The Dog' },
-      ],
-    },
-    {
-      section: 'Food',
-      words: [
-        { word: 'Der Apfel', meaning: 'The apple' },
-        { word: 'Das Brot', meaning: 'The bread' },
-      ],
-    },
-  ];
+  vocabulary: Loadable< VocabularyGroup[] > = new Loadable;
   loading: boolean = false;
 
-  constructor(private snackBar: MatSnackBar) {}
+  private subscription: Subscription = new Subscription();
+  private trIDs = [
+    'app.dialog.word_remove.success',
+    'app.dialog.word_remove.fail',
+  ];
+  tr: Record<string, string> = {};
+
+  constructor(
+    private snackBar: MatSnackBar, 
+    private userService: UserService, 
+    private translate: TranslateService
+  ) {}
+
+  ngOnInit() {
+    this.vocabulary = new Loadable(() => this.userService.getVocabulary())
+    this.subscription = this.translate
+      .stream(this.trIDs)
+      .subscribe((translations: Record<string, string>) => {
+        this.tr = translations;
+      });
+  }
+
+  ngOnDestroy() {
+    this.vocabulary.cleanup();
+    this.subscription.unsubscribe();
+  }
 
   // Remove a word from the vocabulary
   removeWord(group: VocabularyGroup, word: VocabularyWord): void {
     const index = group.words.indexOf(word);
     if (index > -1) {
-      group.words.splice(index, 1);
-      this.snackBar.open(`Removed: ${word.word}`, 'Close', { duration: 3000 });
+      this.userService.removeWord(word).subscribe({
+        next: (response) => {
+          if (response) {
+            this.snackBar.open(`${this.tr['app.dialog.word_remove.success']} ${word.word}`, 'Close', { duration: 3000 });
+            group.words.splice(index, 1);
+          } else {
+            this.snackBar.open(`${this.tr['app.dialog.word_remove.failure']} ${word.word}`, 'Close', { duration: 3000 });
+          }
+          this.loading = false;
+        },
+        error: (error) => {
+          this.snackBar.open(`${this.tr['app.dialog.word_remove.failure']} ${word.word}`, 'Close', { duration: 3000 });
+          this.loading = false;
+        },
+      });
+
+      // group.words.splice(index, 1);
+      // this.snackBar.open(`Removed: ${word.word}`, 'Close', { duration: 3000 });
     }
     // TODO add DB logic to remove word
   }

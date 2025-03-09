@@ -45,6 +45,8 @@
 	"app.dialog.vocabulary-download": "Mein Vokabular herunterladen",
 	"app.dialog.vocabulary-download.success": "Vokabular erfolgreich heruntergeladen",
 	"app.dialog.vocabulary-download.failure": "Herunterladen des Vokabulars fehlgeschlagen",
+	"app.dialog.word_remove.failure": "Wort konnte nicht entfernt werden:",
+	"app.dialog.word_remove.success": "Wort entfernt:",
 	"app.dialog.close": "Schließen",
 	"app.dialog.cancel": "Abbrechen",
 	"app.dialog.confirm": "Bestätigen",
