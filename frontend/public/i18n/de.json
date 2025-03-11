@@ -55,6 +55,7 @@
 	"app.dialog.login.success": "Anmeldung erfolgreich",
 	"app.dialog.login.wrong-credentials": "Falsche Anmeldedaten",
 	"app.dialog.login.invalid-form": "Ungültiges Formular",
+	"app.dialog.session.expired": "Sitzung abgelaufen",
 	"app.dashboard.progress": "Ihr Fortschritt heute",
 	"app.dashboard.progress-lessons": "Sie haben {{ userProgress.completedLessons }} von {{ userProgress.totalLessons }} Lektionen abgeschlossen.",
 	"app.dashboard.daily-challenge": "Tägliche Herausforderung",
@@ -62,5 +63,6 @@
 	"app.dashboard.daily-challenge.start": "Tägliche Herausforderung starten",
 	"app.dashboard.daily-challenge.success": "Sie haben die heutige Herausforderung bereits abgeschlossen. Kommen Sie morgen wieder!",
 	"app.dashboard.cultural-note": "Kulturelle Notiz des Tages",
-	"app.dashboard.progress-total": "Abgeschlossene Lektionen"
+	"app.dashboard.progress-total": "Abgeschlossene Lektionen",
+	"app.context-menu.add-to-vocabulary": "Zum meinen Vokabular hinzufügen"
 }

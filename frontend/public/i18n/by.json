@@ -62,5 +62,7 @@
 	"app.dashboard.cultural-note": "Культурная нататка дня",
 	"app.dashboard.progress-total": "Завершаныя ўрокі",
 	"app.dialog.word_remove.failure": "Не ўдалося выдаліць слова:",
-	"app.dialog.word_remove.success": "Слова выдалена:"
+	"app.dialog.word_remove.success": "Слова выдалена:",
+	"app.context-menu.add-to-vocabulary": "Дадаць у мой слоўнік",
+	"app.dialog.session.expired": "Сесія скончылася"
 }

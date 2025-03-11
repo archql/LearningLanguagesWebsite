@@ -133,25 +133,14 @@ export class UserService {
     );
   }
 
-  // addWord(word: string, meaning: string): Observable<boolean> {
-  //   return this.http.post<boolean>('/api/user/vocabulary/add', {word, meaning}).pipe(
-  //     tap(response => {
-  //       return of(true);
-  //     }),
-  //     catchError(error => {
-  //       console.log(error);
-  //       return of(false);
-  //     })
-  //   );
-  // }
   removeWord(word: VocabularyWord): Observable<boolean> {
     return this.http.delete<boolean>('/api/user/vocabulary', { params: { word: word.word } }).pipe(
       tap(() => {
         return of(true);
       }),
       catchError(error => {
-        console.log(error);
-        return of(false);
+        // return of(null); TODO substitute?
+        return throwError(() => error);
       })
     );
     // return this.http.post<boolean>('/api/user/vocabulary/remove', {word}).pipe(

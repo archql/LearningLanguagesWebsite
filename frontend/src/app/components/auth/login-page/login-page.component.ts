@@ -29,6 +29,7 @@ export class LoginPageComponent implements OnInit {
     'app.dialog.login.wrong-credentials',
     'app.dialog.login.invalid-form',
     'app.dialog.close',
+    'app.dialog.session.expired' // Add this translation ID
   ];
   tr: Record<string, string> = {};
 
@@ -63,6 +64,7 @@ export class LoginPageComponent implements OnInit {
       .stream(this.trIDs)
       .subscribe((translations: Record<string, string>) => {
         this.tr = translations;
+        this.checkSessionExpiration();
       });
   }
 
@@ -109,5 +111,13 @@ export class LoginPageComponent implements OnInit {
       horizontalPosition: 'center',
       verticalPosition: 'top'
     });
+  }
+
+  checkSessionExpiration() {
+    const token = this.authService.getToken();
+    if (token && this.authService.isTokenExpired(token)) {
+      this.authService.killToken();
+      this.showNotification(this.tr['app.dialog.session.expired'], 'error');
+    }
   }
 }

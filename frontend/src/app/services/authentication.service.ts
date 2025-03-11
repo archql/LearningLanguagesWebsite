@@ -19,14 +19,32 @@ export class AuthService {
     private router: Router,
   ) { }
 
-  isLoggedIn(): boolean {
-    let token;
+  killToken() {
     if (typeof window !== 'undefined') { 
-      token = localStorage.getItem('token');
+      localStorage.removeItem('token');
     }
-    //return !!token;
-    return true; // TODO only for testing
-    // return !!token && !this.jwtHelper.isTokenExpired(token);
+  }
+
+  isTokenExpired(token : string): boolean {
+    try {
+      const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
+      return Date.now() >= expiry * 1000;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  getToken(): string | null {
+    if (typeof window !== 'undefined') { 
+      return localStorage.getItem('token');
+    } else  {
+      return null;
+    }
+  }
+
+  isLoggedIn(): boolean {
+    let token = this.getToken();
+    return true; // !!token && !this.isTokenExpired(token);
   }
 
   login(email: string, password: string): Observable<AuthResponse> {

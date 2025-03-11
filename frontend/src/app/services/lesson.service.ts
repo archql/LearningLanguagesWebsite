@@ -21,4 +21,16 @@ export class LessonService {
       })
     );
   }
+
+  addWord(word: string): Observable<boolean> {
+    return this.http.post<boolean>('/api/user/vocabulary/add', {word}).pipe(
+      tap(response => {
+        return of(true);
+      }),
+      catchError(error => {
+        // return of(null); TODO substitute?
+        return throwError(() => error);
+      })
+    );
+  }
 }

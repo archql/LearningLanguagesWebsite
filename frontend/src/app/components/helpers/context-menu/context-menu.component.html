@@ -1,0 +1,13 @@
+<!-- Angular Material Context Menu -->
+<mat-menu #contextMenu="matMenu" [xPosition]="'before'" [yPosition]="'below'">
+    <ng-template matMenuContent>
+        @for (e of menuItems; track e.trID) {
+            <button mat-menu-item (click)="e.action(selectedText)">
+                {{e.label}}
+            </button>
+        }
+    </ng-template>
+</mat-menu>
+
+<!-- Menu trigger (hidden but required for programmatic menu opening) -->
+<div [style.left.px]="x" [style.top.px]="y" style="position: fixed;" [matMenuTriggerFor]="contextMenu" #menuTrigger="matMenuTrigger"></div>

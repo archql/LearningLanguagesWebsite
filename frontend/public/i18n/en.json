@@ -55,6 +55,7 @@
 	"app.dialog.login.invalid-form": "Invalid form",
 	"app.dialog.word_remove.failure": "Failed to remove word:",
 	"app.dialog.word_remove.success": "Word removed:",
+	"app.dialog.session.expired": "Session expired",
 	"app.dashboard.progress": "Your Progress Today",
 	"app.dashboard.progress-lessons": "You have completed {{ userProgress.completedLessons }} out of {{ userProgress.totalLessons }} lessons.",
 	"app.dashboard.daily-challenge": "Daily challenge",
@@ -62,5 +63,6 @@
 	"app.dashboard.daily-challenge.start": "Start Daily Challenge",
 	"app.dashboard.daily-challenge.success": "You've already completed today's challenge. Come back tomorrow!",
 	"app.dashboard.cultural-note": "Cultural Note of the Day",
-	"app.dashboard.progress-total": "Completed lessons"
+	"app.dashboard.progress-total": "Completed lessons",
+	"app.context-menu.add-to-vocabulary": "Add to personal vocabulary"
 }
