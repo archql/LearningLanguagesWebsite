@@ -10,6 +10,11 @@ export class LessonService {
 
   constructor(private http: HttpClient) { }
 
+  isDoingLesson(): boolean {
+    // TODO
+    return true;
+  } 
+
   getTopics(): Observable<Topic[]> {
     return this.http.get<Topic[]>('/api/topics').pipe(
       tap(response => {

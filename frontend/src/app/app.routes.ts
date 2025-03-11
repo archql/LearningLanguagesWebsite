@@ -10,6 +10,9 @@ import { ErrorComponent } from './components/helpers/error/error.component';
 import { RegisterPageComponent } from './components/auth/register-page/register-page.component';
 import { HomePageComponent } from './components/pages/home-page/home-page.component';
 import { MainComponent } from './components/helpers/main/main.component';
+import { CanDeactivateGuard } from './guards/can-deactivate.guard';
+import { LessonPageComponent } from './components/pages/lesson-page/lesson-page.component';
+import { lessonGuard } from './guards/lesson.guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -32,6 +35,7 @@ export const routes: Routes = [
         { path: 'lessons', component: LessonSelectionPageComponent} ,
         { path: 'dashboard', component: DashboardPageComponent },
         { path: 'vocabulary', component: VocabularyPageComponent },
+        { path: 'lesson', component: LessonPageComponent, canDeactivate: [CanDeactivateGuard], canActivate: [lessonGuard] },
       ],
     },
     { path: '**', pathMatch: 'full', component: ErrorComponent}, // catch all

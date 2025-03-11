@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CulturalNote, DailyChallenge, UserProgress } from './dashboard.model';
@@ -11,25 +11,15 @@ import { LoaderWrapperComponent } from "../../helpers/loader-wrapper/loader-wrap
 import { Loadable } from '../../helpers/loader-wrapper/loader-wrapper.model';
 import { UserService } from '../../../services/user.service';
 import { UserServiceMock } from '../../../services/mock/user.service.mock';
-import { MenuAction } from '../../helpers/menu-bar/menu-bar.model';
-import { ContextMenuComponent } from '../../helpers/context-menu/context-menu.component';
 
 @Component({
   selector: 'app-dashboard-page',
   standalone: true,
-  imports: [MatCardModule, ContextMenuComponent, LoaderWrapperComponent, MatProgressBarModule, MatIconModule, MatButtonModule, TranslateModule, LessonSelectionComponent, LoaderWrapperComponent],
+  imports: [MatCardModule, LoaderWrapperComponent, MatProgressBarModule, MatIconModule, MatButtonModule, TranslateModule, LessonSelectionComponent, LoaderWrapperComponent],
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.scss'
 })
 export class DashboardPageComponent {
-
-  menuItems: MenuAction[] = [
-    {
-      trID: 'add-to-vocabulary',
-      label: '',
-      action: (e) => { console.log(e) }
-    }
-  ]
   
   // avoid typescript error - assign empty loadable
   dailyChallenge : Loadable<DailyChallenge> = new Loadable;

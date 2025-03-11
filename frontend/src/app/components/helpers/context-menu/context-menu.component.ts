@@ -81,7 +81,6 @@ export class ContextMenuComponent {
 
   @HostListener('document:contextmenu', ['$event'])
   onRightClick(event: MouseEvent) {
-    event.preventDefault();
     this.open(event);
   }
 }
