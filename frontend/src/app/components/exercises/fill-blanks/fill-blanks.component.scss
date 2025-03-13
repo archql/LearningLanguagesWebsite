@@ -1,7 +1,7 @@
 .fill-blanks-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    // padding: 16px;
+    margin: 1em auto 0px;
+    width: 80%;
   
     mat-card {
         padding: 16px;
@@ -13,9 +13,4 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
     }
-  
-    .feedback {
-        margin-top: 10px;
-        font-weight: bold;
-    }
-}
+}   

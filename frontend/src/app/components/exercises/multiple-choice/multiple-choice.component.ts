@@ -20,6 +20,7 @@ interface Option {
 export class MultipleChoiceComponent {
   @Input() question: string = '';
   @Input() options: string[] = [];
+  @Input() id: Number = 0;
   @Output() answerSelected = new EventEmitter<string>();
 
   selectedOption: string = '';

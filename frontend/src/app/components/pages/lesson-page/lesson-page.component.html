@@ -1,10 +1,38 @@
-<p>lesson-page works!</p>
+<mat-card class="introduction">
+    <mat-card-content>
+        <h2>{{ lesson.topic }}</h2>
+        <div [innerHTML]="lesson.introduction"></div>
+    </mat-card-content>
+</mat-card>
 
-<app-multiple-choice 
-    [question]="question" [options]="options" (answerSelected)="handleAnswerSubmission($event)"
-    ></app-multiple-choice>
+<mat-card class="presentation">
+    <mat-card-content>
+        <div [innerHTML]="lesson.presentation"></div>
+    </mat-card-content>
+</mat-card>
+
+<ng-container *ngFor="let i of mcRange">
+    <app-multiple-choice
+        [question]="mcQuestions[i]" [options]="mcOptions[i]" (answerSelected)="handleMcAnswerSubmission($event, i)">
+    </app-multiple-choice>
+</ng-container>
+<ng-container *ngFor="let i of fbRange">
+    <app-fill-blanks
+        [beforeBlank]="fbBeforeBlank[i]" [afterBlank]="fbAfterBlank[i]" (answerSubmitted)="handleFbAnswerSubmission($event, i)">
+    </app-fill-blanks>
+</ng-container>
+
+<!-- <app-multiple-choice 
+    [question]="question" [options]="options" (answerSelected)="handleAnswerSubmission($event)">
+</app-multiple-choice>
 <app-fill-the-blanks 
     [beforeBlank]="beforeBlank" [afterBlank]="afterBlank" (answerSubmitted)="handlefbAnswerSubmission($event)">
-</app-fill-the-blanks>
+</app-fill-the-blanks> -->
+
+<mat-card class="conclusion">
+    <mat-card-content>
+        <div [innerHTML]="lesson.conclusion"></div>
+    </mat-card-content>
+</mat-card>
 
 <app-context-menu [menuItems]="menuItems"></app-context-menu>

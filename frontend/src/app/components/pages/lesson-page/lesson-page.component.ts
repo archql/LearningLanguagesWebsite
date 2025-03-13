@@ -5,6 +5,10 @@ import { ContextMenuComponent } from '../../helpers/context-menu/context-menu.co
 import { MultipleChoiceComponent } from '../../exercises/multiple-choice/multiple-choice.component';
 import { FillBlanksComponent } from '../../exercises/fill-blanks/fill-blanks.component';
 import { HttpClient } from '@angular/common/http';
+import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
+
+
 
 
 interface Lesson {
@@ -15,33 +19,52 @@ interface Lesson {
   practice: Object[],
   conclusion: string
 }
+interface Exercise {
+  type : string,
+  data : string[]
+}
 
 @Component({
   selector: 'app-lesson-page',
   standalone: true,
-  imports: [ContextMenuComponent, MultipleChoiceComponent, FillBlanksComponent],
+  imports: [ContextMenuComponent, MultipleChoiceComponent, FillBlanksComponent, MatCardModule, CommonModule],
   templateUrl: './lesson-page.component.html',
   styleUrl: './lesson-page.component.scss'
 })
 export class LessonPageComponent implements CanComponentDeactivate {
-  question = 'How do you feel?'
-  options = ['good', 'fine', 'great']
-  sentence = 'What do you want from me?'
-  correctAnswer = 'Money'
-  beforeBlank = 'Are you '
-  fbcorrectAnswer = 'talking'
-  afterBlank = ' to me?'
+  mcRange: number[] = []
+  mcQuestions: string[] = []
+  mcOptions: string[][] = []
+  mcCorrectAnswers: string[] = []
+  fbRange: number[] = []
+  fbBeforeBlank: string[] = []
+  fbAfterBlank: string[] = []
+  fbCorrectAnswers: string[] = []
+
+  // question = 'How do you feel?'
+  // options = ['good', 'fine', 'great']
+
+  // beforeBlank = 'Are you '
+  // fbcorrectAnswer = 'talking'
+  // afterBlank = ' to me?'
   lesson: Lesson = {'topic': '', 'vocabulary_list': [''], 'introduction': '', 'presentation': '', 'conclusion': '',
     'practice': []
   }
 
-  handleAnswerSubmission(val: string) {
-    console.log(val)
+  handleMcAnswerSubmission(val: string, id: Number) {
+    console.log('Mc Answer', val, id)
+  }
+  handleFbAnswerSubmission(val: string, id: Number) {
+    console.log('Fb Answer', val, id)
   }
 
-  handlefbAnswerSubmission(val: string) {
-    console.log(val)
-  }
+  // handleAnswerSubmission(val: string) {
+  //   console.log(val)
+  // }
+
+  // handlefbAnswerSubmission(val: string) {
+  //   console.log(val)
+  // }
 
   constructor(private http: HttpClient) {}
 
@@ -73,7 +96,26 @@ export class LessonPageComponent implements CanComponentDeactivate {
     this.http.get<any>('/lesson_1.json').subscribe(
       (data) => {
         this.lesson = data;
-        console.log('Questions loaded:', this.lesson);
+        let exercises: Exercise[] = data.practice
+        let fillblanks = 0
+        let multiplechoices = 0
+        for (let i = 0; i < exercises.length; i++) {
+          if (exercises[i].type === 'fill_blank') {
+            fillblanks += 1
+            this.fbBeforeBlank.push(exercises[i].data[0])
+            this.fbAfterBlank.push(exercises[i].data[1])
+            this.fbCorrectAnswers.push(exercises[i].data[2])
+          }
+          if (exercises[i].type === 'multiple_choice') {
+            multiplechoices += 1
+            this.mcQuestions.push(exercises[i].data[0])
+            this.mcCorrectAnswers.push(exercises[i].data[1])
+            this.mcOptions.push(exercises[i].data.slice(2))
+          }
+        }
+
+        this.mcRange = Array(multiplechoices).fill(0).map((_, index) => index)
+        this.fbRange = Array(fillblanks).fill(0).map((_, index) => index)
       },
       (error) => {
         console.error('Failed to load questions', error);

@@ -10,7 +10,7 @@ import { debounceTime } from 'rxjs/operators';
 
 
 @Component({
-  selector: 'app-fill-the-blanks',
+  selector: 'app-fill-blanks',
   standalone: true,
   templateUrl: './fill-blanks.component.html',
   styleUrls: ['./fill-blanks.component.scss'],
@@ -19,6 +19,7 @@ import { debounceTime } from 'rxjs/operators';
 export class FillBlanksComponent {
   @Input() beforeBlank: string = '';
   @Input() afterBlank: string = '';
+  @Input() id: Number = 0;
   @Output() answerSubmitted = new EventEmitter<string>();
 
   userAnswer: string = '';

@@ -1,6 +1,7 @@
 <div class="fill-blanks-container">
     <mat-card>
         <mat-card-content>
+            <h4>Fill in the blank</h4>
             <p>{{ beforeBlank }} <input matInput type="text" [(ngModel)]="userAnswer" (ngModelChange)="onInputChange()"/>  {{afterBlank}}</p>
         </mat-card-content>
     </mat-card>
