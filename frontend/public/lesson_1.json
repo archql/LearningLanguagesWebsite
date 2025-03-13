@@ -1,0 +1,38 @@
+{
+    "topic": "Introduction",
+    "vocabulary_list": [
+        "Hello",
+        "Hi",
+        "Good morning",
+        "Good afternoon",
+        "Good evening",
+        "Goodbye",
+        "Bye",
+        "How are you?",
+        "Nice to meet you",
+        "My name is...",
+        "What’s your name?",
+        "I am from...",
+        "Friend",
+        "Happy",
+        "Sad",
+        "Teacher",
+        "Student",
+        "City"
+    ],
+    "introduction": "<p>In this lesson, we will learn some basic vocabulary related to greetings, introductions, and simple personal information. We'll also cover simple grammatical structures like the use of the verb 'to be' (am, is, are) and basic sentence structures.</p><h3>Grammar Focus:</h3><ul><li><strong>Subject Pronouns:</strong> I, You, He, She, It, We, They.</li><li><strong>Verb 'To be':</strong><ul><li>I am (I'm)</li><li>You are (You're)</li><li>He/She/It is (He's/She's/It's)</li><li>We are (We're)</li><li>They are (They're)</li></ul></li></ul><h4>Examples:</h4><ul><li>I am a student.</li><li>She is my friend.</li><li>We are happy.</li></ul>",
+    "presentation": "<p>Let's learn some useful words and phrases for introductions:</p><h3>Vocabulary:</h3><ul><li>Hello</li><li>Hi</li><li>Good morning / Good afternoon / Good evening</li><li>Goodbye / Bye</li><li>How are you?</li><li>Nice to meet you</li><li>My name is...</li><li>What’s your name?</li><li>I am from...</li><li>Friend</li><li>Happy</li><li>Sad</li><li>Teacher</li><li>Student</li><li>City</li></ul><h4>Example Sentences:</h4><ul><li>Hello! My name is Sarah.</li><li>Hi! I am from Spain.</li><li>Good morning! How are you?</li><li>Nice to meet you.</li><li>He is my friend.</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["I", "a student.", "am"]},
+        {"type": "fill_blank", "data": ["You", "my friend.", "are"]},
+        {"type": "fill_blank", "data": ["She", "from Italy.", "is"]},
+        {"type": "fill_blank", "data": ["They", "happy.", "are"]},
+        {"type": "fill_blank", "data": ["We", "in the city.", "are"]},
+        {"type": "multiple_choice", "data": ["___. My name is John.", "Hello", "Hello", "Goodbye"]},
+        {"type": "multiple_choice", "data": ["Nice to ___ you.", "meet", "meet", "eat"]},
+        {"type": "multiple_choice", "data": ["I am ___ Brazil", "from", "from", "for"]},
+        {"type": "multiple_choice", "data": ["How ___ you", "are", "is", "are"]},
+        {"type": "multiple_choice", "data": ["She ___ a teacher.", "is", "is", "am"]}
+    ],
+    "conclusion": "<h3>In this lesson, we learned:</h3><ul><li>Greetings and introductions: Hello, Hi, Goodbye, Nice to meet you, etc.</li><li>Basic grammar: The verb 'to be' (am, is, are).</li><li>How to introduce yourself and ask basic questions.</li></ul><h4>Example Dialogue:</h4><p>A: Hello! My name is Jack. What’s your name?<br>B: Hi! I’m Anna. Nice to meet you.<br>A: Nice to meet you, too. Where are you from?<br>B: I am from France. How about you?<br>A: I am from Canada.</p><h4>Questions for Review:</h4><ul><li>What’s your name?</li><li>Where are you from?</li><li>How do you say goodbye?</li></ul><h4>Homework:</h4><p>Write a short dialogue introducing yourself and asking questions to a new friend. Include:<br>- Your name<br>- Where you are from<br>- Your job or role (student, teacher, etc.)<br>- Saying goodbye</p>"
+}

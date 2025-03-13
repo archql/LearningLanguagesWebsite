@@ -1,0 +1,21 @@
+.question-card {
+    padding: 16px;
+    max-width: 500px;
+    margin: auto;
+  
+    mat-card {
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s;
+  
+        &:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    }
+  
+    mat-radio-button {
+        display: block;
+        margin: 8px 0;
+    }
+}

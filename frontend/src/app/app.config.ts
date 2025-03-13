@@ -5,7 +5,7 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
-import {HttpHandler, HttpHandlerFn, HttpInterceptor, HttpInterceptorFn, HttpRequest, provideHttpClient, withFetch, withInterceptors, withInterceptorsFromDi} from "@angular/common/http";
+import {HttpHandler, HttpHandlerFn, HttpInterceptor, HttpInterceptorFn, HttpRequest, provideHttpClient, withFetch, withInterceptors, withInterceptorsFromDi, withJsonpSupport} from "@angular/common/http";
 import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient} from '@angular/common/http';
@@ -37,7 +37,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(), 
     provideAnimationsAsync(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideHttpClient(withFetch(), withInterceptors([jwtInterceptor])),
+    provideHttpClient(withFetch(), withInterceptors([jwtInterceptor]), withJsonpSupport()),
     importProvidersFrom([TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

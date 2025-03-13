@@ -1,0 +1,12 @@
+<div class="question-card">
+    <mat-card>
+      <mat-card-content>
+        <h2>{{ question }}</h2>
+        <mat-radio-group (change)="selectOption($event)">
+          <mat-radio-button *ngFor="let option of options" [value]="option">
+            {{ option }}
+          </mat-radio-button>
+        </mat-radio-group>
+      </mat-card-content>
+    </mat-card>
+</div>

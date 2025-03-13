@@ -1,0 +1,73 @@
+"""
+Придумай урок немецкого языка для уровня A1 на тему "Знакомство". Урок должен быть структурирован следующим образом:
+
+1. Введение:
+   - Краткое объяснение основной лексики, связанной с темой "Знакомство" (например, "Привет", "Как дела?", "Меня зовут").
+   - Пояснение основных грамматических конструкций, таких как вопросительные предложения и формы глагола "быть" (sein).
+
+2. Презентация:
+   - Представление новой лексики, включая 10-15 слов и фраз, связанных с темой.
+   - Примеры предложений с новой лексикой.
+   - Пояснение произношения трудных слов.
+
+3. Практика:
+   - Простые упражнения для запоминания лексики, например, заполни пропуски в предложениях или составь вопросы.
+   - Диалоги для ролевых игр, например, "Знакомство с новым человеком".
+
+4. Заключение:
+   - Повторение ключевых выражений и грамматических структур.
+   - Вопросы для закрепления материала.
+   - Домашнее задание на тему знакомства (например, составить краткое представление о себе).
+
+Урок должен быть интерактивным и легко адаптируемым для начинающих. Он должен включать объяснения на русском языке для новых слов и грамматических тем.
+"""
+
+Перевод 
+
+Come up with a German language lesson for level A1 on the topic “Introduction”. The lesson should be structured as follows:
+	1.	Introduction:
+	•	A brief explanation of the basic vocabulary related to the topic “Introduction” (e.g., “Hello”, “How are you?”, “My name is”).
+	•	Explanation of basic grammatical structures, such as interrogative sentences and forms of the verb “to be” (sein).
+	2.	Presentation:
+	•	Introduction of new vocabulary, including 10-15 words and phrases related to the topic.
+	•	Example sentences using the new vocabulary.
+	•	Explanation of the pronunciation of difficult words.
+	3.	Practice:
+	•	Simple exercises for memorizing vocabulary, such as filling in the blanks in sentences or creating questions.
+	•	Dialogues for role-playing, such as “Meeting a new person”.
+	4.	Conclusion:
+	•	Review of key expressions and grammatical structures.
+	•	Questions to reinforce the material.
+	•	Homework on the topic of introduction (e.g., writing a brief self-introduction).
+
+The lesson should be interactive and easily adaptable for beginners. It should include explanations in Russian for new words and grammar topics.
+
+
+
+Тема
+Список новых слов
+Список предложений для новых слов
+Краткий текст с использованием новых слов
+Упражнения по тексту и по словам
+Повторение
+Список вопросов
+Домашнее задание
+
+
+
+make a lesson with the following structure. Language of the lesson should be English, topic of the lesson: "Introduction", level A1
+Structure should be:
+1. Introduction: A brief explanation of the basic vocabulary related to the topic and explanation of basic grammatical structures that belong to the level of the lesson
+2. Presentation: Introduction of new vocabulary, including 10-15 words and phrases related to the topic.
+Example sentences using the new vocabulary.
+3. Practice: fill in the blank exercises and select one from a list of answers exercise. For example, continue a dialogue or continue a phrase. There should be at least 6 exercises.
+4. Conclusion: Review of key expressions and grammatical structures, example dialogues according to the current topic and vocabulary, Questions to reinforce the material and homework on the topic of the lesson
+
+
+Organize the lesson into a json file:
+it should have field "topic", "vocabulary_list", "introduction", "presentation", "practice", "conclusion".
+"topic" should include topic of the lesson, "vocabulary_list" should be an array of words introduced in the lesson.
+"introduction", "presentation" and "conclusion" values should be formatted in html and extracted from corresponding segments of the lesson
+"practice" should be formatted into an array of exercises and taken from "practice" segment of the lesson:
+if it is a "fill the blank" exercise organize it into an array, where first value is the sentence before the blank, second value is the sentence after the blank, and third value is the correct word that should be put into the blank space
+if it is a "select one from a list of answers" exercise organize it into an array, where first value is question of the exercise, second value is the right answer, third and further values are possible options.

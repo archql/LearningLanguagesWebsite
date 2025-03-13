@@ -1,0 +1,24 @@
+{
+    "topic": "Family",
+    "vocabulary_list": [
+      "Mother", "Father", "Brother", "Sister", "Grandmother", "Grandfather", 
+      "Son", "Daughter", "Aunt", "Uncle", "Cousin", "Family", "Parents", 
+      "Children", "Relatives"
+    ],
+    "introduction": "<p>In this lesson, we will learn basic vocabulary related to <strong>family members</strong> and simple grammar structures used to talk about them. We will also practice <strong>using possessive adjectives</strong> (my, your, his, her) and the verb <strong>'to be'</strong> in simple sentences.</p>",
+    "presentation": "<h3>Vocabulary:</h3><ul><li>Mother</li><li>Father</li><li>Brother</li><li>Sister</li><li>Grandmother</li><li>Grandfather</li><li>Son</li><li>Daughter</li><li>Aunt</li><li>Uncle</li><li>Cousin</li><li>Family</li><li>Parents</li><li>Children</li><li>Relatives</li></ul>\n<p><strong>Example Sentences:</strong><br>This is my mother.<br>Her brother is tall.<br>They are my parents.<br>My cousin is very friendly.<br>Our family is big.</p>\n<p><strong>Grammar:</strong><br>Possessive Adjectives: my, your, his, her, our, their<br>Verb 'to be': am, is, are</p>\n<p><strong>Example Sentences:</strong><br>I am a son.<br>She is my sister.<br>They are my parents.</p>",
+    "practice": [
+      { "type": "fill_blank", "data": ["This is my ", ".", "father"] },
+      { "type": "fill_blank", "data": ["She is ", " sister.", "my"] },
+      { "type": "fill_blank", "data": ["They are my ", ".", "parents"] },
+      { "type": "fill_blank", "data": ["His ", " is very friendly.", "uncle"] },
+      { "type": "fill_blank", "data": ["Our ", " is big.", "family"] },
+      
+      { "type": "multiple_choice", "data": ["She is my", "sister", "father", "sister", "uncle"] },
+      { "type": "multiple_choice", "data": ["They are my", "grandparents", "brother", "grandparents", "son"] },
+      { "type": "multiple_choice", "data": ["His ______ is my cousin.", "uncle", "uncle", "sister", "daughter"] },
+      { "type": "multiple_choice", "data": ["Our ______ is very friendly.", "family", "aunt", "family", "brother"] },
+      { "type": "multiple_choice", "data": ["I am his", "son", "father", "son", "mother"] }
+    ],
+    "conclusion": "<p>Let's review the words and structures we learned:</p><ul><li>Vocabulary: Mother, Father, Sister, Brother, etc.</li><li>Grammar: Possessive Adjectives, Verb 'to be'.</li></ul><p><strong>Example Dialogue:</strong><br>A: Who is that man?<br>B: He is my uncle.<br>A: And who is she?<br>B: She is my sister.</p><p><strong>Questions to Reinforce:</strong><br>1. Who is your father’s brother?<br>2. Who are your parents’ children?<br>3. Who is your mother’s mother?</p><p><strong>Homework:</strong><br>Write a short paragraph about your family. Include at least 5 sentences using the vocabulary and grammar from the lesson.</p>"
+  }
