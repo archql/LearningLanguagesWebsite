@@ -13,8 +13,8 @@ app.config['DB_PATH'] = 'users.db'  # Переносим конфигураци�
 
 app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
 
-app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=15) 
-app.config['JWT_REFRESH_TOKEN_EXPIRES'] = timedelta(minutes=15)
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=60) 
+app.config['JWT_REFRESH_TOKEN_EXPIRES'] = timedelta(minutes=60)
 
 # Убедитесь, что папка существует
 if not os.path.exists(app.config['UPLOAD_FOLDER']):

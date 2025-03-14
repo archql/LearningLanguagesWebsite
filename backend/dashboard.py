@@ -1,4 +1,5 @@
 from flask import jsonify
+import random
 from datetime import datetime
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_jwt_extended import set_access_cookies
@@ -50,7 +51,7 @@ def register_routes(app):
                 if quote and author and len(quote) > 10 and len(author) > 2:
                     return {"quote": quote, "author": author}
         return None
-
+    """
     def extract_daily_challenge(text):
         patterns = [
             r'[{"]title["\s]*:[\s"]*([^"]+)[\s"]*,[\s"]*description["\s]*:[\s"]*([^"]+)[\s"]*,',
@@ -64,7 +65,7 @@ def register_routes(app):
                 if title and description:
                     return {"title": title, "description": description}
         return None
-
+    """
     @app.route('/api/user/cultural-note', methods=['GET'])
     @jwt_required()
     def get_cultural_note():
@@ -142,65 +143,60 @@ def register_routes(app):
     @jwt_required()
     def get_daily_challenge():
         user_id = get_jwt_identity()
-        language_code = 'en'  # Значение по умолчанию (код языка)
+        today_date = datetime.now().date().isoformat()
 
-        # Получаем код языка пользователя из базы данных
         try:
-            conn = sqlite3.connect('users.db')  # Подключаемся к существующей базе данных
+            # Получаем язык пользователя и дату последнего челленджа
+            conn = sqlite3.connect('users.db')
             conn.row_factory = sqlite3.Row
             user = conn.execute(
-                "SELECT preferred_language FROM Users WHERE user_id = ?",
+                "SELECT preferred_language, daily_challenge_date FROM Users WHERE user_id = ?",
                 (user_id,)
             ).fetchone()
-            if user and user['preferred_language']:
-                language_code = user['preferred_language']
-        except Exception as e:
-            app.logger.error(f"Database error: {str(e)}")
-        finally:
             conn.close()
 
-        # Преобразуем код языка в полное название через мэппинг
-        language = LANGUAGE_MAPPING.get(language_code, 'English')  # По умолчанию English
+            if not user:
+                return jsonify({"error": "User not found"}), 404
 
-        # Обновляем промпт, вставляя язык пользователя
-        prompt = f"""
-            Generate STRICT JSON without markdown:
-            {{"title": "Daily learning challenge title", 
-            "description": "Description of the task for the day (min 10 words)"}}
-            - No explanations or extra text
-            - Use {language}
-            - Avoid technical terms like 'schema' or 'json' and repetition of the prompt "Daily learning challenge"
-            """
+            language_code = user['preferred_language'] or 'en'
+            last_challenge_date = user['daily_challenge_date']
+            is_completed = (last_challenge_date == today_date)
 
-        try:
-            response = ollama.chat(
-                model="llama3.2:1b",  # Можно изменить на вашу модель
-                messages=[{'role': 'user', 'content': prompt}],
-                options={"temperature": 0.7, "max_tokens": 150}
-            )
-            print(response)
-            
-            raw_content = response['message']['content'].strip()
+            # Запрашиваем все подходящие задания из lessons.db
+            conn = sqlite3.connect('lessons.db')
+            conn.row_factory = sqlite3.Row
+            lessons = conn.execute(
+                "SELECT lesson_id, topic, data FROM Lessons WHERE title = 'daily_challenge' AND language = ?",
+                (language_code,)
+            ).fetchall()
+            conn.close()
 
-            try:
-                data = json.loads(raw_content)
-                if 'title' in data and 'description' in data:
-                    cleaned_title = clean_text(data['title'])
-                    cleaned_description = clean_text(data['description'])
-                    if cleaned_title and cleaned_description:
-                        return jsonify({
-                            "title": cleaned_title,
-                            "description": cleaned_description
-                        })
-            except json.JSONDecodeError:
-                pass
+            if not lessons:
+                return jsonify({
+                    "id": 0,
+                    "title": "No challenge available",
+                    "description": "No challenge available for today",
+                    "isCompleted": is_completed
+                })
 
-            extracted = extract_daily_challenge(raw_content)
-            return jsonify(extracted) if extracted else jsonify(DEFAULT_CHALLENGE)
-            
+            # Выбираем случайное задание
+            selected_lesson = random.choice(lessons)
+
+            return jsonify({
+                "id": selected_lesson['lesson_id'],
+                "title": selected_lesson['topic'],
+                "description": selected_lesson['data'],
+                "isCompleted": is_completed
+            })
+
         except Exception as e:
-            app.logger.error(f"LLM Request Failed: {str(e)}")
-            return jsonify(DEFAULT_CHALLENGE), 503
+            app.logger.error(f"Database error: {str(e)}")
+            return jsonify({
+                "id": 0,
+                "title": "Error retrieving challenge",
+                "description": "An error occurred while retrieving the challenge",
+                "isCompleted": False
+            }), 500
 
 
     

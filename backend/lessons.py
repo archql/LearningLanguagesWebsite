@@ -83,3 +83,75 @@ def register_routes(app):
         
         finally:
             conn.close()
+
+    @app.route('/api/lesson/<int:id>', methods=['GET'])
+    @jwt_required()
+    def get_lesson(id):
+        user_id = get_jwt_identity()
+
+        conn = get_db_connection()
+        try:
+            lesson = conn.execute(
+                "SELECT * FROM Lessons WHERE lesson_id = ?",
+                (id,)
+            ).fetchone()
+
+            if not lesson:
+                return jsonify({"error": "Lesson not found"}), 404
+
+            # Данные урока извлекаются из поля data (в формате JSON)
+            lesson_data = json.loads(lesson['data'])
+
+            # Преобразуем данные в формат Lesson
+            result = {
+                "topic": lesson_data.get("topic", ""),
+                "vocabulary_list": lesson_data.get("vocabulary_list", []),
+                "introduction": lesson_data.get("introduction", ""),
+                "presentation": lesson_data.get("presentation", ""),
+                "practice": lesson_data.get("practice", []),
+                "conclusion": lesson_data.get("conclusion", "")
+            }
+
+            return jsonify(result)
+
+        except Exception as e:
+            app.logger.error(f"Lessons database error: {str(e)}")
+            return jsonify({"error": "Internal server error"}), 500
+
+        finally:
+            conn.close()
+
+    @app.route("/api/exercises/<int:lesson_id>", methods=["GET"])
+    def get_exercises(lesson_id):
+        lesson = get_lesson_by_id(lesson_id)
+        if not lesson:
+            return jsonify({"error": "Lesson not found"}), 404
+        
+        practice = lesson.get("practice", [])
+        
+        exercise_be = {
+            "mcRange": [],
+            "mcQuestions": [],
+            "mcOptions": [],
+            "mcCorrectAnswers": [],
+            "fbRange": [],
+            "fbBeforeBlank": [],
+            "fbAfterBlank": [],
+            "fbCorrectAnswers": [],
+            "mcGivenAnswers": [],
+            "fbGivenAnswers": []
+        }
+        
+        for i, ex in enumerate(practice):
+            if ex["type"] == "fill_blank":
+                exercise_be["fbRange"].append(i)
+                exercise_be["fbBeforeBlank"].append(ex["data"][0])
+                exercise_be["fbAfterBlank"].append(ex["data"][1])
+                exercise_be["fbCorrectAnswers"].append(ex["data"][2])
+            elif ex["type"] == "multiple_choice":
+                exercise_be["mcRange"].append(i)
+                exercise_be["mcQuestions"].append(ex["data"][0])
+                exercise_be["mcCorrectAnswers"].append(ex["data"][1])
+                exercise_be["mcOptions"].append(ex["data"][2:])
+        
+        return jsonify(exercise_be)
