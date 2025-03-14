@@ -10,7 +10,8 @@ def create_users_db():
                         password TEXT NOT NULL,
                         preferred_language TEXT,
                         cultural_note TEXT,
-                        cultural_note_date TEXT
+                        cultural_note_date TEXT,
+                        daily_challenge_date TEXT
                     )''')
     conn.commit()
     conn.close()
@@ -18,13 +19,15 @@ def create_users_db():
 def create_lessons_db():
     conn = sqlite3.connect("lessons.db")
     cursor = conn.cursor()
+
     cursor.execute('''CREATE TABLE IF NOT EXISTS Lessons (
-                        lesson_id INTEGER PRIMARY KEY,
+                        lesson_id INTEGER PRIMARY KEY AUTOINCREMENT,   
                         language TEXT NOT NULL,
-                        title TEXT NOT NULL,
-                        description TEXT,
-                        theory TEXT
+                        topic TEXT NOT NULL,                        
+                        title TEXT NOT NULL,                           
+                        data TEXT  
                     )''')
+    
     conn.commit()
     conn.close()
 
