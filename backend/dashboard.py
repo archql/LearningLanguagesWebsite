@@ -1,5 +1,8 @@
 from flask import jsonify
+from datetime import datetime
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import set_access_cookies
+from flask import make_response
 import sqlite3  
 import ollama
 import re
@@ -66,27 +69,28 @@ def register_routes(app):
     @jwt_required()
     def get_cultural_note():
         user_id = get_jwt_identity()
-        language_code = 'en'  # Значение по умолчанию (код языка)
+        today_date = datetime.now().date().isoformat()  # Текущая дата
 
-        # Получаем код языка пользователя из базы данных
-        try:
-            conn = sqlite3.connect('users.db')  # Подключаемся к существующей базе данных
-            conn.row_factory = sqlite3.Row
-            user = conn.execute(
-                "SELECT preferred_language FROM Users WHERE user_id = ?",
-                (user_id,)
-            ).fetchone()
-            if user and user['preferred_language']:
-                language_code = user['preferred_language']
-        except Exception as e:
-            app.logger.error(f"Database error: {str(e)}")
-        finally:
+        # Подключаемся к БД
+        conn = sqlite3.connect("users.db")
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+
+        # Проверяем, есть ли уже культурная заметка за сегодня
+        cursor.execute(
+            "SELECT cultural_note, cultural_note_date, preferred_language FROM Users WHERE user_id = ?",
+            (user_id,)
+        )
+        user = cursor.fetchone()
+
+        if user and user["cultural_note"] and user["cultural_note_date"] == today_date:
             conn.close()
+            return jsonify(json.loads(user["cultural_note"]))
 
-        # Преобразуем код языка в полное название через мэппинг
-        language = LANGUAGE_MAPPING.get(language_code, 'English')  # По умолчанию English
+        # Если заметки нет или она устарела, генерируем новую
+        language_code = user["preferred_language"] if user and user["preferred_language"] else "en"
+        language = LANGUAGE_MAPPING.get(language_code, "English")
 
-        # Обновляем промпт, вставляя язык пользователя
         prompt = f"""
             Generate STRICT JSON without markdown:
             {{"quote": "Cultural/personal growth quote (min 5 words)", 
@@ -94,7 +98,7 @@ def register_routes(app):
             - No explanations or extra text
             - Use {language}
             - Avoid technical terms like 'schema' or 'json' and repetition of the prompt "Cultural/personal growth quote (min 5 words)"
-            """
+        """
 
         try:
             response = ollama.chat(
@@ -111,19 +115,28 @@ def register_routes(app):
                     cleaned_quote = clean_text(data['quote'])
                     cleaned_author = clean_text(data['author'])
                     if cleaned_quote and cleaned_author:
-                        return jsonify({
-                            "quote": cleaned_quote,
-                            "author": cleaned_author
-                        })
+                        note_json = json.dumps({"quote": cleaned_quote, "author": cleaned_author})
+
+                        # Сохраняем новую заметку в БД
+                        cursor.execute(
+                            "UPDATE Users SET cultural_note = ?, cultural_note_date = ? WHERE user_id = ?",
+                            (note_json, today_date, user_id)
+                        )
+                        conn.commit()
+                        conn.close()
+
+                        return jsonify({"quote": cleaned_quote, "author": cleaned_author})
             except json.JSONDecodeError:
                 pass
-                
+
             extracted = extract_cultural_note(raw_content)
             return jsonify(extracted) if extracted else jsonify(DEFAULT_NOTE)
-            
+
         except Exception as e:
             app.logger.error(f"LLM Request Failed: {str(e)}")
-            return jsonify(DEFAULT_NOTE), 503
+
+        conn.close()
+        return jsonify(DEFAULT_NOTE), 503  # Фоллбэк, если генерация не удалась
 
     @app.route('/api/user/daily-challenge', methods=['GET'])
     @jwt_required()
@@ -279,7 +292,9 @@ def register_routes(app):
                     "completionPercentage": completion_percentage
                 })
             
+
             return jsonify(result)
+
 
         except Exception as e:
             app.logger.error(f"Database error: {str(e)}")
