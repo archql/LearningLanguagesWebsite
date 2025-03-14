@@ -13,7 +13,7 @@
           </p>
           <mat-progress-bar
             mode="determinate"
-            [value]="userProgress.data?.completedLessons"
+            [value]="userProgress.data ? (userProgress.data.completedLessons / userProgress.data.totalLessons * 100) : 0"
           ></mat-progress-bar>
           <p class="motivational-message">{{ getMotivationalMessage() }}</p>
         </app-loader-wrapper>
