@@ -8,7 +8,9 @@ def create_users_db():
                         username TEXT NOT NULL,
                         email TEXT NOT NULL,
                         password TEXT NOT NULL,
-                        preferred_language TEXT
+                        preferred_language TEXT,
+                        cultural_note TEXT,
+                        cultural_note_date TEXT
                     )''')
     conn.commit()
     conn.close()
