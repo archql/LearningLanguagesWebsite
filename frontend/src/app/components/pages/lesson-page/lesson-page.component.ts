@@ -14,21 +14,21 @@ import { LessonFinishedModalComponent } from '../lesson-finished-modal/lesson-fi
 import { TextToSpeechComponent } from "../../helpers/text-to-speech/text-to-speech.component";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LoaderWrapperComponent } from "../../helpers/loader-wrapper/loader-wrapper.component";
+import { Loadable } from '../../helpers/loader-wrapper/loader-wrapper.model';
 
 
 @Component({
   selector: 'app-lesson-page',
   standalone: true,
-  imports: [ContextMenuComponent, TranslateModule, MatCardModule, MatButtonModule, CommonModule, ExerciseComponent, MatDialogModule, TextToSpeechComponent],
+  imports: [ContextMenuComponent, TranslateModule, MatCardModule, MatButtonModule, CommonModule, ExerciseComponent, MatDialogModule, TextToSpeechComponent, LoaderWrapperComponent],
   templateUrl: './lesson-page.component.html',
   styleUrl: './lesson-page.component.scss'
 })
 export class LessonPageComponent implements CanComponentDeactivate {
 
-  lessonFilename = ''
-  lesson: Lesson = {'topic': '', 'vocabulary_list': [''], 'introduction': '', 'presentation': '', 'conclusion': '',
-    'practice': []
-  }
+  lessonId: number = 0
+  lesson: Loadable<Lesson> = new Loadable;
 
   // translations
   private subscription: Subscription;   
@@ -48,15 +48,17 @@ export class LessonPageComponent implements CanComponentDeactivate {
     private lessonService: LessonService, 
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private router: Router
   ) {
     this.subscription = new Subscription();
   }
   private readonly route = inject(ActivatedRoute);
   ngOnInit() {
     const lessonId = this.route.snapshot.paramMap.get('id');
-    this.lessonFilename = `lesson_${lessonId}.json`
-    this.loadLesson()
+    if (lessonId === null) { this.router.navigate(['/home/dashboard'])}
+    this.lessonId = parseInt(lessonId!)
+    this.lesson = new Loadable(() => this.lessonService.loadLesson(this.lessonId));
     //
     this.subscription = this.translate
       .stream(this.trIDs)
@@ -66,16 +68,9 @@ export class LessonPageComponent implements CanComponentDeactivate {
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.lesson.cleanup()
   }
-
-  loadLesson() {
-    this.lessonService.loadLesson(this.lessonFilename).subscribe(
-      (data) => { this.lesson = data;},
-      (error) => {console.error('Failed to load questions', error);}
-    );
-  }
-
-
+  
   menuItems: MenuAction[] = [
     {
       trID: 'add-to-vocabulary',
@@ -118,7 +113,7 @@ export class LessonPageComponent implements CanComponentDeactivate {
 
   showFeedback(data: string[]) {
     const dialogRef = this.dialog.open(LessonFinishedModalComponent, {
-      width: '640px',
+      width: '63%',
       data: { title: data[0], message: data[1] }
     });
 

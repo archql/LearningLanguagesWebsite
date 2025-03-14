@@ -1,29 +1,31 @@
-<mat-card class="introduction">
-    <mat-card-content style="position: relative;">
-        <h2>{{ lesson.topic }}</h2>
-        <div [innerHTML]="lesson.introduction"></div>
-        <app-text-to-speech [textToSpeak]="lesson.introduction"></app-text-to-speech>
-    </mat-card-content>
-</mat-card>
-
-<mat-card class="presentation">
-    <mat-card-content style="position: relative;">
-        <div [innerHTML]="lesson.presentation"></div>
-        <app-text-to-speech [textToSpeak]="lesson.presentation"></app-text-to-speech>
-    </mat-card-content>
-</mat-card>
-
-<app-exercise [lessonFilename]="lessonFilename" [triggerFinish]="triggerFinish"
+<app-loader-wrapper [loading]="lesson.loading" [error]="lesson.error">
+    <mat-card class="introduction">
+        <mat-card-content style="position: relative;">
+            <h2>{{ lesson.data!.topic }}</h2>
+            <div [innerHTML]="lesson.data!.introduction"></div>
+            <app-text-to-speech [textToSpeak]="lesson.data!.introduction"></app-text-to-speech>
+        </mat-card-content>
+    </mat-card>
+    
+    <mat-card class="presentation">
+        <mat-card-content style="position: relative;">
+            <div [innerHTML]="lesson.data!.presentation"></div>
+            <app-text-to-speech [textToSpeak]="lesson.data!.presentation"></app-text-to-speech>
+        </mat-card-content>
+    </mat-card>
+    
+    <app-exercise [id]="lessonId" [triggerFinish]="triggerFinish"
     (returnFeedback)="showFeedback($event)"
-></app-exercise>
-
-<mat-card class="conclusion">
-    <mat-card-content style="position: relative;">
-        <div [innerHTML]="lesson.conclusion"></div>
-        <app-text-to-speech [textToSpeak]="lesson.presentation"></app-text-to-speech>
-    </mat-card-content>
-</mat-card>
-
-<app-context-menu [menuItems]="menuItems"></app-context-menu>
-
-<button mat-flat-button (click)="getFeedback()">{{'app.dialog.lesson.finish' | translate}}</button>
+    ></app-exercise>
+    
+    <mat-card class="conclusion">
+        <mat-card-content style="position: relative;">
+            <div [innerHTML]="lesson.data!.conclusion"></div>
+            <app-text-to-speech [textToSpeak]="lesson.data!.presentation"></app-text-to-speech>
+        </mat-card-content>
+    </mat-card>
+    
+    <app-context-menu [menuItems]="menuItems"></app-context-menu>
+    
+    <button mat-flat-button (click)="getFeedback()">{{'app.dialog.lesson.finish' | translate}}</button>
+</app-loader-wrapper>

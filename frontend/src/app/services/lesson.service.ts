@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Topic } from '../components/teaching/lesson-selection/lesson-selection.model';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, of, tap, throwError } from 'rxjs';
+import { ExerciseBe } from '../components/exercises/exercise/exercise.model';
 
 export interface Lesson {
   topic: string,
@@ -53,7 +54,26 @@ export class LessonService {
     );
   }
 
-  loadLesson(lessonFilename: string): Observable<Lesson> {
-    return this.http.get<Lesson>(`/${lessonFilename}`);
+  loadLesson(id: number): Observable<Lesson> {
+    // return this.http.get<Lesson>(`/lesson_${id}.json`).pipe(
+    return this.http.get<Lesson>(`/api/lesson/${id}`).pipe(
+      tap(response => {
+        return response;
+      }),
+      catchError(error => {
+        return throwError(() => error);
+      })
+    );
+  }
+
+  loadExercises(id: number): Observable<ExerciseBe> {
+    return this.http.get<ExerciseBe>(`/api/lesson/${id}`).pipe(
+      tap(response => {
+        return response;
+      }),
+      catchError(error => {
+        return throwError(() => error);
+      })
+    );
   }
 }
