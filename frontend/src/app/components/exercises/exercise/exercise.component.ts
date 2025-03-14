@@ -72,7 +72,7 @@ export class ExerciseComponent {
     this.feedbackData[0] = `Answered ${correct} out of ${this.exerciseBe.data!.fbRange.length + this.exerciseBe.data!.mcRange.length} correctly`
     this.feedbackData[1] = feedback
 
-    this.lessonService.submitLesson(this.id, correct / (this.exerciseBe.data!.mcRange.length + this.exerciseBe.data!.fbRange.length))
+    this.lessonService.submitLesson(this.id, (correct / (this.exerciseBe.data!.mcRange.length + this.exerciseBe.data!.fbRange.length)) > 0.5)
   }
 
   constructor(private lessonService: LessonService, private router: Router) {}
