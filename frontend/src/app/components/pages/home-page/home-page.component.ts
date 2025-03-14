@@ -15,6 +15,7 @@ export class HomePageComponent {
     { trID: 'dashboard', label: 'Dashboard', link: 'dashboard' },
     { trID: 'profile', label: 'Profile', link: 'profile' },
     { trID: 'lesson-selection', label: 'Lesson Selection', link: 'lessons' },
-    { trID: 'my-vocabulary', label: 'My Vocabulary', link: 'vocabulary' }
+    { trID: 'my-vocabulary', label: 'My Vocabulary', link: 'vocabulary' },
+    { trID: 'faq', label: 'FAQ', link: 'faq' },
   ];
 }

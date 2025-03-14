@@ -28,7 +28,10 @@ export class LessonPageComponent implements CanComponentDeactivate {
     'practice': []
   }
 
-  constructor(private lessonService: LessonService, private dialog: MatDialog) {}
+  constructor(
+    private lessonService: LessonService, 
+    private dialog: MatDialog
+  ) {}
   private readonly route = inject(ActivatedRoute);
   ngOnInit() {
     const lessonId = this.route.snapshot.paramMap.get('id');

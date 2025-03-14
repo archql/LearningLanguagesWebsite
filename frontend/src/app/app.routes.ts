@@ -13,6 +13,7 @@ import { MainComponent } from './components/helpers/main/main.component';
 import { CanDeactivateGuard } from './guards/can-deactivate.guard';
 import { LessonPageComponent } from './components/pages/lesson-page/lesson-page.component';
 import { lessonGuard } from './guards/lesson.guard';
+import { FaqPageComponent } from './components/pages/faq-page/faq-page.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -32,6 +33,7 @@ export const routes: Routes = [
       children: [
         { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
         { path: 'profile', component: ProfilePageComponent} ,
+        { path: 'faq', component: FaqPageComponent} ,
         { path: 'lessons', component: LessonSelectionPageComponent} ,
         { path: 'dashboard', component: DashboardPageComponent },
         { path: 'vocabulary', component: VocabularyPageComponent },
