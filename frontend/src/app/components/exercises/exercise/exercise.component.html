@@ -1,0 +1,10 @@
+<ng-container *ngFor="let i of mcRange">
+    <app-multiple-choice
+        [question]="mcQuestions[i]" [options]="mcOptions[i]" (answerSelected)="handleMcAnswerSubmission($event, i)">
+    </app-multiple-choice>
+</ng-container>
+<ng-container *ngFor="let i of fbRange">
+    <app-fill-blanks
+        [beforeBlank]="fbBeforeBlank[i]" [afterBlank]="fbAfterBlank[i]" (answerSubmitted)="handleFbAnswerSubmission($event, i)">
+    </app-fill-blanks>
+</ng-container>

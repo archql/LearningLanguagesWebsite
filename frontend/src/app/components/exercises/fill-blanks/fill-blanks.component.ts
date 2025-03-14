@@ -19,7 +19,7 @@ import { debounceTime } from 'rxjs/operators';
 export class FillBlanksComponent {
   @Input() beforeBlank: string = '';
   @Input() afterBlank: string = '';
-  @Input() id: Number = 0;
+  @Input() id: number = 0;
   @Output() answerSubmitted = new EventEmitter<string>();
 
   userAnswer: string = '';

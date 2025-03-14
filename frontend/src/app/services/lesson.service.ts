@@ -3,6 +3,20 @@ import { Topic } from '../components/teaching/lesson-selection/lesson-selection.
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, of, tap, throwError } from 'rxjs';
 
+export interface Lesson {
+  topic: string,
+  vocabulary_list: string[],
+  introduction: string,
+  presentation: string,
+  practice: Exercise[],
+  conclusion: string
+}
+export interface Exercise {
+  type : string,
+  data : string[]
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -37,5 +51,9 @@ export class LessonService {
         return throwError(() => error);
       })
     );
+  }
+
+  loadLesson(lessonFilename: string): Observable<Lesson> {
+    return this.http.get<Lesson>(`/${lessonFilename}`);
   }
 }

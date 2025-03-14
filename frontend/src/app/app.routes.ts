@@ -35,7 +35,7 @@ export const routes: Routes = [
         { path: 'lessons', component: LessonSelectionPageComponent} ,
         { path: 'dashboard', component: DashboardPageComponent },
         { path: 'vocabulary', component: VocabularyPageComponent },
-        { path: 'lesson', component: LessonPageComponent, canDeactivate: [CanDeactivateGuard], canActivate: [lessonGuard] },
+        { path: 'lesson/:id', component: LessonPageComponent, canDeactivate: [CanDeactivateGuard], canActivate: [lessonGuard] },
       ],
     },
     { path: '**', pathMatch: 'full', component: ErrorComponent}, // catch all
