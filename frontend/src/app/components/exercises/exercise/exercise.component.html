@@ -1,12 +1,12 @@
 <app-loader-wrapper [loading]="exerciseBe.loading" [error]="exerciseBe.error">
-<ng-container *ngFor="let i of exerciseBe.data!.mcRange">
-    <app-multiple-choice
-        [question]="exerciseBe.data!.mcQuestions[i]" [options]="exerciseBe.data!.mcOptions[i]" (answerSelected)="handleMcAnswerSubmission($event, i)">
-    </app-multiple-choice>
-</ng-container>
-<ng-container *ngFor="let i of exerciseBe.data!.fbRange">
-    <app-fill-blanks
-        [beforeBlank]="exerciseBe.data!.fbBeforeBlank[i]" [afterBlank]="exerciseBe.data!.fbAfterBlank[i]" (answerSubmitted)="handleFbAnswerSubmission($event, i)">
-    </app-fill-blanks>
-</ng-container>
+    <ng-container *ngFor="let i of exerciseBe.data?.mcRange">
+        <app-multiple-choice
+            [question]="exerciseBe.data?.mcQuestions?.[i] || ''" [options]="exerciseBe.data?.mcOptions?.[i] || []" (answerSelected)="handleMcAnswerSubmission($event, i)">
+        </app-multiple-choice>
+    </ng-container>
+    <ng-container *ngFor="let i of exerciseBe.data?.fbRange">
+        <app-fill-blanks
+            [beforeBlank]="exerciseBe.data?.fbBeforeBlank?.[i] || ''" [afterBlank]="exerciseBe.data?.fbAfterBlank?.[i] || ''" (answerSubmitted)="handleFbAnswerSubmission($event, i)">
+        </app-fill-blanks>
+    </ng-container>
 </app-loader-wrapper>

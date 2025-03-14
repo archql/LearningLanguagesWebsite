@@ -12,16 +12,18 @@ const langMap: { [key: string]: string } = {
 })
 export class TextToSpeechService {
 
-  private synth: SpeechSynthesis;
-  private utterance: SpeechSynthesisUtterance;
+  private synth?: SpeechSynthesis;
+  private utterance?: SpeechSynthesisUtterance;
 
   constructor() {
-    this.synth = window.speechSynthesis;
-    this.utterance = new SpeechSynthesisUtterance();
+    if (typeof window !== 'undefined') {
+      this.synth = window.speechSynthesis;
+      this.utterance = new SpeechSynthesisUtterance();
+    }
   }
 
   speak(text: string, lang: string, rate: number = 1) {
-    if (typeof window === 'undefined' || !this.synth) return;
+    if (typeof window === 'undefined' || !this.synth || !this.utterance) return;
     if (this.synth.speaking) {
       console.warn('Speech synthesis is already in progress.');
       return;
@@ -35,7 +37,7 @@ export class TextToSpeechService {
   }
 
   stop() {
-    if (this.synth.speaking) {
+    if (this.synth && this.synth.speaking) {
       this.synth.cancel();
     }
   }

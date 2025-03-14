@@ -12,14 +12,14 @@ import { TextToSpeechService } from '../../../services/text-to-speech.service';
 })
 export class TextToSpeechComponent {
 
-  @Input() textToSpeak: string = '';
+  @Input() textToSpeak?: string = '';
 
   isSpeaking: boolean = false;
 
   constructor(private tts : TextToSpeechService) {}
 
   speak() {
-    if (typeof window === 'undefined') return;
+    if (typeof window === 'undefined' || !this.textToSpeak) return;
     if (!this.isSpeaking) {
       this.isSpeaking = true;
       this.textToSpeak = this.textToSpeak.replace(/<[^>]*>/g, '. ');
