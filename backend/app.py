@@ -1,7 +1,8 @@
 from flask import Flask
 from flask_bcrypt import Bcrypt
-from flask_jwt_extended import JWTManager
+from flask_jwt_extended import JWTManager, get_jwt_identity, create_access_token, jwt_required
 from flask_cors import CORS
+from datetime import timedelta
 import os
 
 app = Flask(__name__)
@@ -11,6 +12,9 @@ app.config['DB_PATH'] = 'users.db'  # Переносим конфигураци�
 
 
 app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
+
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(minutes=15) 
+app.config['JWT_REFRESH_TOKEN_EXPIRES'] = timedelta(minutes=15)
 
 # Убедитесь, что папка существует
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
@@ -22,6 +26,8 @@ bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 CORS(app)
 
+
+
 # Регистрация маршрутов из других файлов
 from registration import register_routes as register_auth_routes
 from dashboard import register_routes as register_dashboard_routes
@@ -32,6 +38,8 @@ register_lessons_routes(app)
 register_auth_routes(app, bcrypt)  # Передаем bcrypt из основного приложения
 register_dashboard_routes(app)
 register_profile_routes(app)  # Регистрация маршрутов профиля
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
