@@ -1,6 +1,7 @@
 from flask import request, jsonify
 import json
 import sqlite3
+import ollama
 from flask_jwt_extended import jwt_required, get_jwt_identity
 
 def register_routes(app):
@@ -211,3 +212,68 @@ def register_routes(app):
         finally:
             conn.close()
         """
+    
+    @app.route('/api/user/vocabulary/add', methods=['POST'])
+    @jwt_required()
+    def add_vocabulary():
+        user_id = get_jwt_identity()
+        data = request.get_json()
+
+        # Получаем слово и язык перевода из запроса
+        word = data.get('word')
+        language_code = data.get('language')  # Язык, переданный с фронтенда
+
+        if not word or not language_code:
+            return jsonify({"message": "Both word and language are required"}), 400
+
+        # Подключаемся к БД
+        conn = sqlite3.connect("vocabulary.db")
+        cursor = conn.cursor()
+
+        LANGUAGE_MAPPING = {
+        'en': 'English',
+        'de': 'German',
+        'ru': 'Russian', 
+        'by': 'Belarusian'
+        }
+        # Создаем промпт для ЛЛМ
+        language = LANGUAGE_MAPPING.get(language_code, "English")
+
+        prompt = f"""
+            Translate the word '{word}' into {language}. Only return the translation, no extra text.
+            Output should be one word only.
+        """
+
+        try:
+            # Получаем перевод через ЛЛМ
+            response = ollama.chat(
+                model="llama3.2:1b",
+                messages=[{'role': 'user', 'content': prompt}],
+                options={"temperature": 0.7, "max_tokens": 1}
+            )
+
+            translation = response['message']['content'].strip()
+
+            if not translation:
+                return jsonify({"message": "Failed to generate translation"}), 500
+
+            # Записываем слово и перевод в БД
+            try:
+                cursor.execute("""
+                    INSERT INTO Vocabulary (user_id, word, translation)
+                    VALUES (?, ?, ?)
+                    ON CONFLICT(user_id, word, translation) DO NOTHING
+                """, (user_id, word, translation))
+                conn.commit()
+            except sqlite3.IntegrityError:
+                # Слово уже существует в базе, ничего не делаем
+                pass
+
+            conn.close()
+
+            return jsonify({"message": "Word and translation added successfully", "word": word, "translation": translation}), 200
+
+        except Exception as e:
+            app.logger.error(f"LLM Request Failed: {str(e)}")
+            conn.close()
+            return jsonify({"message": "Error processing translation request"}), 500
