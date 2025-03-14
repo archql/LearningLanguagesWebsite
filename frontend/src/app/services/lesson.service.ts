@@ -54,6 +54,18 @@ export class LessonService {
     );
   }
 
+  submitLesson(lessonId: number, score: number): Observable<boolean> {
+    return this.http.post<boolean>('/api/user/progress/submit', {lessonId, score}).pipe(
+      tap(response => {
+        return of(true);
+      }),
+      catchError(error => {
+        // return of(null); TODO substitute?
+        return throwError(() => error);
+      })
+    );
+  }
+
   loadLesson(id: number): Observable<Lesson> {
     // return this.http.get<Lesson>(`/lesson_${id}.json`).pipe(
     return this.http.get<Lesson>(`/api/lesson/${id}`).pipe(
