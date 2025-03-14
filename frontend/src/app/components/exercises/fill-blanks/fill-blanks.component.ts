@@ -17,7 +17,7 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay';
   standalone: true,
   templateUrl: './fill-blanks.component.html',
   styleUrls: ['./fill-blanks.component.scss'],
-  imports: [MatCardModule, MatInputModule, MatButtonModule, FormsModule, CommonModule, TextToSpeechComponent, SpecialCharPanelComponent]
+  imports: [MatCardModule, MatInputModule, MatButtonModule, FormsModule, CommonModule, TextToSpeechComponent]
 })
 export class FillBlanksComponent {
   @Input() beforeBlank: string = '';
