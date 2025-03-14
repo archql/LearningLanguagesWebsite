@@ -1,0 +1,9 @@
+.char-panel {
+    position: absolute;
+    z-index: 1000;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}

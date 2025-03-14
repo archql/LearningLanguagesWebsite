@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -7,7 +7,9 @@ import { CommonModule } from '@angular/common';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { TextToSpeechComponent } from '../../helpers/text-to-speech/text-to-speech.component';
-
+import { SpecialCharPanelComponent } from '../../helpers/special-char-panel/special-char-panel.component';
+import { ComponentPortal } from '@angular/cdk/portal';
+import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 
 
 @Component({
@@ -15,7 +17,7 @@ import { TextToSpeechComponent } from '../../helpers/text-to-speech/text-to-spee
   standalone: true,
   templateUrl: './fill-blanks.component.html',
   styleUrls: ['./fill-blanks.component.scss'],
-  imports: [MatCardModule, MatInputModule, MatButtonModule, FormsModule, CommonModule, TextToSpeechComponent]
+  imports: [MatCardModule, MatInputModule, MatButtonModule, FormsModule, CommonModule, TextToSpeechComponent, SpecialCharPanelComponent]
 })
 export class FillBlanksComponent {
   @Input() beforeBlank: string = '';
@@ -37,5 +39,51 @@ export class FillBlanksComponent {
 
   onInputChange() {
     this.answerChange$.next();
+  }
+
+  // Special Char Panel stuff
+  private overlayRef?: OverlayRef;
+  private activeInput?: HTMLInputElement;
+
+  constructor(private overlay: Overlay, private renderer: Renderer2) {}
+
+  showPanel(event: FocusEvent) {
+    this.activeInput = event.target as HTMLInputElement;
+
+    if (this.overlayRef) {
+      this.overlayRef.detach();
+    }
+
+    const positionStrategy = this.overlay.position()
+      .flexibleConnectedTo(this.activeInput)
+      .withPositions([{ 
+        originX: 'start', originY: 'bottom', 
+        overlayX: 'start', overlayY: 'top'
+      }]);
+
+    this.overlayRef = this.overlay.create({
+      positionStrategy,
+      hasBackdrop: true,
+      backdropClass: 'cdk-overlay-transparent-backdrop'
+    });
+
+    const charPanelPortal = new ComponentPortal(SpecialCharPanelComponent);
+    const componentRef = this.overlayRef.attach(charPanelPortal);
+
+    componentRef.instance.charSelected.subscribe(char => this.insertChar(char));
+    this.overlayRef.backdropClick().subscribe(() => this.overlayRef?.detach());
+  }
+
+  insertChar(char: string) {
+    if (!this.activeInput) return;
+
+    const input = this.activeInput;
+    const start = input.selectionStart || 0;
+    const end = input.selectionEnd || 0;
+    const text = input.value;
+
+    input.value = text.slice(0, start) + char + text.slice(end);
+    input.setSelectionRange(start + 1, start + 1);
+    input.focus();
   }
 }

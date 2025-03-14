@@ -14,3 +14,12 @@
         }
     }
 }   
+
+:host {
+    display: block;
+    padding: 20px;
+  }
+  mat-form-field {
+    margin-bottom: 20px;
+    display: block;
+}
