@@ -188,7 +188,7 @@ describe('UserService', () => {
       expect(response).toBeTrue();
     });
 
-    const req = httpMock.expectOne('/api/user/vocabulary');
+    const req = httpMock.expectOne('/api/user/vocabulary/file');
     expect(req.request.method).toBe('POST');
     req.flush(true);
   });
@@ -201,7 +201,7 @@ describe('UserService', () => {
       error: error => expect(error).toBeTruthy()
     });
 
-    const req = httpMock.expectOne('/api/user/vocabulary');
+    const req = httpMock.expectOne('/api/user/vocabulary/file');
     req.flush('Error', { status: 500, statusText: 'Server Error' });
   });
 
@@ -212,7 +212,7 @@ describe('UserService', () => {
       expect(blob).toEqual(mockBlob);
     });
 
-    const req = httpMock.expectOne('/api/user/vocabulary');
+    const req = httpMock.expectOne('/api/user/vocabulary/file');
     expect(req.request.method).toBe('GET');
     req.flush(mockBlob);
   });

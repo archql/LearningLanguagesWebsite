@@ -122,7 +122,7 @@ export class UserService {
     formData.append('file', file);
     console.log(formData)
 
-    return this.http.post<boolean>('/api/user/vocabulary', formData).pipe(
+    return this.http.post<boolean>('/api/user/vocabulary/file', formData).pipe(
       tap(response => {
         return of(true);
       }),
@@ -167,7 +167,7 @@ export class UserService {
   }
 
   downloadVocabulary(): Observable<Blob | null> {
-    return this.http.get('/api/user/vocabulary', { responseType: 'blob' }).pipe(
+    return this.http.get('/api/user/vocabulary/file', { responseType: 'blob' }).pipe(
       tap(response => {
         const url = window.URL.createObjectURL(response);
         const a = document.createElement('a');
