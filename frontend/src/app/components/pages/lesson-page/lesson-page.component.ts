@@ -76,9 +76,11 @@ export class LessonPageComponent implements CanComponentDeactivate {
       trID: 'add-to-vocabulary',
       label: '',
       action: (e) => { 
+        if (typeof window === 'undefined') return
+        const lang = localStorage.getItem('language') || 'en';
         console.log('add-to-vocabulary: ', e) 
         this.addWordPending = true;
-        this.lessonService.addWord(e).subscribe({
+        this.lessonService.addWord(e, lang).subscribe({
           next: (response) => {
             this.showNotification(this.tr['app.dialog.add-word.success']);
             this.addWordPending = false;

@@ -42,8 +42,8 @@ export class LessonService {
     );
   }
 
-  addWord(word: string): Observable<boolean> {
-    return this.http.post<boolean>('/api/user/vocabulary/add', {word}).pipe(
+  addWord(word: string, language: string): Observable<boolean> {
+    return this.http.post<boolean>('/api/user/vocabulary/add', {word, language}).pipe(
       tap(response => {
         return of(true);
       }),
