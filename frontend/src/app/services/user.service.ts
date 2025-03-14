@@ -135,7 +135,7 @@ export class UserService {
   }
 
   removeWord(word: VocabularyWord): Observable<boolean> {
-    return this.http.delete<boolean>('/api/user/vocabulary', { params: { word: word.word } }).pipe(
+    return this.http.delete<boolean>('/api/user/vocabulary', { params: { word: word.word, translation: word.meaning } }).pipe(
       tap(() => {
         return of(true);
       }),

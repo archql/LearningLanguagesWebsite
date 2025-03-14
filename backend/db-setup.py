@@ -67,6 +67,7 @@ def create_vocabulary_db():
                         user_id INTEGER,
                         word TEXT NOT NULL,
                         translation TEXT NOT NULL,
+                        UNIQUE(user_id, word, translation),
                         FOREIGN KEY(user_id) REFERENCES Users(user_id)
                     )''')
     conn.commit()

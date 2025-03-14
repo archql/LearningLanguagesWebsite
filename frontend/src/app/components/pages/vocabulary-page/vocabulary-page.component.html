@@ -12,8 +12,8 @@
                     <span mat-subheader style="font-size: 1.2em;">{{ group.section }}</span>
                     @for (word of group.words; track word.word) {
                         <mat-list-item>
-                            <span class="word">{{ word.meaning }}</span>
-                            <span class="translation">{{ word.word }}</span>
+                            <span class="word">{{ word.word }}</span>
+                            <span class="translation">{{ word.meaning }}</span>
                             <button mat-icon-button color="warn" (click)="removeWord(group, word)">
                                 <mat-icon>delete</mat-icon>
                             </button>

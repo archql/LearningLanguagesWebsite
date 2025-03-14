@@ -44,7 +44,7 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     let token = this.getToken();
-    return true; // !!token && !this.isTokenExpired(token);
+    return !!token && !this.isTokenExpired(token);
   }
 
   login(email: string, password: string): Observable<AuthResponse> {

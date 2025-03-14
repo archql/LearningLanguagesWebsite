@@ -39,7 +39,7 @@
         </mat-expansion-panel-header>
         <mat-list>
           @for (lesson of topic.lessons; track lesson.id) {
-            <mat-list-item (click)="goToLesson(lesson.route)">
+            <mat-list-item (click)="goToLesson(lesson.id)">
               <mat-icon>{{ lesson.completed ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
               {{ lesson.title }}
             </mat-list-item>

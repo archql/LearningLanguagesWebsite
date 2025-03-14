@@ -53,11 +53,11 @@ export class LessonSelectionComponent {
       .find((lesson) => lesson.title === selectedLessonTitle);
 
     if (selectedLesson) {
-      this.goToLesson(selectedLesson.route);
+      this.goToLesson(selectedLesson.id);
     }
   }
 
-  goToLesson(route: string): void {
-    this.router.navigate([route]);
+  goToLesson(id: number): void {
+    this.router.navigate([`/home/lesson/${id}`]);
   }
 }

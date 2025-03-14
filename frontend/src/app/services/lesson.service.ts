@@ -79,7 +79,7 @@ export class LessonService {
   }
 
   loadExercises(id: number): Observable<ExerciseBe> {
-    return this.http.get<ExerciseBe>(`/api/lesson/${id}`).pipe(
+    return this.http.get<ExerciseBe>(`/api/exercises/${id}`).pipe(
       tap(response => {
         return response;
       }),

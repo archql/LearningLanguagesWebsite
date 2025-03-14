@@ -141,7 +141,7 @@ def register_routes(app):
             conn.close()
 
             # Возвращаем результат в формате JSON
-            return jsonify(vocabulary_response), 200
+            return yaml.dump(vocabulary_response, sort_keys=False), 200
 
         except Exception as e:
             return jsonify({"message": f"An error occurred: {str(e)}"}), 500
@@ -173,12 +173,13 @@ def register_routes(app):
                 # Подключаемся к базе данных для сохранения словаря
                 conn = sqlite3.connect("vocabulary.db")
                 cursor = conn.cursor()
-
+                print(vocabulary_data)
                 # Вставляем каждую пару ключ-значение из словаря в базу данных
                 for word, translation in vocabulary_data.items():
                     cursor.execute("""
                         INSERT INTO Vocabulary (user_id, word, translation)
                         VALUES (?, ?, ?)
+                        ON CONFLICT(user_id, word, translation) DO NOTHING
                     """, (user_id, word, translation))
 
                 conn.commit()
@@ -205,6 +206,7 @@ def register_routes(app):
     def delete_word():
         user_id = get_jwt_identity()
         word = request.args.get('word')
+        translation = request.args.get('translation')
 
         if not word:
             return jsonify({"message": "Word parameter is required"}), 400
@@ -215,8 +217,8 @@ def register_routes(app):
 
             cursor.execute("""
                 DELETE FROM Vocabulary 
-                WHERE user_id = ? AND word = ?
-            """, (user_id, word))
+                WHERE user_id = ? AND word = ? AND translation = ?
+            """, (user_id, word, translation))
 
             if cursor.rowcount == 0:
                 return jsonify({"message": "Word not found"}), 404
