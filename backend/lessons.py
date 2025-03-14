@@ -18,32 +18,26 @@ def register_routes(app):
         user_id = get_jwt_identity()
         user_language = 'en'  # Значение по умолчанию
 
-        # Получаем язык пользователя из базы данных
         try:
-            user_conn = sqlite3.connect('users.db')  # Подключение к базе данных пользователей
-            user_conn.row_factory = sqlite3.Row
-            user = user_conn.execute(
-                "SELECT preferred_language FROM Users WHERE user_id = ?",
+            conn = sqlite3.connect("lessons.db")
+            conn.row_factory = sqlite3.Row
+
+            # Подключаем другие базы данных
+            conn.execute('ATTACH DATABASE "users.db" AS users_db')
+            conn.execute('ATTACH DATABASE "user_progress.db" AS progress_db')
+
+            # Получаем язык пользователя
+            user_data = conn.execute(
+                'SELECT preferred_language FROM users_db.Users WHERE user_id = ?',
                 (user_id,)
             ).fetchone()
-            if user and user['preferred_language']:
-                user_language = user['preferred_language']
-        except Exception as e:
-            app.logger.error(f"User database error: {str(e)}")
-        finally:
-            user_conn.close()
 
-        # Подключаемся к основной базе данных
-        conn = get_db_connection()  # Функция get_db_connection должна подключать к нужной базе
-        try:
+            if user_data and user_data["preferred_language"]:
+                user_language = user_data["preferred_language"]
+
             # Получаем все темы
             topics_data = conn.execute(
-                """
-                SELECT DISTINCT topic 
-                FROM Lessons 
-                WHERE language = ?
-                """,
-                (user_language,)
+                "SELECT DISTINCT topic FROM Lessons WHERE language = ?", (user_language,)
             ).fetchall()
 
             if not topics_data:
@@ -53,7 +47,7 @@ def register_routes(app):
             for topic_row in topics_data:
                 topic_name = topic_row["topic"]
 
-                # Получаем все уроки по данной теме
+                # Получаем все уроки по теме
                 lessons = conn.execute(
                     """
                     SELECT lesson_id, title, data 
@@ -74,29 +68,20 @@ def register_routes(app):
                 ]
 
                 # Получаем прогресс пользователя по данной теме
-                try:
-                    progress_conn = sqlite3.connect('user_progress.db')  # Подключаемся к базе данных user_progress
-                    progress_conn.row_factory = sqlite3.Row
-                    completed_lessons = progress_conn.execute(
-                        """
-                        SELECT COUNT(*) FROM UserProgress
-                        WHERE user_id = ? AND lesson_id IN (
-                            SELECT lesson_id FROM Lessons WHERE topic = ? AND language = ?
-                        )
-                        """,
-                        (user_id, topic_name, user_language),
-                    ).fetchone()[0]
+                progress_data = conn.execute(
+                    """
+                    SELECT COUNT(*) AS completed_lessons
+                    FROM progress_db.UserProgress
+                    WHERE user_id = ? AND lesson_id IN (
+                        SELECT lesson_id FROM Lessons WHERE topic = ? AND language = ?
+                    )
+                    """,
+                    (user_id, topic_name, user_language),
+                ).fetchone()
 
-                    total_lessons = len(lessons_list)
-                    completion_percentage = (completed_lessons / total_lessons * 100) if total_lessons > 0 else 0
-
-                except Exception as e:
-                    app.logger.error(f"User progress database error: {str(e)}")
-                    completed_lessons = 0
-                    total_lessons = 0
-                    completion_percentage = 0
-                finally:
-                    progress_conn.close()
+                completed_lessons = progress_data["completed_lessons"] if progress_data else 0
+                total_lessons = len(lessons_list)
+                completion_percentage = (completed_lessons / total_lessons * 100) if total_lessons > 0 else 0
 
                 result.append({
                     "title": topic_name,
@@ -107,12 +92,11 @@ def register_routes(app):
             return jsonify(result)
 
         except Exception as e:
-            app.logger.error(f"Lessons database error: {str(e)}")
+            app.logger.error(f"Database error: {str(e)}")
             return jsonify([])
 
         finally:
             conn.close()
-
 
     @app.route('/api/lesson/<int:id>', methods=['GET'])
     @jwt_required()
