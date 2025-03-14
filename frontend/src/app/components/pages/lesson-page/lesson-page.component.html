@@ -1,16 +1,16 @@
 <app-loader-wrapper [loading]="lesson.loading" [error]="lesson.error">
     <mat-card class="introduction">
         <mat-card-content style="position: relative;">
-            <h2>{{ lesson.data!.topic }}</h2>
+            <h2>{{ lesson.data?.topic }}</h2>
             <div [innerHTML]="lesson.data?.introduction"></div>
-            <app-text-to-speech [textToSpeak]="lesson.data!.introduction"></app-text-to-speech>
+            <app-text-to-speech [textToSpeak]="lesson.data?.introduction"></app-text-to-speech>
         </mat-card-content>
     </mat-card>
     
     <mat-card class="presentation">
         <mat-card-content style="position: relative;">
             <div [innerHTML]="lesson.data?.presentation || ''"></div>
-            <app-text-to-speech [textToSpeak]="lesson.data!.presentation"></app-text-to-speech>
+            <app-text-to-speech [textToSpeak]="lesson.data?.presentation"></app-text-to-speech>
         </mat-card-content>
     </mat-card>
     
@@ -21,7 +21,7 @@
     <mat-card class="conclusion">
         <mat-card-content style="position: relative;">
             <div [innerHTML]="lesson.data?.conclusion || ''"></div>
-            <app-text-to-speech [textToSpeak]="lesson.data!.presentation"></app-text-to-speech>
+            <app-text-to-speech [textToSpeak]="lesson.data?.presentation"></app-text-to-speech>
         </mat-card-content>
     </mat-card>
     
