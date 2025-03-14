@@ -65,6 +65,7 @@ def register_routes(app):
 
         return jsonify({"message": "User progress reset successful"}), 200
 
+    # get vocabulary list for vocabulary tab
     @app.route('/api/user/vocabulary', methods=['GET'])
     @jwt_required()  # Требуется авторизация для этого запроса
     def get_vocabulary():
@@ -109,8 +110,44 @@ def register_routes(app):
         except Exception as e:
             return jsonify({"message": f"An error occurred: {str(e)}"}), 500
 
-    # Эндпоинт для загрузки YAML-файла
-    @app.route('/api/user/vocabulary', methods=['POST'])
+
+    @app.route('/api/user/vocabulary/file', methods=['GET'])
+    @jwt_required()  # Требуется авторизация для этого запроса
+    def download_vocabulary():
+        user_id = get_jwt_identity()
+
+        try:
+            # Подключаемся к базе данных для извлечения словаря
+            conn = sqlite3.connect("vocabulary.db")
+            cursor = conn.cursor()
+
+            # Извлекаем все слова и переводы для конкретного пользователя
+            cursor.execute("""
+                SELECT word, translation 
+                FROM Vocabulary 
+                WHERE user_id = ?
+            """, (user_id,))
+            rows = cursor.fetchall()
+
+            # Создаем итоговый словарь для слов и переводов
+            vocabulary_response = {}
+
+            for row in rows:
+                word = row[0]
+                translation = row[1]
+                vocabulary_response[word] = translation  # Добавляем слово и перевод
+
+            # Закрываем соединение с базой данных
+            conn.close()
+
+            # Возвращаем результат в формате JSON
+            return jsonify(vocabulary_response), 200
+
+        except Exception as e:
+            return jsonify({"message": f"An error occurred: {str(e)}"}), 500
+
+    # upload YAML-файла
+    @app.route('/api/user/vocabulary/file', methods=['POST'])
     @jwt_required()  # Требуется авторизация для этого запроса
     def upload_vocabulary():
         user_id = get_jwt_identity()
@@ -129,22 +166,20 @@ def register_routes(app):
             file.save(file_path)
 
             try:
-                # Открываем YAML файл и считываем данные
+                # Открываем YAML файл и считываем его данные
                 with open(file_path, 'r') as f:
-                    vocabulary_data = yaml.safe_load(f)
+                    vocabulary_data = yaml.safe_load(f)  # Считываем YAML в Python-словарь
 
                 # Подключаемся к базе данных для сохранения словаря
                 conn = sqlite3.connect("vocabulary.db")
                 cursor = conn.cursor()
 
-                for section in vocabulary_data:
-                    for word_entry in section.get('words', []):
-                        word = word_entry.get('word')
-                        translation = word_entry.get('meaning')
-                        cursor.execute("""
-                            INSERT INTO Vocabulary (user_id, word, translation)
-                            VALUES (?, ?, ?)
-                        """, (user_id, word, translation))
+                # Вставляем каждую пару ключ-значение из словаря в базу данных
+                for word, translation in vocabulary_data.items():
+                    cursor.execute("""
+                        INSERT INTO Vocabulary (user_id, word, translation)
+                        VALUES (?, ?, ?)
+                    """, (user_id, word, translation))
 
                 conn.commit()
                 conn.close()
@@ -158,14 +193,13 @@ def register_routes(app):
         else:
             return jsonify({"message": "Invalid file type"}), 400
 
-
     
 
 
 
 
 
-
+    # delete word from the Vocabulary Tab
     @app.route('/api/user/vocabulary', methods=['DELETE'])
     @jwt_required()
     def delete_word():
@@ -220,6 +254,15 @@ def register_routes(app):
             conn.commit()
             conn.close()
             
+            conn = sqlite3.connect("users.db")
+            cursor = conn.cursor()
+            cursor.execute("""
+                UPDATE Users
+                SET preferred_language = ?, cultural_note = NULL, cultural_note_date = NULL
+                WHERE user_id = ?
+            """, (new_language, user_id))
+            conn.commit()
+            conn.close()
             # Сброс прогресса пользователя в user_progress.db
             conn = sqlite3.connect("user_progress.db")
             cursor = conn.cursor()
