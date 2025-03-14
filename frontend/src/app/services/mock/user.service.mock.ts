@@ -12,6 +12,7 @@ export class UserServiceMock {
 
   private dailyChallenge: DailyChallenge = {
     isCompleted: false,
+    id: 1
   };
   private userProgress: UserProgress = {
     completedLessons: 7,

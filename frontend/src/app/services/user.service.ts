@@ -16,6 +16,7 @@ export class UserService {
   // Mock
   dailyChallenge: DailyChallenge = {
     isCompleted: false,
+    id: 1
   };
   userProgress: UserProgress = {
     completedLessons: 7,

@@ -5,6 +5,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Router } from '@angular/router';
 
 describe('DashboardPageComponent', () => {
   let component: DashboardPageComponent;
@@ -20,7 +21,8 @@ describe('DashboardPageComponent', () => {
       providers: [
         provideHttpClient(),
         provideHttpClientTesting(),
-        TranslateService
+        TranslateService,
+        { provide: Router, useValue: { navigate: jasmine.createSpy('navigate') } },
       ]
     })
     .compileComponents();

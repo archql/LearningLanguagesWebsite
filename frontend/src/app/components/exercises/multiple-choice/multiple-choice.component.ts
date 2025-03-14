@@ -3,6 +3,7 @@ import { MatRadioChange } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import {MatRadioModule} from '@angular/material/radio';
 import { CommonModule } from '@angular/common';
+import { TextToSpeechComponent } from '../../helpers/text-to-speech/text-to-speech.component';
 
 
 interface Option {
@@ -15,7 +16,7 @@ interface Option {
   standalone: true,
   templateUrl: './multiple-choice.component.html',
   styleUrls: ['./multiple-choice.component.scss'],
-  imports: [MatCardModule, MatRadioModule, CommonModule],
+  imports: [MatCardModule, MatRadioModule, CommonModule, TextToSpeechComponent],
 })
 export class MultipleChoiceComponent {
   @Input() question: string = '';

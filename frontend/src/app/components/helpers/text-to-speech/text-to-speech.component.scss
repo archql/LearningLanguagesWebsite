@@ -1,0 +1,12 @@
+.speech-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #2196f3;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.speech-btn.active {
+    background-color: #ff9800; /* Highlight color when speaking */
+}

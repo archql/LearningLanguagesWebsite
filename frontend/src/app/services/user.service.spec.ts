@@ -98,7 +98,7 @@ describe('UserService', () => {
   });
 
   it('should return daily challenge', () => {
-    const mockDailyChallenge: DailyChallenge = { isCompleted: false };
+    const mockDailyChallenge: DailyChallenge = { isCompleted: false, id: 1 };
 
     service.getDailyChallenge().subscribe(challenge => {
       expect(challenge).toEqual(mockDailyChallenge);

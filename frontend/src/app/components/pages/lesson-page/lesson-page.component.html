@@ -1,13 +1,15 @@
 <mat-card class="introduction">
-    <mat-card-content>
+    <mat-card-content style="position: relative;">
         <h2>{{ lesson.topic }}</h2>
         <div [innerHTML]="lesson.introduction"></div>
+        <app-text-to-speech [textToSpeak]="lesson.introduction"></app-text-to-speech>
     </mat-card-content>
 </mat-card>
 
 <mat-card class="presentation">
-    <mat-card-content>
+    <mat-card-content style="position: relative;">
         <div [innerHTML]="lesson.presentation"></div>
+        <app-text-to-speech [textToSpeak]="lesson.presentation"></app-text-to-speech>
     </mat-card-content>
 </mat-card>
 
@@ -16,8 +18,9 @@
 ></app-exercise>
 
 <mat-card class="conclusion">
-    <mat-card-content>
+    <mat-card-content style="position: relative;">
         <div [innerHTML]="lesson.conclusion"></div>
+        <app-text-to-speech [textToSpeak]="lesson.presentation"></app-text-to-speech>
     </mat-card-content>
 </mat-card>
 

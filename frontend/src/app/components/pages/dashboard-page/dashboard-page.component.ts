@@ -11,6 +11,7 @@ import { LoaderWrapperComponent } from "../../helpers/loader-wrapper/loader-wrap
 import { Loadable } from '../../helpers/loader-wrapper/loader-wrapper.model';
 import { UserService } from '../../../services/user.service';
 import { UserServiceMock } from '../../../services/mock/user.service.mock';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-page',
@@ -27,7 +28,10 @@ export class DashboardPageComponent {
   culturalNote : Loadable<CulturalNote> = new Loadable;
   topics : Loadable<Topic[]> = new Loadable;
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.dailyChallenge = new Loadable(() => this.userService.getDailyChallenge());
@@ -63,8 +67,6 @@ export class DashboardPageComponent {
   completeDailyChallenge(): void {
     if (!this.dailyChallenge.ready()) return;
     // TODO call API (?)
-    //this.userService.
-    this.dailyChallenge.data!.isCompleted = true;
-    console.log('Daily challenge completed!');
+    this.router.navigate([`/home/lesson/${this.dailyChallenge.data?.id}`]);
   }
 }

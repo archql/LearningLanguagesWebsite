@@ -1,12 +1,13 @@
 <div class="question-card">
     <mat-card>
-      <mat-card-content>
+      <mat-card-content style="position: relative;">
         <h4>{{ question }}</h4>
         <mat-radio-group (change)="selectOption($event)">
           <mat-radio-button *ngFor="let option of options" [value]="option">
             {{ option }}
           </mat-radio-button>
         </mat-radio-group>
+        <app-text-to-speech [textToSpeak]="question"></app-text-to-speech>
       </mat-card-content>
     </mat-card>
 </div>

@@ -11,12 +11,13 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { LessonFinishedModalComponent } from '../lesson-finished-modal/lesson-finished-modal.component';
+import { TextToSpeechComponent } from "../../helpers/text-to-speech/text-to-speech.component";
 
 
 @Component({
   selector: 'app-lesson-page',
   standalone: true,
-  imports: [ContextMenuComponent, MatCardModule, MatButtonModule, CommonModule, ExerciseComponent, MatDialogModule],
+  imports: [ContextMenuComponent, MatCardModule, MatButtonModule, CommonModule, ExerciseComponent, MatDialogModule, TextToSpeechComponent],
   templateUrl: './lesson-page.component.html',
   styleUrl: './lesson-page.component.scss'
 })

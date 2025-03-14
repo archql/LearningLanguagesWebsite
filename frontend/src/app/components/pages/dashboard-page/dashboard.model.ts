@@ -11,5 +11,6 @@ export interface UserProgress {
 
 export interface DailyChallenge {
     isCompleted: boolean;
+    id: number;
     //....
 }

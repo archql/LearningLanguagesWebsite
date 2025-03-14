@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { TextToSpeechComponent } from '../../helpers/text-to-speech/text-to-speech.component';
 
 
 
@@ -14,7 +15,7 @@ import { debounceTime } from 'rxjs/operators';
   standalone: true,
   templateUrl: './fill-blanks.component.html',
   styleUrls: ['./fill-blanks.component.scss'],
-  imports: [MatCardModule, MatInputModule, MatButtonModule, FormsModule, CommonModule]
+  imports: [MatCardModule, MatInputModule, MatButtonModule, FormsModule, CommonModule, TextToSpeechComponent]
 })
 export class FillBlanksComponent {
   @Input() beforeBlank: string = '';
