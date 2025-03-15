@@ -69,6 +69,7 @@ export class ContextMenuComponent {
   }
 
   close() {
+    if (!this.menuTrigger) return
     this.menuTrigger.closeMenu();
   }
 

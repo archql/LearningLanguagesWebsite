@@ -55,6 +55,7 @@ export class LessonService {
   }
 
   submitLesson(lessonId: number, score: boolean): Observable<boolean> {
+    console.log('test')
     return this.http.post<boolean>('/api/user/progress/submit', {lessonId, score}).pipe(
       tap(response => {
         return of(true);

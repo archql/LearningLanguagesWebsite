@@ -72,7 +72,17 @@ export class ExerciseComponent {
     this.feedbackData[0] = `Answered ${correct} out of ${this.exerciseBe.data!.fbRange.length + this.exerciseBe.data!.mcRange.length} correctly`
     this.feedbackData[1] = feedback
 
-    this.lessonService.submitLesson(this.id, (correct / (this.exerciseBe.data!.mcRange.length + this.exerciseBe.data!.fbRange.length)) > 0.5)
+    this.lessonService.submitLesson(this.id, (correct / (this.exerciseBe.data!.mcRange.length + this.exerciseBe.data!.fbRange.length)) > 0.5).subscribe({
+      next: (response) => {
+        this.showNotification(this.tr['app.dialog.add-word.success']);
+        this.addWordPending = false;
+      },
+      error: (error) => {
+        console.error('Login failed', error);
+        this.showNotification(this.tr['app.dialog.add-word.failure']);
+        this.addWordPending = false;
+      }
+    });
   }
 
   constructor(private lessonService: LessonService, private router: Router) {}
@@ -119,4 +129,13 @@ export class ExerciseComponent {
   ngOnDestroy() {
     this.exerciseBe.cleanup()
   }
+  showNotification(message: string) {
+    this.snackBar.open(message, this.tr['app.dialog.close'], {
+      duration: 3000, // Notification will auto-close after 3 seconds
+      horizontalPosition: 'center',
+      verticalPosition: 'top'
+    });
+  }
 }
+
+
