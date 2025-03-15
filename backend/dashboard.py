@@ -199,7 +199,6 @@ def register_routes(app):
             }), 500
 
 
-    
     @app.route('/api/user/progress', methods=['GET'])
     @jwt_required()
     def get_user_progress():
@@ -207,33 +206,62 @@ def register_routes(app):
 
         # Получаем прогресс пользователя из базы данных
         try:
-            conn = sqlite3.connect('users.db')
+            conn = sqlite3.connect('user_progress.db')
             conn.row_factory = sqlite3.Row
+            conn1 = sqlite3.connect('lessons.db')
+            conn1.row_factory = sqlite3.Row            
+
+            # Получаем количество завершенных уроков сегодня
+            today = datetime.now().strftime('%Y-%m-%d')
+            print(today)
+            user_progress_today = conn.execute(
+                """
+                SELECT COUNT(*) AS completed_today
+                FROM UserProgress
+                WHERE user_id = ? AND completion_time = ?
+                """,
+                (user_id, today)
+            ).fetchone()
+
+            # Получаем общее количество уроков
+            total_lessons = conn1.execute(
+                """
+                SELECT COUNT(*) AS total_lessons 
+                FROM Lessons
+                """
+            ).fetchone()
+
+            # Получаем общее количество завершенных уроков
             user_progress = conn.execute(
-                "SELECT completed_lessons, total_lessons FROM UserProgress WHERE user_id = ?",
+                """
+                SELECT COUNT(*) AS completed_lessons 
+                FROM UserProgress 
+                WHERE user_id = ?
+                """,
                 (user_id,)
             ).fetchone()
 
-            if user_progress:
-                return jsonify({
-                    "completedLessons": user_progress["completed_lessons"],
-                    "totalLessons": user_progress["total_lessons"]
-                })
+            completed_today = user_progress_today["completed_today"] if user_progress_today else 0
+            total_lessons_count = total_lessons["total_lessons"] if total_lessons else 0
+            completed_lessons_count = user_progress["completed_lessons"] if user_progress else 0
 
-            # Если прогресса нет, возвращаем 0 для завершённых и общего количества уроков
+            # Отправляем данные в формате, который будет выводиться в вашем сообщении
             return jsonify({
-                "completedLessons": 0,
-                "totalLessons": 0
+                "completedLessonsToday": completed_today,
+                "completedLessons": completed_lessons_count,
+                "totalLessons": total_lessons_count
             })
 
         except Exception as e:
             app.logger.error(f"Database error: {str(e)}")
             return jsonify({
+                "completedLessonsToday": 0,
                 "completedLessons": 0,
-                "totalLessons": 0
+                "totalLessons": 10
             })
         finally:
             conn.close()
+            conn1.close()
 
     @app.route('/api/user/topics', methods=['GET'])
     @jwt_required()

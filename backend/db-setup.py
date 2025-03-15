@@ -40,7 +40,9 @@ def create_user_progress_db():
                         lesson_id INTEGER,
                         lesson_title TEXT,
                         status TEXT,
-                        score INTEGER,
+                        score BOOLEAN,
+                        completion_time TEXT,
+                        UNIQUE(user_id, lesson_id),
                         FOREIGN KEY(user_id) REFERENCES Users(user_id),
                         FOREIGN KEY(lesson_id) REFERENCES Lessons(lesson_id)
                     )''')
@@ -52,7 +54,7 @@ def create_gamification_db():
     cursor = conn.cursor()
     cursor.execute('''CREATE TABLE IF NOT EXISTS Gamification (
                         gamification_id INTEGER PRIMARY KEY,
-                        user_id INTEGER,
+                        user_id INTEGER UNIQUE,
                         experience_points INTEGER,
                         FOREIGN KEY(user_id) REFERENCES Users(user_id)
                     )''')
