@@ -19,7 +19,7 @@
             [value]="userProgress.data ? (userProgress.data.completedLessons / userProgress.data.totalLessons * 100) : 0"
             class="animated-progress-bar"
           ></mat-progress-bar>
-          <p class="motivational-message">{{ getMotivationalMessage() }}</p>
+          <p class="motivational-message">{{ getMotivationalMessage() | translate }} </p>
         </app-loader-wrapper>
       </mat-card-content>
     </mat-card>

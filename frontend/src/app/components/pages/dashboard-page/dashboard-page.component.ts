@@ -55,20 +55,23 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     clearInterval(this.typewriterInterval);
   }
 
-  // TODO
   // Get motivational message based on completed lessons
   getMotivationalMessage(): string {
     if (!this.userProgress.ready()) return "";
     const progress = this.userProgress.data!.completedLessons 
       / this.userProgress.data!.totalLessons;
-    if (progress < 0.25) {
-      return 'Keep going! Every lesson brings you closer to your goal.';
+    if (progress < 0.01) {
+      return 'app.dashboard.motivational.start';
+    } else if (progress < 0.25) {
+      return 'app.dashboard.motivational.keepGoing';
     } else if (progress < 0.5) {
-      return 'You’re making great progress! Keep it up!';
+      return 'app.dashboard.motivational.greatProgress';
     } else if (progress < 0.75) {
-      return 'You’re more than halfway there! Keep pushing!';
+      return 'app.dashboard.motivational.halfway';
+    } else if (progress < 1.0) {
+      return 'app.dashboard.motivational.almostThere';
     } else {
-      return 'You’re almost there! Finish strong!';
+      return 'app.dashboard.motivational.completed';
     }
   }
   // Handle daily challenge completion
