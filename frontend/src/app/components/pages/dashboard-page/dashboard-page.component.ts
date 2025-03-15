@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CulturalNote, DailyChallenge, UserProgress } from './dashboard.model';
@@ -19,9 +19,9 @@ import { XpComponent } from "../../helpers/xp/xp.component";
   standalone: true,
   imports: [MatCardModule, LoaderWrapperComponent, MatProgressBarModule, MatIconModule, MatButtonModule, TranslateModule, LessonSelectionComponent, LoaderWrapperComponent, XpComponent],
   templateUrl: './dashboard-page.component.html',
-  styleUrl: './dashboard-page.component.scss'
+  styleUrls: ['./dashboard-page.component.scss']
 })
-export class DashboardPageComponent {
+export class DashboardPageComponent implements OnInit, OnDestroy {
   
   // avoid typescript error - assign empty loadable
   dailyChallenge : Loadable<DailyChallenge> = new Loadable;
@@ -29,6 +29,8 @@ export class DashboardPageComponent {
   culturalNote : Loadable<CulturalNote> = new Loadable;
   topics : Loadable<Topic[]> = new Loadable;
   xp : Loadable<number> = new Loadable;
+  typewriterText: string = '';
+  private typewriterInterval: any;
 
   constructor(
     private userService: UserService,
@@ -41,6 +43,7 @@ export class DashboardPageComponent {
     this.userProgress = new Loadable(() => this.userService.getUserProgress());
     this.topics = new Loadable(() => this.userService.getUserTopics());
     this.xp = new Loadable(() => this.userService.getUserXP());
+    this.startTypewriterEffect();
   }
 
   ngOnDestroy() {
@@ -49,6 +52,7 @@ export class DashboardPageComponent {
     this.userProgress.cleanup();
     this.topics.cleanup();
     this.xp.cleanup();
+    clearInterval(this.typewriterInterval);
   }
 
   // TODO
@@ -72,5 +76,19 @@ export class DashboardPageComponent {
     if (!this.dailyChallenge.ready()) return;
     // TODO call API (?)
     this.router.navigate([`/home/lesson/${this.dailyChallenge.data?.id}`]);
+  }
+
+  startTypewriterEffect() {
+    const fullText = this.culturalNote.data?.quote || '';
+    const words = fullText.split(' ');
+    let currentIndex = 0;
+    this.typewriterInterval = setInterval(() => {
+      if (currentIndex < words.length) {
+        this.typewriterText += (currentIndex === 0 ? '' : ' ') + words[currentIndex];
+        currentIndex++;
+      } else {
+        clearInterval(this.typewriterInterval);
+      }
+    }, 100); // Adjust typing speed here
   }
 }

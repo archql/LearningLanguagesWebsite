@@ -4,7 +4,10 @@
     <!-- Progress Panel -->
     <mat-card class="dashboard-panel">
       <mat-card-header>
-        <mat-card-title>{{ 'app.dashboard.progress' | translate}}</mat-card-title>
+        <mat-card-title>
+          <mat-icon color="primary">trending_up</mat-icon>
+          {{ 'app.dashboard.progress' | translate}}
+        </mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <app-loader-wrapper [loading]="userProgress.loading" [error]="userProgress.error">
@@ -14,6 +17,7 @@
           <mat-progress-bar
             mode="determinate"
             [value]="userProgress.data ? (userProgress.data.completedLessons / userProgress.data.totalLessons * 100) : 0"
+            class="animated-progress-bar"
           ></mat-progress-bar>
           <p class="motivational-message">{{ getMotivationalMessage() }}</p>
         </app-loader-wrapper>
@@ -21,12 +25,15 @@
     </mat-card>
 
     <app-loader-wrapper [loading]="xp.loading" [error]="xp.error">
-      <app-xp [xpAmount]="xp.data || 0" [xpGain]="false" ></app-xp>
+      <app-xp [xpAmount]="xp.data || 0" [xpGain]="false"></app-xp>
     </app-loader-wrapper>
 
     <mat-card class="dashboard-panel">
         <mat-card-header>
-            <mat-card-title>{{ 'app.dashboard.daily-challenge' | translate}}</mat-card-title>
+            <mat-card-title>
+              <mat-icon color="primary">flag</mat-icon>
+              {{ 'app.dashboard.daily-challenge' | translate}}
+            </mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <app-loader-wrapper [loading]="dailyChallenge.loading" [error]="dailyChallenge.error">
@@ -45,14 +52,17 @@
     <!-- Cultural Note Panel -->
     <mat-card class="dashboard-panel">
         <mat-card-header>
-            <mat-card-title>{{ 'app.dashboard.cultural-note' | translate}}</mat-card-title>
+            <mat-card-title>
+              <mat-icon color="primary">lightbulb</mat-icon>
+              {{ 'app.dashboard.cultural-note' | translate}}
+            </mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <app-loader-wrapper [loading]="culturalNote.loading" [error]="culturalNote.error">
             <div class="quote-container">
             <mat-icon class="quote-icon">format_quote</mat-icon>
             <blockquote>
-            "{{ culturalNote.data?.quote }}"
+            <span class="typewriter-text">{{ typewriterText }}</span>
             <footer>- {{ culturalNote.data?.author }}</footer>
             </blockquote>
             </div>
@@ -61,7 +71,10 @@
     </mat-card>
     <mat-card class="dashboard-panel">
         <mat-card-header>
-            <mat-card-title>{{ 'app.dashboard.progress-total' | translate}}</mat-card-title>
+            <mat-card-title>
+              <mat-icon color="primary">school</mat-icon>
+              {{ 'app.dashboard.progress-total' | translate}}
+            </mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <app-loader-wrapper [loading]="topics.loading" [error]="topics.error">

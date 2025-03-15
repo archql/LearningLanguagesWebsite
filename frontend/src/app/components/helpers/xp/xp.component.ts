@@ -85,6 +85,7 @@ export class XpComponent implements OnInit, AfterViewInit {
   }
 
   animateParticles() {
+    if (typeof window === 'undefined') return
     const fps = 60;
     const interval = 2200 / fps; // Calculate interval based on FPS
 
