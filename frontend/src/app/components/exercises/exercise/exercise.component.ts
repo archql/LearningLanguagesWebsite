@@ -7,6 +7,7 @@ import { LoaderWrapperComponent } from "../../helpers/loader-wrapper/loader-wrap
 import { Loadable } from '../../helpers/loader-wrapper/loader-wrapper.model';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ExerciseBe } from './exercise.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -22,6 +23,9 @@ export class ExerciseComponent {
   private readonly route = inject(ActivatedRoute);
   @Input() id: number = 0
 
+  tr: Record<string, string> = {};
+  // track if add word working
+  addWordPending: boolean = false;
 
   @Input() triggerFinish = new EventEmitter<void>;
   @Output() returnFeedback = new EventEmitter<string[]> 
@@ -74,18 +78,22 @@ export class ExerciseComponent {
 
     this.lessonService.submitLesson(this.id, (correct / (this.exerciseBe.data!.mcRange.length + this.exerciseBe.data!.fbRange.length)) > 0.5).subscribe({
       next: (response) => {
-        this.showNotification(this.tr['app.dialog.add-word.success']);
+        this.showNotification(this.tr['app.dialog.submitLesson.success']);
         this.addWordPending = false;
       },
       error: (error) => {
         console.error('Login failed', error);
-        this.showNotification(this.tr['app.dialog.add-word.failure']);
+        this.showNotification(this.tr['app.dialog.submitLesson.failure']);
         this.addWordPending = false;
       }
     });
   }
 
-  constructor(private lessonService: LessonService, private router: Router) {}
+  constructor(
+    private lessonService: LessonService, 
+    private router: Router,    
+    private snackBar: MatSnackBar
+  ) {}
 
   // loadExercises() {
   //   if (!this.lessonDb.ready()) return;
