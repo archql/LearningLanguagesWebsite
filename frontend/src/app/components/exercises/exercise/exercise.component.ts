@@ -8,6 +8,10 @@ import { Loadable } from '../../helpers/loader-wrapper/loader-wrapper.model';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ExerciseBe } from './exercise.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+
+
 
 
 
@@ -23,9 +27,16 @@ export class ExerciseComponent {
   private readonly route = inject(ActivatedRoute);
   @Input() id: number = 0
 
+  // translations
+  private subscription: Subscription;   
+  private trIDs = [
+    'app.dialog.submitLesson.success',
+    'app.dialog.submitLesson.failure',
+    'app.dialog.close',
+  ];
   tr: Record<string, string> = {};
   // track if add word working
-  addWordPending: boolean = false;
+  submitLessonPending: boolean = false;
 
   @Input() triggerFinish = new EventEmitter<void>;
   @Output() returnFeedback = new EventEmitter<string[]> 
@@ -76,24 +87,29 @@ export class ExerciseComponent {
     this.feedbackData[0] = `Answered ${correct} out of ${this.exerciseBe.data!.fbRange.length + this.exerciseBe.data!.mcRange.length} correctly`
     this.feedbackData[1] = feedback
 
+    this.submitLessonPending = true
     this.lessonService.submitLesson(this.id, (correct / (this.exerciseBe.data!.mcRange.length + this.exerciseBe.data!.fbRange.length)) > 0.5).subscribe({
       next: (response) => {
         this.showNotification(this.tr['app.dialog.submitLesson.success']);
-        this.addWordPending = false;
+        this.submitLessonPending = false;
       },
       error: (error) => {
         console.error('Login failed', error);
         this.showNotification(this.tr['app.dialog.submitLesson.failure']);
-        this.addWordPending = false;
+        this.submitLessonPending = false;
       }
     });
   }
 
+
   constructor(
     private lessonService: LessonService, 
-    private router: Router,    
-    private snackBar: MatSnackBar
-  ) {}
+    private snackBar: MatSnackBar,
+    private translate: TranslateService,
+    private router: Router
+  ) {
+    this.subscription = new Subscription();
+  }
 
   // loadExercises() {
   //   if (!this.lessonDb.ready()) return;
@@ -133,8 +149,16 @@ export class ExerciseComponent {
         this.returnFeedback.emit(this.feedbackData)
       });
     }
+
+    this.subscription = this.translate
+    .stream(this.trIDs)
+    .subscribe((translations: Record<string, string>) => {
+      this.tr = translations;
+    });
+
   }
   ngOnDestroy() {
+    this.subscription.unsubscribe();
     this.exerciseBe.cleanup()
   }
   showNotification(message: string) {
