@@ -1,7 +1,7 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { MatCard, MatCardModule } from '@angular/material/card';
+import { Component, ElementRef, Input, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -22,32 +22,38 @@ import { MatIconModule } from '@angular/material/icon';
     ])
   ]
 })
-export class XpComponent implements OnInit {
+export class XpComponent implements OnInit, AfterViewInit {
   @Input() xpGain: boolean = false;
   @Input() xpAmount: number = 100;
   @ViewChild('xpContainer', { static: false }) xpContainer!: ElementRef;
 
   displayXP: number = 0;
   particles: { id: number; x: number; y: number; opacity: number }[] = [];
+  league: string = 'gold'; // Default league
 
   ngOnInit() {
     this.animateXP();
+    this.league = this.xpGain ? 'gold' : this.getLeague(this.xpAmount);
   }
 
   animateXP() {
     let start = 0;
     const end = this.xpAmount;
-    const duration = 1000; // 1 second
-    const interval = 20; // Update every 20ms
-    const step = (end - start) / (duration / interval);
+    const duration = 1800; // 1 second
+    const interval = 1000 / 60; // Update every 20ms
+    const steps = duration / interval;
+    let currentStep = 0;
 
     const counter = setInterval(() => {
-      start += step;
-      if (start >= end) {
-        start = end;
+      currentStep++;
+      const progress = currentStep / steps;
+      const easedProgress = 1 - Math.pow(1 - progress, 3); // Cubic easing out
+      this.displayXP = Math.floor(start + (end - start) * easedProgress);
+
+      if (currentStep >= steps) {
         clearInterval(counter);
+        this.displayXP = end;
       }
-      this.displayXP = Math.floor(start);
     }, interval);
   }
 
@@ -60,30 +66,32 @@ export class XpComponent implements OnInit {
     // Defer particle creation to avoid change detection errors
     setTimeout(() => {
       this.createParticles();
+      this.animateParticles();
     });
   }
 
-  width: number = 200;
-  height: number = 50;
+  width: number = 0;
+  height: number = 0;
 
   createParticles() {
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 30; i++) {
       this.particles.push({
         id: i,
-        x: Math.random() * this.width - 50, // Random X position
-        y: Math.random() * this.height - 10, // Random Y position
-        opacity: Math.random(), // Random opacity
+        x: Math.random() * this.width, // Random X position
+        y: Math.random() * this.height, // Random Y position
+        opacity: Math.random() * 0.3 + 0.7, // Random opacity
       });
     }
   }
 
   animateParticles() {
-    const animationDuration = 1000; // 1 second
-    const interval = 16; // ~60 FPS
+    const fps = 60;
+    const interval = 2200 / fps; // Calculate interval based on FPS
 
     const animate = () => {
       this.particles.forEach(particle => {
-        particle.opacity -= 0.02; // Fade out over time
+        particle.opacity -= 1.0 / (interval); // Adjust fade out based on interval
+        particle.y -= this.height / interval * 0.8
       });
 
       // Remove particles that are fully transparent
@@ -91,10 +99,23 @@ export class XpComponent implements OnInit {
 
       // Continue animation if there are still particles
       if (this.particles.length > 0) {
-        requestAnimationFrame(animate);
+        setTimeout(() => {
+          requestAnimationFrame(animate);
+        }, interval);
       }
     };
 
     animate();
+  }
+
+  getLeague(xp: number): string {
+    if (xp < 100) return 'stone';
+    if (xp < 250) return 'bronze';
+    if (xp < 500) return 'silver';
+    if (xp < 1000) return 'gold';
+    if (xp < 2000) return 'saphire';
+    if (xp < 4000) return 'ruby';
+    if (xp < 10000) return 'emerald';
+    return 'amethyst';
   }
 }

@@ -7,9 +7,6 @@
         <mat-card-title>{{ 'app.dashboard.progress' | translate}}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <app-loader-wrapper [loading]="xp.loading" [error]="xp.error">
-            <app-xp [xpAmount]="xp.data || 0" [xpGain]="false" ></app-xp>
-        </app-loader-wrapper>
         <app-loader-wrapper [loading]="userProgress.loading" [error]="userProgress.error">
           <p>
             {{ 'app.dashboard.progress-lessons' | translate: {userProgress: userProgress.data} }}
@@ -22,6 +19,10 @@
         </app-loader-wrapper>
       </mat-card-content>
     </mat-card>
+
+    <app-loader-wrapper [loading]="xp.loading" [error]="xp.error">
+      <app-xp [xpAmount]="xp.data || 0" [xpGain]="false" ></app-xp>
+    </app-loader-wrapper>
 
     <mat-card class="dashboard-panel">
         <mat-card-header>

@@ -1,64 +1,139 @@
+$league-colors: (
+  'stone': (
+    background: linear-gradient(135deg, #a0a0a0, #808080),
+    box-shadow: 0 4px 15px rgba(128, 128, 128, 0.4),
+    glow-color: rgba(128, 128, 128, 0.6),
+    particle-color: #a0a0a0
+  ),
+  'bronze': (
+    background: linear-gradient(135deg, #cd7f32, #b87333),
+    box-shadow: 0 4px 15px rgba(184, 115, 51, 0.4),
+    glow-color: rgba(184, 115, 51, 0.6),
+    particle-color: #cd7f32
+  ),
+  'silver': (
+    background: linear-gradient(135deg, #c0c0c0, #a9a9a9),
+    box-shadow: 0 4px 15px rgba(169, 169, 169, 0.4),
+    glow-color: rgba(169, 169, 169, 0.6),
+    particle-color: #c0c0c0
+  ),
+  'gold': (
+    background: linear-gradient(135deg, #ffcc00, #ff8800),
+    box-shadow: 0 4px 15px rgba(255, 136, 0, 0.4),
+    glow-color: rgba(255, 200, 0, 0.6),
+    particle-color: #ffcc00
+  ),
+  'saphire': (
+    background: linear-gradient(135deg, #0f52ba, #0a3d91),
+    box-shadow: 0 4px 15px rgba(10, 61, 145, 0.4),
+    glow-color: rgba(10, 61, 145, 0.6),
+    particle-color: #0f52ba
+  ),
+  'ruby': (
+    background: linear-gradient(135deg, #e0115f, #a40000),
+    box-shadow: 0 4px 15px rgba(164, 0, 0, 0.4),
+    glow-color: rgba(164, 0, 0, 0.6),
+    particle-color: #e0115f
+  ),
+  'emerald': (
+    background: linear-gradient(135deg, #50c878, #2e8b57),
+    box-shadow: 0 4px 15px rgba(46, 139, 87, 0.4),
+    glow-color: rgba(46, 139, 87, 0.6),
+    particle-color: #50c878
+  ),
+  'amethyst': (
+    background: linear-gradient(135deg, #9966cc, #8b00ff),
+    box-shadow: 0 4px 15px rgba(139, 0, 255, 0.4),
+    glow-color: rgba(139, 0, 255, 0.6),
+    particle-color: #9966cc
+  )
+);
+
+@mixin league-colors($league) {
+  @each $name, $styles in $league-colors {
+    &.#{$name} {
+      @each $property, $value in $styles {
+        #{$property}: #{$value};
+      }
+
+      .xp-particle {
+        color: map-get($styles, particle-color);
+      }
+
+      @keyframes glow-#{$name} {
+        from {
+          box-shadow: 0 0 10px map-get($styles, glow-color);
+        }
+        to {
+          box-shadow: 0 0 20px map-get($styles, glow-color);
+        }
+      }
+
+      animation: glow-#{$name} 1.5s infinite alternate;
+    }
+  }
+}
+
 .xp-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #ffcc00, #ff8800);
-    color: white;
-    font-weight: bold;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 12px 24px;
+  border-radius: 12px;
+  overflow: hidden;
+  animation: glow 1.5s infinite alternate;
+
+  // Apply the league colors mixin
+  @include league-colors($league-colors);
+}
+
+.xp-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 0, 0.3) 20%, transparent 70%);
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.xp-icon {
+  width: 2rem;
+  aspect-ratio: 1;
+  font-size: 2rem;
+  margin-right: 8px;
+  z-index: 1;
+}
+
+.xp-text {
+  z-index: 1;
+}
+
+.league-info {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  z-index: 1;
+
+  .league-icon {
     font-size: 1.5rem;
-    padding: 12px 24px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(255, 136, 0, 0.4);
-    overflow: hidden;
-    animation: glow 1.5s infinite alternate;
+    margin-right: 4px;
   }
-  
-  @keyframes glow {
-    from {
-      box-shadow: 0 0 10px rgba(255, 200, 0, 0.6);
-    }
-    to {
-      box-shadow: 0 0 20px rgba(255, 200, 0, 1);
-    }
-  }
-  
-  .xp-glow {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255, 255, 0, 0.3) 20%, transparent 70%);
-    top: 0;
-    left: 0;
-    z-index: 0;
-  }
-  
-  .xp-icon {
-    font-size: 2rem;
-    margin-right: 8px;
-    z-index: 1;
-  }
-  
-  .xp-text {
-    z-index: 1;
-  }
-  
-  /* XP Particles */
-  .xp-particle {
-    position: absolute;
+
+  .league-name {
     font-size: 1rem;
-    color: gold;
-    animation: floatUp 1.8s ease-out forwards;
+    text-transform: capitalize;
   }
-  
-  @keyframes floatUp {
-    0% {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-30px) scale(1.2);
-      opacity: 0;
-    }
-  }
-  
+}
+
+/* XP Particles */
+.xp-particle {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1.5rem;
+}

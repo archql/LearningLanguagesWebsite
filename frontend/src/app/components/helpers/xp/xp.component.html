@@ -1,18 +1,23 @@
-<mat-card class="xp-container" @fadeInOut>
-    <div #xpContainer class="xp-glow"></div>
-    <mat-icon class="xp-icon">emoji_events</mat-icon>
-    <div class="xp-text">
-      <span>{{ xpGain ? '+' : ''}}{{ displayXP }} XP</span>
+<mat-card [ngClass]="league" class="xp-container" @fadeInOut>
+  <div #xpContainer class="xp-glow"></div>
+  <mat-icon class="xp-icon">emoji_events</mat-icon>
+  <div class="xp-text">
+    <span>{{ xpGain ? '+' : ''}}{{ displayXP }} XP</span>
+  </div>
+  @if (!xpGain) {
+    <div class="league-info">
+        <span class="league-name">{{ league | titlecase }}</span>
     </div>
-    <!-- XP Particles -->
-    @for (particle of particles; track particle.id) {
-      <div class="xp-particle"
-        [ngStyle]="{
-          left: particle.x + 'px',
-          top: particle.y + 'px',
-          opacity: particle.opacity
-        }">
-        ✨
-      </div>
     }
-  </mat-card>
+  <!-- XP Particles -->
+  @for (particle of particles; track particle.id) {
+    <mat-icon class="xp-particle"
+      [ngStyle]="{
+        left: particle.x + 'px',
+        top: particle.y + 'px',
+        opacity: particle.opacity
+      }">
+      star
+    </mat-icon>
+  }
+</mat-card>
