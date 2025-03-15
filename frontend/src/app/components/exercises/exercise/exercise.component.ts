@@ -87,8 +87,10 @@ export class ExerciseComponent {
     this.feedbackData[0] = `Answered ${correct} out of ${this.exerciseBe.data!.fbRange.length + this.exerciseBe.data!.mcRange.length} correctly`
     this.feedbackData[1] = feedback
 
+    let total_exercises = this.exerciseBe.data!.mcRange.length + this.exerciseBe.data!.fbRange.length
+    let perc = (correct / total_exercises)
     this.submitLessonPending = true
-    this.lessonService.submitLesson(this.id, (correct / (this.exerciseBe.data!.mcRange.length + this.exerciseBe.data!.fbRange.length)) > 0.5).subscribe({
+    this.lessonService.submitLesson(this.id,  perc > 0.5, correct ).subscribe({
       next: (response) => {
         this.showNotification(this.tr['app.dialog.submitLesson.success']);
         this.submitLessonPending = false;
