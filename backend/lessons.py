@@ -47,14 +47,16 @@ def register_routes(app):
             for topic_row in topics_data:
                 topic_name = topic_row["topic"]
 
-                # Получаем все уроки по теме
+                # Получаем все уроки по теме с прогрессом пользователя
                 lessons = conn.execute(
                     """
-                    SELECT lesson_id, title, data 
-                    FROM Lessons 
-                    WHERE topic = ? AND language = ?
+                    SELECT l.lesson_id, l.title, l.data, COALESCE(up.score, 0) AS score
+                    FROM Lessons l
+                    LEFT JOIN progress_db.UserProgress up 
+                    ON l.lesson_id = up.lesson_id AND up.user_id = ?
+                    WHERE l.topic = ? AND l.language = ?
                     """,
-                    (topic_name, user_language),
+                    (user_id, topic_name, user_language),
                 ).fetchall()
 
                 lessons_list = [
@@ -62,7 +64,8 @@ def register_routes(app):
                         "id": lesson["lesson_id"],
                         "title": lesson["title"],
                         "route": f"/lessons/{lesson['lesson_id']}",
-                        "description": lesson["data"]
+                        "description": lesson["data"],
+                        "completed": lesson["score"]
                     }
                     for lesson in lessons
                 ]
@@ -97,6 +100,7 @@ def register_routes(app):
 
         finally:
             conn.close()
+
 
     @app.route('/api/lesson/<int:id>', methods=['GET'])
     @jwt_required()
@@ -261,3 +265,68 @@ def register_routes(app):
             app.logger.error(f"LLM Request Failed: {str(e)}")
             conn.close()
             return jsonify({"message": "Error processing translation request"}), 500
+    
+
+    from datetime import datetime
+
+    @app.route('/api/user/progress/submit', methods=['POST'])
+    @jwt_required()
+    def submit_lesson():
+        user_id = get_jwt_identity()
+        data = request.get_json()
+        lesson_id = data.get('lessonId')
+        score = data.get('score')
+        game_score = data.get('game_score')
+
+        if lesson_id is None or score is None:
+            return jsonify({"message": "lessonId and score are required"}), 400
+
+        try:
+            # Подключение к БД lessons
+            conn_lessons = sqlite3.connect("lessons.db")
+            cursor_lessons = conn_lessons.cursor()
+
+            # Получаем название урока
+            cursor_lessons.execute("SELECT title FROM Lessons WHERE lesson_id = ?", (lesson_id,))
+            lesson = cursor_lessons.fetchone()
+            conn_lessons.close()
+
+            if not lesson:
+                return jsonify({"message": "Lesson not found"}), 404
+
+            lesson_title = lesson[0]
+            
+            # Текущее время прохождения урока
+            completion_time = datetime.now().strftime('%Y-%m-%d')  # Формат: 'YYYY-MM-DDTHH:MM:SS'
+
+            # Подключение к БД user_progress
+            conn_progress = sqlite3.connect("user_progress.db")
+            cursor_progress = conn_progress.cursor()
+
+            # Запись прогресса
+            cursor_progress.execute("""
+                INSERT INTO UserProgress (user_id, lesson_id, lesson_title, status, score, completion_time)
+                VALUES (?, ?, ?, ?, ?, ?)
+                ON CONFLICT(user_id, lesson_id) DO NOTHING
+                """, (user_id, lesson_id, lesson_title, "completed", score, completion_time))
+            conn_progress.commit()
+            conn_progress.close()
+
+            # Подключение к БД gamification
+            conn_gamification = sqlite3.connect("gamification.db")
+            cursor_gamification = conn_gamification.cursor()
+
+            # Обновление опыта
+            cursor_gamification.execute("""
+                INSERT INTO Gamification (user_id, experience_points)
+                VALUES (?, ?)
+                ON CONFLICT(user_id) DO UPDATE SET experience_points = (SELECT experience_points FROM Gamification WHERE user_id = ?) + ?
+                """, (user_id, game_score, user_id, game_score))
+            conn_gamification.commit()
+            conn_gamification.close()
+
+            return jsonify({"message": "Lesson progress saved and experience points awarded"}), 200
+
+        except Exception as e:
+            return jsonify({"message": "Internal server error", "error": str(e)}), 500
+
