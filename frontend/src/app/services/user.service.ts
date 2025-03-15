@@ -70,6 +70,18 @@ export class UserService {
     );
   }
 
+  getUserXP(): Observable<number> {
+    return this.http.get<number>('/api/user/xp').pipe(
+      tap((response : number) => {
+        return response;
+      }), 
+      catchError(error => {
+        // return of(null); TODO substitute?
+        return throwError(() => error);
+      })
+    );
+  }
+
   getDailyChallenge(): Observable<DailyChallenge | null> {
     return this.http.get<DailyChallenge>('/api/user/daily-challenge').pipe(
       tap((response : DailyChallenge) => {

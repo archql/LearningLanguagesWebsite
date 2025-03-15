@@ -12,11 +12,12 @@ import { Loadable } from '../../helpers/loader-wrapper/loader-wrapper.model';
 import { UserService } from '../../../services/user.service';
 import { UserServiceMock } from '../../../services/mock/user.service.mock';
 import { Router } from '@angular/router';
+import { XpComponent } from "../../helpers/xp/xp.component";
 
 @Component({
   selector: 'app-dashboard-page',
   standalone: true,
-  imports: [MatCardModule, LoaderWrapperComponent, MatProgressBarModule, MatIconModule, MatButtonModule, TranslateModule, LessonSelectionComponent, LoaderWrapperComponent],
+  imports: [MatCardModule, LoaderWrapperComponent, MatProgressBarModule, MatIconModule, MatButtonModule, TranslateModule, LessonSelectionComponent, LoaderWrapperComponent, XpComponent],
   templateUrl: './dashboard-page.component.html',
   styleUrl: './dashboard-page.component.scss'
 })
@@ -27,6 +28,7 @@ export class DashboardPageComponent {
   userProgress : Loadable<UserProgress> = new Loadable;
   culturalNote : Loadable<CulturalNote> = new Loadable;
   topics : Loadable<Topic[]> = new Loadable;
+  xp : Loadable<number> = new Loadable;
 
   constructor(
     private userService: UserService,
@@ -38,6 +40,7 @@ export class DashboardPageComponent {
     this.culturalNote = new Loadable(() => this.userService.getCulturalNote());
     this.userProgress = new Loadable(() => this.userService.getUserProgress());
     this.topics = new Loadable(() => this.userService.getUserTopics());
+    this.xp = new Loadable(() => this.userService.getUserXP());
   }
 
   ngOnDestroy() {
@@ -45,6 +48,7 @@ export class DashboardPageComponent {
     this.culturalNote.cleanup();
     this.userProgress.cleanup();
     this.topics.cleanup();
+    this.xp.cleanup();
   }
 
   // TODO

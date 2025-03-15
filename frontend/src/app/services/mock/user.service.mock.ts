@@ -99,4 +99,8 @@ export class UserServiceMock {
   getVocabulary(): Observable<VocabularyGroup[]> {
     return of(this.vocabulary);
   }
+
+  getUserXP(): Observable<number> {
+    return of(99999)
+  }
 }
