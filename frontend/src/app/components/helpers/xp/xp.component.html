@@ -1,7 +1,18 @@
 <mat-card class="xp-container" @fadeInOut>
-    <div class="xp-glow"></div>
+    <div #xpContainer class="xp-glow"></div>
     <mat-icon class="xp-icon">emoji_events</mat-icon>
     <div class="xp-text">
-        <span>+{{ displayXP }} XP</span>
+      <span>{{ xpGain ? '+' : ''}}{{ displayXP }} XP</span>
     </div>
-</mat-card>
+    <!-- XP Particles -->
+    @for (particle of particles; track particle.id) {
+      <div class="xp-particle"
+        [ngStyle]="{
+          left: particle.x + 'px',
+          top: particle.y + 'px',
+          opacity: particle.opacity
+        }">
+        ✨
+      </div>
+    }
+  </mat-card>

@@ -1,14 +1,15 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, Input, OnInit } from '@angular/core';
-import { MatCard } from '@angular/material/card';
-import { MatIcon } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { MatCard, MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-xp',
   standalone: true,
-  imports: [MatCard, MatIcon],
+  imports: [MatCardModule, MatIconModule, CommonModule],
   templateUrl: './xp.component.html',
-  styleUrl: './xp.component.scss',
+  styleUrls: ['./xp.component.scss'],
   animations: [
     trigger('fadeInOut', [
       transition(':enter', [
@@ -22,8 +23,12 @@ import { MatIcon } from '@angular/material/icon';
   ]
 })
 export class XpComponent implements OnInit {
+  @Input() xpGain: boolean = false;
   @Input() xpAmount: number = 100;
+  @ViewChild('xpContainer', { static: false }) xpContainer!: ElementRef;
+
   displayXP: number = 0;
+  particles: { id: number; x: number; y: number; opacity: number }[] = [];
 
   ngOnInit() {
     this.animateXP();
@@ -44,5 +49,52 @@ export class XpComponent implements OnInit {
       }
       this.displayXP = Math.floor(start);
     }, interval);
+  }
+
+  ngAfterViewInit() {
+    // Get container width dynamically
+    if (this.xpContainer?.nativeElement) {
+      this.width = this.xpContainer.nativeElement.offsetWidth;
+      this.height = this.xpContainer.nativeElement.offsetHeight;
+    }
+    // Defer particle creation to avoid change detection errors
+    setTimeout(() => {
+      this.createParticles();
+    });
+  }
+
+  width: number = 200;
+  height: number = 50;
+
+  createParticles() {
+    for (let i = 0; i < 50; i++) {
+      this.particles.push({
+        id: i,
+        x: Math.random() * this.width - 50, // Random X position
+        y: Math.random() * this.height - 10, // Random Y position
+        opacity: Math.random(), // Random opacity
+      });
+    }
+  }
+
+  animateParticles() {
+    const animationDuration = 1000; // 1 second
+    const interval = 16; // ~60 FPS
+
+    const animate = () => {
+      this.particles.forEach(particle => {
+        particle.opacity -= 0.02; // Fade out over time
+      });
+
+      // Remove particles that are fully transparent
+      this.particles = this.particles.filter(p => p.opacity > 0);
+
+      // Continue animation if there are still particles
+      if (this.particles.length > 0) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    animate();
   }
 }
