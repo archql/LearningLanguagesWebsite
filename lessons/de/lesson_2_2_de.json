@@ -1,0 +1,21 @@
+{
+    "topic": "Hobbys und Freizeitaktivitäten beschreiben",
+    "vocabulary_list": [
+        "Lesen", "Spielen", "Schwimmen", "Ansehen", "Zuhören", "Kochen", "Tanzen", "Reisen", "Malen", "Singen", "Wandern", "Zeichnen", "Trainieren", "Fahren", "Schreiben"
+    ],
+    "introduction": "<p>In dieser Lektion lernen wir, wie man Hobbys und Freizeitaktivitäten beschreibt. Wir konzentrieren uns auf Vokabeln zu Aktivitäten, die Menschen zum Spaß machen, und auf grundlegende Grammatikstrukturen wie das Verb 'mögen' und das Präsens (einfache Gegenwart).</p><h3>Grammatikschwerpunkt:</h3><ul><li>Das Verb 'mögen', um Vorlieben auszudrücken: 'Ich mag...', 'Ich mag nicht...'</li><li>Verwendung des Präsens für Gewohnheiten: 'Ich spiele jeden Samstag Fußball.'</li><li>Einfache Fragen stellen: 'Magst du schwimmen?'</li></ul>",
+    "presentation": "<h3>Wortschatz:</h3><ul><li>Lesen (Bücher, Comics)</li><li>Spielen (Fußball, Spiele)</li><li>Schwimmen</li><li>Ansehen (Fernsehen, Filme)</li><li>Zuhören (Musik)</li><li>Kochen</li><li>Tanzen</li><li>Reisen</li><li>Malen</li><li>Singen</li><li>Wandern</li><li>Zeichnen</li><li>Trainieren</li><li>Fahren (Fahrrad fahren)</li><li>Schreiben (Geschichten, Gedichte)</li></ul><h3>Beispielsätze:</h3><ul><li>Ich mag es, Bücher zu lesen.</li><li>Sie mag es nicht, Fußball zu spielen.</li><li>Wir schwimmen jedes Wochenende.</li><li>Schaust du Filme?</li><li>Er hört abends Musik.</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["Ich", "Bücher zu lesen.", "mag"]},
+        {"type": "fill_blank", "data": ["Sie", "Fußball zu spielen.", "mag nicht"]},
+        {"type": "fill_blank", "data": ["Wir", "jedes Wochenende.", "schwimmen"]},
+        {"type": "fill_blank", "data": ["Schaust du", "Fernsehen?", "an"]},
+        {"type": "fill_blank", "data": ["Sie", "morgens Musik.", "hören"]},
+        {"type": "multiple_choice", "data": ["Ich ______ gerne zeichnen.", "mag", "mag", "magst"]},
+        {"type": "multiple_choice", "data": ["Sie ______ jeden Freitag Filme.", "schaut", "schaut", "schauen"]},
+        {"type": "multiple_choice", "data": ["Wir ______ nicht Fußball spielen.", "tun", "tun", "tut"]},
+        {"type": "multiple_choice", "data": ["Spielst du ______ Spiele?", "gerne", "gerne", "gern"]},
+        {"type": "multiple_choice", "data": ["Sie ______ jedes Wochenende.", "wandern", "wandern", "wandert"]}
+    ],
+    "conclusion": "<h3>Wiederholung:</h3><p>In dieser Lektion haben wir gelernt, wie man über Hobbys und Freizeitaktivitäten spricht. Wir haben das Verb 'mögen' und das Präsens geübt.</p><h3>Beispieldialog:</h3><p>A: Was machst du gerne in deiner Freizeit?<br>B: Ich lese gerne Bücher und spiele Spiele. Und du?<br>A: Ich genieße es zu wandern und Musik zu hören.</p><h3>Fragen zur Wiederholung:</h3><ul><li>Welche Hobbys magst du?</li><li>Welche Hobbys magst du nicht?</li><li>Wie fragt man jemanden nach seinen Hobbys?</li></ul><h3>Hausaufgabe:</h3><p>Schreibe 5 Sätze über deine Hobbys. Verwende die Wörter 'mögen', 'nicht mögen', 'spielen', 'ansehen', 'zuhören' und 'machen'.</p>"
+}

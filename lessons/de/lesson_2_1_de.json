@@ -1,0 +1,35 @@
+{
+    "topic": "Über Arbeit und Schule sprechen",
+    "vocabulary_list": [
+      "Beruf",
+      "Schule",
+      "Arbeit",
+      "Lernen",
+      "Lehrer",
+      "Schüler",
+      "Büro",
+      "Hausaufgaben",
+      "Unterricht",
+      "Fach",
+      "Pause",
+      "Lektion",
+      "Manager",
+      "Kollege",
+      "Stundenplan"
+    ],
+    "introduction": "<p>Diese Lektion wird Ihnen grundlegende Vokabeln und einfache Sätze beibringen, um über Arbeit und Schule zu sprechen. Sie lernen, wie Sie über Ihren Beruf, Ihr Studium und Ihre täglichen Routinen sprechen. Wir werden auch das Präsens (einfache Gegenwart) üben und grundlegende Fragen stellen.</p><p><strong>Grammatikstrukturen:</strong><br>- Präsens (einfache Gegenwart) (Ich arbeite, Du lernst, Sie unterrichtet)<br>- Grundlegende Fragen (Was machst du? Wo lernst du?)<br>- Possessivpronomen (mein, dein, sein, ihr)</p>",
+    "presentation": "<p><strong>Wortschatz:</strong></p><ul><li>Beruf – Ich habe einen neuen Beruf.</li><li>Schule – Ich gehe jeden Tag zur Schule.</li><li>Arbeit – Ich arbeite in einem Büro.</li><li>Lernen – Ich lerne Deutsch.</li><li>Lehrer – Mein Lehrer ist nett.</li><li>Schüler – Sie ist eine Schülerin.</li><li>Büro – Er arbeitet in einem Büro.</li><li>Hausaufgaben – Ich mache meine Hausaufgaben am Abend.</li><li>Unterricht – Wir haben heute Matheunterricht.</li><li>Fach – Mein Lieblingsfach ist Englisch.</li><li>Pause – Wir haben um 10 Uhr eine Pause.</li><li>Lektion – Die Lektion ist interessant.</li><li>Manager – Er ist ein Manager.</li><li>Kollege – Ich arbeite mit meinen Kollegen.</li><li>Stundenplan – Mein Stundenplan ist voll.</li></ul>",
+    "practice": [
+      {"type": "fill_blank", "data": ["Ich lerne Deutsch in der", "", "Schule"]},
+      {"type": "fill_blank", "data": ["Er hat einen neuen", "", "Beruf"]},
+      {"type": "fill_blank", "data": ["Mein", "ist sehr nett.", "Lehrer"]},
+      {"type": "fill_blank", "data": ["Sie arbeitet in einem", "", "Büro"]},
+      {"type": "fill_blank", "data": ["Was ist dein Lieblings", "?", "fach"]},
+      {"type": "multiple_choice", "data": ["Ich ___ in einem Büro.", "arbeite", "arbeite", "lerne", "unterrichte"]},
+      {"type": "multiple_choice", "data": ["Sie ___ Deutsch.", "lernt", "arbeitet", "lernt", "managt"]},
+      {"type": "multiple_choice", "data": ["Sie ___ jeden Tag zur Schule.", "gehen", "gehen", "arbeiten", "unterrichten"]},
+      {"type": "multiple_choice", "data": ["Meine ___ ist interessant.", "Hausaufgabe", "Hausaufgabe", "Pause", "Kollege"]},
+      {"type": "multiple_choice", "data": ["Er ist ein ___.", "Schüler", "Schüler", "Hausaufgabe", "Fach"]}
+    ],
+    "conclusion": "<h3>Wiederholung:</h3><p>Wir haben Wörter über Arbeit und Schule gelernt. Wir haben das Präsens (einfache Gegenwart) geübt. Wir haben Fragen zu Arbeit und Studium gestellt und beantwortet.</p><h3>Beispieldialog:</h3><p>A: Was machst du? <br>B: Ich bin ein Schüler. Ich lerne Deutsch.<br>A: Wo lernst du?<br>B: Ich lerne an der Universität.<br>A: Magst du deinen Unterricht?<br>B: Ja, sie sind interessant.</p><h3>Fragen zur Festigung des Materials:</h3><ul><li>Was machst du?</li><li>Wo arbeitest oder lernst du?</li><li>Wer ist dein Lehrer?</li><li>Was ist dein Lieblingsfach?</li><li>Hast du einen vollen Stundenplan?</li></ul><h3>Hausaufgabe:</h3><p>Schreibe einen kurzen Absatz (4–5 Sätze) über deine Arbeit oder Schule. Verwende die Vokabeln und Grammatik, die wir heute gelernt haben.</p>"
+}

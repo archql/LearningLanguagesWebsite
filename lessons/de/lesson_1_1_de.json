@@ -1,0 +1,44 @@
+{
+    "topic": "Über sich selbst sprechen (Name, Alter, Beruf, Hobbys)",
+    "vocabulary_list": [
+        "Name",
+        "Alter",
+        "Beruf",
+        "Hobby",
+        "Student",
+        "Arzt",
+        "Mögen",
+        "Genießen",
+        "Lesen",
+        "Musik",
+        "Reisen",
+        "Kochen"
+    ],
+    "introduction": "<p>In dieser Lektion lernen wir, wie man sich vorstellt und grundlegende persönliche Informationen angibt. Wir behandeln:</p><ul><li><strong>Wortschatz:</strong> Wörter und Ausdrücke im Zusammenhang mit Name, Alter, Beruf und Hobbys.</li><li><strong>Grammatik:</strong> Grundlegende Satzstrukturen mit 'Ich bin', 'Mein Name ist', 'Ich habe' und 'Ich mag'.</li></ul><h3>Grammatikstrukturen:</h3><ul><li><strong>Sich vorstellen:</strong> 'Ich bin…', 'Mein Name ist…'</li><li><strong>Über das Alter sprechen:</strong> 'Ich bin … Jahre alt.'</li><li><strong>Über den Beruf sprechen:</strong> 'Ich bin ein …' / 'Ich arbeite als …'</li><li><strong>Über Hobbys sprechen:</strong> 'Ich mag …' / 'Ich genieße …' / 'Mein Hobby ist …'</li></ul>",
+    "presentation": "<p>Lernen wir einige nützliche Wörter und Ausdrücke, um über sich selbst zu sprechen:</p><h3>Wortschatz:</h3><ul><li>Name – Wie man heißt. ('Mein Name ist Sarah.')</li><li>Alter – Wie alt man ist. ('Ich bin 20 Jahre alt.')</li><li>Beruf – Dein Job oder Beruf. ('Ich bin Lehrerin.')</li><li>Hobby – Eine Aktivität, die man gerne macht. ('Mein Hobby ist Lesen.')</li><li>Student – Eine Person, die studiert. ('Ich bin Student.')</li><li>Arzt – Eine Person, die kranken Menschen hilft. ('Ich bin Arzt.')</li><li>Mögen – Etwas gern haben. ('Ich mag Musik.')</li><li>Genießen – Freude an etwas haben. ('Ich genieße es, Fußball zu spielen.')</li><li>Lesen – Die Tätigkeit, Bücher zu lesen. ('Ich mag Lesen.')</li><li>Musik – Klänge, die angenehm zu hören sind. ('Ich mag Musik.')</li><li>Reisen – Von einem Ort zum anderen gehen. ('Ich genieße Reisen.')</li><li>Kochen – Essen zubereiten. ('Ich mag Kochen.')</li></ul><h3>Beispielsätze:</h3><ul><li>'Hallo! Mein Name ist John. Ich bin 25 Jahre alt. Ich bin Student. Ich mag Fußball spielen.'</li><li>'Ich genieße Lesen und Kochen. Mein Hobby ist Musik hören.'</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["Hallo! Mein Name", "Sarah.", "ist"]},
+        {"type": "fill_blank", "data": ["Ich", "Lehrer.", "bin"]},
+        {"type": "fill_blank", "data": ["Ich", "30 Jahre alt.", "bin"]},
+        {"type": "fill_blank", "data": ["Ich mag", "Musik.", "hören"]},
+        {"type": "fill_blank", "data": ["Mein Hobby", "Tennis spielen.", "ist"]},
+        
+        {"type": "multiple_choice", "data": ["Ich bin ein ___.", "Arzt", "Arzt", "Tanz", "Apfel"]},
+        {"type": "multiple_choice", "data": ["Ich mag ___.", "Fußball spielen", "Fußball spielen", "Katze", "Wasser"]},
+        {"type": "multiple_choice", "data": ["Mein Name ___.", "ist", "ist", "bin", "sind"]},
+        {"type": "multiple_choice", "data": ["Ich bin 20 Jahre ___.", "alt", "alt", "jung", "groß"]},
+        {"type": "multiple_choice", "data": ["Ich genieße ___.", "Reisen", "Reisen", "Fenster", "Brot"]},
+        
+        {"type": "fill_blank", "data": ["Mein", "ist Michael.", "Name"]},
+        {"type": "fill_blank", "data": ["Ich bin 28 Jahre", ".", "alt"]},
+        {"type": "fill_blank", "data": ["Ich bin ein", ".", "Lehrer"]},
+        {"type": "fill_blank", "data": ["Mein", "ist Malen.", "Hobby"]},
+        
+        {"type": "multiple_choice", "data": ["Ich (mag / bin) Kochen.", "mag", "mag", "bin"]},
+        {"type": "multiple_choice", "data": ["Mein Hobby (ist / sind) Malen.", "ist", "ist", "sind"]},
+        {"type": "multiple_choice", "data": ["Ich (bin / mag) ein Student.", "bin", "bin", "mag"]},
+        {"type": "multiple_choice", "data": ["Ich (genieße / bin) Reisen.", "genieße", "genieße", "bin"]},
+        {"type": "multiple_choice", "data": ["Ich (ist / bin) 18 Jahre alt.", "bin", "bin", "ist"]}
+    ],
+    "conclusion": "<h3>In dieser Lektion haben wir gelernt:</h3><ul><li>Wie man sich mit grundlegenden Strukturen und Wortschatz vorstellt.</li><li>Wörter im Zusammenhang mit Name, Alter, Beruf und Hobbys.</li><li>Satzstrukturen mit 'Ich bin...', 'Ich mag...', 'Mein Name ist...'</li></ul><h3>Beispieldialog:</h3><p>A: Hallo! Mein Name ist Sarah. Ich bin 20 Jahre alt. Ich bin Studentin.<br>B: Hallo Sarah! Ich bin Tom. Ich bin 22 Jahre alt. Ich arbeite als Lehrer.<br>A: Schön, dich kennenzulernen! Was machst du gerne in deiner Freizeit?<br>B: Ich mag Bücher lesen und Fußball spielen.</p><h3>Fragen zur Vertiefung:</h3><ul><li>Wie heißt du?</li><li>Wie alt bist du?</li><li>Was ist dein Beruf?</li><li>Was machst du gerne in deiner Freizeit?</li><li>Was ist dein Hobby?</li></ul><h3>Hausaufgabe:</h3><p>Schreibe einen kurzen Absatz über dich. Erzähle über: <br>- Deinen Namen <br>- Dein Alter <br>- Deinen Beruf (falls du einen hast) <br>- Deine Hobbys</p>"
+}

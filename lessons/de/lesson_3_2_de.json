@@ -1,0 +1,35 @@
+{
+    "topic": "Wegbeschreibungen geben und nach dem Weg fragen",
+    "vocabulary_list": [
+        "Links",
+        "Rechts",
+        "Geradeaus",
+        "In der Nähe",
+        "Weit",
+        "Abbiegen",
+        "Neben",
+        "Gegenüber",
+        "Zwischen",
+        "Ecke",
+        "Überqueren",
+        "Ampel",
+        "Straße",
+        "Block",
+        "Karte"
+    ],
+    "introduction": "<p>Diese Lektion konzentriert sich darauf, <strong>Wegbeschreibungen zu geben und nach dem Weg zu fragen</strong>. Die Schüler werden grundlegende Vokabeln im Zusammenhang mit Wegbeschreibungen und gebräuchliche Phrasen in einfachen Dialogen lernen. Zusätzlich behandeln wir einfache grammatische Strukturen wie <strong>Imperativsätze</strong> (z. B.: 'Biege links ab', 'Gehe geradeaus') und <strong>Fragen</strong>, die mit 'Wo ist...' oder 'Wie komme ich zu...' beginnen.</p>",
+    "presentation": "<h3>Neuer Wortschatz:</h3><ul><li>Links</li><li>Rechts</li><li>Geradeaus</li><li>In der Nähe</li><li>Weit</li><li>Abbiegen</li><li>Neben</li><li>Gegenüber</li><li>Zwischen</li><li>Ecke</li><li>Überqueren</li><li>Ampel</li><li>Straße</li><li>Block</li><li>Karte</li></ul><h3>Beispielsätze:</h3><ul><li>Biege an der Ecke links ab.</li><li>Gehe geradeaus, bis du die Ampel siehst.</li><li>Die Bank ist neben dem Supermarkt.</li><li>Wo ist die nächste Bushaltestelle?</li><li>Wie komme ich zum Bahnhof?</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["Der Supermarkt ist", "der Bank.", "neben"]},
+        {"type": "fill_blank", "data": ["Biege", "an der Ampel ab.", "links"]},
+        {"type": "fill_blank", "data": ["Die Bushaltestelle ist", "der Schule.", "gegenüber"]},
+        {"type": "fill_blank", "data": ["Gehe", "bis du den Park erreichst.", "geradeaus"]},
+        {"type": "fill_blank", "data": ["Die Bibliothek ist", "dem Museum.", "neben"]},
+        {"type": "multiple_choice", "data": ["(Biege / Gehe) links an der Ecke ab.", "Biege", "Biege", "Gehe"]},
+        {"type": "multiple_choice", "data": ["Die Apotheke ist (in der Nähe / weit) vom Restaurant.", "in der Nähe", "in der Nähe", "weit"]},
+        {"type": "multiple_choice", "data": ["(Wo / Was) ist das Postamt?", "Wo", "Wo", "Was"]},
+        {"type": "multiple_choice", "data": ["(Wie / Wo) komme ich zum Bahnhof?", "Wie", "Wie", "Wo"]},
+        {"type": "multiple_choice", "data": ["Das Hotel ist (neben / zwischen) dem Krankenhaus.", "neben", "neben", "zwischen"]}
+    ],
+    "conclusion": "<h3>Wiederholung:</h3><p>Überprüfe die Vokabeln und grammatischen Strukturen, die in dieser Lektion behandelt wurden.</p><p><strong>Beispieldialoge:</strong></p><ul><li>Entschuldigung, wo ist der Busbahnhof? Er ist neben dem Postamt.</li><li>Wie komme ich zum Museum? Gehe geradeaus und biege an der Ecke rechts ab.</li></ul><h3>Fragen zur Wiederholung:</h3><ul><li>Was sagst du, wenn jemand links abbiegen soll?</li><li>Wie fragt man, wo sich etwas befindet?</li></ul><h3>Hausaufgabe:</h3><p>Schreibe einen kurzen Dialog (mindestens 5 Zeilen), in dem du nach dem Weg zu einem Ort fragst und eine Antwort erhältst. Verwende mindestens 5 neue Wörter aus der heutigen Lektion.</p>"
+}

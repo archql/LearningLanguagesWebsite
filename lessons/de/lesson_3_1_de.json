@@ -1,0 +1,19 @@
+{
+    "topic": "Eine Reise planen und Reservierungen machen",
+    "vocabulary_list": [
+      "Buchen (ein Ticket)", "Reservierung", "Hotel", "Flug", "Reisen", "Reise", "Zielort", "Reisepass", "Gepäck", "Einchecken", "Ticket", "Flughafen", "Zug", "Tourist", "Reiseführer"
+    ],
+    "introduction": "<p>In dieser Lektion lernen wir grundlegende Vokabeln und Grammatik, die mit der Planung einer Reise und dem Machen von Reservierungen zusammenhängen. Der Schwerpunkt liegt auf dem einfachen Präsens, einfachen Fragesätzen und gebräuchlichen Ausdrücken rund ums Reisen.</p><h3>Grammatikschwerpunkt:</h3><ul><li>Einfaches Präsens: Wird verwendet, um Routinen und Fakten zu beschreiben. (z. B.: 'Ich buche ein Ticket.')</li><li>Fragen: Mit 'Do' und 'Does'. (z. B.: 'Haben Sie eine Reservierung?')</li><li>Höfliche Bitten: Mit 'Kann ich...?' und 'Ich würde gerne...'. (z. B.: 'Kann ich ein Zimmer buchen?' oder 'Ich würde gerne eine Reservierung machen.')</li></ul>",
+    "presentation": "<p>Lassen Sie uns einige nützliche Wörter und Sätze zum Planen einer Reise und zum Machen von Reservierungen lernen:</p><h3>Wortschatz:</h3><ul><li>Buchen (ein Ticket)</li><li>Reservierung</li><li>Hotel</li><li>Flug</li><li>Reisen</li><li>Reise</li><li>Zielort</li><li>Reisepass</li><li>Gepäck</li><li>Einchecken</li><li>Ticket</li><li>Flughafen</li><li>Zug</li><li>Tourist</li><li>Reiseführer</li></ul>",
+    "practice": [
+      {"type": "fill_blank", "data": ["Ich möchte ein Ticket nach Paris", ".", "buchen"]},
+      {"type": "fill_blank", "data": ["Wo ist dein", "?", "Reisepass"]},
+      {"type": "fill_blank", "data": ["Wir haben eine", "im Hotel.", "Reservierung"]},
+      {"type": "fill_blank", "data": ["Der", "fährt um 17 Uhr ab.", "Zug"]},
+      {"type": "fill_blank", "data": ["Ich muss am", "einchecken.", "Flughafen"]},
+      {"type": "multiple_choice", "data": ["Kann ich ein Zimmer ___, bitte?", "buchen", "Zug", "buchen", "Gepäck"]},
+      {"type": "multiple_choice", "data": ["Wo ist dein ___?", "Zielort", "Ticket", "Zielort", "Flughafen"]},
+      {"type": "multiple_choice", "data": ["Ich möchte eine ___ machen.", "Reservierung", "Reservierung", "Reiseführer", "Tourist"]}
+    ],
+    "conclusion": "<h3>Wiederholung:</h3><ul><li>Wortschatz: Buchen, Reservierung, Hotel, Flug usw.</li><li>Grammatik: Einfaches Präsens, Fragen, Höfliche Bitten.</li></ul><h3>Beispieldialog:</h3><p>A: Hallo! Ich möchte ein Zimmer buchen.<br>B: Sicher. Haben Sie eine Reservierung?<br>A: Nein, habe ich nicht. Kann ich jetzt eine machen?<br>B: Ja, natürlich. Wie viele Nächte bleiben Sie?<br>A: Zwei Nächte, bitte.</p><h3>Fragen zur Wiederholung:</h3><ul><li>Was ist eine Reservierung?</li><li>Wie fragt man höflich nach einem Ticket?</li><li>Was braucht man am Flughafen?</li></ul><h3>Hausaufgabe:</h3><p>Schreibe einen kurzen Dialog, in dem du ein Ticket für eine Reise buchst und eine Reservierung in einem Hotel machst. Verwende mindestens 5 Wörter aus der Vokabelliste.</p>"
+}

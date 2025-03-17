@@ -1,0 +1,34 @@
+{
+    "topic": "Über verschiedene Verkehrsmittel sprechen",
+    "vocabulary_list": [
+        "Auto",
+        "Bus",
+        "Zug",
+        "Fahrrad",
+        "Flugzeug",
+        "Boot",
+        "Taxi",
+        "Motorrad",
+        "Straßenbahn",
+        "U-Bahn",
+        "Roller",
+        "Fähre"
+    ],
+    "introduction": "<p>In dieser Lektion lernen wir, wie man auf Deutsch über verschiedene Verkehrsmittel spricht. Du wirst einige gebräuchliche Wörter und Ausdrücke im Zusammenhang mit Verkehrsmitteln lernen und wie man sie in einfachen Sätzen verwendet.</p><p><strong>Grammatikschwerpunkt:</strong><br>- Das Verb 'fahren' oder 'gehen' mit verschiedenen Verkehrsmitteln. Beispiel: 'Ich fahre mit dem Bus.' / 'Er fährt mit dem Zug.'<br>- Verwendung von 'mit' + Verkehrsmittel (mit dem Auto, mit dem Zug, mit dem Bus usw.)<br>- Einfache Fragen und Antworten formulieren: 'Wie kommst du zur Schule?' - 'Ich fahre mit dem Bus.'</p>",
+    "presentation": "<p><strong>Wortschatz (Verkehrsmittel):</strong></p><ul><li>Auto</li><li>Bus</li><li>Zug</li><li>Fahrrad</li><li>Flugzeug</li><li>Boot</li><li>Taxi</li><li>Motorrad</li><li>Straßenbahn</li><li>U-Bahn</li><li>Roller</li><li>Fähre</li></ul><p><strong>Beispielsätze:</strong><br>- Ich fahre mit dem Bus zur Schule.<br>- Sie reist mit dem Zug.<br>- Sie fahren mit dem Fahrrad im Park.<br>- Wir fahren mit der U-Bahn in die Stadt.<br>- Er fährt mit dem Auto zur Arbeit.</p>",
+    "practice": [
+        {"type": "fill_blank", "data": ["Ich fahre mit dem ", "zur Schule.", "Bus"]},
+        {"type": "fill_blank", "data": ["Wir reisen mit dem ", "in ein anderes Land.", "Flugzeug"]},
+        {"type": "fill_blank", "data": ["Sie fahren mit dem ", "in den Park.", "Fahrrad"]},
+        {"type": "fill_blank", "data": ["Sie nimmt das ", "zur Insel.", "Boot"]},
+        {"type": "fill_blank", "data": ["Er fährt mit dem ", "zur Arbeit.", "Auto"]},
+        {"type": "fill_blank", "data": ["Ich reise mit der ", "durch die Stadt.", "U-Bahn"]},
+        {"type": "multiple_choice", "data": ["Wie kommst du zur Schule?", "Ich fahre mit dem Zug.", "Ich fahre mit dem Zug.", "Ich geht mit dem Zug.", "Ich gegangen mit dem Zug."]},
+        {"type": "multiple_choice", "data": ["Wie kommt sie zur Arbeit?", "Sie fährt mit dem Bus.", "Sie fahre mit dem Bus.", "Sie fährt mit dem Bus.", "Sie gehend mit dem Bus."]},
+        {"type": "multiple_choice", "data": ["Sie reisen in eine andere Stadt...", "mit dem Auto.", "mit dem Auto.", "mit dem Fahrrad.", "mit dem Boot."]},
+        {"type": "multiple_choice", "data": ["Wir fahren mit unserem...", "Fahrrad.", "Boot.", "Fahrrad.", "Taxi."]},
+        {"type": "multiple_choice", "data": ["Er nimmt ein...", "Flugzeug.", "Auto.", "Flugzeug.", "Straßenbahn."]},
+        {"type": "multiple_choice", "data": ["Ich reise mit dem...", "Bus.", "Roller.", "Bus.", "Motorrad."]}
+    ],
+    "conclusion": "<h3>In dieser Lektion hast du gelernt, wie man über verschiedene Verkehrsmittel spricht und einfache Sätze dazu bildet.</h3><p>Du hast auch geübt, wie man Fragen und Antworten zu Verkehrsmitteln bildet.</p><p><strong>Beispieldialog:</strong><br>A: Wie kommst du zur Schule?<br>B: Ich fahre mit dem Bus.<br>A: Wie kommt dein Vater zur Arbeit?<br>B: Er fährt mit dem Auto.</p><p><strong>Fragen zur Wiederholung:</strong><br>1. Wie kommst du zur Schule?<br>2. Wie reist du in eine andere Stadt?<br>3. Welches Verkehrsmittel benutzt du am häufigsten?</p><p><strong>Hausaufgabe:</strong> Schreibe 5 Sätze darüber, wie du und deine Familie reisen. Verwende die Wörter aus der heutigen Lektion.</p>"
+}

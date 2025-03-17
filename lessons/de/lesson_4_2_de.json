@@ -1,0 +1,37 @@
+{
+    "topic": "Im Restaurant bestellen",
+    "vocabulary_list": [
+        "Speisekarte",
+        "Kellner",
+        "Kellnerin",
+        "Bestellen",
+        "Rechnung",
+        "Gericht",
+        "Getränk",
+        "Vorspeise",
+        "Hauptgericht",
+        "Nachspeise",
+        "Tisch für zwei",
+        "Reservierung",
+        "Wasser",
+        "Kaffee",
+        "Tee",
+        "Salat",
+        "Suppe"
+    ],
+    "introduction": "<p>In dieser Lektion lernst du, wie man Essen und Getränke in Restaurants bestellt. Du wirst einfache Vokabeln und grundlegende Satzstrukturen kennenlernen, die beim Essen gehen verwendet werden.</p><h3>Grammatik-Schwerpunkt:</h3><ul><li>Präsens: Wird für allgemeine Aussagen verwendet (z. B. 'Ich möchte einen Kaffee.')</li><li>Höfliche Bitten: Verwenden von 'Kann ich... haben?' oder 'Ich hätte gern...'</li><li>Ja/Nein-Fragen: (z. B. 'Haben Sie Tee?')</li><li>Zählbare und unzählbare Substantive: (z. B. 'ein Sandwich' vs. 'etwas Wasser')</li></ul>",
+    "presentation": "<h3>Vokabular:</h3><ul><li>Speisekarte</li><li>Kellner / Kellnerin</li><li>Bestellen</li><li>Rechnung</li><li>Gericht</li><li>Getränk</li><li>Vorspeise</li><li>Hauptgericht</li><li>Nachspeise</li><li>Tisch für zwei</li><li>Reservierung</li><li>Wasser (still/sprudelnd)</li><li>Kaffee / Tee</li><li>Salat</li><li>Suppe</li></ul><h3>Beispielsätze:</h3><ul><li>'Kann ich bitte die Speisekarte sehen?'</li><li>'Wir haben eine Reservierung für zwei Personen.'</li><li>'Ich hätte gern einen Salat.'</li><li>'Kann ich bitte die Rechnung haben?'</li><li>'Ich nehme das Hauptgericht und ein Getränk.'</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["Kann ich bitte die", "sehen?", "Speisekarte"]},
+        {"type": "fill_blank", "data": ["Ich möchte", "eine Pizza.", "bestellen"]},
+        {"type": "fill_blank", "data": ["Ein", "für zwei Personen, bitte.", "Tisch"]},
+        {"type": "fill_blank", "data": ["Kann ich bitte die", "haben?", "Rechnung"]},
+        {"type": "fill_blank", "data": ["Möchten Sie eine", "oder eine Nachspeise?", "Vorspeise"]},
+        {"type": "multiple_choice", "data": ["Was möchten Sie trinken?", "Wasser", "Speisekarte", "Wasser", "Tisch"]},
+        {"type": "multiple_choice", "data": ["Kann ich bitte einen Kaffee haben?", "Getränk", "Reservierung", "Getränk", "Salat"]},
+        {"type": "multiple_choice", "data": ["Ich nehme das Hauptgericht.", "Bestellung", "Vorspeise", "Bestellung", "Rechnung"]},
+        {"type": "multiple_choice", "data": ["Kann ich bitte die Rechnung haben?", "Rechnung", "Getränk", "Rechnung", "Suppe"]},
+        {"type": "multiple_choice", "data": ["Haben Sie Tee?", "Ja, haben wir.", "Ja, haben wir.", "Tisch für zwei.", "Hauptgericht."]}
+    ],
+    "conclusion": "<h3>In dieser Lektion hast du gelernt, wie man Essen und Getränke in Restaurants bestellt.</h3><ul><li>Wichtige Sätze sind:</li><li>'Kann ich bitte die Speisekarte sehen?'</li><li>'Ich hätte gern... / Kann ich... haben?' </li><li>'Kann ich bitte die Rechnung haben?'</li></ul><h3>Beispieldialog:</h3><p>Kellner: 'Hallo! Wie kann ich Ihnen helfen?' <br>Kunde: 'Hallo! Kann ich bitte die Speisekarte sehen?' <br>Kellner: 'Natürlich! Hier, bitte.' <br>Kunde: 'Danke. Ich hätte gern einen Salat und einen Kaffee.' <br>Kellner: 'Möchten Sie sonst noch etwas?' <br>Kunde: 'Nein, das ist alles. Kann ich bitte die Rechnung haben?' <br>Kellner: 'Natürlich. Hier ist sie.'</p><h3>Fragen zur Wiederholung:</h3><ul><li>Wie fragt man höflich nach einer Speisekarte?</li><li>Welche Sätze kannst du verwenden, um Essen zu bestellen?</li><li>Wie fragt man nach der Rechnung?</li></ul><h3>Hausaufgabe:</h3><p>Schreibe einen kurzen Dialog zwischen einem Kellner und einem Kunden in einem Restaurant. Verwende mindestens fünf der neuen Wörter oder Sätze, die du heute gelernt hast.</p>"
+}

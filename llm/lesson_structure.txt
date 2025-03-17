@@ -16,6 +16,23 @@
 	•	Discussing Culinary Cultures
 
 
+1.	Sich selbst und andere vorstellen
+	• Über sich selbst sprechen (Name, Alter, Beruf, Hobbys)
+	• Über deine Familie und Freunde sprechen
+	• Einen ersten Eindruck machen
+2.	Tagesabläufe und Lebensstil
+	• Über Arbeit und Schule sprechen
+	• Hobbys und Freizeitaktivitäten beschreiben
+	• Gesunde Gewohnheiten und Routinen besprechen
+3.	Reisen und Transport
+	• Eine Reise planen und Reservierungen machen
+	• Wegbeschreibungen geben und nach dem Weg fragen
+	• Über verschiedene Verkehrsmittel sprechen
+4.	Essen und Kochen
+	• Gerichte und Zutaten beschreiben
+	• Im Restaurant bestellen
+	• Kulinarische Kulturen besprechen
+
 """
 Придумай урок немецкого языка для уровня A1 на тему "Знакомство". Урок должен быть структурирован следующим образом:
 

@@ -1,0 +1,37 @@
+{
+    "topic": "Gerichte und Zutaten beschreiben",
+    "vocabulary_list": [
+        "Brot",
+        "Reis",
+        "Hähnchen",
+        "Suppe",
+        "Salat",
+        "Süß",
+        "Scharf",
+        "Frisch",
+        "Lecker",
+        "Zutaten",
+        "Obst",
+        "Gemüse",
+        "Fleisch",
+        "Käse",
+        "Saft"
+    ],
+    "introduction": "<p>In dieser Lektion lernen wir, wie man Gerichte und Zutaten auf Deutsch beschreibt. Wir werden grundlegendes Vokabular zum Thema Essen und Gerichte lernen und einfache Satzstrukturen verwenden wie:</p><ul><li><strong>Das ist...</strong> (um ein Gericht oder eine Zutat vorzustellen)</li><li><strong>Es ist... / Sie sind...</strong> (um Aussehen, Geschmack usw. zu beschreiben)</li><li><strong>Ich mag / Ich mag nicht...</strong> (um Vorlieben auszudrücken)</li></ul>",
+    "presentation": "<p><strong>Neuer Wortschatz:</strong></p><ul><li>Das ist Brot. Es ist frisch.</li><li>Ich mag Reis mit Hähnchen.</li><li>Suppe ist heiß.</li><li>Salat wird aus Gemüse gemacht.</li><li>Der Kuchen ist süß und lecker.</li><li>Dieses Gericht ist scharf.</li><li>Ich trinke jeden Morgen Orangensaft.</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["Das ist", ". Es ist scharf.", "Suppe"]},
+        {"type": "fill_blank", "data": ["Ich mag", ". Es ist süß.", "Kuchen"]},
+        {"type": "fill_blank", "data": ["", "wird aus Gemüse gemacht.", "Salat"]},
+        {"type": "fill_blank", "data": ["Ich trinke", "jeden Morgen.", "Saft"]},
+        {"type": "fill_blank", "data": ["", "ist frisch und weich.", "Käse"]},
+        {"type": "fill_blank", "data": ["Ich mag", ". Es ist lecker.", "Obst"]},
+        {"type": "multiple_choice", "data": ["Das ist Brot. Es ist ___", "frisch", "scharf", "frisch"]},
+        {"type": "multiple_choice", "data": ["Ich mag Reis mit ___", "Hähnchen", "Käse", "Hähnchen"]},
+        {"type": "multiple_choice", "data": ["Suppe ist ___", "heiß", "kalt", "heiß"]},
+        {"type": "multiple_choice", "data": ["Salat wird aus ___ gemacht", "Gemüse", "Obst", "Gemüse"]},
+        {"type": "multiple_choice", "data": ["Der Kuchen ist ___", "süß", "frisch", "süß"]},
+        {"type": "multiple_choice", "data": ["Dieses Gericht ist ___", "scharf", "süß", "scharf"]}
+    ],
+    "conclusion": "<h3>In dieser Lektion haben wir grundlegende Wörter gelernt, um Gerichte und Zutaten zu beschreiben. Wir haben geübt, einfache Sätze wie 'Das ist...' und 'Ich mag...' zu verwenden.</h3><p><strong>Beispieldialog:</strong></p><p>A: Was isst du gerne?<br>B: Ich mag Reis mit Hähnchen. Es ist lecker.<br>A: Magst du Salat?<br>B: Ja, ich mag Salat. Er ist frisch.</p><p><strong>Fragen zur Wiederholung:</strong></p><ul><li>Welche Wörter kannst du verwenden, um Essen zu beschreiben?</li><li>Wie sagst du, dass du etwas magst oder nicht magst?</li><li>Kannst du ein Gericht beschreiben, das du magst?</li></ul><p><strong>Hausaufgabe:</strong> Schreibe 5 Sätze, in denen du dein Lieblingsgericht beschreibst. Verwende Wörter aus dieser Lektion. Beispiel: „Ich mag Pizza. Sie ist lecker.“</p>"
+}

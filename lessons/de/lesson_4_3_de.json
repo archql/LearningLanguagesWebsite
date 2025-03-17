@@ -1,0 +1,35 @@
+{
+    "topic": "Kulinarische Kulturen besprechen",
+    "vocabulary_list": [
+        "Gericht",
+        "Lecker",
+        "Scharf",
+        "Süß",
+        "Sauer",
+        "Zutaten",
+        "Rezept",
+        "Geschmack",
+        "Kochen",
+        "Mahlzeit",
+        "Frühstück",
+        "Mittagessen",
+        "Abendessen",
+        "Restaurant",
+        "Kultur"
+    ],
+    "introduction": "<p>In dieser Lektion sprechen wir über Essen und kulinarische Kulturen. Du wirst grundlegende Wörter zum Thema Essen und Kochen lernen und üben, wie man über verschiedene Gerichte aus aller Welt spricht.</p> <h3>Grammatik-Schwerpunkt:</h3><ul><li>Präsens (z. B. Ich esse, Du magst, Wir kochen)</li><li>Verwendung von 'mögen' und 'nicht mögen', um Vorlieben auszudrücken (z. B. Ich mag Pasta. Ich mag keinen Fisch.)</li><li>Ja/Nein-Fragen: Magst du...? (z. B. Magst du Pizza?)</li><li>W-Fragen: Was, Wo, Wie (z. B. Was ist dein Lieblingsessen?)</li></ul>",
+    "presentation": "<p>Lasst uns einige nützliche Wörter und Ausdrücke zum Thema Essen lernen:</p><h3>Vokabular:</h3><ul><li>Gericht</li><li>Lecker</li><li>Scharf</li><li>Süß</li><li>Sauer</li><li>Zutaten</li><li>Rezept</li><li>Geschmack</li><li>Kochen</li><li>Mahlzeit</li><li>Frühstück</li><li>Mittagessen</li><li>Abendessen</li><li>Restaurant</li><li>Kultur</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["Ich mag", "Essen.", "scharfes"]},
+        {"type": "fill_blank", "data": ["Wir haben", "um 12 Uhr.", "Mittagessen"]},
+        {"type": "fill_blank", "data": ["Diese Suppe ist sehr", ".", "sauer"]},
+        {"type": "fill_blank", "data": ["Ich möchte ein neues", "ausprobieren.", "Restaurant"]},
+        {"type": "fill_blank", "data": ["Meine Lieblings", "ist Pizza.", "mahlzeit"]},
+        {"type": "multiple_choice", "data": ["Der Kuchen ist sehr ___.", "Lecker", "Lecker", "Rezept"]},
+        {"type": "multiple_choice", "data": ["Wir brauchen mehr ___, um die Suppe zu kochen.", "Zutaten", "Zutaten", "Restaurant"]},
+        {"type": "multiple_choice", "data": ["Französisches Essen ist Teil der französischen ___.", "Kultur", "Kultur", "Süß"]},
+        {"type": "multiple_choice", "data": ["Wie ___ die Suppe?", "schmeckt", "schmeckt", "Abendessen"]},
+        {"type": "multiple_choice", "data": ["Das Curry ist sehr ___.", "scharf", "scharf", "Mittagessen"]}
+    ],
+    "conclusion": "<h3>In dieser Lektion haben wir gelernt:</h3><ul><li>Wie man über Gerichte, Mahlzeiten und Vorlieben spricht.</li><li>Neues Vokabular zum Thema Essen.</li><li>Wie man Vorlieben mit 'Ich mag...' und 'Ich mag nicht...' ausdrückt.</li></ul><h3>Beispieldialog:</h3><p><strong>Tom:</strong> Was ist dein Lieblingsgericht?<br><strong>Lisa:</strong> Mein Lieblingsgericht ist Pizza. Es ist lecker!<br><strong>Tom:</strong> Magst du scharfes Essen?<br><strong>Lisa:</strong> Nein, ich mag es nicht. Ich mag süßes Essen.</p><h3>Hausaufgabe:</h3><p>Schreibe einen kurzen Absatz (3–5 Sätze) über dein Lieblingsgericht. Beschreibe den Geschmack, die Zutaten und warum du es magst.</p>"
+}

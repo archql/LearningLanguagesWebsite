@@ -1,0 +1,30 @@
+{
+    "topic": "Gesunde Gewohnheiten und Routinen besprechen",
+    "vocabulary_list": [
+        "Bewegung",
+        "Gesund",
+        "Wasser",
+        "Schlaf",
+        "Frühstück",
+        "Obst",
+        "Gemüse",
+        "Spazieren",
+        "Routine",
+        "Snack"
+    ],
+    "introduction": "<p>In dieser Lektion sprechen wir über gesunde Gewohnheiten und Routinen. Wir werden Wörter und Ausdrücke lernen, die mit täglichen Aktivitäten, Essen und Bewegung zu tun haben. Wir werden auch die Verwendung des Präsens üben, das benutzt wird, um über Gewohnheiten und Routinen zu sprechen.</p><h3>Grammatikschwerpunkt: Präsens</h3><p><strong>Ich/Du/Wir/Sie:</strong> essen, trinken, machen, schlafen (Beispiel: Ich esse gesundes Essen. / Sie machen jeden Tag Bewegung.)<br><strong>Er/Sie/Es:</strong> isst, trinkt, macht, schläft (Beispiel: Sie trinkt Wasser. / Er schläft gut.)</p>",
+    "presentation": "<p>Lasst uns einige neue Wörter und Ausdrücke zu gesunden Gewohnheiten lernen:</p><h3>Wortschatz:</h3><ul><li><strong>Bewegung</strong> – Den Körper bewegen, um gesund zu bleiben. (Beispiel: Ich mache jeden Morgen Bewegung.)</li><li><strong>Gesund</strong> – Gut für deinen Körper. (Beispiel: Gemüse ist gesund.)</li><li><strong>Wasser</strong> – Ein Getränk, das gut für deine Gesundheit ist. (Beispiel: Sie trinkt jeden Tag Wasser.)</li><li><strong>Schlaf</strong> – Deinen Körper und Geist ausruhen. (Beispiel: Ich schlafe jede Nacht acht Stunden.)</li><li><strong>Frühstück</strong> – Die erste Mahlzeit des Tages. (Beispiel: Er isst um 7 Uhr Frühstück.)</li><li><strong>Obst</strong> – Gesundes Essen, wie Äpfel oder Bananen. (Beispiel: Wir essen Obst zum Mittagessen.)</li><li><strong>Gemüse</strong> – Gesundes Essen, wie Karotten und Spinat. (Beispiel: Sie mag Gemüse.)</li><li><strong>Spazieren</strong> – Mit den Füßen irgendwohin gehen. (Beispiel: Sie spazieren zur Schule.)</li><li><strong>Routine</strong> – Dinge, die du jeden Tag machst. (Beispiel: Meine Routine ist aufstehen, frühstücken und zur Arbeit gehen.)</li><li><strong>Snack</strong> – Eine kleine Menge Essen. (Beispiel: Er isst nach der Schule einen Snack.)</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["Ich trinke", "jeden Tag.", "Wasser"]},
+        {"type": "fill_blank", "data": ["Sie isst", "am Morgen.", "Frühstück"]},
+        {"type": "fill_blank", "data": ["Wir", "im Park.", "machen Bewegung"]},
+        {"type": "fill_blank", "data": ["Er isst", "zum Mittagessen.", "Obst"]},
+        {"type": "fill_blank", "data": ["Sie", "acht Stunden lang.", "schlafen"]},
+        {"type": "multiple_choice", "data": ["Ich (mache / macht) jeden Morgen Bewegung.", "mache", "mache", "macht"]},
+        {"type": "multiple_choice", "data": ["Sie (isst / essen) jeden Tag Obst.", "isst", "isst", "essen"]},
+        {"type": "multiple_choice", "data": ["Sie (trinken / trinkt) Wasser vor dem Schlafengehen.", "trinken", "trinken", "trinkt"]},
+        {"type": "multiple_choice", "data": ["Wir (schlafen / schläft) nachts.", "schlafen", "schlafen", "schläft"]},
+        {"type": "multiple_choice", "data": ["Er (spazieren / spaziert) zur Schule.", "spaziert", "spazieren", "spaziert"]}
+    ],
+    "conclusion": "<h3>Lass uns wiederholen!</h3><p>Wir haben Wörter über Gesundheit gelernt, wie „Bewegung“, „Obst“ und „Gemüse“. Wir haben geübt, das Präsens zu verwenden, um über Gewohnheiten zu sprechen.</p><p><strong>Beispieldialog:</strong><br>A: Was machst du jeden Morgen?<br>B: Ich esse Frühstück und trinke Wasser. Dann gehe ich zu Fuß zur Schule.</p><h3>Fragen zur Wiederholung:</h3><ul><li>Was isst du zum Frühstück?</li><li>Machst du jeden Tag Bewegung?</li><li>Wie viele Stunden schläfst du jede Nacht?</li></ul><h3>Hausaufgabe:</h3><p>Schreibe fünf Sätze über deine tägliche Routine. Verwende Wörter wie „Bewegung“, „Obst“, „Wasser“ und „Schlaf.“</p>"
+}
