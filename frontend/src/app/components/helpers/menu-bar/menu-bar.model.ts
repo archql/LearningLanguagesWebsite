@@ -1,7 +1,8 @@
 export interface MenuItem {
     trID: string,
     label: string,
-    link: string
+    link?: string,
+    action?: (e: any) => void
 }
 
 export interface MenuAction {

@@ -6,10 +6,16 @@
     <span class="spacer"></span>
     <!-- Navigation Menu -->
     <ul class="menu">
-      @for (item of menuItems; track item.label) {
-        <li>
-          <a mat-button [routerLink]="item.link">{{ item.label }}</a>
-        </li>
+      @for (item of menuItems; track item.trID) {
+        @if (item.link) {
+          <li>
+            <a mat-button [routerLink]="item.link">{{ item.label }}</a>
+          </li>
+        } @else if(item.action) {
+            <li>
+            <a mat-button (click)="item.action(item.label)">{{ item.label }}</a>
+            </li>
+        }
       }
     </ul>
     <span class="spacer"></span>

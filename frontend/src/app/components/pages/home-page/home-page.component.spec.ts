@@ -5,6 +5,8 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('HomePageComponent', () => {
   let component: HomePageComponent;
@@ -40,6 +42,8 @@ describe('HomePageComponent', () => {
             serializeUrl: jasmine.createSpy('serializeUrl').and.returnValue(''), // Mock serializeUrl
           },
         },
+        provideHttpClient(),
+        provideHttpClientTesting()
       ]
     })
     .compileComponents();
