@@ -40,9 +40,9 @@
         <mat-list>
           @for (lesson of topic.lessons; track lesson.id) {
             <mat-list-item (click)="goToLesson(lesson.id)">
-              <mat-icon [ngStyle]="{ color: lesson.score === 0 ? 'red' : 'inherit' }">
-              {{ lesson.score === null ? 'radio_button_unchecked' : (lesson.score === 1 ? 'check_circle' : 'cancel') }}
-              </mat-icon>
+                <mat-icon [ngClass]="{ 'failure': lesson.score === 0 }">
+                {{ lesson.score === null ? 'radio_button_unchecked' : (lesson.score === 1 ? 'check_circle' : 'cancel') }}
+                </mat-icon>
               {{ lesson.title }}
             </mat-list-item>
           }

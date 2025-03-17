@@ -59,4 +59,8 @@
     margin-right: 8px;
     color: #4caf50; /* Green for completed lessons */
     overflow: unset;
+
+    &.failure {
+      color: #f44336; /* Red color for failure */
+    }
   }
