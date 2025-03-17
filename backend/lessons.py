@@ -129,7 +129,7 @@ def register_routes(app):
                 "presentation": lesson_data.get("presentation", ""),
                 "practice": lesson_data.get("practice", []),
                 "conclusion": lesson_data.get("conclusion", ""),
-                "language": lesson_data.get("language", "")
+                "language": str(lesson['language'])
 
             }
 
