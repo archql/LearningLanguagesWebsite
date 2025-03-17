@@ -166,7 +166,7 @@ def register_routes(app):
             conn = sqlite3.connect('lessons.db')
             conn.row_factory = sqlite3.Row
             lessons = conn.execute(
-                "SELECT lesson_id, topic, data FROM Lessons WHERE title = 'daily_challenge' AND language = ?",
+                "SELECT lesson_id, topic, data FROM Lessons WHERE title = 'daily_challenge' AND language = ? and lesson_id > 99999",
                 (language_code,)
             ).fetchall()
             conn.close()
@@ -274,19 +274,20 @@ def register_routes(app):
             
             # Получаем все уникальные lesson_title для пользователя
             topics = conn.execute(
-                "SELECT DISTINCT lesson_title FROM UserProgress WHERE user_id = ?",
+                "SELECT DISTINCT topic_title FROM UserProgress WHERE user_id = ? and lesson_id < 100000",
                 (user_id,)
             ).fetchall()
 
             result = []
             
+
             for topic in topics:
-                lesson_title = topic["lesson_title"]
+                topic_title = topic["topic_title"]
                 
                 # Для каждого lesson_title получаем связанные уроки
                 lessons = conn.execute(
-                    "SELECT lesson_id, lesson_title, status, score FROM UserProgress WHERE user_id = ? AND lesson_title = ?",
-                    (user_id, lesson_title)
+                    "SELECT lesson_id, topic_title, lesson_title, status, score FROM UserProgress WHERE user_id = ? AND topic_title = ?",
+                    (user_id, topic_title)
                 ).fetchall()
 
                 lessons_list = []
@@ -311,7 +312,7 @@ def register_routes(app):
 
                 # Добавляем объект Topic в итоговый результат
                 result.append({
-                    "title": lesson_title,
+                    "title": topic_title,
                     "lessons": lessons_list,
                     "completionPercentage": completion_percentage
                 })

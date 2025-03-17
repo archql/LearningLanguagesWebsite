@@ -37,7 +37,7 @@ def register_routes(app):
 
             # Получаем все темы
             topics_data = conn.execute(
-                "SELECT DISTINCT topic FROM Lessons WHERE language = ?", (user_language,)
+                "SELECT DISTINCT topic FROM Lessons WHERE language = ? and lesson_id < 100000", (user_language,)
             ).fetchall()
 
             if not topics_data:
@@ -177,17 +177,20 @@ def register_routes(app):
                 "fbGivenAnswers": []
             }
             
+
+            fbCounter = 0
+            mcCounter = 0
             for i, ex in enumerate(practice):
                 if ex["type"] == "fill_blank":
-                    exercise_be["fbRange"].append(i)
+                    exercise_be["fbRange"].append(fbCounter)
+                    fbCounter+=1
                     exercise_be["fbBeforeBlank"].append(ex["data"][0])
                     exercise_be["fbAfterBlank"].append(ex["data"][1])
                     exercise_be["fbCorrectAnswers"].append(ex["data"][2])
                     exercise_be["fbGivenAnswers"].append("null")
-
-            for i, ex in enumerate(practice):
-                if ex["type"] == "multiple_choice":
-                    exercise_be["mcRange"].append(i)
+                elif ex["type"] == "multiple_choice":
+                    exercise_be["mcRange"].append(mcCounter)
+                    mcCounter+=1
                     exercise_be["mcQuestions"].append(ex["data"][0])
                     exercise_be["mcCorrectAnswers"].append(ex["data"][1])
                     exercise_be["mcOptions"].append(ex["data"][2:])
@@ -291,14 +294,15 @@ def register_routes(app):
             cursor_lessons = conn_lessons.cursor()
 
             # Получаем название урока
-            cursor_lessons.execute("SELECT title FROM Lessons WHERE lesson_id = ?", (lesson_id,))
+            cursor_lessons.execute("SELECT topic, title FROM Lessons WHERE lesson_id = ?", (lesson_id,))
             lesson = cursor_lessons.fetchone()
             conn_lessons.close()
 
             if not lesson:
                 return jsonify({"message": "Lesson not found"}), 404
-
-            lesson_title = lesson[0]
+            
+            topic_title = lesson[0]
+            lesson_title = lesson[1]
             
             # Текущее время прохождения урока
             completion_time = datetime.now().strftime('%Y-%m-%d')  # Формат: 'YYYY-MM-DDTHH:MM:SS'
@@ -309,10 +313,10 @@ def register_routes(app):
 
             # Запись прогресса
             cursor_progress.execute("""
-                INSERT INTO UserProgress (user_id, lesson_id, lesson_title, status, score, completion_time)
-                VALUES (?, ?, ?, ?, ?, ?)
+                INSERT INTO UserProgress (user_id, lesson_id, topic_title, lesson_title, status, score, completion_time)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(user_id, lesson_id) DO NOTHING
-                """, (user_id, lesson_id, lesson_title, "completed", score, completion_time))
+                """, (user_id, lesson_id, topic_title, lesson_title, "completed", score, completion_time))
             conn_progress.commit()
             conn_progress.close()
 

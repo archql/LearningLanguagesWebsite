@@ -38,6 +38,7 @@ def create_user_progress_db():
                         progress_id INTEGER PRIMARY KEY,
                         user_id INTEGER,
                         lesson_id INTEGER,
+                        topic_title TEXT,
                         lesson_title TEXT,
                         status TEXT,
                         score BOOLEAN,
