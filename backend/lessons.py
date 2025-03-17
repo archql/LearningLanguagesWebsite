@@ -314,9 +314,11 @@ def register_routes(app):
 
             # Запись прогресса
             cursor_progress.execute("""
-                INSERT INTO UserProgress (user_id, lesson_id, topic_title, lesson_title, status, score, completion_time)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-                ON CONFLICT(user_id, lesson_id) DO NOTHING
+INSERT INTO UserProgress (user_id, lesson_id, topic_title, lesson_title, status, score, completion_time)
+VALUES (?, ?, ?, ?, ?, ?, ?)
+ON CONFLICT(user_id, lesson_id) DO UPDATE 
+SET score = CASE WHEN UserProgress.score = 0 AND excluded.score = 1 THEN 1 ELSE UserProgress.score END,
+    completion_time = excluded.completion_time
                 """, (user_id, lesson_id, topic_title, lesson_title, "completed", score, completion_time))
             conn_progress.commit()
             conn_progress.close()
