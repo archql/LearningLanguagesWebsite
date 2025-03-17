@@ -22,6 +22,7 @@ export class MultipleChoiceComponent {
   @Input() question: string = '';
   @Input() options: string[] = [];
   @Input() id: number = 0;
+  @Input() lang: string = 'en';
   @Output() answerSelected = new EventEmitter<string>();
 
   selectedOption: string = '';

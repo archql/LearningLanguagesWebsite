@@ -3,7 +3,7 @@
         <mat-card-content style="position: relative;">
             <h4>Fill in the blank</h4>
             <p>{{ beforeBlank }} <input matInput type="text" (focus)="showPanel($event)" [(ngModel)]="userAnswer" (ngModelChange)="onInputChange()"/>  {{afterBlank}}</p>
-            <app-text-to-speech [textToSpeak]="beforeBlank + ' ... ' + afterBlank"></app-text-to-speech>
+            <app-text-to-speech [textToSpeak]="beforeBlank + ' ... ' + afterBlank" [lang]="lang || 'en'"></app-text-to-speech>
         </mat-card-content>
     </mat-card>
 </div>

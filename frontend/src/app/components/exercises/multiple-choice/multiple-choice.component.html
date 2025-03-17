@@ -7,7 +7,7 @@
             {{ option }}
           </mat-radio-button>
         </mat-radio-group>
-        <app-text-to-speech [textToSpeak]="question"></app-text-to-speech>
+        <app-text-to-speech [textToSpeak]="question" [lang]="lang || 'en'"></app-text-to-speech>
       </mat-card-content>
     </mat-card>
 </div>

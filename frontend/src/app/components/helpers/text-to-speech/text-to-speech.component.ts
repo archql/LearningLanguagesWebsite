@@ -13,6 +13,7 @@ import { TextToSpeechService } from '../../../services/text-to-speech.service';
 export class TextToSpeechComponent {
 
   @Input() textToSpeak?: string = '';
+  @Input() lang: string = 'en';
 
   isSpeaking: boolean = false;
 
@@ -23,7 +24,7 @@ export class TextToSpeechComponent {
     if (!this.isSpeaking) {
       this.isSpeaking = true;
       this.textToSpeak = this.textToSpeak.replace(/<[^>]*>/g, '. ');
-      this.tts.speak(this.textToSpeak, localStorage.getItem('language') || 'en');
+      this.tts.speak(this.textToSpeak, this.lang || 'en');
       this.checkSpeechEnd();
     } else {
       this.stop();

@@ -1,7 +1,7 @@
 <app-loader-wrapper [loading]="exerciseBe.loading" [error]="exerciseBe.error">
     <ng-container *ngFor="let i of exerciseBe.data?.mcRange">
         <app-multiple-choice
-            [question]="exerciseBe.data?.mcQuestions?.[i] || ''" [options]="exerciseBe.data?.mcOptions?.[i] || []" (answerSelected)="handleMcAnswerSubmission($event, i)">
+            [question]="exerciseBe.data?.mcQuestions?.[i] || ''" [options]="exerciseBe.data?.mcOptions?.[i] || []" (answerSelected)="handleMcAnswerSubmission($event, i)" [lang]="lang">
         </app-multiple-choice>
     </ng-container>
     <ng-container *ngFor="let i of exerciseBe.data?.fbRange">
