@@ -89,7 +89,7 @@ def register_routes(app, bcrypt):
         # Проверка email и пароля
         if user and bcrypt.check_password_hash(user['password'], password):
             from flask_jwt_extended import create_access_token
-            token = create_access_token(identity=user['user_id'])
+            token = create_access_token(identity=str(user['user_id']))
             return jsonify({"token": token})
 
         return jsonify({"message": "Invalid email or password"}), 401
