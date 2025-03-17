@@ -55,6 +55,8 @@
   }
   
   mat-icon {
+    padding: 0;
     margin-right: 8px;
     color: #4caf50; /* Green for completed lessons */
+    overflow: unset;
   }
