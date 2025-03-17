@@ -14,7 +14,7 @@
         </mat-card-content>
     </mat-card>
     
-    <app-exercise [id]="lessonId" [triggerFinish]="triggerFinish"
+    <app-exercise [id]="lessonId" [triggerFinish]="triggerFinish" [lang]="lesson.data?.language || 'en'"
     (returnFeedback)="showFeedback($event)"
     ></app-exercise>
     

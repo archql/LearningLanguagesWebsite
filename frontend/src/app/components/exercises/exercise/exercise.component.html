@@ -6,7 +6,7 @@
     </ng-container>
     <ng-container *ngFor="let i of exerciseBe.data?.fbRange">
         <app-fill-blanks
-            [beforeBlank]="exerciseBe.data?.fbBeforeBlank?.[i] || ''" [afterBlank]="exerciseBe.data?.fbAfterBlank?.[i] || ''" (answerSubmitted)="handleFbAnswerSubmission($event, i)">
+            [beforeBlank]="exerciseBe.data?.fbBeforeBlank?.[i] || ''" [afterBlank]="exerciseBe.data?.fbAfterBlank?.[i] || ''" (answerSubmitted)="handleFbAnswerSubmission($event, i)" [lang]="lang">
         </app-fill-blanks>
     </ng-container>
 
