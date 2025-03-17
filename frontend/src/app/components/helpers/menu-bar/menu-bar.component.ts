@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { LanguageSelectorComponent } from '../language-selector/language-selector.component';
@@ -21,7 +21,7 @@ export class MenuBarComponent implements OnInit, OnDestroy {
 
   @Input() menuItems: MenuItem[] = [];
 
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService, private router: Router) {
     this.subscription = new Subscription();
 
     // if (typeof window !== 'undefined') { 
@@ -75,5 +75,9 @@ export class MenuBarComponent implements OnInit, OnDestroy {
     if (typeof window !== 'undefined') { 
       localStorage.setItem('language', language.code);
     }
+  }
+
+  redirectToHome() {
+    this.router.navigate(['/home']);
   }
 }
