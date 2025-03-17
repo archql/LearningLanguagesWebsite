@@ -2,13 +2,17 @@ import sqlite3
 import os
 import json
 
-def read_json_files_from_folder(folder_path):
+def read_json_files_from_folder(directory):
     json_data = []
-    for filename in os.listdir(folder_path):
-        if filename.endswith(".json"):
-            file_path = os.path.join(folder_path, filename)
-            with open(file_path, "r", encoding="utf-8") as file:
-                json_data.append(file.read())
+    
+    # Получаем список файлов, сортируем их по алфавиту
+    files = sorted(f for f in os.listdir(directory) if f.endswith(".json"))
+    
+    for file in files:
+        file_path = os.path.join(directory, file)
+        with open(file_path, "r", encoding="utf-8") as f:
+            json_data.append(f.read())  # Читаем содержимое файла в строку
+    
     return json_data
 
 
