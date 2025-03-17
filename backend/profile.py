@@ -52,16 +52,24 @@ def register_routes(app):
         # Подключение к базе данных
         conn = sqlite3.connect('user_progress.db')
         cursor = conn.cursor()
-
         # Извлекаем user_id из контекста JWT
         user_id = get_jwt_identity()
-
         # Удаляем все данные по user_id
         cursor.execute("DELETE FROM UserProgress WHERE user_id = ?", (user_id,))
         conn.commit()
-
         # Закрытие соединения
         conn.close()
+
+        conn_users = sqlite3.connect("users.db")
+        cursor_users = conn_users.cursor()
+
+        cursor_users.execute("""
+            UPDATE Users
+            SET daily_challenge_date = ?
+            WHERE user_id = ?
+        """, ('2000-12-12', user_id))
+        conn_users.commit()
+        conn_users.close()
 
         conn = sqlite3.connect('gamification.db')
         cursor = conn.cursor()
@@ -282,6 +290,15 @@ def register_routes(app):
             cursor.execute("DELETE FROM UserProgress WHERE user_id = ?", (user_id,))
             conn.commit()
             conn.close()
+
+
+            cursor_users.execute("""
+                UPDATE Users
+                SET daily_challenge_date = ?
+                WHERE user_id = ?
+            """, ('2000-12-12', user_id))
+            conn_users.commit()
+            conn_users.close()
 
 
             conn = sqlite3.connect('gamification.db')
