@@ -42,8 +42,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     this.culturalNote = new Loadable(() => this.userService.getCulturalNote());
     this.userProgress = new Loadable(() => this.userService.getUserProgress());
     this.topics = new Loadable(() => this.userService.getUserTopics());
-    this.xp = new Loadable(() => this.userService.getUserXP());
-    this.startTypewriterEffect();
+    this.xp = new Loadable(() => this.userService.getUserXP(), false, () => { this.startTypewriterEffect(); });
   }
 
   ngOnDestroy() {

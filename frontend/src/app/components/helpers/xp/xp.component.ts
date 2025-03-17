@@ -24,19 +24,31 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class XpComponent implements OnInit, AfterViewInit {
   @Input() xpGain: boolean = false;
-  @Input() xpAmount: number = 100;
+  _xpAmount: number = 100;
   @ViewChild('xpContainer', { static: false }) xpContainer!: ElementRef;
+
+  @Input()
+  set xpAmount(value: number) {
+    this._xpAmount = value
+    this.league = this.xpGain ? 'gold' : this.getLeague(value);
+    this.animateXP()
+  }
+
+  get xpAmount(): number {
+    return this._xpAmount;
+  }
+  private xpInterval: any;
 
   displayXP: number = 0;
   particles: { id: number; x: number; y: number; opacity: number }[] = [];
   league: string = 'gold'; // Default league
 
   ngOnInit() {
-    this.animateXP();
-    this.league = this.xpGain ? 'gold' : this.getLeague(this.xpAmount);
+    
   }
 
   animateXP() {
+    clearInterval(this.xpInterval);
     let start = 0;
     const end = this.xpAmount;
     const duration = 1800; // 1 second
@@ -44,43 +56,46 @@ export class XpComponent implements OnInit, AfterViewInit {
     const steps = duration / interval;
     let currentStep = 0;
 
-    const counter = setInterval(() => {
-      currentStep++;
-      const progress = currentStep / steps;
-      const easedProgress = 1 - Math.pow(1 - progress, 3); // Cubic easing out
-      this.displayXP = Math.floor(start + (end - start) * easedProgress);
-
-      if (currentStep >= steps) {
-        clearInterval(counter);
-        this.displayXP = end;
-      }
-    }, interval);
+    if (this.xpAmount) {
+      // Defer particle creation to avoid change detection errors
+      setTimeout(() => {
+        this.createParticles();
+        this.animateParticles();
+      });
+      this.xpInterval = setInterval(() => {
+        currentStep++;
+        const progress = currentStep / steps;
+        const easedProgress = 1 - Math.pow(1 - progress, 3); // Cubic easing out
+        this.displayXP = Math.floor(start + (end - start) * easedProgress);
+  
+        if (currentStep >= steps) {
+          clearInterval(this.xpInterval);
+          this.displayXP = end;
+        }
+      }, interval);
+    }
   }
 
   ngAfterViewInit() {
     // Get container width dynamically
-    if (this.xpContainer?.nativeElement) {
-      this.width = this.xpContainer.nativeElement.offsetWidth;
-      this.height = this.xpContainer.nativeElement.offsetHeight;
-    }
-    // Defer particle creation to avoid change detection errors
-    setTimeout(() => {
-      this.createParticles();
-      this.animateParticles();
-    });
   }
 
   width: number = 0;
   height: number = 0;
 
   createParticles() {
-    for (let i = 0; i < 30; i++) {
-      this.particles.push({
-        id: i,
-        x: Math.random() * this.width, // Random X position
-        y: Math.random() * this.height, // Random Y position
-        opacity: Math.random() * 0.3 + 0.7, // Random opacity
-      });
+    if (this.xpContainer?.nativeElement) {
+      this.width = this.xpContainer.nativeElement.offsetWidth;
+      this.height = this.xpContainer.nativeElement.offsetHeight;
+
+      for (let i = 0; i < 30; i++) {
+        this.particles.push({
+          id: i,
+          x: Math.random() * this.width, // Random X position
+          y: Math.random() * this.height, // Random Y position
+          opacity: Math.random() * 0.3 + 0.7, // Random opacity
+        });
+      }
     }
   }
 
