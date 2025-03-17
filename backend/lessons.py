@@ -50,7 +50,7 @@ def register_routes(app):
                 # Получаем все уроки по теме с прогрессом пользователя
                 lessons = conn.execute(
                     """
-                    SELECT l.lesson_id, l.title, l.data, COALESCE(up.score, 0) AS score
+                    SELECT l.lesson_id, l.title, l.data, up.score, COALESCE(up.status, 0) AS status
                     FROM Lessons l
                     LEFT JOIN progress_db.UserProgress up 
                     ON l.lesson_id = up.lesson_id AND up.user_id = ?
@@ -65,7 +65,8 @@ def register_routes(app):
                         "title": lesson["title"],
                         "route": f"/lessons/{lesson['lesson_id']}",
                         "description": lesson["data"],
-                        "completed": lesson["score"]
+                        "completed": lesson["status"],
+                        "score": lesson["score"]
                     }
                     for lesson in lessons
                 ]

@@ -300,6 +300,7 @@ def register_routes(app):
                         "title": lesson["lesson_title"],
                         "route": f"/lessons/{lesson['lesson_id']}",  # Пример маршрута для урока
                         "completed": lesson["status"] == "completed",  # Статус завершения урока
+                        "score": lesson["score"]
                     }
                     lessons_list.append(lesson_data)
 

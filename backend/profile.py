@@ -292,6 +292,8 @@ def register_routes(app):
             conn.close()
 
 
+            conn_users = sqlite3.connect("users.db")
+            cursor_users = conn_users.cursor()
             cursor_users.execute("""
                 UPDATE Users
                 SET daily_challenge_date = ?
