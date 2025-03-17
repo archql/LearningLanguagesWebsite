@@ -49,7 +49,7 @@ export class FillBlanksComponent {
   constructor(private overlay: Overlay, private renderer: Renderer2) {}
 
   showPanel(event: FocusEvent) {
-    if (this.lang !== 'de') return
+    if (this.lang === 'en') return
 
     this.activeInput = event.target as HTMLInputElement;
 
