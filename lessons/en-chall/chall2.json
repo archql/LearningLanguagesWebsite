@@ -7,13 +7,9 @@
         {"type": "fill_blank", "data": ["My", "is very kind.", "mother"]},
         {"type": "fill_blank", "data": ["This is my", ".", "sister"]},
         {"type": "fill_blank", "data": ["My", "is very funny.", "friend"]},
-        {"type": "fill_blank", "data": ["My uncle is very", ".", "tall"]},
-        {"type": "fill_blank", "data": ["She is my", ".", "cousin"]},
         {"type": "multiple_choice", "data": ["My father is very __.", "tall", "tall", "daughter", "cousin"]},
         {"type": "multiple_choice", "data": ["This is my __.", "child", "child", "kind", "funny"]},
-        {"type": "multiple_choice", "data": ["My friend is very __.", "friendly", "friendly", "grandparents", "uncle"]},
-        {"type": "multiple_choice", "data": ["My mother is __.", "funny", "funny", "uncle", "tall"]},
-        {"type": "multiple_choice", "data": ["She is my __.", "sister", "sister", "brother", "son"]}
+        {"type": "multiple_choice", "data": ["My friend is very __.", "friendly", "friendly", "grandparents", "uncle"]}
     ],
-    "conclusion": "<h3>In this lesson, we learned:</h3><ul><li>How to describe family members and friends using simple vocabulary and structures.</li><li>Using the verb 'to be' (am, is, are) and possessive adjectives like 'my' and 'your.'</li></ul><h3>Example Dialogue:</h3><p><strong>A:</strong> Who is this?<br><strong>B:</strong> This is my brother. He is funny and friendly.<br><strong>A:</strong> And who is this?<br><strong>B:</strong> This is my mother. She is kind and tall.</p><h3>Questions for Review:</h3><ul><li>How do you describe your mother?</li><li>Who is your best friend? What is he/she like?</li><li>Who is the funniest person in your family?</li></ul><h3>Homework:</h3><p>Write a short paragraph describing your family or friends using the new vocabulary. Try to use at least 5 words or phrases from today’s lesson.</p>"
+    "conclusion": ""
 }

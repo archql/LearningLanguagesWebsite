@@ -83,6 +83,8 @@ export class ExerciseComponent {
     this.exerciseBe.data!.fbGivenAnswers[id] = val
   }
   validateAnswers() {
+    this.feedbackData = ['', '', '']
+
     let correct = 1, wrong = 1, missed = 1
     let feedbackCorrect = '<h6>Correct Answers:</h6>'
     let feedbackWrong = '<h6>Wrong Answers:</h6>'
