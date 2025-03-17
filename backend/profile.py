@@ -63,6 +63,17 @@ def register_routes(app):
         # Закрытие соединения
         conn.close()
 
+        conn = sqlite3.connect('gamification.db')
+        cursor = conn.cursor()
+        # Извлекаем user_id из контекста JWT
+        user_id = get_jwt_identity()
+        # Удаляем все данные по user_id
+        cursor.execute("DELETE FROM Gamification WHERE user_id = ?", (user_id,))
+        conn.commit()
+
+        # Закрытие соединения
+        conn.close()
+
         return jsonify({"message": "User progress reset successful"}), 200
 
     # get vocabulary list for vocabulary tab
@@ -271,6 +282,15 @@ def register_routes(app):
             cursor.execute("DELETE FROM UserProgress WHERE user_id = ?", (user_id,))
             conn.commit()
             conn.close()
+
+
+            conn = sqlite3.connect('gamification.db')
+            cursor = conn.cursor()
+            # Извлекаем user_id из контекста JWT
+            user_id = get_jwt_identity()
+            # Удаляем все данные по user_id
+            cursor.execute("DELETE FROM Gamification WHERE user_id = ?", (user_id,))
+            conn.commit()
             
             return jsonify({"message": "Language updated and progress reset successfully"}), 200
         except Exception as e:
