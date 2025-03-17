@@ -249,7 +249,7 @@ def register_routes(app):
             return jsonify({
                 "completedLessonsToday": completed_today,
                 "completedLessons": completed_lessons_count,
-                "totalLessons": total_lessons_count
+                "totalLessons": 5
             })
 
         except Exception as e:
