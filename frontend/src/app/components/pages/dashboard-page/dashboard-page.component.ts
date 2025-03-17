@@ -75,7 +75,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   }
   // Handle daily challenge completion
   completeDailyChallenge(): void {
-    if (!this.dailyChallenge.ready()) return;
+    if (!this.dailyChallenge.ready() || this.dailyChallenge.data?.isCompleted) return;
     // TODO call API (?)
     this.router.navigate([`/home/lesson/${this.dailyChallenge.data?.id}`]);
   }

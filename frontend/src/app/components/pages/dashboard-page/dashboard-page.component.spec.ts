@@ -35,4 +35,53 @@ describe('DashboardPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return the correct motivational message based on progress', () => {
+    expect(component.getMotivationalMessage()).toBe('');
+
+    component.userProgress.loading = false
+    component.userProgress.data = { completedLessons: 0, totalLessons: 100 };
+    expect(component.getMotivationalMessage()).toBe('app.dashboard.motivational.start');
+
+    component.userProgress.data = { completedLessons: 10, totalLessons: 100 };
+    expect(component.getMotivationalMessage()).toBe('app.dashboard.motivational.keepGoing');
+
+    component.userProgress.data = { completedLessons: 30, totalLessons: 100 };
+    expect(component.getMotivationalMessage()).toBe('app.dashboard.motivational.greatProgress');
+
+    component.userProgress.data = { completedLessons: 50, totalLessons: 100 };
+    expect(component.getMotivationalMessage()).toBe('app.dashboard.motivational.halfway');
+
+    component.userProgress.data = { completedLessons: 75, totalLessons: 100 };
+    expect(component.getMotivationalMessage()).toBe('app.dashboard.motivational.almostThere');
+
+    component.userProgress.data = { completedLessons: 100, totalLessons: 100 };
+    expect(component.getMotivationalMessage()).toBe('app.dashboard.motivational.completed');
+  });
+
+  it('should navigate to the daily challenge lesson on completion', () => {
+    component.dailyChallenge.data = { id: 123, isCompleted: false };
+    component.dailyChallenge.loading = false;
+    component.completeDailyChallenge();
+    expect(component['router'].navigate).toHaveBeenCalledWith(['/home/lesson/123']);
+  });
+
+  it('should not navigate if daily challenge is not ready', () => {
+    component.dailyChallenge.loading = true;
+    component.completeDailyChallenge();
+    expect(component['router'].navigate).not.toHaveBeenCalled();
+  });
+
+  it('should not navigate if daily challenge is already completed', () => {
+    component.dailyChallenge.data = { id: 123, isCompleted: true };
+    component.dailyChallenge.loading = false;
+    component.completeDailyChallenge();
+    expect(component['router'].navigate).not.toHaveBeenCalled();
+  });
+
+  it('should start the typewriter effect', () => {
+    component.culturalNote.data = { quote: 'Test quote', author: 'Author' };
+    component.startTypewriterEffect();
+    expect(component.typewriterText).toBe('');
+  });
 });
