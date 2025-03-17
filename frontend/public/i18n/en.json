@@ -31,6 +31,7 @@
 	"app.menu-bar.profile": "Profile",
 	"app.menu-bar.register": "Register",
 	"app.menu-bar.faq": "FAQ",
+	"app.menu-bar.logout": "Logout",
 	"app.dialog.change-language": "Change Learning Language",
 	"app.dialog.change-language.prompt": "Are you sure you want to change the learning language? Your progress will be reset irreversibly!",
 	"app.dialog.change-language.success": "Learning language changed successfully",

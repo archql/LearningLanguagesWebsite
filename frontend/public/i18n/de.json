@@ -31,6 +31,7 @@
 	"app.menu-bar.profile": "Profil",
 	"app.menu-bar.register": "Registrieren",
 	"app.menu-bar.faq": "FAQ",
+	"app.menu-bar.logout": "Abmelden",
 	"app.dialog.change-language": "Lernsprache ändern",
 	"app.dialog.change-language.prompt": "Sind Sie sicher, dass Sie die Lernsprache ändern möchten? Ihr Fortschritt wird unwiderruflich zurückgesetzt!",
 	"app.dialog.change-language.success": "Lernsprache erfolgreich geändert",
