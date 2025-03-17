@@ -17,8 +17,13 @@ export class LessonFinishedModalComponent {
   constructor(
     public dialogRef: MatDialogRef<LessonFinishedModalComponent>,
     private router: Router,
-    @Inject(MAT_DIALOG_DATA) public data: { title: string; message: string, ptGained: number }
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public data: { title?: string; message?: string, ptGained?: number } | null
+  ) {
+        // Provide default values if data is null or properties are missing
+        if (data === null) {
+          this.data = { title: 'Default Title', message: 'Default Message', ptGained: 0 };
+        }
+  }
   
   onClose(): void {
     this.dialogRef.close();
