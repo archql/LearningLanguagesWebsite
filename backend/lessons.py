@@ -181,6 +181,7 @@ def register_routes(app):
                 exercise_be["fbBeforeBlank"].append(ex["data"][0])
                 exercise_be["fbAfterBlank"].append(ex["data"][1])
                 exercise_be["fbCorrectAnswers"].append(ex["data"][2])
+                exercise_be["fbGivenAnswers"].append("null")
 
         for i, ex in enumerate(practice):
             if ex["type"] == "multiple_choice":
@@ -188,6 +189,7 @@ def register_routes(app):
                 exercise_be["mcQuestions"].append(ex["data"][0])
                 exercise_be["mcCorrectAnswers"].append(ex["data"][1])
                 exercise_be["mcOptions"].append(ex["data"][2:])
+                exercise_be["mcGivenAnswers"].append("null")
         
         
         return jsonify(exercise_be)
