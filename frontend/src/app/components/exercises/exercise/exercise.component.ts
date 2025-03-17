@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject, ViewChild } from '@angular/core';
 import { LessonService, Exercise, Lesson } from '../../../services/lesson.service';
 import { MultipleChoiceComponent } from '../../exercises/multiple-choice/multiple-choice.component';
 import { FillBlanksComponent } from '../../exercises/fill-blanks/fill-blanks.component';
@@ -10,6 +10,7 @@ import { ExerciseBe } from './exercise.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { FloatingProgressMeterComponent } from '../../helpers/floating-progress-meter/floating-progress-meter.component';
 
 
 
@@ -18,7 +19,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-exercise',
   standalone: true,
-  imports: [MultipleChoiceComponent, FillBlanksComponent, CommonModule, LoaderWrapperComponent],
+  imports: [MultipleChoiceComponent, FillBlanksComponent, CommonModule, LoaderWrapperComponent, FloatingProgressMeterComponent],
   templateUrl: './exercise.component.html',
   styleUrl: './exercise.component.scss'
 })
@@ -38,57 +39,103 @@ export class ExerciseComponent {
   // track if add word working
   submitLessonPending: boolean = false;
 
+  // progress tracking
+  @ViewChild('progressMeter') progressMeter!: FloatingProgressMeterComponent;
+  ptInit = false
+  ptIncrementedMc: boolean[] = []
+  ptIncrementedFb: boolean[] = []
+  ptTotal = 0
+  ptAnswered = 0
+  ptInitialize() { 
+    this.ptIncrementedMc = Array(this.exerciseBe.data!.mcRange.length).fill(false)
+    this.ptIncrementedFb = Array(this.exerciseBe.data!.fbRange.length).fill(false)
+
+    this.ptTotal = this.exerciseBe.data!.mcRange.length + this.exerciseBe.data!.fbRange.length
+
+    this.ptInit = true
+  }
+
   @Input() triggerFinish = new EventEmitter<void>;
   @Output() returnFeedback = new EventEmitter<string[]> 
   feedbackData: string[] = ['', '']
 
   handleMcAnswerSubmission(val: string, id: number) {
+    if (!this.ptInit) { this.ptInitialize() }
+
+    if (!this.ptIncrementedMc[id]) { 
+      this.ptIncrementedMc[id] = true
+      this.ptAnswered += 1
+      this.progressMeter.changeProgress(Math.round(this.ptAnswered / this.ptTotal * 100))
+    }
+
     this.exerciseBe.data!.mcGivenAnswers[id] = val
   }
   handleFbAnswerSubmission(val: string, id: number) {
+    if (!this.ptInit) { this.ptInitialize() }
+
+    if (!this.ptIncrementedFb[id]) { 
+      this.ptIncrementedFb[id] = true
+      this.ptAnswered += 1
+      this.progressMeter.changeProgress(Math.round(this.ptAnswered / this.ptTotal * 100))
+    }
+
     this.exerciseBe.data!.fbGivenAnswers[id] = val
   }
   validateAnswers() {
-    let notAnsweredfb = 0
-    let correct = 0
-    let notAnsweredmc = 0
-    let feedback = ''
+    let correct = 1, wrong = 1, missed = 1
+    let feedbackCorrect = '<h6>Correct Answers:</h6>'
+    let feedbackWrong = '<h6>Wrong Answers:</h6>'
+    let feedbackMissed = '<h6>Missed Answers:</h6>'
     for (let i = 0; i < this.exerciseBe.data!.fbRange.length; i++) {
-      feedback += `<strong>Question:</strong> ${this.exerciseBe.data!.fbBeforeBlank[i]} ___ ${this.exerciseBe.data!.fbAfterBlank[i]}`
       if (this.exerciseBe.data!.fbGivenAnswers[i] === this.exerciseBe.data!.fbCorrectAnswers[i]) {
-        correct += 1
-        feedback += `<br>Your answer "${this.exerciseBe.data!.fbGivenAnswers[i]}" is correct`
+        if (correct !== 1) { feedbackCorrect += '<br>' }
+        feedbackCorrect += `${correct}. ${this.exerciseBe.data!.fbBeforeBlank[i]} <strong>${this.exerciseBe.data!.fbGivenAnswers[i]}</strong> ${this.exerciseBe.data!.fbAfterBlank[i]}`    
+        correct += 1  
       }
       else if (this.exerciseBe.data!.fbGivenAnswers[i] === 'null') { 
-        notAnsweredfb += 1 
-        feedback += `<br>You didn't answer this question`
+        if (missed !== 1) { feedbackMissed += '<br>' }
+        feedbackMissed += `${missed}. ${this.exerciseBe.data!.fbBeforeBlank[i]} ___ ${this.exerciseBe.data!.fbAfterBlank[i]} Answer: <strong>${this.exerciseBe.data!.fbCorrectAnswers[i]}</strong>.`
+        missed +=1
       }
       else {
-        feedback += `<br>Your answer "${this.exerciseBe.data!.fbGivenAnswers[i]}" is wrong`
+        if (wrong !== 1) { feedbackWrong += '<br>' }
+        feedbackWrong += `${wrong}. ${this.exerciseBe.data!.fbBeforeBlank[i]} <strong>${this.exerciseBe.data!.fbGivenAnswers[i]}</strong> ${this.exerciseBe.data!.fbAfterBlank[i]} Answer: <strong>${this.exerciseBe.data!.fbCorrectAnswers[i]}</strong>.`
+        wrong += 1
       }
-      feedback += `<br>`
     }
     for (let i = 0; i < this.exerciseBe.data!.mcRange.length; i++) {
-      feedback += `<strong>Question:</strong> ${this.exerciseBe.data!.mcQuestions[i]} Options ${this.exerciseBe.data!.mcOptions[i]}`
       if (this.exerciseBe.data!.mcGivenAnswers[i] === this.exerciseBe.data!.mcCorrectAnswers[i]) {
+        if (correct !== 1) { feedbackCorrect += '<br>' }
+        feedbackCorrect += `${correct}. ${this.exerciseBe.data!.mcQuestions[i]} Answer: <strong>${this.exerciseBe.data!.mcGivenAnswers[i]}</strong>.`
         correct += 1
-        feedback += `<br>Your answer "${this.exerciseBe.data!.mcGivenAnswers[i]}" is correct`
       }
       else if (this.exerciseBe.data!.mcGivenAnswers[i] === 'null') { 
-        notAnsweredmc += 1
-        feedback += `<br> You didn't answer this question`
+        if (missed !== 1) { feedbackMissed += '<br>' }
+        feedbackMissed += `${missed}. ${this.exerciseBe.data!.mcQuestions[i]} Answer: <strong>${this.exerciseBe.data!.mcCorrectAnswers[i]}</strong>.`
+        missed +=1
       }
       else {
-        feedback += `<br>Your answer "${this.exerciseBe.data!.mcGivenAnswers[i]}" is wrong`
+        if (wrong !== 1) { feedbackWrong += '<br>' }
+        feedbackWrong += `${wrong}. ${this.exerciseBe.data!.mcQuestions[i]} Answer: <strong>${this.exerciseBe.data!.mcCorrectAnswers[i]}</strong>.`
+        wrong += 1
       }
-      feedback += `<br>`
     }
+    this.feedbackData[1] = feedbackCorrect + '<hr>' + feedbackWrong + '<hr>' + feedbackMissed
 
-    this.feedbackData[0] = `Answered ${correct} out of ${this.exerciseBe.data!.fbRange.length + this.exerciseBe.data!.mcRange.length} correctly`
-    this.feedbackData[1] = feedback
+    let perc = (correct-1) / (correct + wrong + missed - 3)
 
-    let total_exercises = this.exerciseBe.data!.mcRange.length + this.exerciseBe.data!.fbRange.length
-    let perc = (correct / total_exercises)
+    if (perc < 0.5) {
+      this.feedbackData[0] = 'You failed!'
+    } else if (perc < 0.7) {
+      this.feedbackData[0] = 'Mission success!'
+    } else if (perc < 0.99) {
+      this.feedbackData[0] = 'Good job!'
+    } else {
+      this.feedbackData[0] = 'You are a legend!'
+    }
+    this.feedbackData[0] += ` (${Math.round(perc * 100)}% correct)`
+
+
     this.submitLessonPending = true
     this.lessonService.submitLesson(this.id,  perc > 0.5, correct ).subscribe({
       next: (response) => {
@@ -96,7 +143,7 @@ export class ExerciseComponent {
         this.submitLessonPending = false;
       },
       error: (error) => {
-        console.error('Login failed', error);
+        console.error('submitLesson failed', error);
         this.showNotification(this.tr['app.dialog.submitLesson.failure']);
         this.submitLessonPending = false;
       }

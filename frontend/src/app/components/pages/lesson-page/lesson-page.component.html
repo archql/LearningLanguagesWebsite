@@ -21,11 +21,14 @@
     <mat-card class="conclusion">
         <mat-card-content style="position: relative;">
             <div [innerHTML]="lesson.data?.conclusion || ''"></div>
-            <app-text-to-speech [textToSpeak]="lesson.data?.presentation"></app-text-to-speech>
+            <app-text-to-speech [textToSpeak]="lesson.data?.conclusion"></app-text-to-speech>
         </mat-card-content>
     </mat-card>
     
+    <div class="finish-button">
+        <button mat-flat-button (click)="getFeedback()" class="finish">{{'app.dialog.lesson.finish' | translate}}</button>
+    </div>
+
     <app-context-menu [menuItems]="menuItems"></app-context-menu>
     
-    <button mat-flat-button (click)="getFeedback()">{{'app.dialog.lesson.finish' | translate}}</button>
 </app-loader-wrapper>

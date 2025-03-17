@@ -1,4 +1,4 @@
-.introduction, .presentation, .conclusion {
+.introduction, .presentation, .conclusion, .finish {
     padding: 16px;
     width: 80%;
     margin: 1em auto 0px;
@@ -11,7 +11,12 @@
     }
 }
 
-button {
-    margin: 1em auto 0px;
+.finish-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.finish {
     max-width: 12em;
 }
