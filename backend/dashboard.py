@@ -173,7 +173,7 @@ def register_routes(app):
 
             if not lessons:
                 return jsonify({
-                    "id": 0,
+                    "id": 1,
                     "title": "No challenge available",
                     "description": "No challenge available for today",
                     "isCompleted": is_completed

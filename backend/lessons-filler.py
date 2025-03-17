@@ -25,13 +25,15 @@ def add_lessons():
 
 
     cursor.execute("""
-        DELETE FROM Lessons WHERE lesson_id < 10000000
+        DELETE FROM Lessons
     """)
 
 
     
     data_en = read_json_files_from_folder('../lessons/en')
     data_de = read_json_files_from_folder('../lessons/de')
+    data_en_chal = read_json_files_from_folder('../lessons/en-chall')
+    data_de_chal = read_json_files_from_folder('../lessons/de-chall')
 
     metadata_en = [[1, 'en', 'Introducing Yourself and Others', 'Talking About Yourself (Name, Age, Occupation, Hobbies)', data_en[0]], 
                 [2, 'en', 'Introducing Yourself and Others', 'Describing Your Family and Friends', data_en[1]],
@@ -47,6 +49,15 @@ def add_lessons():
                 [12, 'en', 'Food and Cooking', 'Discussing Culinary Cultures', data_en[11]]
     ]
 
+    metadata_en_chall = [[100001, 'en', 'daily_challenge', 'daily_challenge', data_en_chal[0]], 
+                [100002, 'en', 'daily_challenge', 'daily_challenge', data_en_chal[1]],
+                [100003, 'en', 'daily_challenge', 'daily_challenge', data_en_chal[2]],                
+    ]
+
+    metadata_de_chall = [[100004, 'de', 'daily_challenge', 'daily_challenge', data_de_chal[0]], 
+                [100005, 'de', 'daily_challenge', 'daily_challenge', data_de_chal[1]],
+                [100006, 'de', 'daily_challenge', 'daily_challenge', data_de_chal[2]],                
+    ]
 
     metadata_de = [
             [13, 'de', 'Sich selbst und andere vorstellen', 'Über sich selbst sprechen (Name, Alter, Beruf, Hobbys)', data_de[0]], 
@@ -67,6 +78,7 @@ def add_lessons():
 
 
 
+
     for metadata in metadata_en:
         cursor.execute("""
                         INSERT INTO Lessons (lesson_id, language, topic, title, data)
@@ -79,10 +91,25 @@ def add_lessons():
                         VALUES (?, ?, ?, ?, ?)
                     """, (metadata[0], metadata[1], metadata[2], metadata[3], metadata[4]))
 
+    for metadata in metadata_en_chall:
+        cursor.execute("""
+                        INSERT INTO Lessons (lesson_id, language, topic, title, data)
+                        VALUES (?, ?, ?, ?, ?)
+                    """, (metadata[0], metadata[1], metadata[2], metadata[3], metadata[4]))
+
+    for metadata in metadata_de_chall:
+        cursor.execute("""
+                        INSERT INTO Lessons (lesson_id, language, topic, title, data)
+                        VALUES (?, ?, ?, ?, ?)
+                    """, (metadata[0], metadata[1], metadata[2], metadata[3], metadata[4]))
+
+
+
+
    
     conn.commit()
     conn.close()
-    print("Daily Challenge added successfully!")
+    print("Data added successfully!")
 
 
 

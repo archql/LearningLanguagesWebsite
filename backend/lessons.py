@@ -333,6 +333,20 @@ def register_routes(app):
             conn_gamification.commit()
             conn_gamification.close()
 
+            # Если lesson_id больше 99999, обновляем поле daily_challenge_date в таблице Users
+            if lesson_id > 99999:
+                current_date = datetime.now().strftime('%Y-%m-%d')
+                conn_users = sqlite3.connect("users.db")
+                cursor_users = conn_users.cursor()
+
+                cursor_users.execute("""
+                    UPDATE Users
+                    SET daily_challenge_date = ?
+                    WHERE user_id = ?
+                """, (current_date, user_id))
+                conn_users.commit()
+                conn_users.close()
+
             return jsonify({"message": "Lesson progress saved and experience points awarded"}), 200
 
         except Exception as e:
