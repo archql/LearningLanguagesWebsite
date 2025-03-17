@@ -325,3 +325,28 @@ def register_routes(app):
             return jsonify([])  # Возвращаем пустой список в случае ошибки
         finally:
             conn.close()
+
+            
+    @app.route('/api/user/xp', methods=['GET'])
+    @jwt_required()
+    def get_user_xp():
+        user_id = get_jwt_identity()
+
+        try:
+            conn = sqlite3.connect("gamification.db")
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
+
+            # Получаем количество опыта пользователя
+            cursor.execute("SELECT experience_points FROM Gamification WHERE user_id = ?", (user_id,))
+            result = cursor.fetchone()
+            conn.close()
+
+            if result:
+                return jsonify(result["experience_points"])
+            else:
+                return jsonify(0)  # Если данных нет, возвращаем 0 XP
+
+        except Exception as e:
+            app.logger.error(f"Database error: {str(e)}")
+            return jsonify(0), 500  # Возвращаем 0 в случае ошибки

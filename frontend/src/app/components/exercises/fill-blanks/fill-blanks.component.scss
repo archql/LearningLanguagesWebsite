@@ -13,13 +13,28 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
     }
+
+    input {
+        border: none;
+        border-bottom: 2px solid #333; // Adjust color as needed
+        outline: none;
+        padding: 5px 0; // Add some padding for better spacing
+        background: transparent;
+        transition: border-color 0.3s;
+      
+        &:focus, 
+        &:hover {
+          background-color: #f0f0f0;    // Light background when hovering or focused
+          border-bottom-color: #007bff;  // Blue underline when hovering or focused
+        }
+      }
 }   
 
 :host {
     display: block;
-    padding: 20px;
+    // padding: 20px;
   }
   mat-form-field {
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
     display: block;
 }

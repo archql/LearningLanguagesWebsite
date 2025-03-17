@@ -127,7 +127,9 @@ def register_routes(app):
                 "introduction": lesson_data.get("introduction", ""),
                 "presentation": lesson_data.get("presentation", ""),
                 "practice": lesson_data.get("practice", []),
-                "conclusion": lesson_data.get("conclusion", "")
+                "conclusion": lesson_data.get("conclusion", ""),
+                "language": lesson_data.get("language", "")
+
             }
 
             return jsonify(result)
@@ -142,64 +144,66 @@ def register_routes(app):
     @app.route("/api/exercises/<int:lesson_id>", methods=["GET"])
     @jwt_required()
     def get_exercises(lesson_id):
-        
-        user_id = get_jwt_identity()
+        try:
+            user_id = get_jwt_identity()
 
-        conn = get_db_connection()
+            conn = get_db_connection()
 
-        #try:
-        lesson = conn.execute(
-                "SELECT * FROM Lessons WHERE lesson_id = ?",
-                (lesson_id,)
-            ).fetchone()
-        if not lesson:
-            return jsonify({"error": "Lesson not found"}), 404
-        
-        lesson_data = json.loads(lesson['data'])
+            #try:
+            lesson = conn.execute(
+                    "SELECT * FROM Lessons WHERE lesson_id = ?",
+                    (lesson_id,)
+                ).fetchone()
+            if not lesson:
+                return jsonify({"error": "Lesson not found"}), 404
+            
+            lesson_data = json.loads(lesson['data'])
 
 
-        practice = lesson_data.get("practice", [])
-        
-        
+            practice = lesson_data.get("practice", [])
+            
+            
 
-        exercise_be = {
-            "mcRange": [],
-            "mcQuestions": [],
-            "mcOptions": [],
-            "mcCorrectAnswers": [],
-            "fbRange": [],
-            "fbBeforeBlank": [],
-            "fbAfterBlank": [],
-            "fbCorrectAnswers": [],
-            "mcGivenAnswers": [],
-            "fbGivenAnswers": []
-        }
-        
-        for i, ex in enumerate(practice):
-            if ex["type"] == "fill_blank":
-                exercise_be["fbRange"].append(i)
-                exercise_be["fbBeforeBlank"].append(ex["data"][0])
-                exercise_be["fbAfterBlank"].append(ex["data"][1])
-                exercise_be["fbCorrectAnswers"].append(ex["data"][2])
+            exercise_be = {
+                "mcRange": [],
+                "mcQuestions": [],
+                "mcOptions": [],
+                "mcCorrectAnswers": [],
+                "fbRange": [],
+                "fbBeforeBlank": [],
+                "fbAfterBlank": [],
+                "fbCorrectAnswers": [],
+                "mcGivenAnswers": [],
+                "fbGivenAnswers": []
+            }
+            
+            for i, ex in enumerate(practice):
+                if ex["type"] == "fill_blank":
+                    exercise_be["fbRange"].append(i)
+                    exercise_be["fbBeforeBlank"].append(ex["data"][0])
+                    exercise_be["fbAfterBlank"].append(ex["data"][1])
+                    exercise_be["fbCorrectAnswers"].append(ex["data"][2])
+                    exercise_be["fbGivenAnswers"].append("null")
 
-        for i, ex in enumerate(practice):
-            if ex["type"] == "multiple_choice":
-                exercise_be["mcRange"].append(i)
-                exercise_be["mcQuestions"].append(ex["data"][0])
-                exercise_be["mcCorrectAnswers"].append(ex["data"][1])
-                exercise_be["mcOptions"].append(ex["data"][2:])
-        
-        
-        return jsonify(exercise_be)
+            for i, ex in enumerate(practice):
+                if ex["type"] == "multiple_choice":
+                    exercise_be["mcRange"].append(i)
+                    exercise_be["mcQuestions"].append(ex["data"][0])
+                    exercise_be["mcCorrectAnswers"].append(ex["data"][1])
+                    exercise_be["mcOptions"].append(ex["data"][2:])
+                    exercise_be["mcGivenAnswers"].append("null")
+            
+            
+            return jsonify(exercise_be)
 
-        """
+        
         except Exception as e:
             app.logger.error(f"Lessons database error: {str(e)}")
             return jsonify({"error": "Internal server error"}), 500
 
         finally:
             conn.close()
-        """
+
     
     @app.route('/api/user/vocabulary/add', methods=['POST'])
     @jwt_required()

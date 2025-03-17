@@ -9,4 +9,6 @@
             [beforeBlank]="exerciseBe.data?.fbBeforeBlank?.[i] || ''" [afterBlank]="exerciseBe.data?.fbAfterBlank?.[i] || ''" (answerSubmitted)="handleFbAnswerSubmission($event, i)">
         </app-fill-blanks>
     </ng-container>
+
+    <app-floating-progress-meter #progressMeter></app-floating-progress-meter>
 </app-loader-wrapper>
