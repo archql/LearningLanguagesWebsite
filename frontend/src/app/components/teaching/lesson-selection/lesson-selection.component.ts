@@ -5,7 +5,7 @@ import { Lesson, Topic } from './lesson-selection.model';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { NgClass } from '@angular/common';
+import { CommonModule, NgClass } from '@angular/common';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -16,7 +16,7 @@ import {AsyncPipe} from '@angular/common';
 @Component({
   selector: 'app-lesson-selection',
   standalone: true,
-  imports: [MatExpansionModule, MatListModule, MatIconModule, 
+  imports: [MatExpansionModule, MatListModule, MatIconModule, CommonModule, 
     NgClass, MatAutocompleteModule, MatInputModule, MatFormFieldModule, AsyncPipe, ReactiveFormsModule],
   templateUrl: './lesson-selection.component.html',
   styleUrl: './lesson-selection.component.scss'

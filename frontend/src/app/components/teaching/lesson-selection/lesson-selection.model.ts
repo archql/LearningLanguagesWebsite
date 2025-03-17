@@ -4,6 +4,7 @@ export interface Lesson {
     title: string;
     route: string;
     completed?: boolean; // Add this to track lesson completion
+    score: number | null
   }
   
   export interface Topic {

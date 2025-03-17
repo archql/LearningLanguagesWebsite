@@ -14,22 +14,22 @@ export class LessonServiceMock {
             {
             title: 'Topic 1',
             lessons: [
-                { id: 1, title: 'Lesson 1.1', route: '/lesson/1.1', completed: true },
-                { id: 2, title: 'Lesson 1.2', route: '/lesson/1.2', completed: false },
+                { id: 1, title: 'Lesson 1.1', route: '/lesson/1.1', completed: true, score: 1 },
+                { id: 2, title: 'Lesson 1.2', route: '/lesson/1.2', completed: false, score: 0 },
             ],
             },
             {
             title: 'Topic 2',
             lessons: [
-                { id: 3, title: 'Lesson 2.1', route: '/lesson/2.1', completed: true },
-                { id: 4, title: 'Lesson 2.2', route: '/lesson/2.2', completed: true },
+                { id: 3, title: 'Lesson 2.1', route: '/lesson/2.1', completed: true, score: 0 },
+                { id: 4, title: 'Lesson 2.2', route: '/lesson/2.2', completed: true, score: 0 },
             ],
             },
             {
             title: 'Topic 3',
             lessons: [
-                { id: 5, title: 'Lesson 3.1', route: '/lesson/2.1', completed: true },
-                { id: 6, title: 'Lesson 3.2', route: '/lesson/2.2', completed: true },
+                { id: 5, title: 'Lesson 3.1', route: '/lesson/2.1', completed: true, score: 0 },
+                { id: 6, title: 'Lesson 3.2', route: '/lesson/2.2', completed: true, score: 0 },
             ],
             },
         ];
@@ -41,6 +41,7 @@ export class LessonServiceMock {
             title: `Lesson 3.${lessonNumber}`,
             route: `/lesson/3.${routeNumber}`,
             completed: false,
+            score: 0
             });
         }
     
