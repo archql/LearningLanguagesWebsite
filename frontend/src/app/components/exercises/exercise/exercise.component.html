@@ -1,4 +1,6 @@
 <app-loader-wrapper [loading]="exerciseBe.loading" [error]="exerciseBe.error">
+    <app-xp [xpAmount]="ptTotal" [xpGain]="true"></app-xp>
+    
     <ng-container *ngFor="let i of exerciseBe.data?.mcRange">
         <app-multiple-choice
             [question]="exerciseBe.data?.mcQuestions?.[i] || ''" [options]="exerciseBe.data?.mcOptions?.[i] || []" (answerSelected)="handleMcAnswerSubmission($event, i)" [lang]="lang">

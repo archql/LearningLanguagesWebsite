@@ -1,5 +1,5 @@
 <app-loader-wrapper [loading]="lesson.loading" [error]="lesson.error">
-    <mat-card class="introduction">
+    <mat-card class="introduction" *ngIf="lesson.data?.introduction.length > 0">
         <mat-card-content style="position: relative;">
             <h2>{{ lesson.data?.topic }}</h2>
             <div [innerHTML]="lesson.data?.introduction"></div>
@@ -7,7 +7,7 @@
         </mat-card-content>
     </mat-card>
     
-    <mat-card class="presentation">
+    <mat-card class="presentation" *ngIf="lesson.data?.presentation.length > 0">
         <mat-card-content style="position: relative;">
             <div [innerHTML]="lesson.data?.presentation || ''"></div>
             <app-text-to-speech [textToSpeak]="lesson.data?.presentation" [lang]="lesson.data?.language || 'en'"></app-text-to-speech>
@@ -18,7 +18,7 @@
     (returnFeedback)="showFeedback($event)"
     ></app-exercise>
     
-    <mat-card class="conclusion">
+    <mat-card class="conclusion" *ngIf="lesson.data?.conclusion.length > 0">
         <mat-card-content style="position: relative;">
             <div [innerHTML]="lesson.data?.conclusion || ''"></div>
             <app-text-to-speech [textToSpeak]="lesson.data?.conclusion" [lang]="lesson.data?.language || 'en'"></app-text-to-speech>

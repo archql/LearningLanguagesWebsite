@@ -121,9 +121,22 @@ export class ExerciseComponent {
         wrong += 1
       }
     }
-    this.feedbackData[1] = feedbackCorrect + '<hr>' + feedbackWrong + '<hr>' + feedbackMissed
-
-    let perc = (correct-1) / (correct + wrong + missed - 3)
+    correct -= 1
+    wrong -= 1
+    missed -= 1
+    
+    if (correct > 0) { this.feedbackData[1] += feedbackCorrect }
+    if (wrong > 0) { 
+      if (correct > 0) { this.feedbackData[1] += '<hr>' }
+      this.feedbackData[1] += feedbackWrong 
+    }
+    if (missed > 0) {
+      if (correct > 0 || wrong > 0) { this.feedbackData[1] += '<hr>' }
+      this.feedbackData[1] += feedbackMissed
+    }
+    
+    
+    let perc = correct / (correct + wrong + missed)
 
     if (perc < 0.5) {
       this.feedbackData[0] = 'You failed!'
@@ -138,7 +151,7 @@ export class ExerciseComponent {
 
 
     this.submitLessonPending = true
-    this.lessonService.submitLesson(this.id,  perc > 0.5, correct ).subscribe({
+    this.lessonService.submitLesson(this.id,  perc > 0.5, correct).subscribe({
       next: (response) => {
         this.showNotification(this.tr['app.dialog.submitLesson.success']);
         this.submitLessonPending = false;
