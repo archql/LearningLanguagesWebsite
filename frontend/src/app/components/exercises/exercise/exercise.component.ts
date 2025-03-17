@@ -27,6 +27,7 @@ export class ExerciseComponent {
   exerciseBe: Loadable<ExerciseBe> = new Loadable
   private readonly route = inject(ActivatedRoute);
   @Input() id: number = 0
+  @Input() lang: string = 'en'
 
   // translations
   private subscription: Subscription;   

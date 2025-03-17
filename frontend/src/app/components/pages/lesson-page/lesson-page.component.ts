@@ -44,6 +44,7 @@ export class LessonPageComponent implements CanComponentDeactivate {
   lessonFinished: boolean = false;
   //
 
+
   constructor(
     private lessonService: LessonService, 
     private dialog: MatDialog,

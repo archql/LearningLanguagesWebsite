@@ -10,7 +10,8 @@ export interface Lesson {
   introduction: string,
   presentation: string,
   practice: Exercise[],
-  conclusion: string
+  conclusion: string,
+  language: string
 }
 export interface Exercise {
   type : string,

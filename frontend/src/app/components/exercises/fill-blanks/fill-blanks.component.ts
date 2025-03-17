@@ -23,6 +23,7 @@ export class FillBlanksComponent {
   @Input() beforeBlank: string = '';
   @Input() afterBlank: string = '';
   @Input() id: number = 0;
+  @Input() lang: string = 'en';
   @Output() answerSubmitted = new EventEmitter<string>();
 
   userAnswer: string = '';
@@ -48,6 +49,8 @@ export class FillBlanksComponent {
   constructor(private overlay: Overlay, private renderer: Renderer2) {}
 
   showPanel(event: FocusEvent) {
+    if (this.lang !== 'de') return
+
     this.activeInput = event.target as HTMLInputElement;
 
     if (this.overlayRef) {
