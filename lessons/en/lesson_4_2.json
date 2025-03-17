@@ -1,0 +1,40 @@
+{
+    "topic": "Ordering at Restaurants",
+    "vocabulary_list": [
+        "Menu",
+        "Waiter",
+        "Waitress",
+        "Order",
+        "Bill",
+        "Check",
+        "Dish",
+        "Drink",
+        "Starter",
+        "Appetizer",
+        "Main course",
+        "Dessert",
+        "Table for two",
+        "Reservation",
+        "Water",
+        "Coffee",
+        "Tea",
+        "Salad",
+        "Soup"
+    ],
+    "introduction": "<p>In this lesson, you will learn how to order food and drinks at restaurants. You will be introduced to simple vocabulary and basic sentence structures used when dining out.</p><h3>Grammar Focus:</h3><ul><li>Simple Present Tense: Used for general statements (e.g., 'I want a coffee.')</li><li>Polite Requests: Using 'Can I have...?' or 'I would like...'</li><li>Yes/No Questions: (e.g., 'Do you have tea?')</li><li>Countable and Uncountable Nouns: (e.g., 'a sandwich' vs. 'some water')</li></ul>",
+    "presentation": "<h3>Vocabulary:</h3><ul><li>Menu</li><li>Waiter / Waitress</li><li>Order</li><li>Bill / Check</li><li>Dish</li><li>Drink</li><li>Starter / Appetizer</li><li>Main course</li><li>Dessert</li><li>Table for two</li><li>Reservation</li><li>Water (still/sparkling)</li><li>Coffee / Tea</li><li>Salad</li><li>Soup</li></ul><h3>Example Sentences:</h3><ul><li>'Can I see the menu, please?'</li><li>'We have a reservation for two.'</li><li>'I would like to order a salad.'</li><li>'Can I have the bill, please?'</li><li>'I will have the main course and a drink.'</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["Can I see the", "please?", "menu"]},
+        {"type": "fill_blank", "data": ["I would like to", "a pizza.", "order"]},
+        {"type": "fill_blank", "data": ["A", "for two, please.", "table"]},
+        {"type": "fill_blank", "data": ["Can I have the", "please?", "check"]},
+        {"type": "fill_blank", "data": ["Would you like a", "or a dessert?", "starter"]},
+        {"type": "multiple_choice", "data": ["What would you like to drink?", "Water", "Menu", "Water", "Table"]},
+        {"type": "multiple_choice", "data": ["Can I have a coffee, please?", "Drink", "Reservation", "Drink", "Salad"]},
+        {"type": "multiple_choice", "data": ["I would like the main course.", "Order", "Starter", "Order", "Bill"]},
+        {"type": "multiple_choice", "data": ["Can I have the check, please?", "Bill", "Drink", "Bill", "Soup"]},
+        {"type": "multiple_choice", "data": ["Do you have tea?", "Yes, we do.", "Yes, we do.", "Table for two.", "Main course."]}
+    ],
+    "conclusion": "<h3>In this lesson, you learned how to order food and drinks at restaurants.</h3><ul><li>Key phrases include:</li><li>'Can I see the menu, please?'</li><li>'I would like to order... / I would like... / Can I have...?' </li><li>'Can I have the bill, please?'</li></ul><h3>Example Dialogue:</h3><p>Waiter: 'Hello! How can I help you?' <br>Customer: 'Hello! Can I see the menu, please?' <br>Waiter: 'Sure! Here you go.' <br>Customer: 'Thank you. I would like to order a salad and a coffee.' <br>Waiter: 'Anything else?' <br>Customer: 'No, that’s all. Can I have the bill, please?' <br>Waiter: 'Of course. Here it is.'</p><h3>Questions to Reinforce:</h3><ul><li>How do you ask for a menu politely?</li><li>What phrases can you use to order food?</li><li>How do you ask for the bill?</li></ul><h3>Homework:</h3><p>Write a short dialogue between a waiter and a customer at a restaurant. Use at least five of the new vocabulary words or phrases you learned today.</p>"
+}
+

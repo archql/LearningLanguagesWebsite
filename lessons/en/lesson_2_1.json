@@ -1,0 +1,37 @@
+{
+    "topic": "Talking About Work and School",
+    "vocabulary_list": [
+      "Job",
+      "School",
+      "Work",
+      "Study",
+      "Teacher",
+      "Student",
+      "Office",
+      "Homework",
+      "Class",
+      "Subject",
+      "Break",
+      "Lesson",
+      "Manager",
+      "Colleague",
+      "Schedule"
+    ],
+    "introduction": "<p>This lesson will teach you basic vocabulary and simple sentences to talk about work and school. You will learn how to talk about your job, studies, and daily routines. We will also practice using the present simple tense and asking basic questions.</p><p><strong>Grammatical Structures:</strong><br>- Present Simple Tense (I work, You study, She teaches)<br>- Basic Questions (What do you do? Where do you study?)<br>- Possessive Adjectives (my, your, his, her)</p>",
+    "presentation": "<p><strong>Vocabulary:</strong></p><ul><li>Job – I have a new job.</li><li>School – I go to school every day.</li><li>Work – I work in an office.</li><li>Study – I study English.</li><li>Teacher – My teacher is nice.</li><li>Student – She is a student.</li><li>Office – He works in an office.</li><li>Homework – I do my homework in the evening.</li><li>Class – We have a math class today.</li><li>Subject – My favorite subject is English.</li><li>Break – We have a break at 10 o'clock.</li><li>Lesson – The lesson is interesting.</li><li>Manager – He is a manager.</li><li>Colleague – I work with my colleagues.</li><li>Schedule – My schedule is busy.</li></ul>",
+    "practice": [
+      {"type": "fill_blank", "data": ["I study English at", "", "school"]},
+      {"type": "fill_blank", "data": ["He has a new", "", "job"]},
+      {"type": "fill_blank", "data": ["My", "is very nice.", "teacher"]},
+      {"type": "fill_blank", "data": ["She works in an", "", "office"]},
+      {"type": "fill_blank", "data": ["What is your favorite", "?", "subject"]},
+      {"type": "multiple_choice", "data": ["I ___ in an office.", "work", "work", "study", "teach"]},
+      {"type": "multiple_choice", "data": ["She ___ English.", "studies", "works", "studies", "manages"]},
+      {"type": "multiple_choice", "data": ["They ___ to school every day.", "go", "go", "work", "teach"]},
+      {"type": "multiple_choice", "data": ["My ___ is interesting.", "homework", "homework", "break", "colleague"]},
+      {"type": "multiple_choice", "data": ["He is a ___.", "student", "student", "homework", "subject"]}
+    ],
+    "conclusion": "<h3>Review:</h3><p>We learned words about work and school. We practiced using the present simple tense. We asked and answered questions about work and studies.</p><h3>Example Dialogue:</h3><p>A: What do you do? <br>B: I am a student. I study English.<br>A: Where do you study?<br>B: I study at the university.<br>A: Do you like your classes?<br>B: Yes, they are interesting.</p><h3>Questions to Reinforce the Material:</h3><ul><li>What do you do?</li><li>Where do you work or study?</li><li>Who is your teacher?</li><li>What is your favorite subject?</li><li>Do you have a busy schedule?</li></ul><h3>Homework:</h3><p>Write a short paragraph (4–5 sentences) about your work or school. Use the vocabulary and grammar we learned today.</p>"
+  }
+  
+  

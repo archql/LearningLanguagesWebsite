@@ -1,0 +1,31 @@
+{
+    "topic": "Discussing Healthy Habits and Routines",
+    "vocabulary_list": [
+        "Exercise",
+        "Healthy",
+        "Water",
+        "Sleep",
+        "Breakfast",
+        "Fruit",
+        "Vegetables",
+        "Walk",
+        "Routine",
+        "Snack"
+    ],
+    "introduction": "<p>In this lesson, we will talk about healthy habits and routines. We will learn words and phrases related to daily activities, food, and exercise. We will also practice using simple present tense, which is used to talk about habits and routines.</p><h3>Grammar Focus: Simple Present Tense</h3><p><strong>I/You/We/They:</strong> eat, drink, exercise, sleep (Example: I eat healthy food. / They exercise every day.)<br><strong>He/She/It:</strong> eats, drinks, exercises, sleeps (Example: She drinks water. / He sleeps well.)</p>",
+    "presentation": "<p>Let's learn some new words and phrases related to healthy habits:</p><h3>Vocabulary:</h3><ul><li>Exercise - To move your body to stay healthy. (Example: I exercise every morning.)</li><li>Healthy - Good for your body. (Example: Vegetables are healthy.)</li><li>Water - A drink that is good for your health. (Example: She drinks water every day.)</li><li>Sleep - Resting your body and mind. (Example: I sleep eight hours every night.)</li><li>Breakfast - The first meal of the day. (Example: He eats breakfast at 7 a.m.)</li><li>Fruit - A healthy food, like apples or bananas. (Example: We eat fruit for lunch.)</li><li>Vegetables - Healthy food like carrots and spinach. (Example: She likes vegetables.)</li><li>Walk - To move your feet to go somewhere. (Example: They walk to school.)</li><li>Routine - Things you do every day. (Example: My routine is to wake up, eat breakfast, and go to work.)</li><li>Snack - A small amount of food. (Example: He eats a snack after school.)</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["I drink", "every day.", "water"]},
+        {"type": "fill_blank", "data": ["She eats", "in the morning.", "breakfast"]},
+        {"type": "fill_blank", "data": ["We", "in the park.", "exercise"]},
+        {"type": "fill_blank", "data": ["He eats", "for lunch.", "fruit"]},
+        {"type": "fill_blank", "data": ["They", "for eight hours.", "sleep"]},
+        {"type": "multiple_choice", "data": ["I (exercise / exercises) every morning.", "exercise", "exercise", "exercises"]},
+        {"type": "multiple_choice", "data": ["She (eat / eats) fruit every day.", "eats", "eat", "eats"]},
+        {"type": "multiple_choice", "data": ["They (drink / drinks) water before bed.", "drink", "drink", "drinks"]},
+        {"type": "multiple_choice", "data": ["We (sleep / sleeps) at night.", "sleep", "sleep", "sleeps"]},
+        {"type": "multiple_choice", "data": ["He (walk / walks) to school.", "walks", "walk", "walks"]}
+    ],
+    "conclusion": "<h3>Let's review!</h3><p>We learned words about health like 'exercise,' 'fruit,' and 'vegetables.' We practiced using the simple present tense to talk about habits.</p><p><strong>Example Dialogue:</strong><br>A: What do you do every morning?<br>B: I eat breakfast and drink water. Then I walk to school.</p><h3>Questions to Review:</h3><ul><li>What do you eat for breakfast?</li><li>Do you exercise every day?</li><li>How many hours do you sleep every night?</li></ul><h3>Homework:</h3><p>Write five sentences about your daily routine. Use words like 'exercise,' 'fruit,' 'water,' and 'sleep.'</p>"
+}
+

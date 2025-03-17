@@ -1,0 +1,36 @@
+{
+    "topic": "Making First Impressions",
+    "vocabulary_list": [
+      "Hello",
+      "Hi",
+      "Nice to meet you",
+      "How are you?",
+      "I am...",
+      "My name is...",
+      "This is...",
+      "Please",
+      "Thank you",
+      "Goodbye",
+      "Where are you from?",
+      "I’m from..."
+    ],
+    "introduction": "<p>In this lesson, we will learn how to make a good first impression when meeting new people. We will focus on basic greetings, introductions, and polite expressions.</p><p><strong>Grammar Focus:</strong> Simple Present Tense: 'I am…', 'You are…', 'He/She is…'. Personal Pronouns: I, You, He, She, We, They. Possessive Adjectives: My, Your, His, Her.</p>",
+    "presentation": "<p><strong>New Vocabulary & Phrases:</strong></p><ul><li>Hello / Hi - A friendly greeting.</li><li>Nice to meet you - A polite phrase used when meeting someone for the first time.</li><li>How are you? - A common way to ask about someone’s well-being.</li><li>I am... / My name is... - Ways to introduce yourself.</li><li>This is... - Used to introduce someone else.</li><li>Please - A polite word used when making a request.</li><li>Thank you - A polite way to show gratitude.</li><li>Goodbye / Bye - Words used when leaving.</li><li>Where are you from? - A question to ask about someone’s origin.</li><li>I’m from... - A way to tell where you are from.</li></ul><p><strong>Example Sentences:</strong> Hello, I’m Anna. Nice to meet you! How are you? – I’m good, thank you! This is my friend, John. Where are you from? – I’m from Spain. Goodbye! See you later!</p>",
+    "practice": [
+      {"type": "fill_blank", "data": ["", ", my name is Sarah.", "Hello"]},
+      {"type": "fill_blank", "data": ["Nice to", "you!", "meet"]},
+      {"type": "fill_blank", "data": ["How", "you?", "are"]},
+      {"type": "fill_blank", "data": ["I", "from Brazil.", "am"]},
+      {"type": "fill_blank", "data": ["This", "my brother, Mike.", "is"]},
+      {"type": "fill_blank", "data": ["", "you!", "Goodbye"]},
+      {"type": "multiple_choice", "data": ["How are you?", "I’m fine, thank you.", "Thank you.", "I’m fine, thank you.", "Nice to meet you."]},
+      {"type": "multiple_choice", "data": ["Where are you from?", "I am from Italy.", "I am fine.", "I am from Italy.", "See you later."]},
+      {"type": "multiple_choice", "data": ["This is my friend, Peter.", "Hello, Peter! Nice to meet you.", "Hello, Peter! Nice to meet you.", "Goodbye.", "What is this?"]},
+      {"type": "multiple_choice", "data": ["Nice to meet you!", "Nice to meet you, too.", "Goodbye.", "You are welcome.", "Nice to meet you, too."]},
+      {"type": "multiple_choice", "data": ["Goodbye!", "Bye!", "Hello!", "Bye!", "I’m from Germany."]},
+      {"type": "multiple_choice", "data": ["I’m from India.", "Where are you from?", "Where are you from?", "Hello!", "Nice to meet you."]}
+    ],
+    "conclusion": "<h3>Review:</h3><ul><li>Key expressions: Hello, Nice to meet you, How are you?, I am..., Where are you from?, Goodbye.</li><li>Grammar structures: Simple Present Tense, Personal Pronouns, Possessive Adjectives.</li></ul><h3>Example Dialogue:</h3><p>A: Hello! I’m Mark.<br>B: Hi, Mark! I’m Lisa. Nice to meet you!<br>A: Nice to meet you, too. Where are you from?<br>B: I’m from Canada. And you?<br>A: I’m from the UK.<br>B: That’s nice! See you later.<br>A: Goodbye!</p><h3>Questions to Reinforce Material:</h3><ul><li>How do you introduce yourself?</li><li>What do you say when you meet someone new?</li><li>How do you ask where someone is from?</li><li>What are polite words to use when talking to someone?</li></ul><h3>Homework:</h3><p>Write a short dialogue (4-6 lines) where you introduce yourself to someone new. Include greetings, introductions, and a question about where they are from.</p>"
+  }
+  
+  

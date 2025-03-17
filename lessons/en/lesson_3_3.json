@@ -1,0 +1,35 @@
+{
+    "topic": "Talking About Different Modes of Transport",
+    "vocabulary_list": [
+        "Car",
+        "Bus",
+        "Train",
+        "Bicycle",
+        "Plane",
+        "Boat",
+        "Taxi",
+        "Motorcycle",
+        "Tram",
+        "Subway",
+        "Scooter",
+        "Ferry"
+    ],
+    "introduction": "<p>In this lesson, we will learn how to talk about different modes of transport in English. You will learn some common words and phrases related to transport and how to use them in simple sentences.</p><p><strong>Grammar Focus:</strong><br>- Using the verb 'to go' with different modes of transport. Example: 'I go by bus.' / 'He goes by train.'<br>- Using 'by' + transport (by car, by train, by bus, etc.)<br>- Making simple questions and answers: 'How do you go to school?' - 'I go by bus.'</p>",
+    "presentation": "<p><strong>Vocabulary (Modes of Transport):</strong></p><ul><li>Car</li><li>Bus</li><li>Train</li><li>Bicycle</li><li>Plane</li><li>Boat</li><li>Taxi</li><li>Motorcycle</li><li>Tram</li><li>Subway (Underground)</li><li>Scooter</li><li>Ferry</li></ul><p><strong>Example Sentences:</strong><br>- I go to school by bus.<br>- She travels by train.<br>- They ride bicycles in the park.<br>- We go to the city by subway.<br>- He goes to work by car.</p>",
+    "practice": [
+        {"type": "fill_blank", "data": ["I go to school by ", ".", "bus"]},
+        {"type": "fill_blank", "data": ["We travel to another country by ", ".", "plane"]},
+        {"type": "fill_blank", "data": ["They ride their ", " to the park.", "bicycle"]},
+        {"type": "fill_blank", "data": ["She takes the ", " to the island.", "boat"]},
+        {"type": "fill_blank", "data": ["He goes to work by ", ".", "car"]},
+        {"type": "fill_blank", "data": ["I travel around the city by ", ".", "subway"]},
+        {"type": "multiple_choice", "data": ["How do you go to school?", "I go by train.", "I go by train.", "I goes by train.", "I gone by train."]},
+        {"type": "multiple_choice", "data": ["How does she go to work?", "She goes by bus.", "She go by bus.", "She goes by bus.", "She going by bus."]},
+        {"type": "multiple_choice", "data": ["They travel to another city...", "by car.", "by car.", "by bicycle.", "by boat."]},
+        {"type": "multiple_choice", "data": ["We ride our...", "bicycle.", "boat.", "bicycle.", "taxi."]},
+        {"type": "multiple_choice", "data": ["He takes a...", "plane.", "car.", "plane.", "tram."]},
+        {"type": "multiple_choice", "data": ["I travel by...", "bus.", "scooter.", "bus.", "motorcycle."]}
+    ],
+    "conclusion": "<h3>In this lesson, you learned how to talk about different modes of transport using simple sentences.</h3><p>You also practiced how to form questions and answers about transport.</p><p><strong>Example Dialogue:</strong><br>A: How do you go to school?<br>B: I go by bus.<br>A: How does your father go to work?<br>B: He goes by car.</p><p><strong>Questions for Reinforcement:</strong><br>1. How do you go to school?<br>2. How do you travel to another city?<br>3. What transport do you use most often?</p><p><strong>Homework:</strong> Write 5 sentences about how you and your family travel using the words from today’s lesson.</p>"
+}
+

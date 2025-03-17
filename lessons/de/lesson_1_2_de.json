@@ -1,0 +1,42 @@
+{
+    "topic": "Über deine Familie und Freunde sprechen",
+    "vocabulary_list": [
+        "Familie",
+        "Eltern",
+        "Vater",
+        "Mutter",
+        "Bruder",
+        "Schwester",
+        "Freund",
+        "Großvater",
+        "Großmutter",
+        "Onkel",
+        "Tante",
+        "Cousin/Cousine",
+        "Nett",
+        "Lustig",
+        "Freundlich"
+    ],
+    "introduction": "<p>In dieser Lektion lernen wir, wie man seine Familie und Freunde beschreibt, indem wir grundlegendes Vokabular und einfache Sätze verwenden. Wir behandeln:</p><ul><li><strong>Vokabular:</strong> Wörter im Zusammenhang mit Familienmitgliedern, Freunden und einfachen Adjektiven, um Personen zu beschreiben.</li><li><strong>Grammatik:</strong> Verwendung von 'Er ist...', 'Sie ist...', 'Sie sind...' und einfachen beschreibenden Sätzen.</li></ul><h3>Grammatische Strukturen:</h3><ul><li><strong>Über Familie sprechen:</strong> 'Er ist mein Vater.', 'Sie ist meine Schwester.'</li><li><strong>Personen beschreiben:</strong> 'Er ist nett.', 'Sie ist lustig.', 'Sie sind freundlich.'</li></ul>",
+    "presentation": "<p>Hier sind nützliche Wörter und Ausdrücke, um über deine Familie und Freunde zu sprechen:</p><h3>Vokabular:</h3><ul><li>Familie – Eine Gruppe von Menschen, die miteinander verwandt sind. ('Meine Familie ist groß.')</li><li>Eltern – Vater und Mutter. ('Meine Eltern sind nett.')</li><li>Vater – Ein männlicher Elternteil. ('Mein Vater ist groß.')</li><li>Mutter – Ein weiblicher Elternteil. ('Meine Mutter ist Lehrerin.')</li><li>Bruder – Ein männliches Geschwisterteil. ('Ich habe einen Bruder.')</li><li>Schwester – Ein weibliches Geschwisterteil. ('Ich habe zwei Schwestern.')</li><li>Freund – Eine Person, die du magst und der du vertraust. ('Mein Freund ist lustig.')</li><li>Großvater – Der Vater deines Vaters oder deiner Mutter. ('Mein Großvater ist alt.')</li><li>Großmutter – Die Mutter deines Vaters oder deiner Mutter. ('Meine Großmutter kocht gut.')</li><li>Onkel – Der Bruder deines Vaters oder deiner Mutter. ('Mein Onkel ist freundlich.')</li><li>Tante – Die Schwester deines Vaters oder deiner Mutter. ('Meine Tante ist sehr nett.')</li><li>Cousin/Cousine – Das Kind deines Onkels oder deiner Tante. ('Ich spiele mit meinem Cousin.')</li><li>Nett – Jemand, der freundlich und hilfsbereit ist. ('Meine Mutter ist nett.')</li><li>Lustig – Jemand, der dich zum Lachen bringt. ('Mein Freund ist lustig.')</li><li>Freundlich – Jemand, der nett und einladend ist. ('Sie sind freundlich.')</li></ul><h3>Beispielsätze:</h3><ul><li>'Mein Vater ist Arzt. Er ist nett.'</li><li>'Meine Freundin Anna ist sehr lustig.'</li><li>'Ich habe zwei Brüder und eine Schwester.'</li><li>'Meine Familie ist groß und freundlich.'</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["Mein", "ist sehr lustig.", "Freund"]},
+        {"type": "fill_blank", "data": ["Ich habe zwei", "und eine Schwester.", "Brüder"]},
+        {"type": "fill_blank", "data": ["Meine", "ist Lehrerin.", "Mutter"]},
+        {"type": "fill_blank", "data": ["Meine", "ist sehr nett.", "Tante"]},
+        {"type": "fill_blank", "data": ["Meine", "kocht gut.", "Großmutter"]},
+        
+        {"type": "multiple_choice", "data": ["Mein Vater ist ein ___.", "Arzt", "Arzt", "lustig", "Freund"]},
+        {"type": "multiple_choice", "data": ["Mein Freund ist sehr ___.", "lustig", "lustig", "nett", "Familie"]},
+        {"type": "multiple_choice", "data": ["Ich habe zwei ___.", "Brüder", "Brüder", "Eltern", "Cousins"]},
+        {"type": "multiple_choice", "data": ["Meine Tante ist sehr ___.", "nett", "nett", "Bruder", "Vater"]},
+        {"type": "multiple_choice", "data": ["Meine Großmutter kocht gutes ___.", "Essen", "Essen", "Lachen", "Freund"]},
+        
+        {"type": "fill_blank", "data": ["Mein", "ist alt.", "Großvater"]},
+        {"type": "fill_blank", "data": ["Sie sind sehr", ".", "freundlich"]},
+        {"type": "fill_blank", "data": ["Mein Cousin ist", ".", "lustig"]},
+        {"type": "fill_blank", "data": ["Mein Onkel ist", ".", "freundlich"]},
+        {"type": "fill_blank", "data": ["Ich habe eine", ".", "Schwester"]}
+    ],
+    "conclusion": "<h3>In dieser Lektion haben wir gelernt:</h3><ul><li>Wörter im Zusammenhang mit Familienmitgliedern und Freunden.</li><li>Wie man Personen mit Wörtern wie 'nett', 'lustig' und 'freundlich' beschreibt.</li><li>Einfache Sätze wie 'Er ist...', 'Sie ist...' und 'Sie sind...'</li></ul><h3>Beispieldialog:</h3><p>A: Erzähl mir von deiner Familie.<br>B: Meine Familie ist groß. Ich habe zwei Brüder und eine Schwester. Meine Eltern sind nett.<br>A: Was ist mit deinen Freunden?<br>B: Meine Freundin Anna ist sehr lustig. Sie bringt mich immer zum Lachen.<br>A: Das klingt schön!</p><h3>Fragen zur Wiederholung:</h3><ul><li>Wie viele Geschwister hast du?</li><li>Was ist der Beruf deines Vaters?</li><li>Welche Wörter kannst du verwenden, um deine Freunde zu beschreiben?</li><li>Wer ist nett in deiner Familie?</li><li>Wer ist lustig?</li></ul><h3>Hausaufgabe:</h3><p>Schreibe einen kurzen Text über deine Familie und Freunde. Sprich über:<br>- Wie viele Personen in deiner Familie sind.<br>- Wer deine Freunde sind und wie sie sind.<br>- Verwende Wörter wie 'nett', 'lustig', 'freundlich' usw.</p>"
+}

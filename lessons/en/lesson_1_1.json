@@ -1,0 +1,44 @@
+{
+    "topic": "Talking About Yourself (Name, Age, Occupation, Hobbies)",
+    "vocabulary_list": [
+        "Name",
+        "Age",
+        "Occupation",
+        "Hobby",
+        "Student",
+        "Doctor",
+        "Like",
+        "Enjoy",
+        "Reading",
+        "Music",
+        "Traveling",
+        "Cooking"
+    ],
+    "introduction": "<p>In this lesson, we will learn how to introduce yourself and provide basic personal information. We'll cover:</p><ul><li><strong>Vocabulary:</strong> Words and phrases related to name, age, job, and hobbies.</li><li><strong>Grammar:</strong> Basic sentence structures with 'I am', 'My name is', 'I have', and 'I like'.</li></ul><h3>Grammar Structures:</h3><ul><li><strong>Introducing yourself:</strong> 'I am…', 'My name is…'</li><li><strong>Talking about age:</strong> 'I am … years old.'</li><li><strong>Talking about your job:</strong> 'I am a …' / 'I work as a …'</li><li><strong>Talking about hobbies:</strong> 'I like …' / 'I enjoy …' / 'My hobby is …'</li></ul>",
+    "presentation": "<p>Let's learn some useful words and phrases for talking about yourself:</p><h3>Vocabulary:</h3><ul><li>Name – What you are called. ('My name is Sarah.')</li><li>Age – How old you are. ('I am 20 years old.')</li><li>Occupation – Your job or profession. ('I am a teacher.')</li><li>Hobby – An activity you like doing. ('My hobby is reading.')</li><li>Student – A person who studies. ('I am a student.')</li><li>Doctor – A person who helps sick people. ('I am a doctor.')</li><li>Like – To enjoy something. ('I like music.')</li><li>Enjoy – To take pleasure in something. ('I enjoy playing soccer.')</li><li>Reading – The activity of reading books. ('I like reading.')</li><li>Music – Sounds that are pleasant to listen to. ('I like music.')</li><li>Traveling – Going from one place to another. ('I enjoy traveling.')</li><li>Cooking – Preparing food. ('I like cooking.')</li></ul><h3>Example Sentences:</h3><ul><li>'Hello! My name is John. I am 25 years old. I am a student. I like playing football.'</li><li>'I enjoy reading and cooking. My hobby is listening to music.'</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["Hello! My name", "Sarah.", "is"]},
+        {"type": "fill_blank", "data": ["I", "a teacher.", "am"]},
+        {"type": "fill_blank", "data": ["I", "30 years old.", "am"]},
+        {"type": "fill_blank", "data": ["I like", "music.", "listening to"]},
+        {"type": "fill_blank", "data": ["My hobby", "playing tennis.", "is"]},
+        
+        {"type": "multiple_choice", "data": ["I am a ___.", "doctor", "doctor", "dance", "apple"]},
+        {"type": "multiple_choice", "data": ["I like ___.", "playing soccer", "playing soccer", "cat", "water"]},
+        {"type": "multiple_choice", "data": ["My name ___.", "is", "is", "am", "are"]},
+        {"type": "multiple_choice", "data": ["I am 20 years ___.", "old", "old", "young", "big"]},
+        {"type": "multiple_choice", "data": ["I enjoy ___.", "traveling", "traveling", "window", "bread"]},
+        
+        {"type": "fill_blank", "data": ["My", "is Michael.", "name"]},
+        {"type": "fill_blank", "data": ["I am 28 years", ".", "old"]},
+        {"type": "fill_blank", "data": ["I am a", ".", "teacher"]},
+        {"type": "fill_blank", "data": ["My", "is painting.", "hobby"]},
+        
+        {"type": "multiple_choice", "data": ["I (like / am) cooking.", "like", "like", "am"]},
+        {"type": "multiple_choice", "data": ["My hobby (is / are) painting.", "is", "is", "are"]},
+        {"type": "multiple_choice", "data": ["I (am / like) a student.", "am", "am", "like"]},
+        {"type": "multiple_choice", "data": ["I (enjoy / am) traveling.", "enjoy", "enjoy", "am"]},
+        {"type": "multiple_choice", "data": ["I (is / am) 18 years old.", "am", "am", "is"]}
+    ],
+    "conclusion": "<h3>In this lesson, we learned:</h3><ul><li>How to introduce yourself using basic structures and vocabulary.</li><li>Words related to name, age, occupation, and hobbies.</li><li>Sentence structures using 'I am...', 'I like...', 'My name is...'</li></ul><h3>Example Dialogue:</h3><p>A: Hello! My name is Sarah. I am 20 years old. I am a student.<br>B: Hi Sarah! I am Tom. I am 22 years old. I work as a teacher.<br>A: Nice to meet you! What do you like to do in your free time?<br>B: I like reading books and playing football.</p><h3>Questions to Reinforce:</h3><ul><li>What’s your name?</li><li>How old are you?</li><li>What is your job?</li><li>What do you like to do in your free time?</li><li>What is your hobby?</li></ul><h3>Homework:</h3><p>Write a short paragraph about yourself. Talk about: <br>- Your name <br>- Your age <br>- Your job (if you have one) <br>- Your hobbies</p>"
+}

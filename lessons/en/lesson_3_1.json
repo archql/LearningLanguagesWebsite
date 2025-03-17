@@ -1,0 +1,21 @@
+{
+    "topic": "Planning a Trip and Making Reservations",
+    "vocabulary_list": [
+      "Book (a ticket)", "Reservation", "Hotel", "Flight", "Travel", "Trip", "Destination", "Passport", "Luggage", "Check-in", "Ticket", "Airport", "Train", "Tourist", "Guide"
+    ],
+    "introduction": "<p>In this lesson, we will learn basic vocabulary and grammar related to planning a trip and making reservations. The focus will be on simple present tense, basic question forms, and common travel-related expressions.</p><h3>Grammar Focus:</h3><ul><li>Simple Present Tense: Used to talk about routines and facts. (e.g., 'I book a ticket.')</li><li>Questions: Using 'Do' and 'Does'. (e.g., 'Do you have a reservation?')</li><li>Polite Requests: Using 'Can I...?' and 'I would like...'. (e.g., 'Can I book a room?' or 'I would like to make a reservation.')</li></ul>",
+    "presentation": "<p>Let's learn some useful words and phrases for planning a trip and making reservations:</p><h3>Vocabulary:</h3><ul><li>Book (a ticket)</li><li>Reservation</li><li>Hotel</li><li>Flight</li><li>Travel</li><li>Trip</li><li>Destination</li><li>Passport</li><li>Luggage</li><li>Check-in</li><li>Ticket</li><li>Airport</li><li>Train</li><li>Tourist</li><li>Guide</li></ul>",
+    "practice": [
+      {"type": "fill_blank", "data": ["I want to", "a ticket to Paris.", "book"]},
+      {"type": "fill_blank", "data": ["Where is your", "?", "passport"]},
+      {"type": "fill_blank", "data": ["We have a", "at the hotel.", "reservation"]},
+      {"type": "fill_blank", "data": ["The", "leaves at 5 p.m.", "train"]},
+      {"type": "fill_blank", "data": ["I need to check-in at the", ".", "airport"]},
+      {"type": "multiple_choice", "data": ["Can I ___ a room, please?", "book", "train", "book", "luggage"]},
+      {"type": "multiple_choice", "data": ["Where is your ___?", "destination", "ticket", "destination", "airport"]},
+      {"type": "multiple_choice", "data": ["I would like to make a ___.", "reservation", "reservation", "guide", "tourist"]}
+    ],
+    "conclusion": "<h3>Review:</h3><ul><li>Vocabulary: Book, Reservation, Hotel, Flight, etc.</li><li>Grammar: Simple Present, Questions, Polite Requests.</li></ul><h3>Example Dialogue:</h3><p>A: Hello! I would like to book a room.<br>B: Sure. Do you have a reservation?<br>A: No, I don’t. Can I make one now?<br>B: Yes, of course. How many nights will you be staying?<br>A: Two nights, please.</p><h3>Questions for Reinforcement:</h3><ul><li>What is a reservation?</li><li>How do you ask for a ticket politely?</li><li>What do you need at the airport?</li></ul><h3>Homework:</h3><p>Write a short dialogue where you book a ticket for a trip and make a reservation at a hotel. Use at least 5 words from the vocabulary list.</p>"
+  }
+  
+  

@@ -1,0 +1,36 @@
+{
+    "topic": "Discussing Culinary Cultures",
+    "vocabulary_list": [
+        "Dish",
+        "Delicious",
+        "Spicy",
+        "Sweet",
+        "Sour",
+        "Ingredients",
+        "Recipe",
+        "Taste",
+        "Cook",
+        "Meal",
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Restaurant",
+        "Culture"
+    ],
+    "introduction": "<p>In this lesson, we will talk about food and culinary cultures. You will learn basic words related to food and cooking, and practice how to talk about different dishes from around the world.</p> <h3>Grammar Focus:</h3><ul><li>Simple Present Tense (e.g., I eat, You like, We cook)</li><li>Use of 'like' and 'don’t like' to express preferences (e.g., I like pasta. I don’t like fish.)</li><li>Yes/No questions: Do you like...? (e.g., Do you like pizza?)</li><li>Wh- questions: What, Where, How (e.g., What is your favorite food?)</li></ul>",
+    "presentation": "<p>Let's learn some useful words and phrases about food:</p><h3>Vocabulary:</h3><ul><li>Dish</li><li>Delicious</li><li>Spicy</li><li>Sweet</li><li>Sour</li><li>Ingredients</li><li>Recipe</li><li>Taste</li><li>Cook</li><li>Meal</li><li>Breakfast</li><li>Lunch</li><li>Dinner</li><li>Restaurant</li><li>Culture</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["I like", "food.", "spicy"]},
+        {"type": "fill_blank", "data": ["We have", "at 12 o’clock.", "lunch"]},
+        {"type": "fill_blank", "data": ["This soup is very", ".", "sour"]},
+        {"type": "fill_blank", "data": ["I want to try a new", ".", "restaurant"]},
+        {"type": "fill_blank", "data": ["My favorite", "is pizza.", "meal"]},
+        {"type": "multiple_choice", "data": ["The cake is very ___.", "Delicious", "Delicious", "Recipe"]},
+        {"type": "multiple_choice", "data": ["We need more ___ to cook the soup.", "Ingredients", "Ingredients", "Restaurant"]},
+        {"type": "multiple_choice", "data": ["French food is part of French ___.", "Culture", "Culture", "Sweet"]},
+        {"type": "multiple_choice", "data": ["How does the soup ___?", "Taste", "Taste", "Dinner"]},
+        {"type": "multiple_choice", "data": ["The curry is very ___.", "Spicy", "Spicy", "Lunch"]}
+    ],
+    "conclusion": "<h3>In this lesson, we learned:</h3><ul><li>How to talk about dishes, meals, and preferences.</li><li>New vocabulary related to food.</li><li>Expressing likes and dislikes using 'I like...' and 'I don’t like...'.</li></ul><h3>Example Dialogue:</h3><p><strong>Tom:</strong> What is your favorite dish?<br><strong>Lisa:</strong> My favorite dish is pizza. It’s delicious!<br><strong>Tom:</strong> Do you like spicy food?<br><strong>Lisa:</strong> No, I don’t. I like sweet food.</p><h3>Homework:</h3><p>Write a short paragraph (3-5 sentences) about your favorite dish. Describe the taste, ingredients, and why you like it.</p>"
+}
+

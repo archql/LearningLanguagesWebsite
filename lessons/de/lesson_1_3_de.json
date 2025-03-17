@@ -1,0 +1,34 @@
+{
+    "topic": "Einen ersten Eindruck machen",
+    "vocabulary_list": [
+      "Hallo",
+      "Hi",
+      "Freut mich, dich kennenzulernen",
+      "Wie geht es dir?",
+      "Ich bin...",
+      "Mein Name ist...",
+      "Das ist...",
+      "Bitte",
+      "Danke",
+      "Auf Wiedersehen",
+      "Woher kommst du?",
+      "Ich komme aus..."
+    ],
+    "introduction": "<p>In dieser Lektion lernen wir, wie man einen guten ersten Eindruck hinterlässt, wenn man neue Leute trifft. Wir konzentrieren uns auf grundlegende Begrüßungen, Vorstellungen und höfliche Ausdrücke.</p><p><strong>Grammatikschwerpunkt:</strong> Präsens: 'Ich bin…', 'Du bist…', 'Er/Sie ist…'. Personalpronomen: Ich, Du, Er, Sie, Wir, Sie. Possessivpronomen: Mein, Dein, Sein, Ihr.</p>",
+    "presentation": "<p><strong>Neue Vokabeln & Ausdrücke:</strong></p><ul><li>Hallo / Hi - Eine freundliche Begrüßung.</li><li>Freut mich, dich kennenzulernen - Ein höflicher Ausdruck, wenn man jemanden zum ersten Mal trifft.</li><li>Wie geht es dir? - Eine übliche Frage nach dem Wohlbefinden.</li><li>Ich bin... / Mein Name ist... - Möglichkeiten, sich vorzustellen.</li><li>Das ist... - Wird verwendet, um jemanden vorzustellen.</li><li>Bitte - Ein höfliches Wort, wenn man um etwas bittet.</li><li>Danke - Ein höflicher Ausdruck, um Dankbarkeit zu zeigen.</li><li>Auf Wiedersehen / Tschüss - Worte, wenn man sich verabschiedet.</li><li>Woher kommst du? - Eine Frage nach der Herkunft.</li><li>Ich komme aus... - Eine Möglichkeit zu sagen, woher man kommt.</li></ul><p><strong>Beispielsätze:</strong> Hallo, ich bin Anna. Freut mich, dich kennenzulernen! Wie geht es dir? – Mir geht es gut, danke! Das ist mein Freund, John. Woher kommst du? – Ich komme aus Spanien. Auf Wiedersehen! Bis später!</p>",
+    "practice": [
+      {"type": "fill_blank", "data": ["", ", ich bin Sarah.", "Hallo"]},
+      {"type": "fill_blank", "data": ["Freut mich,", "kennenzulernen!", "dich"]},
+      {"type": "fill_blank", "data": ["Wie", "dir?", "geht es"]},
+      {"type": "fill_blank", "data": ["Ich", "aus Brasilien.", "komme"]},
+      {"type": "fill_blank", "data": ["Das", "mein Bruder, Mike.", "ist"]},
+      {"type": "fill_blank", "data": ["", "!", "Auf Wiedersehen"]},
+      {"type": "multiple_choice", "data": ["Wie geht es dir?", "Mir geht es gut, danke.", "Danke.", "Mir geht es gut, danke.", "Freut mich, dich kennenzulernen."]},
+      {"type": "multiple_choice", "data": ["Woher kommst du?", "Ich komme aus Italien.", "Mir geht es gut.", "Ich komme aus Italien.", "Bis später."]},
+      {"type": "multiple_choice", "data": ["Das ist mein Freund, Peter.", "Hallo, Peter! Freut mich, dich kennenzulernen.", "Hallo, Peter! Freut mich, dich kennenzulernen.", "Auf Wiedersehen.", "Was ist das?"]},
+      {"type": "multiple_choice", "data": ["Freut mich, dich kennenzulernen!", "Freut mich, dich auch kennenzulernen.", "Auf Wiedersehen.", "Bitte schön.", "Freut mich, dich auch kennenzulernen."]},
+      {"type": "multiple_choice", "data": ["Auf Wiedersehen!", "Tschüss!", "Hallo!", "Tschüss!", "Ich komme aus Deutschland."]},
+      {"type": "multiple_choice", "data": ["Ich komme aus Indien.", "Woher kommst du?", "Woher kommst du?", "Hallo!", "Freut mich, dich kennenzulernen."]}
+    ],
+    "conclusion": "<h3>Wiederholung:</h3><ul><li>Wichtige Ausdrücke: Hallo, Freut mich, dich kennenzulernen, Wie geht es dir?, Ich bin..., Woher kommst du?, Auf Wiedersehen.</li><li>Grammatikstrukturen: Präsens, Personalpronomen, Possessivpronomen.</li></ul><h3>Beispieldialog:</h3><p>A: Hallo! Ich bin Mark.<br>B: Hi, Mark! Ich bin Lisa. Freut mich, dich kennenzulernen!<br>A: Freut mich auch. Woher kommst du?<br>B: Ich komme aus Kanada. Und du?<br>A: Ich komme aus Großbritannien.<br>B: Das ist schön! Bis später.<br>A: Auf Wiedersehen!</p><h3>Fragen zur Wiederholung:</h3><ul><li>Wie stellt man sich vor?</li><li>Was sagt man, wenn man jemanden neu trifft?</li><li>Wie fragt man, woher jemand kommt?</li><li>Welche höflichen Wörter verwendet man im Gespräch?</li></ul><h3>Hausaufgabe:</h3><p>Schreibe einen kurzen Dialog (4-6 Zeilen), in dem du dich jemandem vorstellst. Füge Begrüßungen, Vorstellungen und eine Frage nach der Herkunft ein.</p>"
+}

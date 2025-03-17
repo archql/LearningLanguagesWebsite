@@ -1,3 +1,21 @@
+1.	Introducing Yourself and Others
+	•	Talking About Yourself (Name, Age, Occupation, Hobbies)
+	•	Describing Your Family and Friends
+	•	Making First Impressions
+2.	Daily Routines and Lifestyle
+	•	Talking About Work and School
+	•	Describing Hobbies and Free Time Activities
+	•	Discussing Healthy Habits and Routines
+3.	Travel and Transportation
+	•	Planning a Trip and Making Reservations
+	•	Giving and Asking for Directions
+	•	Talking About Different Modes of Transport
+4.	Food and Cooking
+	•	Describing Dishes and Ingredients
+	•	Ordering at Restaurants
+	•	Discussing Culinary Cultures
+
+
 """
 Придумай урок немецкого языка для уровня A1 на тему "Знакомство". Урок должен быть структурирован следующим образом:
 
@@ -55,7 +73,7 @@ The lesson should be interactive and easily adaptable for beginners. It should i
 
 
 
-make a lesson with the following structure. Language of the lesson should be English, topic of the lesson: "Introduction", level A1
+make a lesson with the following structure. Language of the lesson should be English, topic of the lesson: "Discussing Culinary Cultures", level A1
 Structure should be:
 1. Introduction: A brief explanation of the basic vocabulary related to the topic and explanation of basic grammatical structures that belong to the level of the lesson
 2. Presentation: Introduction of new vocabulary, including 10-15 words and phrases related to the topic.
@@ -71,3 +89,20 @@ it should have field "topic", "vocabulary_list", "introduction", "presentation",
 "practice" should be formatted into an array of exercises and taken from "practice" segment of the lesson:
 if it is a "fill the blank" exercise organize it into an array, where first value is the sentence before the blank, second value is the sentence after the blank, and third value is the correct word that should be put into the blank space
 if it is a "select one from a list of answers" exercise organize it into an array, where first value is question of the exercise, second value is the right answer, third and further values are possible options.
+Here is an example {
+    "topic": "Introduction",
+    "vocabulary_list": [
+        "Hello",
+        "Hi",
+        "Good morning",
+    ],
+    "introduction": "<p>In this lesson, we will learn some basic vocabulary related to greetings, introductions, and simple personal information. We'll also cover simple grammatical structures like the use of the verb 'to be' (am, is, are) and basic sentence structures.</p>",
+    "presentation": "<p>Let's learn some useful words and phrases for introductions:</p><h3>Vocabulary:</h3><ul><li>Hello</li><li>How are you?</li><li>Nice to meet you</li><li>My name is...</li><li>What’s your name?</li><li>I am from...</li><li>Friend</li><li>Happy</li><li>Sad</li><li>Teacher</li><li>Student</li><li>City</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["I", "a student.", "am"]},
+        {"type": "fill_blank", "data": ["You", "my friend.", "are"]},
+        {"type": "multiple_choice", "data": ["___. My name is John.", "Hello", "Hello", "Goodbye"]},
+        {"type": "multiple_choice", "data": ["Nice to ___ you.", "meet", "meet", "eat"]},
+    ],
+    "conclusion": "<h3>In this lesson, we learned:</h3><ul><li>Greetings and introductions: Hello, Hi, Goodbye, Nice to meet you, etc.</li><li>Basic grammar: The verb 'to be' (am, is, are).</li><li>How to introduce yourself and ask basic questions.</li></ul>"
+}

@@ -1,0 +1,36 @@
+{
+    "topic": "Giving and Asking for Directions",
+    "vocabulary_list": [
+        "Left",
+        "Right",
+        "Straight",
+        "Near",
+        "Far",
+        "Turn",
+        "Next to",
+        "Opposite",
+        "Between",
+        "Corner",
+        "Cross",
+        "Traffic light",
+        "Street",
+        "Block",
+        "Map"
+    ],
+    "introduction": "<p>This lesson will focus on how to <strong>give and ask for directions</strong>. Students will learn basic vocabulary related to directions and common phrases used in simple dialogues. Additionally, we will cover simple grammatical structures such as <strong>imperative sentences</strong> (e.g., 'Turn left,' 'Go straight') and <strong>questions</strong> starting with 'Where is...' or 'How do I get to...'.</p>",
+    "presentation": "<h3>New Vocabulary:</h3><ul><li>Left</li><li>Right</li><li>Straight</li><li>Near</li><li>Far</li><li>Turn</li><li>Next to</li><li>Opposite</li><li>Between</li><li>Corner</li><li>Cross</li><li>Traffic light</li><li>Street</li><li>Block</li><li>Map</li></ul><h3>Example Sentences:</h3><ul><li>Turn left at the corner.</li><li>Go straight until you see the traffic light.</li><li>The bank is next to the supermarket.</li><li>Where is the nearest bus stop?</li><li>How do I get to the train station?</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["The supermarket is", "the bank.", "next to"]},
+        {"type": "fill_blank", "data": ["Turn", "at the traffic light.", "left"]},
+        {"type": "fill_blank", "data": ["The bus stop is", "the school.", "opposite"]},
+        {"type": "fill_blank", "data": ["Go", "until you reach the park.", "straight"]},
+        {"type": "fill_blank", "data": ["The library is", "the museum.", "next to"]},
+        {"type": "multiple_choice", "data": ["(Turn / Go) left at the corner.", "Turn", "Turn", "Go"]},
+        {"type": "multiple_choice", "data": ["The pharmacy is (near / far) the restaurant.", "near", "near", "far"]},
+        {"type": "multiple_choice", "data": ["(Where / What) is the post office?", "Where", "Where", "What"]},
+        {"type": "multiple_choice", "data": ["(How / Where) do I get to the train station?", "How", "How", "Where"]},
+        {"type": "multiple_choice", "data": ["The hotel is (next to / between) the hospital.", "next to", "next to", "between"]}
+    ],
+    "conclusion": "<h3>Review:</h3><p>Review the vocabulary and grammar structures covered in this lesson.</p><p><strong>Example Dialogues:</strong></p><ul><li>Excuse me, where is the bus station? It’s next to the post office.</li><li>How do I get to the museum? Go straight and turn right at the corner.</li></ul><h3>Questions for Review:</h3><ul><li>What do you say when you want someone to turn left?</li><li>How do you ask where something is?</li></ul><h3>Homework:</h3><p>Write a short dialogue (at least 5 lines) where you ask for directions to a place and receive an answer. Use at least 5 new words from today’s lesson.</p>"
+}
+

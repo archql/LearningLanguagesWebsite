@@ -1,0 +1,38 @@
+{
+    "topic": "Describing Dishes and Ingredients",
+    "vocabulary_list": [
+        "Bread",
+        "Rice",
+        "Chicken",
+        "Soup",
+        "Salad",
+        "Sweet",
+        "Spicy",
+        "Fresh",
+        "Delicious",
+        "Ingredients",
+        "Fruit",
+        "Vegetables",
+        "Meat",
+        "Cheese",
+        "Juice"
+    ],
+    "introduction": "<p>In this lesson, we will learn how to describe dishes and ingredients in simple English. We'll cover basic vocabulary related to food and dishes and learn simple sentence structures like:</p><ul><li><strong>This is...</strong> (to introduce a dish or ingredient)</li><li><strong>It is... / They are...</strong> (to describe appearance, taste, etc.)</li><li><strong>I like / I don’t like...</strong> (to express preferences)</li></ul>",
+    "presentation": "<p><strong>New Vocabulary:</strong></p><ul><li>This is bread. It is fresh.</li><li>I like rice with chicken.</li><li>Soup is hot.</li><li>Salad is made of vegetables.</li><li>The cake is sweet and delicious.</li><li>This dish is spicy.</li><li>I drink orange juice every morning.</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["This is", ". It is spicy.", "soup"]},
+        {"type": "fill_blank", "data": ["I like", ". It is sweet.", "cake"]},
+        {"type": "fill_blank", "data": ["", "is made of vegetables.", "Salad"]},
+        {"type": "fill_blank", "data": ["I drink", "every morning.", "juice"]},
+        {"type": "fill_blank", "data": ["", "is fresh and soft.", "Cheese"]},
+        {"type": "fill_blank", "data": ["I like", ". It is delicious.", "fruit"]},
+        {"type": "multiple_choice", "data": ["This is bread. It is ___", "fresh", "spicy", "fresh"]},
+        {"type": "multiple_choice", "data": ["I like rice with ___", "chicken", "cheese", "chicken"]},
+        {"type": "multiple_choice", "data": ["Soup is ___", "hot", "cold", "hot"]},
+        {"type": "multiple_choice", "data": ["Salad is made of ___", "vegetables", "fruit", "vegetables"]},
+        {"type": "multiple_choice", "data": ["The cake is ___", "sweet", "fresh", "sweet"]},
+        {"type": "multiple_choice", "data": ["This dish is ___", "spicy", "sweet", "spicy"]}
+    ],
+    "conclusion": "<h3>In this lesson, we learned basic words to describe dishes and ingredients. We practiced using simple sentences like 'This is...' and 'I like...'.</h3><p><strong>Example Dialogue:</strong></p><p>A: What do you like to eat?<br>B: I like rice with chicken. It is delicious.<br>A: Do you like salad?<br>B: Yes, I like salad. It is fresh.</p><p><strong>Questions to Review:</strong></p><ul><li>What words can you use to describe food?</li><li>How do you say you like or don’t like something?</li><li>Can you describe a dish you like?</li></ul><p><strong>Homework:</strong> Write 5 sentences describing your favorite dish. Use words from this lesson. Example: “I like pizza. It is delicious.”</p>"
+}
+

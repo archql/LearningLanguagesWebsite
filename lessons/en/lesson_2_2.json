@@ -1,0 +1,21 @@
+{
+    "topic": "Describing Hobbies and Free Time Activities",
+    "vocabulary_list": [
+        "Read", "Play", "Swim", "Watch", "Listen to", "Cook", "Dance", "Travel", "Paint", "Sing", "Hike", "Draw", "Exercise", "Ride", "Write"
+    ],
+    "introduction": "<p>In this lesson, we will learn how to describe hobbies and free-time activities. We will focus on vocabulary related to activities people do for fun and basic grammatical structures such as the verb 'like' and the Present Simple tense.</p><h3>Grammar Focus:</h3><ul><li>The verb 'like' to express preferences: 'I like...', 'I don't like...'</li><li>Using Present Simple for habits: 'I play football every Saturday.'</li><li>Asking simple questions: 'Do you like swimming?'</li></ul>",
+    "presentation": "<h3>Vocabulary:</h3><ul><li>Read (books, comics)</li><li>Play (football, games)</li><li>Swim</li><li>Watch (TV, movies)</li><li>Listen to (music)</li><li>Cook</li><li>Dance</li><li>Travel</li><li>Paint</li><li>Sing</li><li>Hike</li><li>Draw</li><li>Exercise</li><li>Ride (a bike)</li><li>Write (stories, poems)</li></ul><h3>Example Sentences:</h3><ul><li>I like to read books.</li><li>She doesn't like to play football.</li><li>We swim every Saturday.</li><li>Do you watch movies?</li><li>He listens to music in the evening.</li></ul>",
+    "practice": [
+        {"type": "fill_blank", "data": ["I", "to read books.", "like"]},
+        {"type": "fill_blank", "data": ["She", "to play football.", "doesn't like"]},
+        {"type": "fill_blank", "data": ["We", "every weekend.", "swim"]},
+        {"type": "fill_blank", "data": ["Do you", "TV?", "watch"]},
+        {"type": "fill_blank", "data": ["They", "to music in the morning.", "listen"]},
+        {"type": "multiple_choice", "data": ["I ______ to draw.", "like", "likes", "like"]},
+        {"type": "multiple_choice", "data": ["She ______ movies every Friday.", "watches", "watches", "watch"]},
+        {"type": "multiple_choice", "data": ["We ______ not play football.", "do", "do", "does"]},
+        {"type": "multiple_choice", "data": ["Do you ______ games?", "play", "play", "plays"]},
+        {"type": "multiple_choice", "data": ["They ______ every weekend.", "hike", "hike", "hikes"]}
+    ],
+    "conclusion": "<h3>Review:</h3><p>In this lesson, we learned how to talk about hobbies and free-time activities. We practiced using the verb 'like' and the Present Simple tense.</p><h3>Example Dialogue:</h3><p>A: What do you like to do in your free time?<br>B: I like to read books and play games. What about you?<br>A: I enjoy hiking and listening to music.</p><h3>Questions for Review:</h3><ul><li>What hobbies do you like?</li><li>What hobbies do you not like?</li><li>How do you ask someone about their hobbies?</li></ul><h3>Homework:</h3><p>Write 5 sentences about your hobbies. Use the words 'like', 'don’t like', 'play', 'watch', 'listen to', and 'do'.</p>"
+}
