@@ -125,13 +125,13 @@ export class XpComponent implements OnInit, AfterViewInit {
   }
 
   getLeague(xp: number): string {
-    if (xp < 100) return 'stone';
-    if (xp < 250) return 'bronze';
-    if (xp < 500) return 'silver';
-    if (xp < 1000) return 'gold';
-    if (xp < 2000) return 'saphire';
-    if (xp < 4000) return 'ruby';
-    if (xp < 10000) return 'emerald';
+    if (xp < 10) return 'stone';
+    if (xp < 25) return 'bronze';
+    if (xp < 50) return 'silver';
+    if (xp < 100) return 'gold';
+    if (xp < 150) return 'saphire';
+    if (xp < 250) return 'ruby';
+    if (xp < 500) return 'emerald';
     return 'amethyst';
   }
 }

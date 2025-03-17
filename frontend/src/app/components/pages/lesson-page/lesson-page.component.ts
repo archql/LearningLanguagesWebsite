@@ -117,7 +117,7 @@ export class LessonPageComponent implements CanComponentDeactivate {
   showFeedback(data: string[]) {
     const dialogRef = this.dialog.open(LessonFinishedModalComponent, {
       width: '63%',
-      data: { title: data[0], message: data[1] }
+      data: { title: data[0], message: data[1], ptGained: parseInt(data[2]) }
     });
 
     dialogRef.afterClosed().subscribe(result => {

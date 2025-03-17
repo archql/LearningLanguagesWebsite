@@ -2,6 +2,9 @@
     <h4>{{ data.title }}</h4>
 </div>
 <div class="modal-content">
+    <div class="xpbar">
+        <app-xp [xpAmount]="data.ptGained" [xpGain]="true"></app-xp>
+    </div>
     <p [innerHTML]="data.message"></p>
 </div>
 <div class="modal-actions">

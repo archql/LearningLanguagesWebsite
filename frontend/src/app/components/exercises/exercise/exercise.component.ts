@@ -58,7 +58,7 @@ export class ExerciseComponent {
 
   @Input() triggerFinish = new EventEmitter<void>;
   @Output() returnFeedback = new EventEmitter<string[]> 
-  feedbackData: string[] = ['', '']
+  feedbackData: string[] = ['', '', '']
 
   handleMcAnswerSubmission(val: string, id: number) {
     if (!this.ptInit) { this.ptInitialize() }
@@ -149,6 +149,8 @@ export class ExerciseComponent {
     }
     this.feedbackData[0] += ` (${Math.round(perc * 100)}% correct)`
 
+
+    this.feedbackData[2] = `${correct}`
 
     this.submitLessonPending = true
     this.lessonService.submitLesson(this.id,  perc > 0.5, correct).subscribe({
