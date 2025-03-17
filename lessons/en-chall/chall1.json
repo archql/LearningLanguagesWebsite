@@ -1,0 +1,15 @@
+{
+    "topic": "",
+    "vocabulary_list": [],
+    "introduction": "",
+    "presentation": "",
+    "practice": [
+        {"type": "fill_blank", "data": ["Hello! My name", "Sarah.", "is"]},
+        {"type": "fill_blank", "data": ["I", "a teacher.", "am"]},
+        {"type": "fill_blank", "data": ["I", "30 years old.", "am"]},
+        {"type": "multiple_choice", "data": ["I (am / like) a student.", "am", "am", "like"]},
+        {"type": "multiple_choice", "data": ["I (enjoy / am) traveling.", "enjoy", "enjoy", "am"]},
+        {"type": "multiple_choice", "data": ["I (is / am) 18 years old.", "am", "am", "is"]}
+    ],
+    "conclusion": ""
+}

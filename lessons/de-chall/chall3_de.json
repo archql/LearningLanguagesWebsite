@@ -1,0 +1,15 @@
+{
+    "topic": "",
+    "vocabulary_list": [],
+    "introduction": "",
+    "presentation": "",
+    "practice": [
+      {"type": "fill_blank", "data": ["", ", ich bin Sarah.", "Hallo"]},
+      {"type": "fill_blank", "data": ["Freut mich,", "kennenzulernen!", "dich"]},
+      {"type": "fill_blank", "data": ["Wie", "dir?", "geht es"]},
+      {"type": "multiple_choice", "data": ["Wie geht es dir?", "Mir geht es gut, danke.", "Danke.", "Mir geht es gut, danke.", "Freut mich, dich kennenzulernen."]},
+      {"type": "multiple_choice", "data": ["Woher kommst du?", "Ich komme aus Italien.", "Mir geht es gut.", "Ich komme aus Italien.", "Bis später."]},
+      {"type": "multiple_choice", "data": ["Das ist mein Freund, Peter.", "Hallo, Peter! Freut mich, dich kennenzulernen.", "Hallo, Peter! Freut mich, dich kennenzulernen.", "Auf Wiedersehen.", "Was ist das?"]}
+    ],
+    "conclusion": ""
+}

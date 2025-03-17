@@ -1,0 +1,15 @@
+{
+    "topic": "",
+    "vocabulary_list": [],
+    "introduction": "",
+    "presentation": "",
+    "practice": [
+        {"type": "fill_blank", "data": ["Mein", "ist sehr lustig.", "Freund"]},
+        {"type": "fill_blank", "data": ["Ich habe zwei", "und eine Schwester.", "Brüder"]},
+        {"type": "fill_blank", "data": ["Meine", "ist Lehrerin.", "Mutter"]},
+        {"type": "multiple_choice", "data": ["Mein Vater ist ein ___.", "Arzt", "Arzt", "lustig", "Freund"]},
+        {"type": "multiple_choice", "data": ["Mein Freund ist sehr ___.", "lustig", "lustig", "nett", "Familie"]},
+        {"type": "multiple_choice", "data": ["Ich habe zwei ___.", "Brüder", "Brüder", "Eltern", "Cousins"]}
+    ],
+    "conclusion": ""
+}

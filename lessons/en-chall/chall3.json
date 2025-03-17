@@ -1,0 +1,17 @@
+{
+  "topic": "",
+  "vocabulary_list": [],
+  "introduction": "",
+  "presentation": "",
+    "practice": [
+      {"type": "fill_blank", "data": ["", ", my name is Sarah.", "Hello"]},
+      {"type": "fill_blank", "data": ["Nice to", "you!", "meet"]},
+      {"type": "fill_blank", "data": ["How", "you?", "are"]},
+      {"type": "multiple_choice", "data": ["How are you?", "I’m fine, thank you.", "Thank you.", "I’m fine, thank you.", "Nice to meet you."]},
+      {"type": "multiple_choice", "data": ["Where are you from?", "I am from Italy.", "I am fine.", "I am from Italy.", "See you later."]},
+      {"type": "multiple_choice", "data": ["This is my friend, Peter.", "Hello, Peter! Nice to meet you.", "Hello, Peter! Nice to meet you.", "Goodbye.", "What is this?"]}
+    ],
+    "conclusion": ""
+  }
+  
+  

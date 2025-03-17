@@ -1,0 +1,15 @@
+{
+    "topic": "",
+    "vocabulary_list": [],
+    "introduction": "",
+    "presentation": "",
+    "practice": [
+        {"type": "fill_blank", "data": ["Hallo! Mein Name", "Sarah.", "ist"]},
+        {"type": "fill_blank", "data": ["Ich", "Lehrer.", "bin"]},
+        {"type": "fill_blank", "data": ["Ich", "30 Jahre alt.", "bin"]},
+        {"type": "multiple_choice", "data": ["Ich bin ein ___.", "Arzt", "Arzt", "Tanz", "Apfel"]},
+        {"type": "multiple_choice", "data": ["Ich mag ___.", "Fußball spielen", "Fußball spielen", "Katze", "Wasser"]},
+        {"type": "multiple_choice", "data": ["Mein Name ___.", "ist", "ist", "bin", "sind"]}
+    ],
+    "conclusion": ""
+}
