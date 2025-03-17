@@ -1,99 +1,92 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-// import { ExerciseComponent } from './exercise.component';
-
-// describe('ExerciseComponent', () => {
-//   let component: ExerciseComponent;
-//   let fixture: ComponentFixture<ExerciseComponent>;
-
-//   beforeEach(async () => {
-//     await TestBed.configureTestingModule({
-//       imports: [ExerciseComponent]
-//     })
-//     .compileComponents();
-
-//     fixture = TestBed.createComponent(ExerciseComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
-
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ExerciseComponent } from './exercise.component';
-import { LessonService } from '../../../services/lesson.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
-import { EventEmitter } from '@angular/core';
-
-class MockLessonService {
-  loadLesson(filename: string) {
-    return of({
-      practice: [
-        { type: 'fill_blank', data: ['The capital of France is', '.', 'Paris'] },
-        { type: 'multiple_choice', data: ['What is 2 + 2?', '4', '3', '4', '5'] }
-      ]
-    });
-  }
-}
+import { LessonService } from '../../../services/lesson.service';
+import { FloatingProgressMeterComponent } from '../../helpers/floating-progress-meter/floating-progress-meter.component';
+import { ExerciseBe } from './exercise.model';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ExerciseComponent', () => {
   let component: ExerciseComponent;
   let fixture: ComponentFixture<ExerciseComponent>;
-  let lessonService: LessonService;
-
+  let lessonServiceSpy: jasmine.SpyObj<LessonService>;
+  let snackBarSpy: jasmine.SpyObj<MatSnackBar>;
+  let routerSpy: jasmine.SpyObj<Router>;
+  
   beforeEach(async () => {
+    lessonServiceSpy = jasmine.createSpyObj('LessonService', ['loadExercises', 'submitLesson']);
+    lessonServiceSpy.loadExercises.and.returnValue(of({
+      mcRange: [],
+      fbRange: [],
+      mcGivenAnswers: [],
+      fbGivenAnswers: [],
+      mcQuestions: [],
+      mcOptions: [],
+      mcCorrectAnswers: [],
+      fbBeforeBlank: [],
+      fbAfterBlank: [],
+      fbCorrectAnswers: []
+    } as ExerciseBe));
+
+    snackBarSpy = jasmine.createSpyObj('MatSnackBar', ['open']);
+    routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+
     await TestBed.configureTestingModule({
-      imports: [ExerciseComponent],
+      imports: [
+        ExerciseComponent,
+        TranslateModule.forRoot(),
+        HttpClientTestingModule
+      ],
       providers: [
-        { provide: LessonService, useClass: MockLessonService }
+        { provide: LessonService, useValue: lessonServiceSpy },
+        { provide: MatSnackBar, useValue: snackBarSpy },
+        { provide: Router, useValue: routerSpy },
+        { provide: ActivatedRoute, useValue: { paramMap: of({ get: () => '1' }) } },
+        TranslateService,
+        provideHttpClient(),
+        provideHttpClientTesting(),
       ]
-    }).compileComponents();
+    })
+    .compileComponents();
 
     fixture = TestBed.createComponent(ExerciseComponent);
     component = fixture.componentInstance;
-    lessonService = TestBed.inject(LessonService);
-
-    component.lessonFilename = 'lesson_1.json';
-    component.triggerFinish = new EventEmitter<void>();
     fixture.detectChanges();
   });
 
-  it('should create the component', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should load exercises on initialization', () => {
-    component.ngOnInit();
+  it('should initialize progress tracking on first answer submission', () => {
+    component.exerciseBe.data = {
+      mcRange: [0, 1],
+      fbRange: [0],
+      mcGivenAnswers: ['null', 'null'],
+      fbGivenAnswers: ['null'],
+      mcCorrectAnswers: ['A', 'B'],
+      fbCorrectAnswers: ['answer'],
+      mcQuestions: ['Question 1', 'Question 2'],
+      fbBeforeBlank: ['Fill this: '],
+      fbAfterBlank: ['.'],
+    } as any;
 
-    expect(component.fbRange.length).toBe(1);
-    expect(component.mcRange.length).toBe(1);
+    component.handleMcAnswerSubmission('A', 0);
+
+    expect(component.ptInit).toBeTrue();
+    expect(component.ptAnswered).toBe(1);
   });
 
-  it('should handle multiple-choice answer submission', () => {
-    component.handleMcAnswerSubmission('4', 0);
-    expect(component.mcGivenAnswers[0]).toBe('4');
-  });
-
-  it('should handle fill-in-the-blank answer submission', () => {
-    component.handleFbAnswerSubmission('Paris', 0);
-    expect(component.fbGivenAnswers[0]).toBe('Paris');
-  });
-
-  it('should validate answers correctly', () => {
-    component.handleFbAnswerSubmission('Paris', 0);
-    component.handleMcAnswerSubmission('4', 0);
+  it('should show notification on successful lesson submission', () => {
+    lessonServiceSpy.submitLesson.and.returnValue(of(true));
+    component.exerciseBe.data = { mcRange: [], fbRange: [] } as any;
     component.validateAnswers();
 
-    expect(component.feedbackData[0]).toContain('Answered 2 out of 2 correctly');
-  });
-
-  it('should emit feedback data when triggerFinish is triggered', () => {
-    spyOn(component.returnFeedback, 'emit');
-
-    component.triggerFinish.emit();
-
-    expect(component.returnFeedback.emit).toHaveBeenCalled();
+    expect(snackBarSpy.open).toHaveBeenCalled();
   });
 });
